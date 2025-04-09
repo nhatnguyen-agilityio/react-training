@@ -1,8 +1,11 @@
-const isDarkMode = false;
+import { useState } from "react";
 
 const MyButton = () => {
+  const isDarkMode = false;
+  const [count, setCount] = useState(0);
+
   function handleClick() {
-    alert("Button clicked!");
+    setCount(count + 1);
   }
   
   return (
@@ -10,7 +13,7 @@ const MyButton = () => {
       className={isDarkMode ? "primary-btn" : "secondary-btn"}
       onClick={handleClick}
     >
-      Click me
+      Click {count} times
     </button>
   );
 }

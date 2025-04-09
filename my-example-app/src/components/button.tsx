@@ -1,19 +1,17 @@
-import { useState } from "react";
+interface MyButtonProps {
+  count: number;
+  event: () => void;
+}
 
-const MyButton = () => {
+const MyButton = (props: MyButtonProps) => {
   const isDarkMode = false;
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1);
-  }
   
   return (
     <button 
       className={isDarkMode ? "primary-btn" : "secondary-btn"}
-      onClick={handleClick}
+      onClick={props.event}
     >
-      Click {count} times
+      Click {props.count} times
     </button>
   );
 }

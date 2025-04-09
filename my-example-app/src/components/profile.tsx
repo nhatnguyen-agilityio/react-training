@@ -3,11 +3,12 @@ const user = {
   imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
   imageSize: 90,
 }
+const isLoggedIn = true;
 
 const Profile = () => {
   return (
     <>
-      <h1>{user.name}</h1>
+      <h1>{isLoggedIn && "Hello "}{user.name}</h1>
       <img 
         src={user.imageUrl} 
         alt={"Photo of " + user.name} 

@@ -1,8 +1,14 @@
 import './App.css'
 import Product from './components/Product'
 // import MyButton from './components/button'
-// import Profile from './components/profile'
+import Profile from './components/profile'
 // import Products from './components/products'
+
+const user = {
+  name: 'John Doe',
+  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageSize: 90,
+}
 
 function App() {
   return (
@@ -11,7 +17,8 @@ function App() {
     {/* <MyButton /> */}
     {/* <Profile />
     <Products /> */}
-    <Product />
+    {/* <Product /> */}
+    <Profile name={user.name} imageUrl={user.imageUrl} imageSize={user.imageSize} />
     </>
   )
 }

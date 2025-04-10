@@ -13,14 +13,16 @@ const Product = () => {
     { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
   ];
 
-  const [filterText, setFilterText] = useState("");
-  const [inStockOnly, setInStockOnly] = useState(true);
+  const [filterText, setFilterText] = useState<string>("");
+  const [inStockOnly, setInStockOnly] = useState<boolean>(true);
 
   return (
     <>
       <SearchBar 
         filterText={filterText} 
-        inStockOnly={inStockOnly} />
+        inStockOnly={inStockOnly} 
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly} />
       <ProductTable 
         products={PRODUCTS}
         filterText={filterText} 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SearchBar from "./SearchBar";
 import ProductTable from "./ProductTable";
 import ProductInterface from "../../interfaces/product";
@@ -12,10 +13,18 @@ const Product = () => {
     { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
   ];
 
+  const [filterText, setFilterText] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(true);
+
   return (
     <>
-      <SearchBar />
-      <ProductTable products={PRODUCTS}/>
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} />
+      <ProductTable 
+        products={PRODUCTS}
+        filterText={filterText} 
+        inStockOnly={inStockOnly} />
     </>
   );
 }

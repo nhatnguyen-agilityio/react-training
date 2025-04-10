@@ -1,16 +1,20 @@
 import ProductCategory from "./ProductCategory";
 import ProductItem from "./ProductItem";
-import ProductInterface from "../../../interfaces/product";
 import { JSX } from "react";
+import ProductTableInterface from "../../../interfaces/productTable";
 
-interface ProductTableInterface {
-  products: ProductInterface[]
-}
-
-const ProductTable = ({ products }: ProductTableInterface) => {
+const ProductTable = ({ products, filterText, inStockOnly }: ProductTableInterface) => {
   const rows: JSX.Element[] = [];
   let lastCategory: string | null = null;
   products.forEach((item) => {
+    if (item.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return;
+    }
+
+    if (inStockOnly && !item.stocked) {
+      return;
+    }
+
     if (item.category !== lastCategory) {
       rows.push(
         <ProductCategory category={item.category} key={item.category} />

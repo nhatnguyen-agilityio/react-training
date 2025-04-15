@@ -14,6 +14,13 @@ const meta: Meta<typeof Button> = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: '3em', backgroundColor: '#353' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -23,6 +30,11 @@ export const Primary: Story = {
   args: {
     label: 'Primary Button',
     variant: 'primary',
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+    },
   },
 };
 

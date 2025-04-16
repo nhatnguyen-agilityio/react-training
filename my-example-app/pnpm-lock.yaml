@@ -4,6 +4,7 @@ specifiers:
   '@chromatic-com/storybook': ^3
   '@eslint/js': ^9.21.0
   '@storybook/addon-essentials': ^8.6.12
+  '@storybook/addon-interactions': ^8.6.12
   '@storybook/addon-onboarding': ^8.6.12
   '@storybook/blocks': ^8.6.12
   '@storybook/experimental-addon-test': ^8.6.12
@@ -36,6 +37,7 @@ devDependencies:
   '@chromatic-com/storybook': 3.2.6_6dmbmmorwnwi7czksynorzf4ji
   '@eslint/js': 9.24.0
   '@storybook/addon-essentials': 8.6.12_m5lsrwmkrxxwvqeigjc2vptjzq
+  '@storybook/addon-interactions': 8.6.12_storybook@8.6.12
   '@storybook/addon-onboarding': 8.6.12_storybook@8.6.12
   '@storybook/blocks': 8.6.12_bgzoalujs6c7yodazc6c2i3jby
   '@storybook/experimental-addon-test': 8.6.12_laddn6phfny6huw2iloculd5xa
@@ -965,6 +967,19 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.6.12
+    dev: true
+
+  /@storybook/addon-interactions/8.6.12_storybook@8.6.12:
+    resolution: {integrity: sha512-cTAJlTq6uVZBEbtwdXkXoPQ4jHOAGKQnYSezBT4pfNkdjn/FnEeaQhMBDzf14h2wr5OgBnJa6Lmd8LD9ficz4A==}
+    peerDependencies:
+      storybook: ^8.6.12
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/instrumenter': 8.6.12_storybook@8.6.12
+      '@storybook/test': 8.6.12_storybook@8.6.12
+      polished: 4.3.1
+      storybook: 8.6.12
+      ts-dedent: 2.2.0
     dev: true
 
   /@storybook/addon-measure/8.6.12_storybook@8.6.12:

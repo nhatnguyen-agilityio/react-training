@@ -1,19 +1,16 @@
-interface MyButtonProps {
-  count: number;
-  event: () => void;
-}
+// src/components/Button/Button.tsx
+import { FC } from 'react';
 
-const MyButton = (props: MyButtonProps) => {
-  const isDarkMode = false;
-  
+type ButtonProps = {
+  label: string;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary';
+};
+
+export const Button: FC<ButtonProps> = ({ label, onClick, variant = 'primary' }) => {
   return (
-    <button 
-      className={isDarkMode ? "primary-btn" : "secondary-btn"}
-      onClick={props.event}
-    >
-      Click {props.count} times
+    <button className={`btn ${variant}`} onClick={onClick}>
+      {label}
     </button>
   );
-}
-
-export default MyButton;
+};

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyButton from "./button";
+import MyButton from "./Button";
 
 const Products = () => {
   const products = [

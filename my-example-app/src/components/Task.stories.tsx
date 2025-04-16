@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Task from './Task';
-import { fn } from '@storybook/test';
+import { expect, fn, userEvent, within } from '@storybook/test';
+import { useState } from 'react';
 
 export const ActionsData = {
     onArchiveTask: fn(),
     onPinTask: fn(),
+    onChangeTask: fn(),
 };
 
 const meta: Meta<typeof Task> = {
@@ -17,14 +19,42 @@ const meta: Meta<typeof Task> = {
 export default meta;
 type Story = StoryObj<typeof Task>;
 export const Default: Story = {
-    args: {
-        task: {
-            id: '1',
-            title: 'Task 1',
-            state: 'TASK_INBOX',
-        },
-        ...ActionsData,
-    },
+  args: {
+      task: {
+          id: '1',
+          title: 'Task 1',
+          state: 'TASK_INBOX',
+      },
+      ...ActionsData,
+  },
+
+  render: (args) => {
+    const TaskWrapper = () => {
+      const [state, setState] = useState(args.task.state);
+
+      return (
+        <Task
+          {...args}
+          task={{ ...args.task, state }}
+          onChangeTask={() => {
+            console.log('Checkbox clicked!');
+            // Toggle state to simulate checkbox change
+            setState((prev) => (prev === 'TASK_ARCHIVED' ? 'TASK_INBOX' : 'TASK_ARCHIVED'));
+          }}
+        />
+      );
+    };
+
+    return <TaskWrapper />;
+  },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByRole('checkbox');
+
+    await userEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
+  }
 }
 
 export const Pinned: Story = {

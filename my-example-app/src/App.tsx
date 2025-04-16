@@ -6,6 +6,7 @@ import Product from './components/Product'
 // import MyButton from './components/button'
 import Profile from './components/profile'
 // import Products from './components/products'
+import Contact from './components/Contact'
 
 const user = {
   name: 'John Doe',
@@ -23,10 +24,12 @@ function App() {
     {/* <Product /> */}
     {/* <Profile name={user.name} imageUrl={user.imageUrl} imageSize={user.imageSize} /> */}
 
-    <FancyText title text="Welcome to my app!!!" />
+    {/* <FancyText title text="Welcome to my app!!!" />
     <InspirationGenerator>
       <Copyright year={2025} />
     </InspirationGenerator>
+    </> */}
+      <Contact />
     </>
   )
 }

@@ -21,7 +21,6 @@ const user = {
 function App() {
   return (
     <>
-    <h1>Welcome to my app</h1>
     {/* <MyButton /> */}
     {/* <Profile />
     <Products /> */}
@@ -33,11 +32,11 @@ function App() {
       <Copyright year={2025} />
     </InspirationGenerator>
     </> */}
-      {/* <Contact /> */}
+      <Contact />
       {/* <EffectExample /> */}
       {/* <ChatRoom /> */}
     {/* <Accordion /> */}
-    <Toolbar />
+    {/* <Toolbar /> */}
     </>
   )
 }

@@ -3,8 +3,11 @@ import "./index.css";
 import tags from "../../../mock/tags";
 import { useState } from "react";
 
+type TagsProps = {
+  onSelectTag: (tag: string) => void;
+};
 
-export default function Tags() {
+export default function Tags({ onSelectTag }) {
   const [tagsData, setTags] = useState<TagType[]>(tags);
 
   interface TagType {
@@ -27,6 +30,7 @@ export default function Tags() {
         <Tag key={index} tag={tag.tag} isActive={tag.isActive} onTagClick={e => {
           e.preventDefault();
           handleTagClick(tag.id);
+          onSelectTag(tag.tag);
         }} />
       ))}
     </div>

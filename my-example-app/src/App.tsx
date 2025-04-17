@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import EffectExample from './components/EffectExample'
 import ChatRoom from './components/ChatRoom'
 import Accordion from './components/Accordtion'
+import Toolbar from './components/Toolbar'
 
 const user = {
   name: 'John Doe',
@@ -35,7 +36,8 @@ function App() {
       {/* <Contact /> */}
       {/* <EffectExample /> */}
       {/* <ChatRoom /> */}
-    <Accordion />
+    {/* <Accordion /> */}
+    <Toolbar />
     </>
   )
 }

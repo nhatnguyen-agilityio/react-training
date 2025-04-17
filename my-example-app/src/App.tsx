@@ -8,6 +8,7 @@ import Profile from './components/profile'
 // import Products from './components/products'
 import Contact from './components/Contact'
 import EffectExample from './components/EffectExample'
+import ChatRoom from './components/ChatRoom'
 
 const user = {
   name: 'John Doe',
@@ -31,7 +32,8 @@ function App() {
     </InspirationGenerator>
     </> */}
       {/* <Contact /> */}
-      <EffectExample />
+      {/* <EffectExample /> */}
+      <ChatRoom />
     </>
   )
 }

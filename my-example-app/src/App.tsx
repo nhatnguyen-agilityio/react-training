@@ -9,6 +9,7 @@ import Profile from './components/profile'
 import Contact from './components/Contact'
 import EffectExample from './components/EffectExample'
 import ChatRoom from './components/ChatRoom'
+import Accordion from './components/Accordtion'
 
 const user = {
   name: 'John Doe',
@@ -33,7 +34,8 @@ function App() {
     </> */}
       {/* <Contact /> */}
       {/* <EffectExample /> */}
-      <ChatRoom />
+      {/* <ChatRoom /> */}
+    <Accordion />
     </>
   )
 }

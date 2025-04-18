@@ -11,6 +11,7 @@ import EffectExample from './components/EffectExample'
 import ChatRoom from './components/ChatRoom'
 import Accordion from './components/Accordtion'
 import Toolbar from './components/Toolbar'
+import ContextExample from './components/ContextExample'
 
 const user = {
   name: 'John Doe',
@@ -32,11 +33,12 @@ function App() {
       <Copyright year={2025} />
     </InspirationGenerator>
     </> */}
-      <Contact />
+      {/* <Contact /> */}
       {/* <EffectExample /> */}
       {/* <ChatRoom /> */}
     {/* <Accordion /> */}
     {/* <Toolbar /> */}
+    <ContextExample />
     </>
   )
 }

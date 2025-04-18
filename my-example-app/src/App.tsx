@@ -12,6 +12,7 @@ import ChatRoom from './components/ChatRoom'
 import Accordion from './components/Accordtion'
 import Toolbar from './components/Toolbar'
 import ContextExample from './components/ContextExample'
+import StateExample from './components/StateExample'
 
 const user = {
   name: 'John Doe',
@@ -38,7 +39,8 @@ function App() {
       {/* <ChatRoom /> */}
     {/* <Accordion /> */}
     {/* <Toolbar /> */}
-    <ContextExample />
+    {/* <ContextExample /> */}
+    <StateExample />
     </>
   )
 }

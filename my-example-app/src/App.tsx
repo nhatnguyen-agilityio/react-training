@@ -13,6 +13,8 @@ import Accordion from './components/Accordtion'
 import Toolbar from './components/Toolbar'
 import ContextExample from './components/ContextExample'
 import StateExample from './components/StateExample'
+import CountInformation from './components/CheckCount'
+import Count from './components/CheckCount/Count'
 
 const user = {
   name: 'John Doe',
@@ -40,7 +42,8 @@ function App() {
     {/* <Accordion /> */}
     {/* <Toolbar /> */}
     {/* <ContextExample /> */}
-    <StateExample />
+    {/* <StateExample /> */}
+    <CountInformation />
     </>
   )
 }

@@ -15,6 +15,7 @@ import ContextExample from './components/ContextExample'
 import StateExample from './components/StateExample'
 import CountInformation from './components/CheckCount'
 import Count from './components/CheckCount/Count'
+import Counter from './components/Counter'
 
 const user = {
   name: 'John Doe',
@@ -43,7 +44,8 @@ function App() {
     {/* <Toolbar /> */}
     {/* <ContextExample /> */}
     {/* <StateExample /> */}
-    <CountInformation />
+    {/* <CountInformation /> */}
+    <Counter />
     </>
   )
 }

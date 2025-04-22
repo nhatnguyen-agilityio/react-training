@@ -16,6 +16,8 @@ import StateExample from './components/StateExample'
 import CountInformation from './components/CheckCount'
 import Count from './components/CheckCount/Count'
 import Counter from './components/Counter'
+import InputFocus from './components/InputFocus'
+import Timer from './components/Timer'
 
 const user = {
   name: 'John Doe',
@@ -45,7 +47,9 @@ function App() {
     {/* <ContextExample /> */}
     {/* <StateExample /> */}
     {/* <CountInformation /> */}
-    <Counter />
+    {/* <Counter /> */}
+    {/* <InputFocus /> */}
+    <Timer />
     </>
   )
 }

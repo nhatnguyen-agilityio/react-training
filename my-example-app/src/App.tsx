@@ -18,6 +18,7 @@ import Count from './components/CheckCount/Count'
 import Counter from './components/Counter'
 import InputFocus from './components/InputFocus'
 import Timer from './components/Timer'
+import FilterList from './components/FilterList'
 
 const user = {
   name: 'John Doe',
@@ -49,7 +50,8 @@ function App() {
     {/* <CountInformation /> */}
     {/* <Counter /> */}
     {/* <InputFocus /> */}
-    <Timer />
+    {/* <Timer /> */}
+    <FilterList />
     </>
   )
 }

@@ -19,6 +19,7 @@ import Counter from './components/Counter'
 import InputFocus from './components/InputFocus'
 import Timer from './components/Timer'
 import FilterList from './components/FilterList'
+import Toggle from './components/Toggle'
 
 const user = {
   name: 'John Doe',
@@ -51,7 +52,8 @@ function App() {
     {/* <Counter /> */}
     {/* <InputFocus /> */}
     {/* <Timer /> */}
-    <FilterList />
+    {/* <FilterList /> */}
+    <Toggle />
     </>
   )
 }

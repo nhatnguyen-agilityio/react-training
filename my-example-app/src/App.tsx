@@ -14,12 +14,13 @@ import Toolbar from './components/Toolbar'
 import ContextExample from './components/ContextExample'
 import StateExample from './components/StateExample'
 import CountInformation from './components/CheckCount'
-import Count from './components/CheckCount/Count'
+// import Count from './components/CheckCount/Count'
 import Counter from './components/Counter'
 import InputFocus from './components/InputFocus'
 import Timer from './components/Timer'
 import FilterList from './components/FilterList'
 import Toggle from './components/Toggle'
+import Count from './components/Count'
 
 const user = {
   name: 'John Doe',
@@ -53,7 +54,8 @@ function App() {
     {/* <InputFocus /> */}
     {/* <Timer /> */}
     {/* <FilterList /> */}
-    <Toggle />
+    {/* <Toggle /> */}
+    <Count />
     </>
   )
 }

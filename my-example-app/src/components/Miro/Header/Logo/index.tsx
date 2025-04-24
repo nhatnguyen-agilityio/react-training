@@ -1,10 +1,15 @@
 import miroLogo from "../../assets/miro.png";
+import Image from "../../Common/image";
 
 
 const Logo = () => {
   return (
     <h1 className="h-full flex items-center ml-[30px] mr-[30px]">
-      <img src={miroLogo} alt="Logo" className="h-auto w-auto" />
+      <Image
+        src={miroLogo}
+        alt="Logo"
+        className="h-auto w-auto"
+      />
     </h1>
   );
 }

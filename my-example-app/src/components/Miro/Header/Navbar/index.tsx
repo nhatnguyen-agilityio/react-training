@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="h-full flex items-center mr-[30px] mr-auto">
       <ul className="flex h-full justify-center">
         {navBarItems.map((item) => (
-          <NavBarItem item={item} />
+          <NavBarItem key={item.id} item={item} />
         ))}
       </ul>
     </div>

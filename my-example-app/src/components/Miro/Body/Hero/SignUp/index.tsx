@@ -1,12 +1,20 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Button from "../../../Common/button";
 import Input from "../../../Common/input";
 import RateStar from "./RateStar";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+  }, []);
+  
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
   const handleSignUp = useCallback(() => {
@@ -24,6 +32,7 @@ const SignUp = () => {
           placeholder="Enter your email"
           className="h-[48px] px-[15px] mb-[15px] border rounded-[32px] border-border-100"
           onChange={handleChange}
+          ref={inputRef}
         />
         <Button text={"Sign up free"} className={"mb-[5px] h-[51px] text-[18px] font-normal rounded-[32px] bg-button-100 hover:bg-blue-700 text-white py-2 px-4"} onClick={handleSignUp} />
         <p className="text-[14px] font-light">Collaborate with your team withing minutes</p>

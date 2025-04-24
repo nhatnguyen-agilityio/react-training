@@ -2,7 +2,9 @@
 
 @theme {
   --color-primary-100: #050038;
+  --color-secondary-100: #5F5C80;
   --color-button-100: #4262FF;
+  --color-border-100: #9B99AF;
 }
 
 #root {

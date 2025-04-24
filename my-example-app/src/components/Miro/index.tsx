@@ -1,8 +1,12 @@
+import Body from "./Body";
 import Header from "./Header"
 
 const Miro = () => {
   return (
-    <Header />
+    <>
+      <Header />
+      <Body />
+    </>
   );
 };
 

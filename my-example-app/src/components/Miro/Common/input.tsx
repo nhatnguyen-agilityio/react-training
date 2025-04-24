@@ -7,12 +7,13 @@ type InputProps = {
   placeholder: string;
   className?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
 const Input = memo((props: InputProps) => {
-  const { type, value, placeholder, className, onChange } = props;
+  const { type, value, placeholder, className, onChange, ref } = props;
   return (
-    <input className={className} type={type} value={value} placeholder={placeholder} onChange={onChange} />
+    <input ref={ref} className={className} type={type} value={value} placeholder={placeholder} onChange={onChange} />
   );
 });
 

@@ -1,8 +1,18 @@
+import { useCallback, useState } from "react";
 import Button from "../../../Common/button";
 import Input from "../../../Common/input";
 import RateStar from "./RateStar";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  }, []);
+
+  const handleSignUp = useCallback(() => {
+    alert("This feature will be available soon!");
+  }, []);
+
   return (
     <div className="flex w-3/7 flex-col text-left">
       <h2 className="text-[48px] font-bold leading-[56px] mt-[5px]">Take ideas from better to best</h2>
@@ -10,12 +20,12 @@ const SignUp = () => {
       <form className="flex flex-col w-9/10">
         <Input
           type="email"
-          value=""
+          value={email}
           placeholder="Enter your email"
           className="h-[48px] px-[15px] mb-[15px] border rounded-[32px] border-border-100"
-          onChange={(e) => console.log(e.target.value)}
+          onChange={handleChange}
         />
-        <Button text={"Sign up free"} className={"mb-[5px] h-[51px] text-[18px] font-normal rounded-[32px] bg-button-100 hover:bg-blue-700 text-white py-2 px-4"} onClick={() => alert("This feature will be available soon!")} />
+        <Button text={"Sign up free"} className={"mb-[5px] h-[51px] text-[18px] font-normal rounded-[32px] bg-button-100 hover:bg-blue-700 text-white py-2 px-4"} onClick={handleSignUp} />
         <p className="text-[14px] font-light">Collaborate with your team withing minutes</p>
       </form>
       <RateStar />

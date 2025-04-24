@@ -21,6 +21,7 @@ import Timer from './components/Timer'
 import FilterList from './components/FilterList'
 import Toggle from './components/Toggle'
 import Count from './components/Count'
+import Miro from './components/Miro'
 
 const user = {
   name: 'John Doe',
@@ -55,7 +56,8 @@ function App() {
     {/* <Timer /> */}
     {/* <FilterList /> */}
     {/* <Toggle /> */}
-    <Count />
+    {/* <Count /> */}
+    <Miro />
     </>
   )
 }

@@ -4,7 +4,7 @@ import Tags from "./Tags";
 
 const BuiltSection = ({ tags, title }: { tags: { id: number, text: string }[], title: string }) => {
   return (
-    <div className="text-left w-4/5 mx-auto">
+    <div className="text-left w-4/5 mx-auto mb-[50px]">
       <Title title={title} />
       <Tags tags={tags} />
       <BuiltBody />

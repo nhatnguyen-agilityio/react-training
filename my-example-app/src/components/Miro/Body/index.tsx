@@ -1,6 +1,7 @@
 import Collaborate from "./Collaborate";
 import Hero from "./Hero";
 import Partner from "./Partner";
+import WorkTogether from "./WorkTogether";
 
 const Body = () => {
   return (
@@ -8,6 +9,7 @@ const Body = () => {
       <Hero />
       <Partner />
       <Collaborate />
+      <WorkTogether />
     </div>
   );
 }

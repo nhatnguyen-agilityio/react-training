@@ -1,5 +1,6 @@
 import Collaborate from "./Collaborate";
 import ConnectTools from "./ConnectTools";
+import CreativeIdeas from "./CreativeIdeas";
 import Hero from "./Hero";
 import Partner from "./Partner";
 import WorkTogether from "./WorkTogether";
@@ -12,6 +13,7 @@ const Body = () => {
       <Collaborate />
       <WorkTogether />
       <ConnectTools />
+      <CreativeIdeas />
     </div>
   );
 }

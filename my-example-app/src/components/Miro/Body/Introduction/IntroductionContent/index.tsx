@@ -1,3 +1,5 @@
+import LearnMore from "../../../Common/learnMore"
+
 const IntroductionContent = (
   {
     title,
@@ -17,7 +19,7 @@ const IntroductionContent = (
     <div className={`text-left ${blockClass}`}>
       <h2 className={`text-[48px] leading-[56px] font-bold mb-[10px] ${titleClass}`}>{title}</h2>
       <p className="font-light text-[18px] mb-[25px]">{description}</p>
-      <a href={link} className="text-blue-500 underline">Learn more</a>
+      <LearnMore link={link} />
     </div>
   )
 }

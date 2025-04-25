@@ -3,6 +3,7 @@ import ConnectTools from "./ConnectTools";
 import CreativeIdeas from "./CreativeIdeas";
 import Hero from "./Hero";
 import Partner from "./Partner";
+import Tools from "./Tools";
 import WorkTogether from "./WorkTogether";
 
 const Body = () => {
@@ -14,6 +15,7 @@ const Body = () => {
       <WorkTogether />
       <ConnectTools />
       <CreativeIdeas />
+      <Tools />
     </div>
   );
 }

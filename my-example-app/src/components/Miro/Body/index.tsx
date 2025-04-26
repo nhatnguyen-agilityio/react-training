@@ -4,6 +4,7 @@ import CreativeIdeas from "./CreativeIdeas";
 import Hero from "./Hero";
 import OurWorks from "./OurWorks";
 import Partner from "./Partner";
+import Team from "./Team";
 import Tools from "./Tools";
 import WorkTogether from "./WorkTogether";
 
@@ -18,6 +19,7 @@ const Body = () => {
       <CreativeIdeas />
       <Tools />
       <OurWorks />
+      <Team />
     </div>
   );
 }

@@ -4,7 +4,7 @@ type TaskProps = {
     task: TaskData;
     onArchiveTask: (id: string) => void;
     onPinTask: (id: string) => void;
-    onChangeTask: () => void;
+    onChangeTask: (value: string) => void;
 };
 
 export default function Task({

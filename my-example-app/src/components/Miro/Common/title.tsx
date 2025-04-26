@@ -1,4 +1,4 @@
-const Title = ({ title }: { title: string}) => {
-  return <h2 className="text-[48px] leading-[56px] font-bold mt-[20px]">{title}</h2>
+const Title = ({ title, className }: { title: string, className?: string}) => {
+  return <h2 className={`text-[48px] leading-[56px] font-bold mt-[20px] ${className}`}>{title}</h2>
 }
 export default Title;

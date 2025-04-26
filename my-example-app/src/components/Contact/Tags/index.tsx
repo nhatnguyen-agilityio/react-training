@@ -7,7 +7,7 @@ type TagsProps = {
   onSelectTag: (tag: string) => void;
 };
 
-export default function Tags({ onSelectTag }) {
+export default function Tags({ onSelectTag }: TagsProps) {
   const [tagsData, setTags] = useState<TagType[]>(tags);
 
   interface TagType {

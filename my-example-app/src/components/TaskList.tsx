@@ -6,6 +6,7 @@ type TaskListProps = {
   tasks: TaskData[];
   onPinTask: (id: string) => void;
   onArchiveTask: (id: string) => void;
+  onChangeTask: (id: string) => void;
 };
 
 export default function TaskList({
@@ -13,10 +14,12 @@ export default function TaskList({
   tasks,
   onPinTask,
   onArchiveTask,
+  onChangeTask,
 }: TaskListProps) {
   const events = {
     onPinTask,
     onArchiveTask,
+    onChangeTask,
   };
 
   const LoadingRow = (

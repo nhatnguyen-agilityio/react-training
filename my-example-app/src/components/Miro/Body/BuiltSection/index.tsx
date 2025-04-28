@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Title from "../../Common/title";
 import BuiltBody from "./BuiltBody";
 import Tags from "./Tags";
@@ -14,10 +14,9 @@ type tagProps = {
 
 const BuiltSection = ({ tags, title }: { tags: tagProps[], title: string }) => {
   const [tagsList, setTagsList] = useState<tagProps[]>(tags);
-  const [activeItem, setActiveItem] = useState(0);
 
-  useEffect(() => {
-    setActiveItem(tagsList.findIndex(tag => tag.isActive));
+  const activeItem = useMemo(() => {
+    return tagsList.findIndex(tag => tag.isActive);
   }, [tagsList]);
 
   const handleTagClick = (tagId: number) => {

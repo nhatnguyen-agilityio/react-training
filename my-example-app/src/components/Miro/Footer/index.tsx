@@ -15,7 +15,7 @@ const Footer = () => {
     <div className="w-full h-[150px] pl-[30px] flex justify-between items-center mt-[100px] bg-primary-100">
       <ul className="flex">
         {about.map((item) => (
-          <li key={item.id} className="mr-[20px] font-light underline underline-offset-3">{item.text}</li>
+          <li key={item.id} className="mr-[20px] font-light underline underline-offset-3 hover:text-blue-200">{item.text}</li>
         ))}
       </ul>
       <div className="flex justify-end pr-[30px]">

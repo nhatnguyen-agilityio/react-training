@@ -8,7 +8,7 @@ const Team = () => {
       <Title title={"Loved by the world's best teams"} />
       <Button
         text={"See all customer stories →"}
-        className={"bg-white text-[#4262FF] border rounded-[20px] border-[#4262FF] py-2 px-4 text-[18px] mt-[25px]"}
+        className={"bg-white text-[#4262FF] border rounded-[20px] border-[#4262FF] py-2 px-4 text-[18px] mt-[25px] hover:bg-blue-50 active:bg-blue-200"}
         onClick={() => alert("This feature will be available soon!")}
       />
       <TeamMember />

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Title from "../../Common/title";
 import BuiltBody from "./BuiltBody";
 import Tags from "./Tags";

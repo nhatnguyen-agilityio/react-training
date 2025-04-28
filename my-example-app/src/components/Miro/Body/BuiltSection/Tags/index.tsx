@@ -1,14 +1,15 @@
 import Button from "../../../Common/button";
 
-const Tags = ({ tags }: { tags: { id: number, text: string }[]}) => {
+const Tags = ({ tags, onClick }: { tags: { id: number, title: string, isActive: boolean }[], onClick: (tagId: number) => void}) => {
+
   return (
     <div className="w-full flex mt-[25px]">
       {tags.map((tag) => (
         <Button
           key={tag.id}
-          text={tag.text}
-          className="bg-white mr-[15px] rounded-[20px] font-light border border-[#F2F2F2] px-4 py-2 hover:bg-gray-200 active:bg-gray-300"
-          onClick={() => alert(`${tag.text} button clicked`)}
+          text={tag.title}
+          className={`${tag.isActive ? "bg-primary-100 text-white hover:bg-primary-100 active::text-white active:bg-primary-100 hover:text-white" : "bg-white text-primary-100"}  mr-[15px] rounded-[20px] font-light border border-[#F2F2F2] px-4 py-2 hover:bg-gray-200 active:bg-gray-300`}
+          onClick={() => onClick(tag.id)}
         />
       ))}
     </div>

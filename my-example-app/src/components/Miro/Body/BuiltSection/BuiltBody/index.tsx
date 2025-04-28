@@ -1,13 +1,11 @@
 import Banner from "./Banner";
 import Content from "./Content";
 
-import banner from "../../../assets/brainstorm.png"
-
-const BuiltBody = () => {
+const BuiltBody = ({ tagItem }: { tagItem: {title: string, description: string, bannerImage: string} }) => {
   return (
     <div className="flex w-full justify-between mt-[20px]">
-      <Content title={"Brainstorming"} description={"Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on."} />
-      <Banner bannerImage={banner} />
+      <Content title={tagItem.title} description={tagItem.description} />
+      <Banner bannerImage={tagItem.bannerImage} />
     </div>
   )
 }

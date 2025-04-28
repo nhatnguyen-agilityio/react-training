@@ -1,13 +1,15 @@
 import BuiltSection from "../BuiltSection"
 
+import bannerImage from "../../assets/banner.png";
+
 const tags = [
-  { id: 1, text: "Brainstorming" },
-  { id: 2, text: "Diagramming" },
-  { id: 3, text: "Meetings & Workshops" },
-  { id: 4, text: "Scrum Events" },
-  { id: 5, text: "Mapping" },
-  { id: 6, text: "Research & Design" },
-  { id: 7, text: "Strategic Planning" },
+  { id: 1, title: "Brainstorming", isActive: true, description: "Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 2, title: "Diagramming", isActive: false, description: " (Diagramming) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 3, title: "Meetings & Workshops", isActive: false, description: " (Meetings & Workshops) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 4, title: "Scrum Events", isActive: false, description: " (Scrum Events) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 5, title: "Mapping", isActive: false, description: " (Mapping) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 6, title: "Research & Design", isActive: false, description: " (Research & Design) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
+  { id: 7, title: "Strategic Planning", isActive: false, description: " (Strategic Planning) Unleash creative ideas and build on them with the help of sticky notes, images, mind maps, videos, drawing capabilities — the list goes on.", learnMoreUrl: "#", bannerImage: bannerImage },
 ]
 
 const CreativeIdeas = () => {

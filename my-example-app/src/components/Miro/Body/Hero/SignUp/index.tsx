@@ -10,7 +10,7 @@ const SignUp = () => {
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
-  
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -18,8 +18,8 @@ const SignUp = () => {
   }, []);
 
   const handleSignUp = useCallback(() => {
-    alert("This feature will be available soon!");
-  }, []);
+    alert("Sign up with email: " + email);
+  }, [email]);
 
   return (
     <div className="flex w-3/7 flex-col text-left">

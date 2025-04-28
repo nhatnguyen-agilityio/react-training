@@ -1,13 +1,13 @@
 import BuiltSection from "../BuiltSection"
 
 const tags = [
-  { id: 1, text: "Brainstorming" },
-  { id: 2, text: "Diagramming" },
-  { id: 3, text: "Meetings & Workshops" },
-  { id: 4, text: "Scrum Events" },
-  { id: 5, text: "Mapping" },
-  { id: 6, text: "Research & Design" },
-  { id: 7, text: "Strategic Planning" },
+  { id: 1, text: "Brainstorming", isActive: true },
+  { id: 2, text: "Diagramming", isActive: false },
+  { id: 3, text: "Meetings & Workshops", isActive: false },
+  { id: 4, text: "Scrum Events", isActive: false },
+  { id: 5, text: "Mapping", isActive: false },
+  { id: 6, text: "Research & Design", isActive: false },
+  { id: 7, text: "Strategic Planning", isActive: false },
 ]
 
 const CreativeIdeas = () => {

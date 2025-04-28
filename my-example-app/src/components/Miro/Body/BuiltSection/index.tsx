@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Title from "../../Common/title";
 import BuiltBody from "./BuiltBody";
 import Tags from "./Tags";
@@ -19,13 +19,13 @@ const BuiltSection = ({ tags, title }: { tags: tagProps[], title: string }) => {
     return tagsList.findIndex(tag => tag.isActive);
   }, [tagsList]);
 
-  const handleTagClick = (tagId: number) => {
+  const handleTagClick = useCallback((tagId: number) => {
     setTagsList(prevTags =>
       prevTags.map(tag => ({
         ...tag,
         isActive: tag.id === tagId,
       })))
-  }
+  }, [])
 
   return (
     <div className="text-left w-4/5 mx-auto mb-[50px]">

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Button from "../../../Common/button";
 
 const Tags = ({ tags, onClick }: { tags: { id: number, title: string, isActive: boolean }[], onClick: (tagId: number) => void}) => {
@@ -16,4 +17,4 @@ const Tags = ({ tags, onClick }: { tags: { id: number, title: string, isActive: 
   );
 }
 
-export default Tags;
+export default memo(Tags);

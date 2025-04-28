@@ -1,13 +1,38 @@
+import { useEffect, useState } from "react";
 import Title from "../../Common/title";
 import BuiltBody from "./BuiltBody";
 import Tags from "./Tags";
 
-const BuiltSection = ({ tags, title }: { tags: { id: number, text: string, isActive: boolean }[], title: string }) => {
+type tagProps = {
+  id: number,
+  title: string,
+  isActive: boolean,
+  description: string,
+  learnMoreUrl: string,
+  bannerImage: string
+}
+
+const BuiltSection = ({ tags, title }: { tags: tagProps[], title: string }) => {
+  const [tagsList, setTagsList] = useState<tagProps[]>(tags);
+  const [activeItem, setActiveItem] = useState(0);
+
+  useEffect(() => {
+    setActiveItem(tagsList.findIndex(tag => tag.isActive));
+  }, [tagsList]);
+
+  const handleTagClick = (tagId: number) => {
+    setTagsList(prevTags =>
+      prevTags.map(tag => ({
+        ...tag,
+        isActive: tag.id === tagId,
+      })))
+  }
+
   return (
     <div className="text-left w-4/5 mx-auto mb-[50px]">
       <Title title={title} />
-      <Tags tags={tags} />
-      <BuiltBody />
+      <Tags tags={tagsList} onClick={handleTagClick} />
+      <BuiltBody tagItem={tagsList[activeItem]} />
     </div>
   );
 }

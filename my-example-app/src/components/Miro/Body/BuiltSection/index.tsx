@@ -28,7 +28,7 @@ const BuiltSection = ({ tags, title }: { tags: tagProps[], title: string }) => {
   }, [])
 
   return (
-    <div className="text-left w-4/5 mx-auto mb-[50px]">
+    <div className="text-left w-4/5 mx-auto mb-12.5">
       <div className="container">
         <Title title={title} />
         <Tags tags={tagsList} onClick={handleTagClick} />

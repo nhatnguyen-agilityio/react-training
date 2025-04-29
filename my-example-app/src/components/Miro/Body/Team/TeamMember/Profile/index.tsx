@@ -10,7 +10,7 @@ const Profile = ({
   profileIntro: string;
 }) => {
   return (
-    <div className="mt-7.5 flex">
+    <div className="mt-8 flex">
       <Image src={profileImage} alt="Profile" className="w-auto h-auto" />
       <div className="ml-4 font-light">
         <p>{name}</p>

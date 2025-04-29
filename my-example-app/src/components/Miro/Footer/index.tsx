@@ -12,16 +12,16 @@ const about = [
 
 const Footer = () => {
   return (
-    <div className="w-full h-38 pl-12.5 mt-25 bg-primary-100">
+    <div className="w-full h-38 pl-13 mt-25 bg-primary-100">
       <div className="2xl:max-w-big-2xl mx-auto flex justify-between items-center h-full">
         <ul className="flex text-white">
           {about.map((item) => (
             <li key={item.id} className="mr-5 font-light underline underline-offset-3 hover:text-blue-200">{item.text}</li>
           ))}
         </ul>
-        <div className="flex justify-end pr-12.5">
-          <Image src={iosIcon} alt="Install" className="w-auto h-auto mr-2.5" />
-          <Image src={androidIcon} alt="Install" className="w-auto h-auto mr-2.5" />
+        <div className="flex justify-end pr-13">
+          <Image src={iosIcon} alt="Install" className="w-auto h-auto mr-3" />
+          <Image src={androidIcon} alt="Install" className="w-auto h-auto mr-3" />
           <Image src={install} alt="Install" className="w-auto h-auto" />
         </div>
       </div>

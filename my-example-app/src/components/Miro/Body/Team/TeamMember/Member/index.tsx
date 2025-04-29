@@ -15,9 +15,9 @@ const Member = ({
   profileIntro: string;
 }) => {
   return (
-    <div className="flex flex-col text-left my-10 w-1/3 pr-12.5">
+    <div className="flex flex-col text-left my-10 w-1/3 pr-13">
       <Image alt={"Company"} src={companyImage} className={""} />
-      <p className="text-lg mt-2.5 h-50 font-light">{description}</p>
+      <p className="text-lg mt-3 h-50 font-light">{description}</p>
       <Profile profileImage={profileSrc} name={name} profileIntro={profileIntro} />
     </div>
   );

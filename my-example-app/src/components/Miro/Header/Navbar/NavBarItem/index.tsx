@@ -11,8 +11,8 @@ const NavBarItem = ({ item }: { item: itemProps }) => {
   return (
     <>
       <li key={item.id} className="group flex items-center justify-center text-center mx-auto hover:bg-gray-300 active:bg-gray-400">
-        <span className={`ml-[15px] group-hover:underline ${!item.hasArrow ? "mr-[15px]" : "mr-[10px]"}`}>{item.name}</span>
-        {item.hasArrow && <Image src={arrowIcon} alt="Arrow" className="h-[10px] w-[10px] pt-[3px] mr-[15px]" />}
+        <span className={`ml-4 group-hover:underline ${!item.hasArrow ? "mr-4" : "mr-2.5"}`}>{item.name}</span>
+        {item.hasArrow && <Image src={arrowIcon} alt="Arrow" className="h-2.5 w-2.5 pt-1 mr-4" />}
       </li>
     </>
   );

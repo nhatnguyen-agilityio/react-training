@@ -15,12 +15,14 @@ const partnerIcons = [
 
 const Partner = () => {
   return (
-    <div className="my-[50px] w-4/5 mx-auto pb-[10px]">
-      <h5 className="pt-[20px] font-light text-[18px]">Trusted by 45M+ users</h5>
-      <div className="w-full h-[80px] flex mt-[10px]">
-        {partnerIcons.map((item) => (
-          <Company key={item.id} img={item.src} />
-        ))}
+    <div className="my-[50px] pb-[10px]">
+      <div className="container">
+        <h5 className="pt-[20px] font-light text-[18px] text-center">Trusted by 45M+ users</h5>
+        <div className="w-full h-[80px] flex mt-[10px]">
+          {partnerIcons.map((item) => (
+            <Company key={item.id} img={item.src} />
+          ))}
+        </div>
       </div>
     </div>
   );

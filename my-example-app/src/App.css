@@ -8,6 +8,10 @@
   --color-border-100: #9B99AF;
 }
 
+#root {
+  color: #050038;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

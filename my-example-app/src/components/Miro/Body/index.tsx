@@ -11,7 +11,7 @@ import WorkTogether from "./WorkTogether";
 
 const Body = () => {
   return (
-    <div className="text-primary-100">
+    <>
       <Hero />
       <Partner />
       <Collaborate />
@@ -22,7 +22,7 @@ const Body = () => {
       <OurWorks />
       <Team />
       <JoinUs />
-    </div>
+    </>
   );
 }
 export default Body;

@@ -9,18 +9,20 @@ const CollaborateBlockContents = [
 
 const Collaborate = () => {
   return (
-    <div className="flex flex-col items-center pt-[15px] w-4/5 mx-auto">
-      <h2 className="text-[48px] w-[450px] leading-[56px] font-bold">Collaborate without constraints</h2>
-      <div className="flex mx-auto mt-[30px] justify-between">
-        {CollaborateBlockContents.map((item) => (
-          <CollaborateBlock key={item.id}  title={item.title} description={item.description} />
-        ))}
+    <div className="pt-[15px] w-4/5 mx-auto">
+      <div className="container flex flex-col items-center">
+        <h2 className="text-[48px] w-[450px] leading-[56px] font-bold text-center">Collaborate without constraints</h2>
+        <div className="flex mx-auto mt-[30px] justify-between">
+          {CollaborateBlockContents.map((item) => (
+            <CollaborateBlock key={item.id} title={item.title} description={item.description} />
+          ))}
+        </div>
+        <Button
+          text={"Sign up free"}
+          className={"mt-[30px] text-[18px] font-normal h-[48px] w-[180px] rounded-[32px] bg-button-100 hover:bg-blue-700 text-white py-2 px-4"}
+          onClick={() => alert("This feature will be available soon!")}
+        />
       </div>
-      <Button
-        text={"Sign up free"}
-        className={"mt-[30px] text-[18px] font-normal h-[48px] w-[180px] rounded-[32px] bg-button-100 hover:bg-blue-700 text-white py-2 px-4"}
-        onClick={() => alert("This feature will be available soon!")}
-      />
     </div>
   );
 }

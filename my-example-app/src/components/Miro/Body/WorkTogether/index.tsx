@@ -5,7 +5,7 @@ import hybridWorkImage from "../../assets/hybrid-work.png";
 
 const WorkTogether = () => {
   return (
-    <div className="my-17.5 w-4/5 mx-auto ">
+    <div className="my-18 w-4/5 mx-auto ">
       <div className="container flex justify-between">
         <IntroductionContent
           title={"Work together, wherever you work"}

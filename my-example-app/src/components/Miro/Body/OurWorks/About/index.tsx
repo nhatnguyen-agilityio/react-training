@@ -35,7 +35,7 @@ const aboutItems = [
 
 const About = () => {
   return (
-    <div className="mt-12.5 w-full h-full flex flex-wrap">
+    <div className="mt-13 w-full h-full flex flex-wrap">
       {aboutItems.map((item) => (
         <AboutItem key={item.id} title={item.title} description={item.description} />
       ))}

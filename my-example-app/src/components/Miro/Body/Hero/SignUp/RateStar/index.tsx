@@ -7,9 +7,9 @@ import { memo } from "react";
 
 const RateStar = memo(() => {
   return (
-    <div className="flex items-center justify-between mt-[40px] w-3/4 p-[10px] bg-[#F5F5F7]">
+    <div className="flex items-center justify-between mt-10 w-3/4 p-3 bg-[#F5F5F7]">
       <Star />
-      <div className="flex items-center justify-around w-2/5 mr-[10px]">
+      <div className="flex items-center justify-around w-2/5 mr-3">
         <Icon icon={googleIcon} />
         <Icon icon={getAppIcon} />
         <Icon icon={capterra} />

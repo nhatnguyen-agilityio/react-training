@@ -2,7 +2,7 @@ import Image from "../../../../../Common/image"
 
 const Icon = ({ icon }: { icon: string }) => {
   return (
-    <div className="mx-[5px]">
+    <div className="mx-1">
       <Image
         src={icon}
         alt="Google"

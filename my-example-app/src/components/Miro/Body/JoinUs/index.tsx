@@ -7,8 +7,8 @@ const JoinUs = () => {
   }
 
   return (
-    <div className="w-3/4 mb-5 text-white mx-auto mt-13 h-112 bg-primary-100">
-      <div className="container flex flex-col justify-center items-center h-full">
+    <div className="mb-5 text-white mx-auto mt-13 h-112">
+      <div className="container flex flex-col justify-center items-center h-full bg-primary-100">
         <Title title={"Join 45M+ users today"} className="text-white leading-14 text-5xl" />
         <p className="opacity-60 mb-4 mt-2">Start for free — upgrade anytime.</p>
         <a className="opacity-60 underline hover:text-blue-200" href="#">Joining as an organization? Contact Sales</a>

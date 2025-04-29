@@ -13,7 +13,7 @@ const about = [
 const Footer = () => {
   return (
     <div className="w-full h-38 pl-12.5 mt-25 bg-primary-100">
-      <div className="2xl:max-w-[1440px] mx-auto flex justify-between items-center h-full">
+      <div className="2xl:max-w-big-2xl mx-auto flex justify-between items-center h-full">
         <ul className="flex text-white">
           {about.map((item) => (
             <li key={item.id} className="mr-5 font-light underline underline-offset-3 hover:text-blue-200">{item.text}</li>

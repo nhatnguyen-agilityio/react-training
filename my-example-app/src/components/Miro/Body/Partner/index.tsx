@@ -15,10 +15,10 @@ const partnerIcons = [
 
 const Partner = () => {
   return (
-    <div className="my-[50px] pb-[10px]">
+    <div className="my-12.5 pb-[12.5]">
       <div className="container">
-        <h5 className="pt-[20px] font-light text-[18px] text-center">Trusted by 45M+ users</h5>
-        <div className="w-full h-[80px] flex mt-[10px]">
+        <h5 className="pt-5 font-light text-lg text-center">Trusted by 45M+ users</h5>
+        <div className="w-full h-20 flex mt-2.5">
           {partnerIcons.map((item) => (
             <Company key={item.id} img={item.src} />
           ))}

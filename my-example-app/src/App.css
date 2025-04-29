@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
 @theme {
   --color-primary-100: #050038;
@@ -8,9 +9,7 @@
 }
 
 #root {
-  max-width: 1440px;
-  margin: 0 auto;
-  text-align: center;
+  color: #050038;
 }
 
 .logo {

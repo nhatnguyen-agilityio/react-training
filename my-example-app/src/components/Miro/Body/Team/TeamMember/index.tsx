@@ -9,7 +9,7 @@ import laura from "../../../assets/laura.png"
 
 const TeamMember = () => {
   return (
-    <div className="flex justify-between mt-[30px] w-full">
+    <div className="flex justify-between mt-12.5 w-full">
       <Member
         companyImage={vmware}
         profileSrc={mustafa}

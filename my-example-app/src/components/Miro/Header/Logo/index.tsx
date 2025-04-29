@@ -4,7 +4,7 @@ import Image from "../../Common/image";
 
 const Logo = () => {
   return (
-    <h1 className="h-full flex items-center ml-[30px] mr-[30px]">
+    <h1 className="h-full flex items-center mx-8">
       <a href="#">
         <Image
           src={miroLogo}

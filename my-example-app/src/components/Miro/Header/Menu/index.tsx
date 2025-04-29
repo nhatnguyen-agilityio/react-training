@@ -5,7 +5,7 @@ import SignUp from "./SignUp";
 
 const Menu = () => {
   return (
-    <div className="flex items-center mr-[30px] mx-auto h-full justify-center">
+    <div className="flex items-center mr-7.5 mx-auto h-full justify-center">
       <Language />
       <Contact />
       <Login />

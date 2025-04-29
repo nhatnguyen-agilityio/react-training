@@ -1,8 +1,8 @@
 const CollaborateBlock = ({ title, description }: { title: string, description: string }) => {
   return (
     <div className="collaborate-block text-left w-3/10">
-      <h2 className="font-bold text-[24px] leading-[28px] mb-[20px]">{title}</h2>
-      <p dangerouslySetInnerHTML={{ __html: description }} className="font-light text-[18px] leading-[24px]" />
+      <h2 className="font-bold text-2xl leading-6 mb-5">{title}</h2>
+      <p dangerouslySetInnerHTML={{ __html: description }} className="font-light text-lg leading-6" />
     </div>
   );
 }

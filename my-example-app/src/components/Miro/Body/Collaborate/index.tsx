@@ -9,10 +9,10 @@ const CollaborateBlockContents = [
 
 const Collaborate = () => {
   return (
-    <div className="pt-4 w-4/5 mx-auto">
+    <div className="pt-4">
       <div className="container flex flex-col items-center">
         <h2 className="text-5xl w-113 leading-14 font-bold text-center">Collaborate without constraints</h2>
-        <div className="flex mx-auto mt-8 justify-between">
+        <div className="grid grid-cols-3 gap-x-15 mx-auto mt-8">
           {CollaborateBlockContents.map((item) => (
             <CollaborateBlock key={item.id} title={item.title} description={item.description} />
           ))}

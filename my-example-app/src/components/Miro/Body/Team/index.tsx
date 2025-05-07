@@ -4,7 +4,7 @@ import TeamMember from "./TeamMember"
 
 const Team = () => {
   return (
-    <div className="mt-15 mx-auto">
+    <div className="mt-15">
       <div className="container text-center">
         <Title title={"Loved by the world's best teams"} />
         <Button

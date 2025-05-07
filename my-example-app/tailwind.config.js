@@ -13,12 +13,12 @@ module.exports = {
         md: '740px',
         lg: '960px',
         xl: '1140px',
-        '2xl': '1140px',
+        '2xl': '1440px',
       },
     },
     extend: {
       maxWidth: {
-        "big-2xl": "1440px",
+        "big-2xl": "1640px",
       }
     },
   },

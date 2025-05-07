@@ -35,7 +35,7 @@ const aboutItems = [
 
 const About = () => {
   return (
-    <div className="mt-13 w-full h-full flex flex-wrap">
+    <div className="mt-13 h-full grid grid-cols-3 gap-x-3">
       {aboutItems.map((item) => (
         <AboutItem key={item.id} title={item.title} description={item.description} />
       ))}

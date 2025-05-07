@@ -3,7 +3,7 @@ import bannerImage from "../../../assets/banner.png";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="col-span-3 flex justify-end">
       <Image src={bannerImage} alt="Banner" className="w-auto h-auto" />
     </div>
   );

@@ -4,7 +4,7 @@ import SignUp from "./SignUp";
 const Hero = () => {
   return (
     <div className="mt-15 mx-auto">
-      <div className="container flex justify-between ">
+      <div className="container grid grid-cols-5">
         <SignUp />
         <Banner />
       </div>

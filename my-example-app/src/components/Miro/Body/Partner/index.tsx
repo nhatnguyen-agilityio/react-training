@@ -18,7 +18,7 @@ const Partner = () => {
     <div className="my-13 pb-13">
       <div className="container">
         <h5 className="pt-5 font-light text-lg text-center">Trusted by 45M+ users</h5>
-        <div className="w-full h-20 flex mt-3">
+        <div className="grid grid-cols-5 h-20 mt-3">
           {partnerIcons.map((item) => (
             <Company key={item.id} img={item.src} />
           ))}

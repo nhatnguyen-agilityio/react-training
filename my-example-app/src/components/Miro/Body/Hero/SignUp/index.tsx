@@ -22,10 +22,10 @@ const SignUp = () => {
   }, [email]);
 
   return (
-    <div className="flex w-3/7 flex-col text-left">
+    <div className="flex flex-col text-left col-span-2 pr-4">
       <h2 className="text-5xl font-bold leading-14 mt-1">Take ideas from better to best</h2>
-      <p className="text-lg my-6 w-4/5 font-light">Miro is your team's visual platform to connect, collaborate, and create - together</p>
-      <form className="flex flex-col w-9/10">
+      <p className="text-lg my-6 font-light">Miro is your team's visual platform to connect, collaborate, and create - together</p>
+      <form className="flex flex-col">
         <Input
           type="email"
           value={email}

@@ -3,25 +3,25 @@ import Section from "../Section"
 
 const Context = () => {
   return (
-    <Section level={1}>
+    <Section>
       <Heading>Heading 1</Heading>
-      <Section level={2}>
+      <Section>
         <Heading>Heading 2</Heading>
         <Heading>Heading 2</Heading>
         <Heading>Heading 2</Heading>
-        <Section level={3}>
+        <Section>
           <Heading>Heading 3</Heading>
           <Heading>Heading 3</Heading>
           <Heading>Heading 3</Heading>
-          <Section level={4}>
+          <Section>
             <Heading>Heading 4</Heading>
             <Heading>Heading 4</Heading>
             <Heading>Heading 4</Heading>
-            <Section level={5}>
+            <Section>
               <Heading>Heading 5</Heading>
               <Heading>Heading 5</Heading>
               <Heading>Heading 5</Heading>
-              <Section level={6}>
+              <Section>
                 <Heading>Heading 6</Heading>
                 <Heading>Heading 6</Heading>
                 <Heading>Heading 6</Heading>

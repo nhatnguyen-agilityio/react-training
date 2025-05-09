@@ -17,9 +17,11 @@ const Artist = () => {
       {showAlbums && (
         <Suspense fallback={<Loading />}>
           <Biography />
-          <Panel>
-            <Albums />
-          </Panel>
+          <Suspense fallback={<Loading />}>
+            <Panel>
+              <Albums />
+            </Panel>
+          </Suspense>
         </Suspense>
       )}
     </>

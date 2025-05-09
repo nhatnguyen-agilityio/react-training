@@ -1,10 +1,10 @@
 import './App.css'
-import MarkdownEditor from './components/MarkdownEditor'
+import Artist from './components/Artist'
 
 function App() {
   return (
     <>
-      <MarkdownEditor />
+      <Artist />
     </>
   )
 }

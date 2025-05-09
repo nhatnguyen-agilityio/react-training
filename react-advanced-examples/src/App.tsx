@@ -1,10 +1,10 @@
 import './App.css'
-import Artist from './components/Artist'
+import Context from './components/Context'
 
 function App() {
   return (
     <>
-      <Artist />
+      <Context />
     </>
   )
 }

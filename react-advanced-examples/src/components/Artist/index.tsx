@@ -1,5 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import Loading from "../Loading";
+import Biography from "../Biography";
+import Panel from "../Panel";
 
 const Albums = lazy(() => import("../Albums"));
 
@@ -14,7 +16,10 @@ const Artist = () => {
       </button>
       {showAlbums && (
         <Suspense fallback={<Loading />}>
-          <Albums />
+          <Biography />
+          <Panel>
+            <Albums />
+          </Panel>
         </Suspense>
       )}
     </>

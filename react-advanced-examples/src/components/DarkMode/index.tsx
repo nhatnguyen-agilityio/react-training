@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import Main from "./Main";
+import ErrorBoundary from "../ErrorBoundary";
 
 type ThemeContextType = {
   screenTheme: string;
@@ -11,9 +12,11 @@ const DarkMode = () => {
   const [screenTheme, setScreenTheme] = useState("light");
 
   return (
-    <ThemeContext.Provider value={{screenTheme, setScreenTheme}}>
-      <Main />
-    </ThemeContext.Provider>
+    <ErrorBoundary>
+      <ThemeContext.Provider value={{ screenTheme, setScreenTheme }}>
+        <Main />
+      </ThemeContext.Provider>
+    </ErrorBoundary>
   );
 }
 

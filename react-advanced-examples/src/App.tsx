@@ -1,10 +1,10 @@
 import './App.css'
-import DarkMode from './components/DarkMode'
+import Information from './components/Information'
 
 function App() {
   return (
     <>
-      <DarkMode />
+      <Information />
     </>
   )
 }

@@ -1,10 +1,10 @@
 import './App.css'
-import Context from './components/Context'
+import DarkMode from './components/DarkMode'
 
 function App() {
   return (
     <>
-      <Context />
+      <DarkMode />
     </>
   )
 }

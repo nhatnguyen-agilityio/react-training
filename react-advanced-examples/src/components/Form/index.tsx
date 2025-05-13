@@ -8,6 +8,7 @@ const Form = () => {
   const [password, setPassword] = useState("");
   const [isAcceptPolicy, setIsAcceptPolicy] = useState(false);
   const [hobby, setHobby] = useState(["music", "reading"]);
+  const [description, setDescription] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -53,6 +54,11 @@ const Form = () => {
           <option value="cooking">Cooking</option>
           <option value="traveling">Traveling</option>
         </select>
+      </label>
+      <br />
+      <label>
+        Description:
+        <textarea name="description" value={description} onChange={e => setDescription(e.target.value)} />
       </label>
       <br />
       <label>

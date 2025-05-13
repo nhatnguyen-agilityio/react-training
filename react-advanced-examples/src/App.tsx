@@ -1,10 +1,10 @@
 import './App.css'
-import Form from './components/Form'
+import Countdown from './components/Countdown'
 
 function App() {
   return (
     <>
-      <Form />
+      <Countdown />
     </>
   )
 }

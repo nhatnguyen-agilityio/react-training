@@ -7,12 +7,14 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAcceptPolicy, setIsAcceptPolicy] = useState(false);
+  const [hobby, setHobby] = useState(["music", "reading"]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
+    console.log([...formData.entries()]);
   }
 
   return (
@@ -40,6 +42,17 @@ const Form = () => {
       <label>
         Password:
         <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Select your hobby:
+        <select name="hobby" multiple={true} value={hobby} onChange={e => setHobby(Array.from(e.target.selectedOptions, option => option.value))}>
+          <option value="sports">Sports</option>
+          <option value="reading">Reading</option>
+          <option value="music">Music</option>
+          <option value="cooking">Cooking</option>
+          <option value="traveling">Traveling</option>
+        </select>
       </label>
       <br />
       <label>

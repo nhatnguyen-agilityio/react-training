@@ -5,6 +5,7 @@ import Form from './components/Form'
 import MarkdownEditor from './components/MarkdownEditor'
 import Information from './components/Information'
 import Team from './components/Team'
+import Timer from './components/Timer'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="settings/:userId?" element={<Information />} />
         </Route>
         <Route path="docs/*" element={<MarkdownEditor />} />
+        <Route path="timer" element={<Timer />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -10,12 +12,11 @@ const Form = () => {
   const [hobby, setHobby] = useState(["music", "reading"]);
   const [description, setDescription] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
-    console.log([...formData.entries()]);
+    navigate("/markdown");
   }
 
   return (

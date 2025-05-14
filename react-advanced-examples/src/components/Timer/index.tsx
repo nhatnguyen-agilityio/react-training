@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 
 const Timer = () => {
+  const [searchParams] =useSearchParams();
+  const location = useLocation();
+  console.log(location.pathname);
+  console.log(location.search);
+  console.log(location.hash);
+  console.log(location.state);
+  console.log(location.key);
+  const time = searchParams.get("timer");
   const navigate = useNavigate();
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(time ? Number(time) : 10);
+
 
   useEffect(() => {
     const interval = setInterval(() => {

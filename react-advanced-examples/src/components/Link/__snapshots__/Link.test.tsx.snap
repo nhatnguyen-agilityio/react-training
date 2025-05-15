@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changes class when hovered 1`] = `
+<a
+  class="normal"
+  href="http://www.facebook.com"
+>
+  Facebook
+</a>
+`;
+
+exports[`changes class when hovered 2`] = `
+<a
+  class="hovered"
+  href="http://www.facebook.com"
+>
+  Facebook
+</a>
+`;
+
+exports[`changes class when hovered 3`] = `
+<a
+  class="normal"
+  href="http://www.facebook.com"
+>
+  Facebook
+</a>
+`;

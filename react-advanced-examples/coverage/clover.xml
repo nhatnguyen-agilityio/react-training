@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747282698852" clover="3.2.0">
-  <project timestamp="1747282698852" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3" elements="13" coveredelements="12" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
-    <file name="index.tsx" path="/Users/nhatnguyen/Desktop/Nhat Nguyen/Training/React/react-training/react-advanced-examples/src/components/Link/index.tsx">
+<coverage generated="1747292504440" clover="3.2.0">
+  <project timestamp="1747292504440" name="All files">
+    <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5" elements="21" coveredelements="20" complexity="0" loc="12" ncloc="12" packages="2" files="2" classes="2"/>
+    <package name="Checkbox">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="index.tsx" path="/Users/nhatnguyen/Desktop/Nhat Nguyen/Training/React/react-training/react-advanced-examples/src/components/Checkbox/index.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="Link">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="9" count="3" type="stmt"/>
-      <line num="11" count="3" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="14" count="3" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="18" count="3" type="stmt"/>
-    </file>
+      <file name="index.tsx" path="/Users/nhatnguyen/Desktop/Nhat Nguyen/Training/React/react-training/react-advanced-examples/src/components/Link/index.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

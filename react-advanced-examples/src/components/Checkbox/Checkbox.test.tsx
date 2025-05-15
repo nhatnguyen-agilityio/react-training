@@ -2,6 +2,11 @@ import { cleanup, render, fireEvent } from "@testing-library/react";
 import CheckboxWithLabel from ".";
 
 afterEach(cleanup);
+
+const compileAndroidCode = () => {
+  throw new Error("you are using the wrong JDK");
+}
+
 it("CheckboxWithLabel changes the text after click", () => {
   const { getByLabelText } = render(
     <CheckboxWithLabel labelOn="On" labelOff="Off" />
@@ -30,4 +35,20 @@ it("CheckboxWithLabel changes the text after click", () => {
 
   const amount = 3.2;
   expect(amount).toBeCloseTo(3.2);
+
+  const phrase = "Hello World";
+
+  expect(phrase).toMatch(/world/i);
+
+  const shoppingList = [
+    "diapers",
+    "kleenex",
+    "trash bags",
+    "paper towels",
+    "milk",
+  ];
+
+  expect(shoppingList).toContain("milk");
+
+  expect(compileAndroidCode).toThrow("you are using the wrong JDK");
 });

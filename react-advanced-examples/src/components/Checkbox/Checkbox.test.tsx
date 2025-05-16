@@ -52,3 +52,55 @@ it("CheckboxWithLabel changes the text after click", () => {
 
   expect(compileAndroidCode).toThrow("you are using the wrong JDK");
 });
+
+// Mock global fetch before tests
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    status: 200,
+    json: () => Promise.resolve('peanut butter'),
+    text: () => Promise.resolve('peanut butter'),
+  } as Response)
+);
+
+test("the data is peanut butter", () => {
+  return fetch('https://some-api.com/data')
+    .then(response => response.json())
+    .then(data => {
+      expect(data).toBe('peanut butter');
+    });
+});
+
+test("test data is peanut butter (1)", async () => {
+  const response = await fetch('https://some-api.com/data');
+  const data = await response.json();
+  expect(data).toBe('peanut butter');
+});
+
+test("test data is peanut butter (2)", async () => {
+  interface FetchDataCallback {
+    (error: Error | null, data: string): void;
+  }
+
+  function fetchData(callback: FetchDataCallback): void {
+    setTimeout(() => {
+      callback(null, 'peanut butter');
+    }, 100);
+  }
+
+  function callback(error: Error | null, data: string) {
+    if (error) {
+      throw error;
+    } else {
+      expect(data).toBe('peanut butter');
+    }
+  }
+  fetchData(callback);
+});
+
+test("test data is peanut butter (3)", async () => {
+  return expect(
+    fetch('https://some-api.com/data')
+      .then(response => response.json())
+  ).resolves.toBe('peanut butter');
+});

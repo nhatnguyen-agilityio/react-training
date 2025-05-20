@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Link from '.';
+import { create } from 'domain';
 
 beforeAll(() => {
   console.log('before all tests');
@@ -62,4 +63,25 @@ describe('Link component', () => {
     const linkElement = screen.getByText('Facebook');
     expect(linkElement).toBeInTheDocument();
   });
+});
+
+test('renders correctly', () => {
+  const { container } = render(<Link page="http://www.facebook.com">Facebook</Link>);
+  expect(container).toMatchSnapshot();
+});
+
+test('test property matchers', () => {
+  const user = {
+    name: 'John Doe',
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    age: 30,
+    email: 'HbOg9@example.com',
+  };
+  expect(user).toMatchSnapshot(
+    {
+      createdAt: expect.any(Date),
+      id: expect.any(Number),
+    }
+  );
 });

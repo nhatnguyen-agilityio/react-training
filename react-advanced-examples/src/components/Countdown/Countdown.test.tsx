@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Countdown from ".";
 import { MemoryRouter } from "react-router-dom";
 import * as CountdownHook from "../../Hooks/Countdown";
@@ -18,10 +18,16 @@ describe("Countdown component", () => {
       </MemoryRouter>
     );
 
-    screen.debug();
-
     expect(screen.getByText("Countdown")).toBeInTheDocument();
     expect(screen.getByText("The time left:10 seconds")).toBeInTheDocument();
     expect(screen.getByText(/seconds/)).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Countdown input")).toBeInTheDocument();
+    expect(screen.getByLabelText("Countdown label")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Input here")).toBeInTheDocument();
+
+    const input = screen.getAllByRole("textbox")[0] as HTMLInputElement;
+
+    fireEvent.change(input, {target: {value: "20"}});
+    expect(input.value).toBe("20");
   });
 });

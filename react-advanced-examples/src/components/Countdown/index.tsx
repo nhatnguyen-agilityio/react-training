@@ -15,6 +15,8 @@ const Countdown = () => {
       </label>
       <h1>The time left:{timeLeft} seconds</h1>
       <Outlet />
+      <label htmlFor="countdown-label">Countdown label</label>
+      <input id="countdown-label" type="text" value="Countdown input" placeholder="Input here"/>
     </>
   )
 }

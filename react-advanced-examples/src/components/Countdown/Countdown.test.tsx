@@ -29,5 +29,6 @@ describe("Countdown component", () => {
 
     fireEvent.change(input, {target: {value: "20"}});
     expect(input.value).toBe("20");
+    expect(screen.queryByText("new text")).toBeNull();
   });
 });

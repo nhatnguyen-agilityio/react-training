@@ -18,7 +18,10 @@ describe("Countdown component", () => {
       </MemoryRouter>
     );
 
+    screen.debug();
+
     expect(screen.getByText("Countdown")).toBeInTheDocument();
     expect(screen.getByText("The time left:10 seconds")).toBeInTheDocument();
+    expect(screen.getByText(/seconds/)).toBeInTheDocument();
   });
 });

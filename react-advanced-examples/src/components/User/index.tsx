@@ -1,4 +1,5 @@
 import { useEffect, useState, type SetStateAction } from "react";
+import Search from "./Search";
 
 const getUser = () => {
   return Promise.resolve({ id: '1', name: 'Robin' });
@@ -28,6 +29,10 @@ const User = () => {
       <input type="text" value={search} onChange={handleChange} />
 
       <p>Searches for {search ? search : '...'}</p>
+
+      <Search value={search} onChange={handleChange}>
+        Search:
+      </Search>
     </div>
   );
 }

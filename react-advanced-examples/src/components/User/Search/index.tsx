@@ -1,7 +1,7 @@
 const Search = ({ value, onChange, children }: { value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; children: React.ReactNode; }) => {
   return (
     <div>
-      <label htmlFor="search">{children}</label>
+      <label htmlFor="search">{children}: {value}</label>
       <input
         id="search"
         type="text"

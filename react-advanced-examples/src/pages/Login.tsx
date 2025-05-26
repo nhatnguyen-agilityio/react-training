@@ -1,0 +1,38 @@
+import { useState } from "react";
+import { useAuth } from "../Hooks/Auth";
+import { useNavigate } from "react-router-dom";
+
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (auth.login(username, password)) {
+      navigate('/');
+    } else {
+      alert('Invalid username or password');
+    }
+  };
+
+  return (
+    <>
+      <form onSubmit={handleLogin}>
+        <label>Username:
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <br />
+        <label>Password:
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <br />
+        <hr />
+        <button type="submit">Login</button>
+      </form>
+    </>
+  )
+};
+export default Login;

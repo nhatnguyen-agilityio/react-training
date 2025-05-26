@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../Hooks/Auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -9,10 +9,13 @@ const Login = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const fromLocation = (location.state as {from?: Location})?.from?.pathname || '/home';
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (auth.login(username, password)) {
-      navigate('/home');
+      navigate(fromLocation, { replace: true });
     } else {
       alert('Invalid username or password');
     }

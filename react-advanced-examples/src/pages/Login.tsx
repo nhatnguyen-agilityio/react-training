@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (auth.login(username, password)) {
-      navigate('/');
+      navigate('/home');
     } else {
       alert('Invalid username or password');
     }

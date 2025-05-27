@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
+import { object, string, number, minLength, maxLength, regex, pipe, minValue, maxValue } from 'valibot'
+import type { InferOutput } from 'valibot'
+import { valibotResolver } from '@hookform/resolvers/valibot';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -18,8 +21,33 @@ type StudentForm = {
   age?: number;
 }
 
+const studentFormSchema = object({
+  firstName: pipe(
+    string(),
+    minLength(2, 'Minimum length is 2'),
+    maxLength(20, 'Maximum length is 20'),
+    regex(/^[A-Za-z]+$/, 'Only letters are allowed'),
+  ),
+  lastName: pipe(
+    string(),
+    minLength(2, 'Minimum length is 2'),
+    maxLength(20, 'Maximum length is 20'),
+    regex(/^[A-Za-z]+$/, 'Only letters are allowed'),
+  ),
+  email: pipe(
+    string(),
+    regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address'),
+  ),
+  age: pipe(
+    number(),
+    minValue(18, 'Minimum age is 18'),
+    maxValue(99, 'Maximum age is 99'),
+  ),
+})
+
 const Student = () => {
-  const form = useForm<StudentForm>({
+  const form = useForm<InferOutput<typeof studentFormSchema>>({
+    resolver: valibotResolver(studentFormSchema),
     defaultValues: {
       firstName: '',
       lastName: '',

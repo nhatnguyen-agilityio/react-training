@@ -10,6 +10,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import CreateBook from './pages/Book/CreateBook'
 import UserForm from './components/UserForm'
 import People from './components/People'
+import Student from './components/Student'
 
 const Home = lazy(() => import('./pages/Home'))
 
@@ -39,6 +40,7 @@ function App() {
                 } />
                 <Route path="user" element={<UserForm />} />
                 <Route path="people" element={<People />} />
+                <Route path="student" element={<Student />} />
               </Routes>
             </Suspense>
           </BrowserRouter>

@@ -9,6 +9,7 @@ import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
 import CreateBook from './pages/Book/CreateBook'
 import UserForm from './components/UserForm'
+import People from './components/People'
 
 const Home = lazy(() => import('./pages/Home'))
 
@@ -37,6 +38,7 @@ function App() {
                   </ProtectedRoute>
                 } />
                 <Route path="user" element={<UserForm />} />
+                <Route path="people" element={<People />} />
               </Routes>
             </Suspense>
           </BrowserRouter>

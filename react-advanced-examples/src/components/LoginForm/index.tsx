@@ -8,6 +8,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 // import UserIcon from '@assets/user.svg';
 import userIcon from '@/assets/user.svg';
 import passwordIcon from '@/assets/password.svg';
+import { useAuth } from '@/Hooks/Auth';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 // type LoginForm = {
 //   username: string;
@@ -31,6 +34,9 @@ const LoginFormSchema = object({
 })
 
 const LoginForm = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
   const form = useForm<InferOutput<typeof LoginFormSchema>>({
     resolver: valibotResolver(LoginFormSchema),
     defaultValues: {
@@ -40,7 +46,12 @@ const LoginForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<InferOutput<typeof LoginFormSchema>> = data => {
+  const onSubmit: SubmitHandler<InferOutput<typeof LoginFormSchema>> = (data) => {
+    if (auth.login(data.username, data.password)) {
+      navigate("/home", { replace: true });
+    } else {
+      alert('Invalid username or password');
+    }
     console.log(data);
   };
 

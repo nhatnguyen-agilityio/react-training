@@ -5,7 +5,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<{ username: string; password: string } | null>(null);
 
   const login = (username: string, password: string): boolean => {
-    if (username == "admin" && password == "admin") {
+    if (username == "ducnhat99" && password == "Ducnhat99") {
       setUser({ username, password });
       return true;
     }

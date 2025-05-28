@@ -11,6 +11,7 @@ import CreateBook from './pages/Book/CreateBook'
 import UserForm from './components/UserForm'
 import People from './components/People'
 import Student from './components/Student'
+import SignUp from './pages/SignUp'
 
 const Home = lazy(() => import('./pages/Home'))
 
@@ -43,6 +44,7 @@ function App() {
                 <Route path="user" element={<UserForm />} />
                 <Route path="people" element={<People />} />
                 <Route path="student" element={<Student />} />
+                <Route path="sign-up" element={<SignUp />} />
               </Routes>
             </Suspense>
           </BrowserRouter>

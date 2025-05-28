@@ -2,6 +2,7 @@ import facebookIcon from '@/assets/facebook.svg'
 import googleIcon from '@/assets/google.svg'
 import xIcon from '@/assets/x.svg'
 import Image from '../common/Image'
+import { NavLink } from 'react-router-dom'
 
 const ThirdPartyLogin = () => {
   return (
@@ -14,7 +15,7 @@ const ThirdPartyLogin = () => {
       </div>
       <div className='flex mt-4'>
         <p className='mr-1'>Don&apos;t have an account?</p>
-        <a href=""><span className='text-blue-500'> Create One</span></a>
+        <NavLink to="/sign-up" className='ml-2 text-blue-500'>Create One</NavLink>
       </div>
     </div>
   )

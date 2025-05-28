@@ -15,6 +15,8 @@ import Student from './components/Student'
 const Home = lazy(() => import('./pages/Home'))
 
 function App() {
+  console.tron.log("Hello from React");
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <ErrorBoundary>

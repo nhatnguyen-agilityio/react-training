@@ -41,8 +41,9 @@ const LoginForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<InferOutput<typeof LoginFormSchema>> = (data) => {
-    if (auth.login(data.username, data.password)) {
+  const onSubmit: SubmitHandler<InferOutput<typeof LoginFormSchema>> = async (data) => {
+    const success = await auth.login(data.username, data.password);
+    if (success) {
       navigate("/home", { replace: true });
     } else {
       alert('Invalid username or password');

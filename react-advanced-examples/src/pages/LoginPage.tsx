@@ -12,9 +12,10 @@ const Login = () => {
   const location = useLocation();
   const fromLocation = (location.state as {from?: Location})?.from?.pathname || '/home';
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (auth.login(username, password)) {
+    const success = await auth.login(username, password);
+    if (success) {
       navigate(fromLocation, { replace: true });
     } else {
       alert('Invalid username or password');

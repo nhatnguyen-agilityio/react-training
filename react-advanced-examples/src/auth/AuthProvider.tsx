@@ -5,12 +5,28 @@ import type { signUpData } from "../types/SignUp";
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<{ username: string; password: string } | null>(null);
 
-  const login = (username: string, password: string): boolean => {
-    if (username == "ducnhat99" && password == "Ducnhat99") {
-      setUser({ username, password });
-      return true;
+  const login = async (username: string, password: string): Promise<boolean> => {
+    try{
+      const response = await fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/users?username=${username}&password=${password}`)
+
+      // Return false if the user is not found
+      if (!response.ok) {
+        return false;
+      }
+
+      const data = await response.json();
+
+      // Set user if user is exists
+      if (data.length > 0) {
+        setUser({ username: data[0].username, password: data[0].password });
+        return true;
+      }
+      return false;
     }
-    return false;
+    catch (error) {
+      console.log(error);
+      return false;
+    }
   };
 
   const logout = () => {

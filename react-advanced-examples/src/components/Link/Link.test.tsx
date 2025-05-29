@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Link from '.';
-import { create } from 'domain';
 
 beforeAll(() => {
   console.log('before all tests');

@@ -11,6 +11,16 @@ import passwordIcon from '@/assets/password.svg';
 import { useAuth } from '@/Hooks/Auth';
 import { useNavigate } from 'react-router-dom';
 import Image from '../common/Image';
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { useState } from 'react';
 
 const LoginFormSchema = object({
   username: pipe(
@@ -29,6 +39,7 @@ const LoginFormSchema = object({
 })
 
 const LoginForm = () => {
+  const [open, setOpen] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
 
@@ -46,7 +57,7 @@ const LoginForm = () => {
     if (success) {
       navigate("/home", { replace: true });
     } else {
-      alert('Invalid username or password');
+      setOpen(true);
     }
     console.log(data);
   };
@@ -118,6 +129,19 @@ const LoginForm = () => {
           </div>
         </form>
       </Form>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Error</AlertDialogTitle>
+            <AlertDialogDescription>
+              Invalid username or password.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setOpen(false)}>OK</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 };

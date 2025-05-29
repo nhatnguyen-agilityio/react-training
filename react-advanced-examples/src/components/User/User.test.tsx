@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import User from ".";
-import Search from "./Search";
 
 describe("User", () => {
   test("renders User component", () => {

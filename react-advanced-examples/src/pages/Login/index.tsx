@@ -5,7 +5,7 @@ import ThirdPartyLogin from "@/components/ThirdPartyLogin";
 const Login = () => {
   return (
     <div className="container h-216 bg-[url(assets/login-background.png)] grid grid-cols-2 items-center">
-      <div className="text-primary flex flex-col pl-5">
+      <div className="flex flex-col pl-5">
         <LoginForm />
         <ThirdPartyLogin />
       </div>

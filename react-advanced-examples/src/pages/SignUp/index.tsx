@@ -1,7 +1,11 @@
+import SignUpBanner from "@/components/SignUpBanner";
+
 const SignUp = () => {
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <div className="container h-216 bg-[url(assets/login-background.png)] grid grid-cols-2 items-center">
+      <div className="flex flex-col h-full">
+        <SignUpBanner />
+      </div>
     </div>
   );
 }

@@ -284,7 +284,7 @@ const SignUpForm = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>Successfully</AlertDialogTitle>
             <AlertDialogDescription>
-              Great. You have successfully signed up for the site. Have a nice experience with this site.
+              Great! You have successfully signed up for the site. Have a nice experience with this site.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

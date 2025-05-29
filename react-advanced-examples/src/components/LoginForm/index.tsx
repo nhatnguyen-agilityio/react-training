@@ -10,12 +10,6 @@ import userIcon from '@/assets/user.svg';
 import passwordIcon from '@/assets/password.svg';
 import { useAuth } from '@/Hooks/Auth';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-
-// type LoginForm = {
-//   username: string;
-//   password: string;
-// }
 
 const LoginFormSchema = object({
   username: pipe(

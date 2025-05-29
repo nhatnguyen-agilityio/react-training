@@ -1,8 +1,10 @@
-const Image = ({ src, alt, className = "" }: { src: string, alt: string, className?: string }) => {
+const Image = ({ src, alt, width = undefined, height = undefined, className = "" }: { src: string, alt: string, width?: number, height?: number, className?: string }) => {
   return (
     <img
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       className={className}
     />
   );

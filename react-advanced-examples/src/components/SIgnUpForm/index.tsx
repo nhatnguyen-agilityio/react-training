@@ -1,5 +1,236 @@
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferOutput } from "valibot";
+import { valibotResolver } from "@hookform/resolvers/valibot";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import Image from "../common/Image";
+
+import firstNameIcon from '@/assets/first-name-icon.svg'
+import lastNameIcon from '@/assets/last-name-icon.svg';
+import usernameIcon from '@/assets/username-icon.svg'
+import emailIcon from '@/assets/email-icon.svg'
+import passwordIcon from '@/assets/password.svg';
+import confirmPasswordIcon from '@/assets/confirm-password-icon.svg';
+import { NavLink } from "react-router-dom";
+
+const BaseSignUpFormSchema = object({
+  firstName: pipe(
+    string(),
+    minLength(2, "Minimum length is 2"),
+    maxLength(20, "Maximum length is 20"),
+    regex(/^[A-Za-z]+$/, "Only letters are allowed"),
+  ),
+  lastName: pipe(
+    string(),
+    minLength(2, "Minimum length is 2"),
+    maxLength(20, "Maximum length is 20"),
+    regex(/^[A-Za-z]+$/, "Only letters are allowed"),
+  ),
+  username: pipe(
+    string(),
+    minLength(2, 'Minimum length is 2'),
+    maxLength(30, 'Maximum length is 30'),
+    regex(/^(?!.*[_.]{2})[a-zA-Z0-9](?!.*[_.]{2})[a-zA-Z0-9._]{1,18}[a-zA-Z0-9]$/, 'Invalid username'),
+  ),
+  email: pipe(
+    string(),
+    regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address'),
+  ),
+  password: pipe(
+    string(),
+    minLength(8, 'Minimum length is 8'),
+    maxLength(30, 'Maximum length is 30'),
+    regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
+  ),
+  confirmPassword: pipe(
+    string(),
+    minLength(8, 'Minimum length is 8'),
+    maxLength(30, 'Maximum length is 30'),
+    regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
+  ),
+  acceptTerms: boolean(),
+});
+
+const SignUpFormSchema = pipe(
+  BaseSignUpFormSchema,
+  custom(
+    (data): data is typeof BaseSignUpFormSchema => {
+      const formData = data as Record<string, unknown>;
+      return (
+        typeof formData.password === "string" &&
+        typeof formData.confirmPassword === "string" &&
+        formData.password === formData.confirmPassword
+      );
+    },
+    "Passwords do not match"
+  )
+);
+
 const SignUpForm = () => {
-  return <div>SignUpForm</div>;
+  const form = useForm<InferOutput<typeof SignUpFormSchema>>({
+    resolver: valibotResolver(SignUpFormSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      acceptTerms: false
+    },
+  })
+
+  const onSubmit: SubmitHandler<InferOutput<typeof SignUpFormSchema>> = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <div className="h-full flex flex-col justify-center mr-10">
+      <h2 className=" font-extrabold text-4xl mb-10 text-start">Sign Up</h2>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField
+            name="firstName"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={firstNameIcon} width={15} height={15} alt="First Name Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input placeholder="Enter First Name" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="lastName"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={lastNameIcon} width={15} height={15} alt="Last Name Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input placeholder="Enter Last Name" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="username"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={usernameIcon} width={15} height={15} alt="Username Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input placeholder="Enter Username" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="email"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={emailIcon} width={15} height={15}  alt="Email Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input placeholder="Enter Email" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="password"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={passwordIcon} width={15} height={15} alt="Password Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input type="password" placeholder="Enter Password" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="confirmPassword"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-1'>
+                <div className="relative">
+                  <Image src={confirmPasswordIcon} width={15} height={15} alt="Confirm Password Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <FormControl>
+                    <Input type="password" placeholder="Confirm Password" className='pl-10 h-17' {...field} />
+                  </FormControl>
+                </div>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="acceptTerms"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className='mb-8'>
+                <div className="flex items-center space-x-2">
+                  <FormControl>
+                    <Checkbox
+                      id="acceptTerms"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      ref={field.ref}
+                      name={field.name}
+                    />
+                  </FormControl>
+                  <FormLabel htmlFor="acceptTerms">I agree to all terms</FormLabel>
+                </div>
+              </FormItem>
+            )}
+          />
+          <div className="flex justify-start mt-6">
+            <Button type="submit" className="bg-button-primary w-35 h-19 text-base opacity-70">Register</Button>
+          </div>
+        </form>
+      </Form>
+      <div className='flex mt-5'>
+        <p className='mr-1'>Already have an account?</p>
+        <NavLink to="/login" className='ml-1 text-blue-500'>Sign In</NavLink>
+      </div>
+    </div>
+  )
 };
 
 export default SignUpForm;

@@ -2,18 +2,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './components/ThemeProvider'
 import { AuthProvider } from './auth/AuthProvider'
 import ProtectedRoute from './components/ProtectedRoute'
-import Login from './pages/Login'
-import Books from './pages/Book'
 import './App.css'
 import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
-import CreateBook from './pages/Book/CreateBook'
-import UserForm from './components/UserForm'
-import People from './components/People'
-import Student from './components/Student'
-import SignUp from './pages/SignUp'
 
 const Home = lazy(() => import('./pages/Home'))
+const Login = lazy(() => import('./pages/Login'))
+const Books = lazy(() => import('./pages/Book'))
+const UserForm = lazy(() => import('./pages/Book'))
+const CreateBook = lazy(() => import('./components/UserForm'))
+const People = lazy(() => import('./components/People'))
+const Student = lazy(() => import('./components/Student'))
+const SignUp = lazy(() => import('./pages/SignUp'))
 
 function App() {
   return (

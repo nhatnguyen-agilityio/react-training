@@ -20,7 +20,8 @@ import usernameIcon from '@/assets/username-icon.svg'
 import emailIcon from '@/assets/email-icon.svg'
 import passwordIcon from '@/assets/password.svg';
 import confirmPasswordIcon from '@/assets/confirm-password-icon.svg';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "@/Hooks/Auth";
 
 const BaseSignUpFormSchema = object({
   firstName: pipe(
@@ -57,7 +58,10 @@ const BaseSignUpFormSchema = object({
     maxLength(30, 'Maximum length is 30'),
     regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
   ),
-  acceptTerms: boolean(),
+  acceptTerms: pipe(
+    boolean(),
+    custom(value => value === true, 'You must accept the terms and conditions.')
+  ),
 });
 
 const SignUpFormSchema = pipe(
@@ -76,6 +80,8 @@ const SignUpFormSchema = pipe(
 );
 
 const SignUpForm = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
   const form = useForm<InferOutput<typeof SignUpFormSchema>>({
     resolver: valibotResolver(SignUpFormSchema),
     defaultValues: {
@@ -89,7 +95,12 @@ const SignUpForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<InferOutput<typeof SignUpFormSchema>> = (data) => {
+  const onSubmit: SubmitHandler<InferOutput<typeof SignUpFormSchema>> = async (data) => {
+    const result = await auth.signUp(data);
+    if (result) {
+      alert('Sign up successfully');
+      navigate("/login", { replace: true });
+    }
     console.log(data);
   };
 
@@ -213,9 +224,13 @@ const SignUpForm = () => {
                       onCheckedChange={field.onChange}
                       ref={field.ref}
                       name={field.name}
+                      className="!border-[#212427]"
                     />
                   </FormControl>
-                  <FormLabel htmlFor="acceptTerms">I agree to all terms</FormLabel>
+                  <FormLabel htmlFor="acceptTerms" className="text-primary">I agree to all terms</FormLabel>
+                </div>
+                <div className="min-h-5 text-left">
+                  <FormMessage />
                 </div>
               </FormItem>
             )}

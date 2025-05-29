@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { AuthContext } from "./AuthContext";
+import type { signUpData } from "../types/SignUp";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<{ username: string; password: string } | null>(null);
@@ -16,8 +17,35 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
   };
 
+  const signUp = async ({ firstName, lastName, username, email, password }: signUpData): Promise<boolean> => {
+    console.log(`Signing up: ${firstName} ${lastName}, username: ${username}, email: ${email}`);
+    try {
+      const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/users", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          username,
+          email,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create user');
+      }
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, signUp }}>
       {children}
     </AuthContext.Provider>
   );

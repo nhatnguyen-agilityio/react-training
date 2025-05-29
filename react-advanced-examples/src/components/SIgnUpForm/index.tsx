@@ -221,7 +221,7 @@ const SignUpForm = () => {
             )}
           />
           <div className="flex justify-start mt-6">
-            <Button type="submit" className="bg-button-primary w-35 h-19 text-base opacity-70">Register</Button>
+            <Button type="submit" className="bg-button-primary w-35 h-19 text-base opacity-70 hover:bg-button-primary hover:opacity-100">Register</Button>
           </div>
         </form>
       </Form>

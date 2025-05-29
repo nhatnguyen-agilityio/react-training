@@ -16,8 +16,6 @@ import SignUp from './pages/SignUp'
 const Home = lazy(() => import('./pages/Home'))
 
 function App() {
-  console.tron.log("Hello from React");
-
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <ErrorBoundary>

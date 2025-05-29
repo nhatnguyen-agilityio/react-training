@@ -15,7 +15,7 @@ const ThirdPartyLogin = () => {
       </div>
       <div className='flex mt-4'>
         <p className='mr-1'>Don&apos;t have an account?</p>
-        <NavLink to="/sign-up" className='ml-2 text-blue-500'>Create One</NavLink>
+        <NavLink to="/sign-up" className='ml-1 text-blue-500'>Create One</NavLink>
       </div>
     </div>
   )

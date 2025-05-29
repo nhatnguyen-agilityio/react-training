@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferOutput } from "valibot";
+import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferInput, type InferOutput } from 'valibot';
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "@/Hooks/Auth";
@@ -37,20 +37,20 @@ import {
 const BaseSignUpFormSchema = object({
   firstName: pipe(
     string(),
-    minLength(2, "Minimum length is 2"),
-    maxLength(20, "Maximum length is 20"),
+    minLength(2, "First name must be at least 2 characters long"),
+    maxLength(20, "First name must be at most 30 characters long"),
     regex(/^[A-Za-z]+$/, "Only letters are allowed"),
   ),
   lastName: pipe(
     string(),
-    minLength(2, "Minimum length is 2"),
-    maxLength(20, "Maximum length is 20"),
+    minLength(2, "Last name must be at least 2 characters long"),
+    maxLength(20, "Last name must be at most 30 characters long"),
     regex(/^[A-Za-z]+$/, "Only letters are allowed"),
   ),
   username: pipe(
     string(),
-    minLength(2, 'Minimum length is 2'),
-    maxLength(30, 'Maximum length is 30'),
+    minLength(2, 'Username must be at least 2 characters long'),
+    maxLength(30, 'Username must be at most 30 characters long'),
     regex(/^(?!.*[_.]{2})[a-zA-Z0-9](?!.*[_.]{2})[a-zA-Z0-9._]{1,18}[a-zA-Z0-9]$/, 'Invalid username'),
   ),
   email: pipe(
@@ -59,14 +59,14 @@ const BaseSignUpFormSchema = object({
   ),
   password: pipe(
     string(),
-    minLength(8, 'Minimum length is 8'),
-    maxLength(30, 'Maximum length is 30'),
+    minLength(8, 'Password must be at least 8 characters long'),
+    maxLength(30, 'Password must be at most 30 characters long'),
     regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
   ),
   confirmPassword: pipe(
     string(),
-    minLength(8, 'Minimum length is 8'),
-    maxLength(30, 'Maximum length is 30'),
+    minLength(8, 'Password must be at least 8 characters long'),
+    maxLength(30, 'Password must be at most 30 characters long'),
     regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
   ),
   acceptTerms: pipe(
@@ -75,28 +75,14 @@ const BaseSignUpFormSchema = object({
   ),
 });
 
-const SignUpFormSchema = pipe(
-  BaseSignUpFormSchema,
-  custom(
-    (data): data is typeof BaseSignUpFormSchema => {
-      const formData = data as Record<string, unknown>;
-      return (
-        typeof formData.password === "string" &&
-        typeof formData.confirmPassword === "string" &&
-        formData.password === formData.confirmPassword
-      );
-    },
-    "Passwords do not match"
-  )
-);
-
 const SignUpForm = () => {
   const [showUsernameExistsAlert, setShowUsernameExistsAlert] = useState(false);
   const [showSignUpSuccessAlert, setShowSignUpSuccessAlert] = useState(false);
+  const [isCorrectPassword, setIsCorrectPassword] = useState(true);
   const auth = useAuth();
   const navigate = useNavigate();
-  const form = useForm<InferOutput<typeof SignUpFormSchema>>({
-    resolver: valibotResolver(SignUpFormSchema),
+  const form = useForm<InferInput<typeof BaseSignUpFormSchema>>({
+    resolver: valibotResolver(BaseSignUpFormSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -108,7 +94,12 @@ const SignUpForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<InferOutput<typeof SignUpFormSchema>> = async (data) => {
+  const onSubmit: SubmitHandler<InferOutput<typeof BaseSignUpFormSchema>> = async (data) => {
+    if (data.password !== data.confirmPassword) {
+      setIsCorrectPassword(false);
+      return
+    }
+
     try {
       const response = await fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/users?username=${data.username}`);
       if (!response.ok) {
@@ -224,12 +215,21 @@ const SignUpForm = () => {
                 <div className="relative">
                   <Image src={confirmPasswordIcon} width={15} height={15} alt="Confirm Password Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <FormControl>
-                    <Input type="password" placeholder="Confirm Password" className='pl-10 h-17' {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Confirm Password"
+                      className='pl-10 h-17'
+                      {...field}
+                      onChange={e => {
+                        setIsCorrectPassword(true);
+                        field.onChange(e);
+                      }}
+                    />
                   </FormControl>
                 </div>
-                <div className="min-h-5">
+                {!isCorrectPassword ? <div className="min-h-5 text-sm text-center text-destructive">Passwords do not match</div> : <div className="min-h-5">
                   <FormMessage />
-                </div>
+                </div> }
               </FormItem>
             )}
           />

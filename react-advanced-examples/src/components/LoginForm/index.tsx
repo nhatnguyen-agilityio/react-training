@@ -10,6 +10,7 @@ import userIcon from '@/assets/user.svg';
 import passwordIcon from '@/assets/password.svg';
 import { useAuth } from '@/Hooks/Auth';
 import { useNavigate } from 'react-router-dom';
+import Image from '../common/Image';
 
 const LoginFormSchema = object({
   username: pipe(
@@ -58,14 +59,16 @@ const LoginForm = () => {
             name="username"
             control={form.control}
             render={({ field }) => (
-              <FormItem className='mb-8'>
+              <FormItem className='mb-1'>
                 <div className='relative'>
-                  <img src={userIcon} width={15} height={15} alt="User Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <Image src={userIcon} width={15} height={15} alt="User Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <FormControl>
                     <Input id="username" {...field} className='pl-10 h-17' placeholder='Enter Username' />
                   </FormControl>
                 </div>
-                <FormMessage />
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
@@ -73,14 +76,16 @@ const LoginForm = () => {
             name="password"
             control={form.control}
             render={({ field }) => (
-              <FormItem className='mb-8'>
+              <FormItem className='mb-1'>
                 <div className='relative'>
-                  <img src={passwordIcon} width={15} height={15} alt="User Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <Image src={passwordIcon} width={15} height={15} alt="User Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <FormControl>
                     <Input id="password" {...field} type='password' className='pl-10 h-17' placeholder='Enter Password' />
                   </FormControl>
                 </div>
-                <FormMessage />
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
@@ -106,7 +111,7 @@ const LoginForm = () => {
             )}
           />
           <div className="flex justify-start mt-8">
-            <Button type="submit" className="bg-button-primary w-35 h-19 text-base">
+            <Button type="submit" className="bg-button-primary opacity-70 w-35 h-19 text-base hover:bg-button-primary hover:opacity-100">
               Login
             </Button>
           </div>

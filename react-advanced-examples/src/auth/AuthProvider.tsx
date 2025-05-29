@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signUp = async ({ firstName, lastName, username, email, password }: signUpData): Promise<boolean> => {
-    console.log(`Signing up: ${firstName} ${lastName}, username: ${username}, email: ${email}`);
     try {
       const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/users", {
         method: 'POST',

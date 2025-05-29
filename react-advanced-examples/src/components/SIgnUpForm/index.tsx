@@ -101,7 +101,6 @@ const SignUpForm = () => {
       alert('Sign up successfully');
       navigate("/login", { replace: true });
     }
-    console.log(data);
   };
 
   return (

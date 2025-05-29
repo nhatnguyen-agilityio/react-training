@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferOutput } from "valibot";
 import { valibotResolver } from "@hookform/resolvers/valibot";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "@/Hooks/Auth";
 import {
   Form,
   FormField,
@@ -20,8 +23,16 @@ import usernameIcon from '@/assets/username-icon.svg'
 import emailIcon from '@/assets/email-icon.svg'
 import passwordIcon from '@/assets/password.svg';
 import confirmPasswordIcon from '@/assets/confirm-password-icon.svg';
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "@/Hooks/Auth";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 const BaseSignUpFormSchema = object({
   firstName: pipe(
@@ -80,6 +91,8 @@ const SignUpFormSchema = pipe(
 );
 
 const SignUpForm = () => {
+  const [showUsernameExistsAlert, setShowUsernameExistsAlert] = useState(false);
+  const [showSignUpSuccessAlert, setShowSignUpSuccessAlert] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
   const form = useForm<InferOutput<typeof SignUpFormSchema>>({
@@ -96,10 +109,20 @@ const SignUpForm = () => {
   })
 
   const onSubmit: SubmitHandler<InferOutput<typeof SignUpFormSchema>> = async (data) => {
-    const result = await auth.signUp(data);
-    if (result) {
-      alert('Sign up successfully');
-      navigate("/login", { replace: true });
+    try {
+      const response = await fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/users?username=${data.username}`);
+      if (!response.ok) {
+        const result = await auth.signUp(data);
+        if (result) {
+          setShowSignUpSuccessAlert(true);
+        }
+      }
+      else {
+        setShowUsernameExistsAlert(true)
+      }
+    }
+    catch (error) {
+      console.log(error);
     }
   };
 
@@ -243,6 +266,35 @@ const SignUpForm = () => {
         <p className='mr-1'>Already have an account?</p>
         <NavLink to="/login" className='ml-1 text-blue-500'>Sign In</NavLink>
       </div>
+      <AlertDialog open={showUsernameExistsAlert} onOpenChange={setShowUsernameExistsAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Error</AlertDialogTitle>
+            <AlertDialogDescription>
+              Username already exists. Please try with a different username.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setShowUsernameExistsAlert(false)}>Cancel</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      <AlertDialog open={showSignUpSuccessAlert} onOpenChange={setShowSignUpSuccessAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Successfully</AlertDialogTitle>
+            <AlertDialogDescription>
+              Great. You have successfully signed up for the site. Have a nice experience with this site.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction onClick={() => {
+              setShowSignUpSuccessAlert(false);
+              navigate("/login", { replace: true });
+            }}>OK</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   )
 };

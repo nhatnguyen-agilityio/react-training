@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (username: string, password: string): Promise<boolean> => {
     try{
+      // It not secure to send password in url, but current example is simple and using mockapi so do not have any custom api to do it
       const response = await fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/users?username=${username}&password=${password}`)
 
       // Return false if the user is not found

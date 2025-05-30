@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = await auth.login(username, password);
+    const success = await auth.login(username, password, false);
     if (success) {
       navigate(fromLocation, { replace: true });
     } else {

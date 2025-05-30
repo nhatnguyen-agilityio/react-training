@@ -20,7 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const LoginFormSchema = object({
   username: pipe(
@@ -52,14 +52,27 @@ const LoginForm = () => {
     },
   })
 
+  useEffect(() => {
+    const saveUsername = localStorage.getItem('rememberUsername');
+    if (saveUsername) {
+      form.setValue('username', saveUsername);
+      form.setValue('rememberMe', true);
+    }
+  }, [form]);
+
   const onSubmit: SubmitHandler<InferOutput<typeof LoginFormSchema>> = async (data) => {
-    const success = await auth.login(data.username, data.password);
+    const success = await auth.login(data.username, data.password, data.rememberMe);
     if (success) {
+      if (data.rememberMe) {
+        localStorage.setItem('rememberUsername', data.username);
+      }
+      else {
+        localStorage.removeItem('rememberUsername');
+      }
       navigate("/home", { replace: true });
     } else {
       setOpen(true);
     }
-    console.log(data);
   };
 
   return (

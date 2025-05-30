@@ -1,5 +1,5 @@
 import { CircleAlert, LayoutDashboard, BookCheck, Settings, BadgeHelp, Logs, LogOut } from "lucide-react"
-import { Sidebar as UISidebar, SidebarHeader as UISidebarHeader, SidebarContent, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar";
+import { Sidebar as UISidebar, SidebarHeader as UISidebarHeader, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar";
 import { useAuth } from "@/Hooks/Auth";
 import SidebarHeader from "../SidebarHeader";
 

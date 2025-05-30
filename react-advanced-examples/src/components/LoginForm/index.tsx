@@ -33,7 +33,6 @@ const LoginFormSchema = object({
     string(),
     minLength(8, 'Minimum length is 8'),
     maxLength(30, 'Maximum length is 30'),
-    regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'Password must be at least 8 characters long. Password must include at least one letter (a–z or A–Z).'),
   ),
   rememberMe: boolean(),
 })
@@ -69,7 +68,7 @@ const LoginForm = () => {
       else {
         localStorage.removeItem('rememberUsername');
       }
-      navigate("/home", { replace: true });
+      navigate("/dashboard", { replace: true });
     } else {
       setOpen(true);
     }

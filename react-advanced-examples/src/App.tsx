@@ -5,9 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
-import Dashboard from './pages/Dashboard'
 
-const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
 const UserForm = lazy(() => import('./pages/Book'))
@@ -15,6 +13,7 @@ const CreateBook = lazy(() => import('./components/UserForm'))
 const People = lazy(() => import('./components/People'))
 const Student = lazy(() => import('./components/Student'))
 const SignUp = lazy(() => import('./pages/SignUp'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
 
 function App() {
   return (

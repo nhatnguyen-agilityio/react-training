@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
+import Dashboard from './pages/Dashboard'
 
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
@@ -25,12 +26,12 @@ function App() {
               <Routes>
                 <Route path="/" element={
                   <ProtectedRoute>
-                    <Home />
+                    <Dashboard />
                   </ProtectedRoute>
                 } />
                 <Route path="home" element={
                   <ProtectedRoute>
-                    <Home />
+                    <Dashboard />
                   </ProtectedRoute>
                 } />
                 <Route path="login" element={<Login />} />

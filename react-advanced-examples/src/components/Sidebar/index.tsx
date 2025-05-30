@@ -43,12 +43,11 @@ const Sidebar = () => {
   return (
     <div>
       <UISidebar>
-        <UISidebarHeader>
+        <UISidebarHeader className="relative">
           <SidebarHeader />
         </UISidebarHeader>
-        <SidebarContent className="bg-sidebar-primary text-sidebar-primary-foreground mt-13 pt-16">
+        <SidebarContent className="bg-sidebar-primary text-sidebar-primary-foreground mt-13 pt-24">
           <SidebarGroup>
-            <SidebarGroupLabel>Application</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {items.map((item) => (

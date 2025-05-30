@@ -3,7 +3,7 @@ import { AuthContext } from "./AuthContext";
 import type { signUpData } from "../types/SignUp";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<{ username: string; password: string } | null>(null);
+  const [user, setUser] = useState<{ username: string; password: string, email: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       // Set user if user is exists
       if (data.length > 0) {
-        const userData = { username: data[0].username, password: data[0].password };
+        const userData = { username: data[0].username, password: data[0].password, email: data[0].email };
         setUser(userData);
 
         const storage = rememberMe ? localStorage : sessionStorage;

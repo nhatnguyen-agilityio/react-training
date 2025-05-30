@@ -41,37 +41,35 @@ const Sidebar = () => {
   const auth = useAuth();
 
   return (
-    <div>
-      <UISidebar>
-        <UISidebarHeader className="relative">
-          <SidebarHeader />
-        </UISidebarHeader>
-        <SidebarContent className="bg-sidebar-primary text-sidebar-primary-foreground mt-13 pt-24">
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="h-15 hover:text-destructive pl-6">
-                      <a href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter className="bg-sidebar-primary text-sidebar-primary-foreground pb-7">
-          <SidebarMenuButton className="pl-6" onClick={auth.logout}>
-            <LogOut />
-            <span>Logout</span>
-          </SidebarMenuButton>
-        </SidebarFooter>
-      </UISidebar>
-    </div>
+    <UISidebar>
+      <UISidebarHeader className="relative">
+        <SidebarHeader />
+      </UISidebarHeader>
+      <SidebarContent className="bg-sidebar-primary text-sidebar-primary-foreground mt-13 pt-24">
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild className="h-15 hover:text-destructive pl-6">
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter className="bg-sidebar-primary text-sidebar-primary-foreground pb-7">
+        <SidebarMenuButton className="pl-6" onClick={auth.logout}>
+          <LogOut />
+          <span>Logout</span>
+        </SidebarMenuButton>
+      </SidebarFooter>
+    </UISidebar>
   )
 }
 

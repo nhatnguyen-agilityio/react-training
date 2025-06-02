@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Countdown from ".";
 import { MemoryRouter } from "react-router-dom";
-import * as CountdownHook from "../../Hooks/Countdown";
+import * as CountdownHook from "../../hooks/Countdown";
 
 jest.mock("../../Hooks/Countdown", () => ({
   useCountdown: jest.fn(),
@@ -27,7 +27,7 @@ describe("Countdown component", () => {
 
     const input = screen.getAllByRole("textbox")[0] as HTMLInputElement;
 
-    fireEvent.change(input, {target: {value: "20"}});
+    fireEvent.change(input, { target: { value: "20" } });
     expect(input.value).toBe("20");
     expect(screen.queryByText("new text")).toBeNull();
   });

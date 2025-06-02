@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../Hooks/Auth";
+import { useAuth } from "../hooks/Auth";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const fromLocation = (location.state as {from?: Location})?.from?.pathname || '/home';
+  const fromLocation = (location.state as { from?: Location })?.from?.pathname || '/home';
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { useAuth } from "@/Hooks/Auth"
+import { useAuth } from "@/hooks/Auth"
 
 const Home = () => {
   const auth = useAuth();

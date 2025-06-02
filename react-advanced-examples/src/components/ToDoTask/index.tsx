@@ -2,27 +2,33 @@ import { ClipboardList, Plus } from "lucide-react"
 import ToDoCard from "./ToDoCard"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const ToDoTask = () => {
   const [todoItems, setTodoItems] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const [completedRes, inProgressRes] = await Promise.all([
-        fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Not%20Started&limit=3"),
-        fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=In%20Progress&limit=3")
-      ]);
+      try {
+        const [completedRes, inProgressRes] = await Promise.all([
+          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Not%20Started&limit=3"),
+          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=In%20Progress&limit=3")
+        ]);
 
-      const [completedTasks, inProgressTasks] = await Promise.all([
-        completedRes.json(),
-        inProgressRes.json()
-      ]);
+        const [completedTasks, inProgressTasks] = await Promise.all([
+          completedRes.json(),
+          inProgressRes.json()
+        ]);
 
-      const combined = [...completedTasks, ...inProgressTasks]
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        .slice(0, 3); // only keep the top 3 sorted by createdAt
+        const combined = [...completedTasks, ...inProgressTasks]
+          .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+          .slice(0, 3);
 
-      setTodoItems(combined);
+        setTodoItems(combined);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchTasks();
@@ -41,14 +47,23 @@ const ToDoTask = () => {
         </div>
       </div>
       <div className="mt-6 border-b-2 pb-8">
-        {todoItems.slice(0, 2).map((task) => (
-          <ToDoCard key={task.id} task={task} />
-        ))}
+        {loading
+          ? Array.from({ length: 2 }).map((_, index) => (
+            <Skeleton
+              key={index}
+              className="w-full rounded-lg mb-3 h-47"
+            />
+          ))
+          : todoItems.slice(0, 2).map((task) => (
+            <ToDoCard key={task.id} task={task} />
+          ))}
       </div>
       <div className="pt-6">
-        {todoItems.slice(2).map((task) => (
-          <ToDoCard key={task.id} task={task} />
-        ))}
+        {loading ? <Skeleton className="w-full rounded-lg mb-3 h-47" /> :
+          todoItems.slice(2).map((task) => (
+            <ToDoCard key={task.id} task={task} />
+          ))
+        }
       </div>
     </div>
   )

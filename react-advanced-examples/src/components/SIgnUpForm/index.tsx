@@ -3,7 +3,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferInput, type InferOutput } from 'valibot';
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "@/Hooks/Auth";
+import { useAuth } from "@/hooks/Auth";
 import {
   Form,
   FormField,

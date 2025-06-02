@@ -8,7 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 // import UserIcon from '@assets/user.svg';
 import userIcon from '@/assets/user.svg';
 import passwordIcon from '@/assets/password.svg';
-import { useAuth } from '@/Hooks/Auth';
+import { useAuth } from '@/hooks/Auth';
 import { useNavigate } from 'react-router-dom';
 import Image from '../common/Image';
 import {

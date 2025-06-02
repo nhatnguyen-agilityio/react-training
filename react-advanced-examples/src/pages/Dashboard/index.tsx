@@ -5,22 +5,11 @@ import TaskStatus from "@/components/TaskStatus";
 import ToDoTask from "@/components/ToDoTask";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { useAuth } from "@/Hooks/Auth";
+import { useAuth } from "@/hooks/Auth";
 import { Hand, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import InviteImage from "@/assets/Invite.png"
-import { useEffect, useState } from "react";
-
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt?: string;
-  status?: string;
-  priority?: string;
-};
 
 const Dashboard = () => {
   const { user } = useAuth();

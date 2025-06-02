@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import TaskStatus from "@/components/TaskStatus";
 import ToDoTask from "@/components/ToDoTask";
 
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { useAuth } from "@/Hooks/Auth";
 import { Hand, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <SidebarProvider className="w-full h-auto min-h-auto">
       <Sidebar />
-      <main className="">
+      <SidebarInset className="rounded-none border-none">
         <div className="mb-8 flex justify-between">
           <h5 className="flex">Welcome back, {user?.username} <Hand className="ml-2 text-yellow-300" /></h5>
           <div className="flex items-center">
@@ -41,7 +41,7 @@ const Dashboard = () => {
             <CompletedTask />
           </div>
         </div>
-      </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 }

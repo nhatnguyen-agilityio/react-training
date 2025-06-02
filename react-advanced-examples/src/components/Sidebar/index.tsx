@@ -41,8 +41,8 @@ const Sidebar = () => {
   const auth = useAuth();
 
   return (
-    <UISidebar>
-      <UISidebarHeader className="relative">
+    <UISidebar variant="inset" className="p-0">
+      <UISidebarHeader className="relative mb-5">
         <SidebarHeader />
       </UISidebarHeader>
       <SidebarContent className="bg-sidebar-primary text-sidebar-primary-foreground mt-13 pt-24">

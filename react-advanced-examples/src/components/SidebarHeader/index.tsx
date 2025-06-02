@@ -1,4 +1,4 @@
-import { useAuth } from "@/hooks/Auth";
+import { useAuth } from "@/Hooks/Auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const SidebarHeader = () => {

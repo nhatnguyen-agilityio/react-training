@@ -5,7 +5,7 @@ import TaskStatus from "@/components/TaskStatus";
 import ToDoTask from "@/components/ToDoTask";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { useAuth } from "@/hooks/Auth";
+import { useAuth } from "@/Hooks/Auth";
 import { Hand, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

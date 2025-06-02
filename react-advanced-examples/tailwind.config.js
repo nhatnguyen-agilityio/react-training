@@ -19,7 +19,8 @@ module.exports = {
     extend: {
       maxWidth: {
         "big-2xl": "1640px",
-      }
+        "small-2xl": "1280px",
+      },
     },
   },
   plugins: [],

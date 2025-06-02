@@ -29,7 +29,7 @@ const Dashboard = () => {
                 <Image src={InviteImage} alt="Invite" className="mr-2" />
                 <Image src={InviteImage} alt="Invite" />
               </div>
-              <Button className="mt-0 bg-background text-destructive border border-destructive rounded-sm">
+              <Button className="mt-0 bg-background text-destructive border border-destructive rounded-sm hover:bg-destructive hover:text-background">
                 <UserPlus />
                 Invite
               </Button>

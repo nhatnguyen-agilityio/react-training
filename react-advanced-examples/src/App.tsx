@@ -23,7 +23,7 @@ function App() {
           <BrowserRouter>
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
-                <Route path="/" element={
+                <Route index path="/" element={
                   <ProtectedRoute>
                     <Dashboard />
                   </ProtectedRoute>

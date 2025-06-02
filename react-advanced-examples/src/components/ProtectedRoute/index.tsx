@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../Hooks/Auth";
+import { useAuth } from "../../hooks/Auth";
 import { useLocation } from "react-router-dom";
 import Loading from "../Loading";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const {user, loading} = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {

@@ -3,7 +3,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { boolean, custom, maxLength, minLength, object, pipe, regex, string, type InferInput, type InferOutput } from 'valibot';
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "@/Hooks/Auth";
+import { useAuth } from "@/hooks/Auth";
 import {
   Form,
   FormField,
@@ -179,7 +179,7 @@ const SignUpForm = () => {
             render={({ field }) => (
               <FormItem className='mb-1'>
                 <div className="relative">
-                  <Image src={emailIcon} width={15} height={15}  alt="Email Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <Image src={emailIcon} width={15} height={15} alt="Email Icon" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <FormControl>
                     <Input placeholder="Enter Email" className='pl-10 h-17' {...field} />
                   </FormControl>
@@ -229,7 +229,7 @@ const SignUpForm = () => {
                 </div>
                 {!isCorrectPassword ? <div className="min-h-5 text-sm text-center text-destructive">Passwords do not match</div> : <div className="min-h-5">
                   <FormMessage />
-                </div> }
+                </div>}
               </FormItem>
             )}
           />

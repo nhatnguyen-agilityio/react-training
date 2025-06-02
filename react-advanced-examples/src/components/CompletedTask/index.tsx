@@ -1,16 +1,7 @@
 import { BookmarkCheck } from "lucide-react"
 import ToDoCard from "../ToDoTask/ToDoCard"
 import { useEffect, useState } from "react";
-
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt?: string;
-  status?: string;
-  priority?: string;
-};
+import type { Task } from "@/types/Task";
 
 const CompletedTask= () => {
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);

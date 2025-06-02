@@ -1,16 +1,7 @@
 import { ClipboardList, Plus } from "lucide-react"
 import ToDoCard from "./ToDoCard"
 import { useEffect, useState } from "react";
-
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt?: string;
-  status?: string;
-  priority?: string;
-};
+import type { Task } from "@/types/Task";
 
 const ToDoTask = () => {
   const [todoItems, setTodoItems] = useState<Task[]>([]);

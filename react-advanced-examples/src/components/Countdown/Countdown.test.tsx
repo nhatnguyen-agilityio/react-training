@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Countdown from ".";
 import { MemoryRouter } from "react-router-dom";
-import * as CountdownHook from "../../hooks/Countdown";
+import * as CountdownHook from "@/hooks/Countdown";
 
-jest.mock("../../Hooks/Countdown", () => ({
+jest.mock("@/hooks/Countdown", () => ({
   useCountdown: jest.fn(),
 }));
 

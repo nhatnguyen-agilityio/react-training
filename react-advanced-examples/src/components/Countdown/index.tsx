@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useCountdown } from "../../hooks/Countdown"
+import { useCountdown } from "@/hooks/Countdown"
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../../hooks/Auth";
+import { useAuth } from "@/hooks/Auth";
 
 const Countdown = () => {
   const { user, logout } = useAuth();

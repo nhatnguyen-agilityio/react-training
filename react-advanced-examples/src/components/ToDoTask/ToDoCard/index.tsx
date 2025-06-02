@@ -2,6 +2,8 @@ import Image from "@/components/common/Image"
 import { Circle } from "lucide-react"
 
 import Nischal from "@/assets/nischal.png"
+import { getStatusColor } from "@/constants/status-class";
+import { getPriorityColor } from "@/constants/priority-class";
 
 type Task = {
   id: string;
@@ -30,8 +32,8 @@ const ToDoCard = ({ task }: { task: Task }) => {
           </div>
         </div>
         <div className="flex text-[10px]">
-          <p className="mr-3">Priority: <span className="text-chart-2">{task.priority}</span></p>
-          <p className="mr-3">Status: <span className="text-destructive">{task.status}</span></p>
+          <p className="mr-3">Priority: <span className={getPriorityColor(task.priority || "")}>{task.priority}</span></p>
+          <p className="mr-3">Status: <span className={getStatusColor(task.status || "")}>{task.status}</span></p>
           <p>Created on: {task.createdAt}</p>
         </div>
       </div>

@@ -10,9 +10,33 @@ import { Hand, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import InviteImage from "@/assets/Invite.png"
+import { useEffect, useState } from "react";
+
+type Task = {
+  id: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  updatedAt?: string;
+  status?: string;
+  priority?: string;
+};
 
 const Dashboard = () => {
+  const [todoItems, setTodoItems] = useState<Task[]>([]);
   const { user } = useAuth();
+
+  useEffect(() => {
+    fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks")
+      .then((response) => response.json())
+      .then((json) => {
+        setTodoItems(json);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch tasks:", error);
+      });
+  }, []);
+
 
   return (
     <div className="container">
@@ -36,10 +60,10 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 w-full border border-gray-300 px-6 py-8 rounded-xl">
-            <ToDoTask />
+            <ToDoTask todoTasks={todoItems.slice(0, 3)} />
             <div className="ml-3">
               <TaskStatus />
-              <CompletedTask />
+              <CompletedTask todoTasks={todoItems.slice(3, 5)} />
             </div>
           </div>
         </SidebarInset>

@@ -8,7 +8,7 @@ const SidebarHeader = () => {
   }
 
   return (
-    <div className="flex items-center flex-col absolute text-sidebar-primary-foreground top-7 text-center left-12">
+    <div className="flex items-center flex-col absolute text-sidebar-primary-foreground top-7 text-center left-[50%] transform-[translateX(-50%)]">
       <Avatar className="w-21 h-21">
         <AvatarImage src={`https://i.pravatar.cc/150?u=${user.username}`} alt={user.username} />
         <AvatarFallback>{user.username?.charAt(0).toUpperCase()}</AvatarFallback>

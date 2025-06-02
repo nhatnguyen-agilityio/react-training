@@ -64,7 +64,7 @@ const Sidebar = () => {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="bg-sidebar-primary text-sidebar-primary-foreground pb-7">
-        <SidebarMenuButton className="pl-6" onClick={auth.logout}>
+        <SidebarMenuButton className="h-15 hover:text-destructive pl-6" onClick={auth.logout}>
           <LogOut />
           <span>Logout</span>
         </SidebarMenuButton>

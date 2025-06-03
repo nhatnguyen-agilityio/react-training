@@ -14,6 +14,8 @@ const People = lazy(() => import('./components/People'))
 const Student = lazy(() => import('./components/Student'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
+const TaskDetail = lazy(() => import('./pages/TaskDetail'))
+const DashboardHome = lazy(() => import('./components/DashboardHome'))
 
 function App() {
   return (
@@ -32,7 +34,12 @@ function App() {
                   <ProtectedRoute>
                     <Dashboard />
                   </ProtectedRoute>
-                } />
+                }>
+                  <Route index element={<DashboardHome />} />
+                  <Route path="tasks/:taskId" element={
+                      <TaskDetail />
+                  } />
+                </Route>
                 <Route path="login" element={<Login />} />
                 <Route path="books" element={
                   <ProtectedRoute>

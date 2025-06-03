@@ -1,6 +1,6 @@
 const PRIORITY_CLASS_MAP: Record<string, string> = {
   "Extreme": "text-orange-700",
-  "Moderate": "text-blue-300",
+  "Moderate": "text-blue-500",
   "Low": "text-purple-700"
 }
 

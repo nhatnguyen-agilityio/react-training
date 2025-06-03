@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import trashIcon from "@/assets/trash.svg"
 import editIcon from "@/assets/edit.svg"
+import EditTaskModal from "@/components/EditTaskModal";
 
 
 const TaskDetail = () => {
@@ -43,17 +44,17 @@ const TaskDetail = () => {
           <Image src={taskDetail?.image || Nischal} alt="Task" className="w-full h-full" />
         </div>
         <div className="text-left">
-          <h5 className="text-2xl font-extrabold">{loading ? <Skeleton className="w-70 rounded-lg mb-3 h-3 " /> : taskDetail?.title}</h5>
-          <p className="text-xs mt-3 flex">Priority:{loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getPriorityColor(taskDetail?.priority || "")} ml-2`}> {taskDetail?.priority}</span>}</p>
-          <p className="text-xs mt-3 flex">Status: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getStatusColor(taskDetail?.priority || "")} ml-2`}>{taskDetail?.status}</span>}</p>
-          <p className="text-[10px] mt-3 text-gray-300 flex">Created on: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : new Date(taskDetail?.createdAt || "").toISOString().slice(0, 10)}</p>
+          <div className="text-2xl font-extrabold">{loading ? <Skeleton className="w-70 rounded-lg mb-3 h-3 " /> : taskDetail?.title}</div>
+          <div className="text-xs mt-3 flex">Priority:{loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getPriorityColor(taskDetail?.priority || "")} ml-2`}> {taskDetail?.priority}</span>}</div>
+          <div className="text-xs mt-3 flex">Status: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getStatusColor(taskDetail?.priority || "")} ml-2`}>{taskDetail?.status}</span>}</div>
+          <div className="text-[10px] mt-3 text-gray-300 flex">Created on: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : new Date(taskDetail?.createdAt || "").toISOString().slice(0, 10)}</div>
         </div>
         <NavLink to="/dashboard" className={"ml-auto text-blue-500"}>Go back</NavLink>
       </div>
-      <p className="text-left mt-10">{loading ? <Skeleton className="w-full rounded-lg mb-3 h-50" /> : taskDetail?.description}</p>
+      <div className="text-left mt-10">{loading ? <Skeleton className="w-full rounded-lg mb-3 h-50" /> : taskDetail?.description}</div>
       <div className="mt-auto flex justify-end">
         <Image src={trashIcon} alt="Delete" className="w-auto h-auto mr-3 cursor-pointer" />
-        <Image src={editIcon} alt="Edit" className="w-auto h-auto cursor-pointer" />
+        <EditTaskModal />
       </div>
     </div>
   );

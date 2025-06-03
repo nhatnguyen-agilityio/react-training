@@ -1,7 +1,7 @@
 import Image from "@/components/common/Image"
 import { Circle } from "lucide-react"
 
-import Nischal from "@/assets/nischal.png"
+import githubImage from "@/assets/github.png"
 import { getStatusColor } from "@/constants/status-class";
 import { getPriorityColor } from "@/constants/priority-class";
 import type { Task } from "@/types/Task";
@@ -20,7 +20,7 @@ const ToDoCard = ({ task }: { task: Task }) => {
             <p className="text-sm mr-3 opacity-70 clamp-4">{task.description}.</p>
           </div>
           <div className="w-22 h-22 mt-7">
-            <Image src={task.image || Nischal} alt="Nischal" />
+            <Image src={task.image || githubImage} alt="Task" />
           </div>
         </div>
         <div className="flex text-[10px]">

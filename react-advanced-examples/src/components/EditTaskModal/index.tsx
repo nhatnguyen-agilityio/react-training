@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import editIcon from "@/assets/edit.svg"
 import Image from "../common/Image";
 import { useForm } from "react-hook-form";
-import { date, nonEmpty, object, pipe, string, type InferOutput } from "valibot";
+import { date, file, nonEmpty, object, optional, pipe, string, type InferOutput } from "valibot";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -23,7 +23,8 @@ import { CalendarIcon, Dot, Image as ImageIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { getPriorityColor } from "@/constants/priority-class";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { memo, useEffect, useState } from "react";
+import { uploadImage } from "@/utils/handle-upload-image";
 
 const EditTaskFormSchema = object({
   title: pipe(
@@ -39,44 +40,100 @@ const EditTaskFormSchema = object({
     string(),
     nonEmpty('Description is required')
   ),
-  image: pipe(
-    string(),
-    nonEmpty('Image is required')
-  )
+  image: optional(file())
 });
 
 const prioriryOptions = [
   {
-    id: "extreme",
+    id: "Extreme",
     label: "Extreme"
   },
   {
-    id: "moderate",
+    id: "Moderate",
     label: "Moderate"
   },
   {
-    id: "low",
+    id: "Low",
     label: "Low"
   }
 ]
 
-const EditTaskModal = () => {
+const EditTaskModal = (
+  {
+    id,
+    title,
+    description,
+    createdAt,
+    priority,
+    onSuccess
+  }: {
+    id: string,
+    title: string,
+    description: string,
+    createdAt: Date,
+    priority: string,
+    onSuccess: () => void
+  }) => {
   const [filename, setFileName] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const form = useForm<InferOutput<typeof EditTaskFormSchema>>({
     resolver: valibotResolver(EditTaskFormSchema),
     defaultValues: {
-      title: '',
-      date: new Date(),
-      priority: "extreme",
-      description: '',
-      image: ''
+      title: title,
+      date: new Date(createdAt),
+      priority: priority,
+      description: description,
+      image: undefined
     }
-
   })
 
+  useEffect(() => {
+    form.reset({
+      title,
+      date: new Date(createdAt),
+      priority,
+      description,
+      image: undefined
+    });
+  }, [title, createdAt, priority, description, form]);
+
+  const onSubmit = async (data: InferOutput<typeof EditTaskFormSchema>) => {
+    setIsLoading(true);
+    let imageUrl: string | undefined = undefined;
+    if (data.image) {
+      imageUrl = await uploadImage(data.image as File) ?? undefined;
+    }
+
+    const payload = {
+      ...data,
+      image: imageUrl,
+    };
+
+    if (!imageUrl) {
+      delete payload.image;
+    }
+
+    fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    }).then((response) => {
+      if (response.ok) {
+        setIsLoading(false);
+        setIsOpen(false);
+        if (onSuccess) onSuccess();
+      } else {
+        console.error("Failed to update task");
+      }
+    });
+  }
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="h-9 w-9 p-0"><Image src={editIcon} alt="Edit" className="w-auto h-auto cursor-pointer h-full w-full" /></Button>
       </DialogTrigger>
@@ -94,7 +151,7 @@ const EditTaskModal = () => {
           </div>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+          <form onSubmit={form.handleSubmit(onSubmit, (errors) => console.log("Validation errors:", errors))}>
             <FormField
               control={form.control}
               name="title"
@@ -114,7 +171,7 @@ const EditTaskModal = () => {
               control={form.control}
               name="date"
               render={({ field }) => (
-                <div className="grid flex-1 gap-2">
+                <FormItem className="grid flex-1 gap-2">
                   <Label htmlFor="date">Date</Label>
                   <Popover>
                     <PopoverTrigger asChild>
@@ -135,14 +192,17 @@ const EditTaskModal = () => {
                       />
                     </PopoverContent>
                   </Popover>
-                </div>
+                  <div className="min-h-5">
+                    <FormMessage />
+                  </div>
+                </FormItem>
               )}
             />
             <FormField
               control={form.control}
               name="priority"
               render={({ field }) => (
-                <FormItem className="mt-7">
+                <FormItem>
                   <Label htmlFor="priority">Priority</Label>
                   <div className="flex gap-2">
                     {prioriryOptions.map((item) => (
@@ -227,7 +287,7 @@ const EditTaskModal = () => {
                 />
               </div>
             </div>
-            <Button type="submit" className="bg-destructive text-white">Done</Button>
+            <Button type="submit" disabled={isLoading} className={`bg-destructive text-white`}>{isLoading ? "Updating..." : "Done"}</Button>
           </form>
         </Form>
       </DialogContent>
@@ -235,4 +295,4 @@ const EditTaskModal = () => {
   );
 }
 
-export default EditTaskModal
+export default memo(EditTaskModal);

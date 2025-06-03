@@ -23,6 +23,8 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tailwindcss/vite": "^4.1.7",
+    "@uploadcare/react-widget": "^2.4.7",
+    "@uploadcare/upload-client": "^6.14.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -35,6 +37,7 @@
     "reactotron-react-js": "^3.3.16",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
+    "uploadcare": "^0.4.8",
     "valibot": "^1.1.0",
     "vite-plugin-svgr": "^4.3.0",
     "zod": "^3.25.30"

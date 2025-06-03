@@ -17,6 +17,7 @@ const TaskDetail = () => {
   const { taskId } = useParams<{ taskId: string }>();
   const [taskDetail, setTaskDetail] = useState<Task | null>(null);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
     const fetchTaskDetail = async () => {
@@ -34,7 +35,11 @@ const TaskDetail = () => {
     if (taskId) {
       fetchTaskDetail();
     }
-  }, [taskId, loading]);
+  }, [taskId, refresh]);
+
+  const handleEditSuccess = () => {
+    setRefresh(refresh + 1);
+  }
 
   return (
     <div className="rounded-2xl shadow-sm border-1 p-4 min-h-210 flex flex-col">
@@ -53,7 +58,14 @@ const TaskDetail = () => {
       <div className="text-left mt-10">{loading ? <Skeleton className="w-full rounded-lg mb-3 h-50" /> : taskDetail?.description}</div>
       <div className="mt-auto flex justify-end">
         <Image src={trashIcon} alt="Delete" className="w-auto h-auto mr-3 cursor-pointer" />
-        <EditTaskModal />
+        <EditTaskModal
+          id={taskId || ""}
+          title={taskDetail?.title || ""}
+          description={taskDetail?.description || ""}
+          createdAt={new Date(taskDetail?.createdAt || Date.now())}
+          priority={taskDetail?.priority || ""}
+          onSuccess={handleEditSuccess}
+        />
       </div>
     </div>
   );

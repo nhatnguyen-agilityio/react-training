@@ -11,7 +11,8 @@ export const uploadImage = async (file: File): Promise<string | null> => {
 
     return result.cdnUrl;
   } catch (error) {
+    // Upload care free tier limit 500 uploads/month, 1GB storage so if it fails, return default image
     console.error('Uploadcare error:', error);
-    return null;
+    return "https://avatars.githubusercontent.com/u/33588256";
   }
 };

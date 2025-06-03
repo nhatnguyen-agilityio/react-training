@@ -9,6 +9,9 @@ import { getPriorityColor } from "@/constants/priority-class";
 import { getStatusColor } from "@/constants/status-class";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import trashIcon from "@/assets/trash.svg"
+import editIcon from "@/assets/edit.svg"
+
 
 const TaskDetail = () => {
   const { taskId } = useParams<{ taskId: string }>();
@@ -34,7 +37,7 @@ const TaskDetail = () => {
   }, [taskId, loading]);
 
   return (
-    <div>
+    <div className="rounded-2xl shadow-sm border-1 p-4 min-h-210 flex flex-col">
       <div className="flex">
         <div className="h-50 w-50 mr-7">
           <Image src={taskDetail?.image || Nischal} alt="Task" className="w-full h-full" />
@@ -48,6 +51,10 @@ const TaskDetail = () => {
         <NavLink to="/dashboard" className={"ml-auto text-blue-500"}>Go back</NavLink>
       </div>
       <p className="text-left mt-10">{loading ? <Skeleton className="w-full rounded-lg mb-3 h-50" /> : taskDetail?.description}</p>
+      <div className="mt-auto flex justify-end">
+        <Image src={trashIcon} alt="Delete" className="w-auto h-auto mr-3 cursor-pointer" />
+        <Image src={editIcon} alt="Edit" className="w-auto h-auto cursor-pointer" />
+      </div>
     </div>
   );
 };

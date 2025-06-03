@@ -2,7 +2,7 @@ import Image from "@/components/common/Image";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import Nischal from "@/assets/nischal.png"
+import githubImage from "@/assets/github.png"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { getPriorityColor } from "@/constants/priority-class";
@@ -45,7 +45,7 @@ const TaskDetail = () => {
     <div className="rounded-2xl shadow-sm border-1 p-4 min-h-210 flex flex-col">
       <div className="flex">
         <div className="h-50 w-50 mr-7">
-          <Image src={taskDetail?.image || Nischal} alt="Task" className="w-full h-full" />
+          <Image src={taskDetail?.image || githubImage} alt="Task" className="w-full h-full" />
         </div>
         <div className="text-left">
           <div className="text-2xl font-extrabold">{loading ? <Skeleton className="w-70 rounded-lg mb-3 h-3 " /> : taskDetail?.title}</div>

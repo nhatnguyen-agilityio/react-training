@@ -10,7 +10,6 @@ import { getStatusColor } from "@/constants/status-class";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import trashIcon from "@/assets/trash.svg"
-import editIcon from "@/assets/edit.svg"
 import EditTaskModal from "@/components/EditTaskModal";
 
 

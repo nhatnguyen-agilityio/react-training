@@ -65,6 +65,7 @@ const TaskDetail = () => {
       <div className="mt-auto flex justify-end">
         <DeleteTask
           id={taskId || ""}
+          title={taskDetail?.title || ""}
           onDeleted={handleDeleteSuccess}
         />
         <EditTaskModal

@@ -1,5 +1,5 @@
 import Image from "@/components/common/Image";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import githubImage from "@/assets/github.png"
@@ -9,8 +9,8 @@ import { getPriorityColor } from "@/constants/priority-class";
 import { getStatusColor } from "@/constants/status-class";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import trashIcon from "@/assets/trash.svg"
 import EditTaskModal from "@/components/EditTaskModal";
+import DeleteTask from "@/components/DeleteTask";
 
 
 const TaskDetail = () => {
@@ -18,6 +18,8 @@ const TaskDetail = () => {
   const [taskDetail, setTaskDetail] = useState<Task | null>(null);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTaskDetail = async () => {
@@ -41,6 +43,10 @@ const TaskDetail = () => {
     setRefresh(refresh + 1);
   }
 
+  const handleDeleteSuccess = () => {
+    navigate("/dashboard", { replace: true });
+  }
+
   return (
     <div className="rounded-2xl shadow-sm border-1 p-4 min-h-210 flex flex-col">
       <div className="flex">
@@ -53,11 +59,14 @@ const TaskDetail = () => {
           <div className="text-xs mt-3 flex">Status: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getStatusColor(taskDetail?.priority || "")} ml-2`}>{taskDetail?.status}</span>}</div>
           <div className="text-[10px] mt-3 text-gray-300 flex">Created on: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : new Date(taskDetail?.createdAt || "").toISOString().slice(0, 10)}</div>
         </div>
-        <NavLink to="/dashboard" className={"ml-auto text-blue-500"}>Go back</NavLink>
+        <NavLink to="/dashboard" className={"ml-auto underline decoration-1.5 w-50 pt-1 h-fit"}>Go back</NavLink>
       </div>
       <div className="text-left mt-10">{loading ? <Skeleton className="w-full rounded-lg mb-3 h-50" /> : taskDetail?.description}</div>
       <div className="mt-auto flex justify-end">
-        <Image src={trashIcon} alt="Delete" className="w-auto h-auto mr-3 cursor-pointer" />
+        <DeleteTask
+          id={taskId || ""}
+          onDeleted={handleDeleteSuccess}
+        />
         <EditTaskModal
           id={taskId || ""}
           title={taskDetail?.title || ""}

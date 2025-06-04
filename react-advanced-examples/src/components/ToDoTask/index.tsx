@@ -3,6 +3,7 @@ import ToDoCard from "./ToDoCard"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 
 const ToDoTask = () => {
   const [todoItems, setTodoItems] = useState<Task[]>([]);
@@ -42,8 +43,10 @@ const ToDoTask = () => {
           <span className="text-destructive">To-Do</span>
         </div>
         <div className="add-task flex text-xs flex items-center">
-          <Plus width={12} height={12} className="text-destructive" />
-          <span className="ml-1">Add task</span>
+          <Button className="bg-white text-black opacity-50 shadow-none hover:bg-white hover:border hover:border-destructive">
+            <Plus width={12} height={12} className="text-destructive" />
+            <span className="ml-1">Add task</span>
+          </Button>
         </div>
       </div>
       <div className="mt-6 border-b-2 pb-8">

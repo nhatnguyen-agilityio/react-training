@@ -2,44 +2,45 @@ import { CircleAlert, LayoutDashboard, BookCheck, Settings, BadgeHelp, Logs, Log
 import { Sidebar as UISidebar, SidebarHeader as UISidebarHeader, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarFooter } from "@/components/ui/sidebar";
 import { useAuth } from "@/Hooks/Auth";
 import SidebarHeader from "../SidebarHeader";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 // Menu items.
 const items = [
   {
     title: "Dashboard",
-    url: "/dashboard",
+    path: "/dashboard",
     icon: LayoutDashboard,
   },
   {
     title: "Vital Task",
-    url: "#",
+    path: "vital-task",
     icon: CircleAlert,
   },
   {
     title: "My Task",
-    url: "#",
+    path: "my-task",
     icon: BookCheck,
   },
   {
     title: "Task Categories",
-    url: "#",
+    path: "task-categories",
     icon: Logs,
   },
   {
     title: "Settings",
-    url: "#",
+    path: "settings",
     icon: Settings,
   },
   {
     title: "Help",
-    url: "#",
+    path: "help",
     icon: BadgeHelp,
   },
 ]
 
 const Sidebar = () => {
   const auth = useAuth();
+  const location = useLocation();
 
   return (
     <UISidebar variant="inset" className="p-0">
@@ -52,8 +53,8 @@ const Sidebar = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="h-15 hover:text-destructive pl-6">
-                    <NavLink to={item.url}>
+                  <SidebarMenuButton asChild isActive={location.pathname === item.path} className="h-15 hover:text-destructive pl-6">
+                    <NavLink to={item.path}>
                       <item.icon />
                       <span>{item.title}</span>
                     </NavLink>

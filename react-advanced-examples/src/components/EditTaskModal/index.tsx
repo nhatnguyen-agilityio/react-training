@@ -126,7 +126,7 @@ const EditTaskModal = (
             </DialogClose>
           </div>
         </DialogHeader>
-        <TaskForm form={form} onSubmit={onSubmit} isLoading={isLoading} />
+        <TaskForm form={form} onSubmit={onSubmit} isLoading={isLoading} isAdding={false} />
       </DialogContent>
     </Dialog>
   );

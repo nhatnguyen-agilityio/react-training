@@ -19,6 +19,8 @@ const TaskDetail = () => {
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(0);
 
+  console.log("taskId", taskId);
+
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './components/ThemeProvider'
 import { AuthProvider } from './auth/AuthProvider'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -25,11 +25,7 @@ function App() {
           <BrowserRouter>
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
-                <Route index path="/" element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                } />
+                <Route index path="/" element={<Navigate to="/dashboard" replace />} />
                 <Route path="dashboard" element={
                   <ProtectedRoute>
                     <Dashboard />

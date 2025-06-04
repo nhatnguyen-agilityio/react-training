@@ -13,27 +13,27 @@ const items = [
   },
   {
     title: "Vital Task",
-    path: "vital-task",
+    path: "/dashboard/vital-task",
     icon: CircleAlert,
   },
   {
     title: "My Task",
-    path: "my-task",
+    path: "/dashboard/my-task",
     icon: BookCheck,
   },
   {
     title: "Task Categories",
-    path: "task-categories",
+    path: "/dashboard/task-categories",
     icon: Logs,
   },
   {
     title: "Settings",
-    path: "settings",
+    path: "/dashboard/settings",
     icon: Settings,
   },
   {
     title: "Help",
-    path: "help",
+    path: "/dashboard/help",
     icon: BadgeHelp,
   },
 ]
@@ -53,7 +53,7 @@ const Sidebar = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={location.pathname === item.path} className="h-15 hover:text-destructive pl-6">
+                  <SidebarMenuButton asChild isActive={location.pathname.startsWith(item.path)} className="h-15 hover:text-destructive pl-6">
                     <NavLink to={item.path}>
                       <item.icon />
                       <span>{item.title}</span>

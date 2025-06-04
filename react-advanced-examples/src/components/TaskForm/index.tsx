@@ -29,14 +29,15 @@ const prioriryOptions = [
 const TaskForm = <T extends FieldValues = FieldValues>({
   form,
   onSubmit,
-  isLoading
+  isLoading,
+  isAdding=true
 }: {
   form: UseFormReturn<T>,
   onSubmit: SubmitHandler<T>,
-  isLoading: boolean
+  isLoading: boolean,
+  isAdding?: boolean
 }) => {
   const [filename, setFileName] = useState<string | null>(null);
-  console.log("Task form here")
 
   return (
     <Form {...form}>
@@ -176,7 +177,9 @@ const TaskForm = <T extends FieldValues = FieldValues>({
             />
           </div>
         </div>
-        <Button type="submit" disabled={isLoading} className={`bg-destructive text-white`}>{isLoading ? "Updating..." : "Done"}</Button>
+        <Button type="submit" disabled={isLoading} className={`bg-destructive text-white`}>
+          {isLoading ? (isAdding ? "Adding..." : "Updating...") : "Done"}
+        </Button>
       </form>
     </Form>
   )

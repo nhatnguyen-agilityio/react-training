@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import AddTaskModal from "../AddTaskModal";
 
 const ToDoTask = () => {
   const [todoItems, setTodoItems] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -33,7 +35,11 @@ const ToDoTask = () => {
     };
 
     fetchTasks();
-  }, []);
+  }, [refresh]);
+
+  const handleSuccess = () => {
+    setRefresh(refresh + 1);
+  }
 
   return (
     <div className="shadow-xl px-4 py-6">
@@ -43,10 +49,7 @@ const ToDoTask = () => {
           <span className="text-destructive">To-Do</span>
         </div>
         <div className="add-task flex text-xs flex items-center">
-          <Button className="bg-white text-black opacity-50 shadow-none hover:bg-white hover:border hover:border-destructive">
-            <Plus width={12} height={12} className="text-destructive" />
-            <span className="ml-1">Add task</span>
-          </Button>
+          <AddTaskModal onSuccess={handleSuccess} />
         </div>
       </div>
       <div className="mt-6 border-b-2 pb-8">

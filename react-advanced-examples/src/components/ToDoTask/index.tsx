@@ -1,9 +1,8 @@
-import { ClipboardList, Plus } from "lucide-react"
+import { ClipboardList } from "lucide-react"
 import ToDoCard from "./ToDoCard"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
 import AddTaskModal from "../AddTaskModal";
 
 const ToDoTask = () => {

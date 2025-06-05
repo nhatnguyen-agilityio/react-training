@@ -19,7 +19,7 @@ const ToDoCard = ({ task }: { task: Task }) => {
             <p className="text-sm mr-3 opacity-70 clamp-4">{task.description}.</p>
           </div>
           <div className="w-22 h-22 mt-7">
-            <Image src={task.image || githubImage} alt="Task" />
+            <Image src={task.image || githubImage} alt="Task" className="h-full w-full" />
           </div>
         </div>
         <div className="flex text-[10px]">

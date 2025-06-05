@@ -7,43 +7,70 @@ const Tasks = lazy(() => import("@/components/Tasks"));
 const MyTask =  () => {
   const [loadTasks, setLoadTasks] = useState<{
     listTasks: Task[];
-    isLoading: boolean;
+    isInitialLoading: boolean;
+    isLoadingMore: boolean;
+    page: number;
+    hasMore: boolean;
   }>({
     listTasks: [],
-    isLoading: true,
+    isInitialLoading: true,
+    isLoadingMore: false,
+    page: 1,
+    hasMore: true
   });
 
   const [refresh, setRefresh] = useState(0);
 
+  const fetchTasks = async (page: number, isRefresh = false) => {
+    try {
+      const response = await fetch(
+        `https://683417dd464b499636014699.mockapi.io/api/v1/tasks?page=${page}&limit=5&sortBy=createdAt&order=desc`
+      );
+      const data: Task[] = await response.json();
+      setLoadTasks((prev) => ({
+        listTasks: isRefresh ? data : [...prev.listTasks, ...data],
+        isInitialLoading: false,
+        isLoadingMore: false,
+        page,
+        hasMore: data.length === 5,
+      }));
+    } catch (error) {
+      console.error("Failed to fetch tasks", error);
+      setLoadTasks((prev) => ({
+        ...prev,
+        isInitialLoading: false,
+        isLoadingMore: false
+      }));
+    }
+  }
+
   // Call API to fetch the list of tasks
   useEffect(() => {
-    const listTasks = async () => {
-      try {
-        const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?page=1&limit=4&sortBy=createdAt&order=desc");
-        const data = await response.json();
-        setLoadTasks({ listTasks: data, isLoading: false });
-      } catch (error) {
-        console.error("Failed to fetch tasks", error);
-      }
-    }
-
-    listTasks();
+    setLoadTasks((prev) => ({ ...prev, isInitialLoading: true }));
+    fetchTasks(1, true);
   }, [refresh]);
 
   const handleChangeTask = useCallback(() => {
-    console.log("handleChangeTask");
     setRefresh(prev => prev + 1);
   }, []);
 
+  const handleLoadMore = useCallback(() => {
+    if (loadTasks.isLoadingMore || loadTasks.isInitialLoading || !loadTasks.hasMore) return;
+
+    const nextPage = loadTasks.page + 1;
+    setLoadTasks((prev) => ({ ...prev, isLoadingMore: true }));
+    fetchTasks(nextPage);
+  }, [loadTasks]);
+
   // Render the loading if API call is in progress
-  if (loadTasks.isLoading) {
+  if (loadTasks.isInitialLoading) {
     return <div>Loading...</div>;
   }
 
   // Render the list of tasks
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Tasks listTasks={loadTasks.listTasks} onChangeTask={handleChangeTask} />
+      <Tasks listTasks={loadTasks.listTasks} onChangeTask={handleChangeTask} onLoadMore={handleLoadMore} />
     </Suspense>
   );
 };

@@ -17,6 +17,10 @@ const Dashboard = lazy(() => import('./pages/Dashboard'))
 const TaskDetail = lazy(() => import('./pages/TaskDetail'))
 const MyTask = lazy(() => import('./pages/MyTask'))
 const DashboardHome = lazy(() => import('./components/DashboardHome'))
+const VitalTask = lazy(() => import('./pages/VitalTask'))
+const TaskCategories = lazy(() => import('./pages/TaskCategories'))
+const Settings = lazy(() => import('./pages/Settings'))
+const Help = lazy(() => import('./pages/Help'))
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
                       <TaskDetail />
                   } />
                   <Route path="tasks" element={<MyTask />} />
+                  <Route path="vital-tasks" element={<VitalTask />} />
+                  <Route path="task-categories" element={<TaskCategories />} />
+                  <Route path="settings" element={<Settings />} />
+                  <Route path="help" element={<Help />} />
                 </Route>
                 <Route path="login" element={<Login />} />
                 <Route path="books" element={

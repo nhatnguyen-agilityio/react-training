@@ -13,7 +13,7 @@ const CompletedTask = () => {
     const fetchTasks = async () => {
       try {
         const response = await fetch(
-          "https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Completed&page=1&limit=2"
+          "https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Completed&page=1&limit=2&sortBy=createdAt&order=desc"
         );
         const data = await response.json();
         setCompletedTasks(data);

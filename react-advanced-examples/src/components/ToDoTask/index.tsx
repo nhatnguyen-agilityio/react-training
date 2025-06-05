@@ -15,8 +15,8 @@ const ToDoTask = () => {
     const fetchTasks = async () => {
       try {
         const [completedRes, inProgressRes] = await Promise.all([
-          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Not%20Started&limit=3"),
-          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=In%20Progress&limit=3")
+          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=Not%20Started&limit=3&sortBy=createdAt&order=desc"),
+          fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?status=In%20Progress&limit=3&sortBy=createdAt&order=desc")
         ]);
 
         const [completedTasks, inProgressTasks] = await Promise.all([

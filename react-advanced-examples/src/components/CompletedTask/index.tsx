@@ -1,10 +1,11 @@
 import { BookmarkCheck } from "lucide-react"
-import ToDoCard from "../ToDoTask/ToDoCard"
+import ToDoCard from "../ToDoCard"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { Skeleton } from "@/components/ui/skeleton";
+import { NavLink } from "react-router-dom";
 
-const CompletedTask= () => {
+const CompletedTask = () => {
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,8 +42,9 @@ const CompletedTask= () => {
             />
           ))
           : completedTasks.slice(0, 2).map((task) => (
-            <ToDoCard key={task.id} task={task} />
-          ))}
+            <NavLink to={`tasks/${task.id}`}>
+              <ToDoCard key={task.id} task={task} />
+            </NavLink>))}
       </div>
     </div>
   )

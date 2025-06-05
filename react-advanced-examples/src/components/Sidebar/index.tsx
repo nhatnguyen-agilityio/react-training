@@ -3,6 +3,7 @@ import { Sidebar as UISidebar, SidebarHeader as UISidebarHeader, SidebarContent,
 import { useAuth } from "@/Hooks/Auth";
 import SidebarHeader from "../SidebarHeader";
 import { NavLink, useLocation } from "react-router-dom";
+import { useMemo } from "react";
 
 // Menu items.
 const items = [
@@ -13,12 +14,12 @@ const items = [
   },
   {
     title: "Vital Task",
-    path: "/dashboard/vital-task",
+    path: "/dashboard/vital-tasks",
     icon: CircleAlert,
   },
   {
     title: "My Task",
-    path: "/dashboard/my-task",
+    path: "/dashboard/tasks",
     icon: BookCheck,
   },
   {
@@ -42,6 +43,15 @@ const Sidebar = () => {
   const auth = useAuth();
   const location = useLocation();
 
+  const activeItemPath = useMemo(() => {
+    return items
+      .filter(item =>
+        location.pathname === item.path ||
+        location.pathname.startsWith(`${item.path}/`)
+      )
+      .sort((a, b) => b.path.length - a.path.length)[0]?.path
+  }, [location.pathname])
+
   return (
     <UISidebar variant="inset" className="p-0">
       <UISidebarHeader className="relative mb-5">
@@ -53,7 +63,7 @@ const Sidebar = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={location.pathname.startsWith(item.path)} className="h-15 hover:text-destructive pl-6">
+                  <SidebarMenuButton asChild isActive={item.path === activeItemPath} className="h-15 hover:text-destructive pl-6">
                     <NavLink to={item.path}>
                       <item.icon />
                       <span>{item.title}</span>

@@ -19,7 +19,7 @@ const MyTask =  () => {
   useEffect(() => {
     const listTasks = async () => {
       try {
-        const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?page=1&limit=4");
+        const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?page=1&limit=4&sortBy=createdAt&order=desc");
         const data = await response.json();
         setLoadTasks({ listTasks: data, isLoading: false });
       } catch (error) {

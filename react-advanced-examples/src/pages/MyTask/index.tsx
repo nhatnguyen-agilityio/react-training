@@ -1,10 +1,19 @@
-import Tasks from "@/components/Tasks";
 import type { Task } from "@/types/Task";
-import { useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
+import { lazy } from "react";
+
+const Tasks = lazy(() => import("@/components/Tasks"));
 
 const MyTask =  () => {
-  const [listTasks, setListTasks] = useState<Task[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [loadTasks, setLoadTasks] = useState<{
+    listTasks: Task[];
+    isLoading: boolean;
+  }>({
+    listTasks: [],
+    isLoading: true,
+  });
+
+  const [refresh, setRefresh] = useState(0);
 
   // Call API to fetch the list of tasks
   useEffect(() => {
@@ -12,26 +21,30 @@ const MyTask =  () => {
       try {
         const response = await fetch("https://683417dd464b499636014699.mockapi.io/api/v1/tasks?page=1&limit=4");
         const data = await response.json();
-        setListTasks(data);
-        console.log("data", data);
+        setLoadTasks({ listTasks: data, isLoading: false });
       } catch (error) {
         console.error("Failed to fetch tasks", error);
-      } finally {
-        setIsLoading(false);
       }
     }
 
     listTasks();
+  }, [refresh]);
+
+  const handleChangeTask = useCallback(() => {
+    console.log("handleChangeTask");
+    setRefresh(prev => prev + 1);
   }, []);
 
   // Render the loading if API call is in progress
-  if (isLoading) {
+  if (loadTasks.isLoading) {
     return <div>Loading...</div>;
   }
 
   // Render the list of tasks
   return (
-    <Tasks listTasks={listTasks} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Tasks listTasks={loadTasks.listTasks} onChangeTask={handleChangeTask} />
+    </Suspense>
   );
 };
 

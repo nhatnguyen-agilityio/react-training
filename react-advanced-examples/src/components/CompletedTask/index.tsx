@@ -42,7 +42,7 @@ const CompletedTask = () => {
             />
           ))
           : completedTasks.slice(0, 2).map((task) => (
-            <NavLink to={`tasks/${task.id}`}>
+            <NavLink to={`tasks/${task.id}`} key={task.id}>
               <ToDoCard key={task.id} task={task} />
             </NavLink>))}
       </div>

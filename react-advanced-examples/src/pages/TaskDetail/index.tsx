@@ -59,7 +59,7 @@ const TaskDetail = () => {
           <div className="text-2xl font-extrabold">{loading ? <Skeleton className="w-70 rounded-lg mb-3 h-3 " /> : taskDetail?.title}</div>
           <div className="text-xs mt-3 flex">Priority:{loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getPriorityColor(taskDetail?.priority || "")} ml-2`}> {taskDetail?.priority}</span>}</div>
           <div className="text-xs mt-3 flex">Status: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : <span className={`${getStatusColor(taskDetail?.priority || "")} ml-2`}>{taskDetail?.status}</span>}</div>
-          <div className="text-[10px] mt-3 text-gray-300 flex">Created on: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : new Date(taskDetail?.createdAt || "").toISOString().slice(0, 10)}</div>
+          <div className="text-[10px] mt-3 text-gray-400 flex">Created on: {loading ? <Skeleton className="w-20 rounded-lg mb-3 h-3 ml-2" /> : new Date(taskDetail?.createdAt || "").toISOString().slice(0, 10)}</div>
         </div>
         <NavLink to="/dashboard" className={"ml-auto underline decoration-1.5 w-50 pt-1 h-fit"}>Go back</NavLink>
       </div>

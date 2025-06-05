@@ -15,6 +15,7 @@ const Student = lazy(() => import('./components/Student'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const TaskDetail = lazy(() => import('./pages/TaskDetail'))
+const MyTask = lazy(() => import('./pages/MyTask'))
 const DashboardHome = lazy(() => import('./components/DashboardHome'))
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                   <Route path="tasks/:taskId" element={
                       <TaskDetail />
                   } />
+                  <Route path="tasks" element={<MyTask />} />
                 </Route>
                 <Route path="login" element={<Login />} />
                 <Route path="books" element={

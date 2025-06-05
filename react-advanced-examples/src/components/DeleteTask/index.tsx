@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 const DeleteTask = ({ id, title, onDeleted }: { id: string, title: string, onDeleted: () => void }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const handleDeleteTask = () => {
     setIsLoading(true)
     fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/tasks/${id}`, {
@@ -14,6 +16,7 @@ const DeleteTask = ({ id, title, onDeleted }: { id: string, title: string, onDel
     }).then((response) => {
       if (response.ok) {
         onDeleted()
+        setIsOpen(false);
       } else {
         console.error("Failed to delete task")
       }
@@ -23,7 +26,7 @@ const DeleteTask = ({ id, title, onDeleted }: { id: string, title: string, onDel
   }
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
     <DialogTrigger asChild>
         <Button className="h-9 w-9 p-0 mr-3">
           <Image src={trashIcon} alt="Delete" className="w-auto h-auto cursor-pointer" />

@@ -4,8 +4,11 @@ import Image from "../common/Image"
 import githubImage from "@/assets/github.png"
 import { getPriorityColor } from "@/constants/priority-class"
 import { getStatusColor } from "@/constants/status-class"
+import DeleteTask from "../DeleteTask"
+import EditTaskModal from "../EditTaskModal"
 
-const MyTaskDetail = ({ task }: { task: Task}) => {
+const MyTaskDetail = ({ task, onChangeTask }: { task: Task, onChangeTask: () => void}) => {
+
   return (
     <>
       <div className="flex text-left">
@@ -20,6 +23,21 @@ const MyTaskDetail = ({ task }: { task: Task}) => {
         </div>
       </div>
       <p className="mt-7 text-left">{task.description}</p>
+      <div className="mt-auto flex justify-end">
+        <DeleteTask
+          id={task.id || ""}
+          title={task?.title || ""}
+          onDeleted={onChangeTask}
+        />
+        <EditTaskModal
+          id={task.id || ""}
+          title={task?.title || ""}
+          description={task?.description || ""}
+          createdAt={new Date(task?.createdAt || Date.now())}
+          priority={task?.priority || ""}
+          onSuccess={onChangeTask}
+        />
+      </div>
     </>
   )
 }

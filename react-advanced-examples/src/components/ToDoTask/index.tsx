@@ -61,7 +61,7 @@ const ToDoTask = () => {
             />
           ))
           : todoItems.slice(0, 2).map((task) => (
-            <NavLink to={`tasks/${task.id}`}>
+            <NavLink to={`tasks/${task.id}`} key={task.id}>
               <ToDoCard key={task.id} task={task} />
             </NavLink>
           ))}
@@ -69,7 +69,7 @@ const ToDoTask = () => {
       <div className="pt-6">
         {loading ? <Skeleton className="w-full rounded-lg mb-3 h-47" /> :
           todoItems.slice(2).map((task) => (
-            <NavLink to={`tasks/${task.id}`}>
+            <NavLink to={`tasks/${task.id}`} key={task.id}>
               <ToDoCard key={task.id} task={task} />
             </NavLink>
           ))

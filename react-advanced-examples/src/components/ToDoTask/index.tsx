@@ -1,9 +1,10 @@
 import { ClipboardList } from "lucide-react"
-import ToDoCard from "./ToDoCard"
+import ToDoCard from "../ToDoCard"
 import { useEffect, useState } from "react";
 import type { Task } from "@/types/Task";
 import { Skeleton } from "@/components/ui/skeleton";
 import AddTaskModal from "../AddTaskModal";
+import { NavLink } from "react-router-dom";
 
 const ToDoTask = () => {
   const [todoItems, setTodoItems] = useState<Task[]>([]);
@@ -60,13 +61,17 @@ const ToDoTask = () => {
             />
           ))
           : todoItems.slice(0, 2).map((task) => (
-            <ToDoCard key={task.id} task={task} />
+            <NavLink to={`tasks/${task.id}`}>
+              <ToDoCard key={task.id} task={task} />
+            </NavLink>
           ))}
       </div>
       <div className="pt-6">
         {loading ? <Skeleton className="w-full rounded-lg mb-3 h-47" /> :
           todoItems.slice(2).map((task) => (
-            <ToDoCard key={task.id} task={task} />
+            <NavLink to={`tasks/${task.id}`}>
+              <ToDoCard key={task.id} task={task} />
+            </NavLink>
           ))
         }
       </div>

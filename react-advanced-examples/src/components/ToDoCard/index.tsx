@@ -5,11 +5,10 @@ import githubImage from "@/assets/github.png"
 import { getStatusColor } from "@/constants/status-class";
 import { getPriorityColor } from "@/constants/priority-class";
 import type { Task } from "@/types/Task";
-import { NavLink } from "react-router-dom";
 
 const ToDoCard = ({ task }: { task: Task }) => {
   return (
-    <NavLink to={`tasks/${task.id}`} className="flex border border-gray-400 mt-3 p-3 rounded-2xl hover:bg-gray-100">
+    <div className="flex border border-gray-400 mt-3 p-3 rounded-2xl hover:bg-gray-100">
       <div>
         <Circle className={`mr-4 w-4 h-4 ${getStatusColor(task.status || "")}`} />
       </div>
@@ -29,7 +28,7 @@ const ToDoCard = ({ task }: { task: Task }) => {
           <p>Created on: {new Date(task.createdAt).toISOString().slice(0, 10)}</p>
         </div>
       </div>
-    </NavLink>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ const Dashboard = () => {
     <div className="container">
       <SidebarProvider className="w-full h-auto min-h-auto">
         <Sidebar />
-        <SidebarInset className="rounded-none border-none">
+        <SidebarInset className="rounded-none border-none ">
           <Outlet />
         </SidebarInset>
       </SidebarProvider>

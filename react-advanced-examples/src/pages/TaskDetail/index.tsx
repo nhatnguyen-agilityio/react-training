@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import EditTaskModal from "@/components/EditTaskModal";
 import DeleteTask from "@/components/DeleteTask";
+import NotFound from "@/components/NotFound";
 
 
 const TaskDetail = () => {
@@ -56,7 +57,7 @@ const TaskDetail = () => {
   }
 
   if (isNotFound) {
-    return <p>Task not found</p>
+    return <NotFound />
   }
 
   return (

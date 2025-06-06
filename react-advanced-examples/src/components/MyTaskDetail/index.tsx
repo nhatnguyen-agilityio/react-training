@@ -19,7 +19,7 @@ const MyTaskDetail = ({ task, onChangeTask }: { task: Task, onChangeTask: () => 
           <h4 className="text-md font-extrabold mb-3">{task.title}</h4>
           <p className="mb-3 text-sm">Priority: <span className={getPriorityColor(task.priority || "")}>{task.priority}</span></p>
           <p className="text-sm">Status: <span className={getStatusColor(task.status || "")}>{task.status}</span></p>
-          <p className="text-[10px] mt-3 text-gray-400 flex">Created on: {task.createdAt}</p>
+          <p className="text-[10px] mt-3 text-gray-400 flex">Created on: {new Date(task.createdAt).toISOString().slice(0, 10)}</p>
         </div>
       </div>
       {task?.description ? (

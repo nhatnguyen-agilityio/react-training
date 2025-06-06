@@ -28,8 +28,8 @@ const CompletedTask = () => {
   }, []);
 
   return (
-    <div className="mt-8 shadow-xl p-3">
-      <div className="flex">
+    <div className="mt-5 shadow-xl p-3">
+      <div className="flex pt-3">
         <BookmarkCheck />
         <span className="text-destructive">Completed Tasks</span>
       </div>

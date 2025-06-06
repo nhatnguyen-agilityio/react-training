@@ -13,6 +13,7 @@ const UserForm = lazy(() => import('./pages/Book'))
 const CreateBook = lazy(() => import('./components/UserForm'))
 const People = lazy(() => import('./components/People'))
 const Student = lazy(() => import('./components/Student'))
+const NotFound = lazy(() => import('./components/NotFound'))
 const SignUp = lazy(() => import('./pages/SignUp'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const TaskDetail = lazy(() => import('./pages/TaskDetail'))
@@ -62,6 +63,7 @@ function App() {
                 <Route path="people" element={<People />} />
                 <Route path="student" element={<Student />} />
                 <Route path="sign-up" element={<SignUp />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </BrowserRouter>

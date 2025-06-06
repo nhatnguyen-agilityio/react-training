@@ -9,7 +9,7 @@ import type { Task } from "@/types/Task";
 const ToDoCard = ({ task }: { task: Task }) => {
   return (
     <div className="flex border border-gray-400 mt-3 p-3 rounded-2xl hover:bg-gray-100">
-      <div>
+      <div className="pt-1">
         <Circle className={`mr-4 w-4 h-4 ${getStatusColor(task.status || "")}`} />
       </div>
       <div className="content flex flex-col text-left w-full">

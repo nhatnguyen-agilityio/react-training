@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import type { Task } from "@/types/Task";
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { lazy } from "react";
@@ -64,7 +65,7 @@ const MyTask =  () => {
 
   // Render the loading if API call is in progress
   if (loadTasks.isInitialLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   // Render the list of tasks

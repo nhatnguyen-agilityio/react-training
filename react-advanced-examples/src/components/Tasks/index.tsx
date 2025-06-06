@@ -42,9 +42,8 @@ const Tasks = ({
   }, [onLoadMore]);
 
   return (
-
     <div className="grid grid-cols-2 gap-5 min-h-200 mt-15" >
-      <div className="h-200 overflow-y-auto border rounded-md scrollbar-none" ref={scrollContainerRef}>
+      <div className="h-200 overflow-y-auto border rounded-md scrollbar-none shadow-md border-gray-300" ref={scrollContainerRef}>
         <div className="sticky top-0 bg-white p-3 pl-5 z-10">
           <h4 className="text-xl font-bold text-left">
             <span className="underline underline-offset-6 decoration-2 decoration-orange-700">My </span>Tasks
@@ -57,6 +56,7 @@ const Tasks = ({
             </div>
           ))}
         </div>
+        <div className="sticky bottom-0 bg-white p-3 z-10"></div>
       </div>
       <div className="shadow-md border border-gray-300 rounded-md p-5 flex flex-col">
         <MyTaskDetail task={taskDetail} onChangeTask={onChangeTask} />

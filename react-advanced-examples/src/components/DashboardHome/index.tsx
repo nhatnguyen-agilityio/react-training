@@ -29,7 +29,7 @@ const DashboardHome = () => {
           </Button>
         </div>
       </div>
-      <div className="grid grid-cols-2 w-full border border-gray-300 px-6 py-8 rounded-xl">
+      <div className="grid grid-cols-2 w-full border border-gray-300 p-6 rounded-xl">
         <ToDoTask />
         <div className="ml-3">
           <TaskStatus />

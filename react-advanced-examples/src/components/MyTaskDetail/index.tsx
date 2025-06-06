@@ -22,7 +22,9 @@ const MyTaskDetail = ({ task, onChangeTask }: { task: Task, onChangeTask: () => 
           <p className="text-[10px] mt-3 text-gray-400 flex">Created on: {task.createdAt}</p>
         </div>
       </div>
-      <p className="mt-7 text-left">{task.description}</p>
+      {task?.description ? (
+        <p className="mt-7 text-left text-base leading-relaxed">{task.description}</p>
+      ) : null}
       <div className="mt-auto flex justify-end">
         <DeleteTask
           id={task.id || ""}

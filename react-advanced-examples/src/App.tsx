@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
+import Loading from './components/Loading'
 
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
@@ -28,7 +29,7 @@ function App() {
       <ErrorBoundary>
         <AuthProvider>
           <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <Routes>
                 <Route index path="/" element={<Navigate to="/dashboard" replace />} />
                 <Route path="dashboard" element={

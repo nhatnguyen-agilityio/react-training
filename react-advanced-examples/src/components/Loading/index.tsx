@@ -1,5 +1,5 @@
 const Loading = () => {
-  return <p><i>🌀 Loading...</i></p>
+  return <p className="m-auto"><i>🌀 Loading...</i></p>
 }
 
 export default Loading

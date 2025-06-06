@@ -12,8 +12,8 @@ const ToDoCard = ({ task }: { task: Task }) => {
       <div>
         <Circle className={`mr-4 w-4 h-4 ${getStatusColor(task.status || "")}`} />
       </div>
-      <div className="content flex flex-col text-left ">
-        <div className="flex mb-8 mr-2">
+      <div className="content flex flex-col text-left w-full">
+        <div className="flex mb-8 justify-between">
           <div className="flex flex-col w-4/5 min-w-81">
             <h5 className="mb-3 truncate font-extrabold">{task.title}</h5>
             <p className="text-sm mr-3 opacity-70 clamp-4">{task.description}.</p>

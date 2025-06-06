@@ -18,8 +18,7 @@ const TaskDetail = () => {
   const [taskDetail, setTaskDetail] = useState<Task | null>(null);
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(0);
-
-  console.log("taskId", taskId);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const navigate = useNavigate();
 
@@ -27,6 +26,13 @@ const TaskDetail = () => {
     const fetchTaskDetail = async () => {
       try {
         const response = await fetch(`https://683417dd464b499636014699.mockapi.io/api/v1/tasks/${taskId}`);
+        console.log(response)
+        if (!response.ok) {
+          if (response.status === 404) {
+            setIsNotFound(true);
+          }
+          throw new Error("Failed to fetch task detail");
+        }
         const data = await response.json();
         setTaskDetail(data);
       } catch (error) {
@@ -47,6 +53,10 @@ const TaskDetail = () => {
 
   const handleDeleteSuccess = () => {
     navigate("/dashboard", { replace: true });
+  }
+
+  if (isNotFound) {
+    return <p>Task not found</p>
   }
 
   return (

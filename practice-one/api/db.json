@@ -1,0 +1,181 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Alice Nguyen",
+            "email": "alice@example.com",
+            "address": "123 Main St, Hanoi, Vietnam",
+            "phone": "+84 987654321"
+        }
+    ],
+    "mainCategories": [
+        {
+            "id": 1,
+            "name": "Sitting Room"
+        },
+        {
+            "id": 2,
+            "name": "Bedroom"
+        },
+        {
+            "id": 3,
+            "name": "Kitchen"
+        },
+        {
+            "id": 4,
+            "name": "Accessories"
+        }
+    ],
+    "subCategories": [
+        {
+            "id": 1,
+            "mainCategoryId": 1,
+            "name": "Sofas"
+        },
+        {
+            "id": 2,
+            "mainCategoryId": 1,
+            "name": "Accent Chairs"
+        },
+        {
+            "id": 3,
+            "mainCategoryId": 1,
+            "name": "Coffee Tables"
+        },
+        {
+            "id": 4,
+            "mainCategoryId": 2,
+            "name": "Beds"
+        },
+        {
+            "id": 5,
+            "mainCategoryId": 4,
+            "name": "Lamps"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        "https://picsum.photos/id/1018/800/600",
+                        "https://picsum.photos/id/1015/800/600"
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        "https://picsum.photos/id/1025/800/600",
+                        "https://picsum.photos/id/1020/800/600"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Golden Table Lamp",
+            "description": "Luxury bedside lamp with warm LED light.",
+            "mainCategoryId": 4,
+            "subCategoryId": 5,
+            "basePrice": 199.99,
+            "rating": {
+                "average": 4.2,
+                "count": 32
+            },
+            "sale": {
+                "isOnSale": false,
+                "discountPercent": null
+            },
+            "variants": [
+                {
+                    "id": 201,
+                    "color": "Gold",
+                    "hex": "#D4AF37",
+                    "price": 199.99,
+                    "stock": 12,
+                    "images": [
+                        "https://picsum.photos/id/1035/800/600"
+                    ]
+                }
+            ]
+        }
+    ],
+    "carts": [
+        {
+            "id": 1,
+            "userId": 1,
+            "items": [
+                {
+                    "productId": 1,
+                    "variantId": 101,
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "userId": 1,
+            "orderDate": "2025-08-18T09:00:00Z",
+            "status": "processing",
+            "totalAmount": 1599.98,
+            "shippingAddress": "123 Main St, Hanoi, Vietnam",
+            "paymentMethodId": 1,
+            "items": [
+                {
+                    "productId": 1,
+                    "variantId": 101,
+                    "quantity": 2,
+                    "price": 799.99
+                }
+            ]
+        }
+    ],
+    "paymentMethods": [
+        {
+            "id": 1,
+            "userId": 1,
+            "cardNumber": "4111111111111111",
+            "expiredAt": "2026-08",
+            "cvv": "123",
+            "cardName": "Alice Nguyen",
+            "isDefault": true
+        }
+    ],
+    "reviews": [
+        {
+            "id": 1,
+            "productId": 1,
+            "userId": 1,
+            "rating": 5,
+            "comment": "Love this sofa! Super comfy and stylish.",
+            "createdAt": "2025-08-10T10:00:00Z"
+        }
+    ]
+}

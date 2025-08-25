@@ -6,6 +6,7 @@ import './App.css'
 import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
 import Loading from './components/Loading'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
@@ -23,53 +24,68 @@ const VitalTask = lazy(() => import('./pages/VitalTask'))
 const TaskCategories = lazy(() => import('./pages/TaskCategories'))
 const Settings = lazy(() => import('./pages/Settings'))
 const Help = lazy(() => import('./pages/Help'))
+const TodoQuery = lazy(() => import('./components/TodoQuery'))
+const TodoQueryDetail = lazy(() => import('./components/TodoQueryDetail'))
 
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 5000,
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
+
   return (
-    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <ErrorBoundary>
-        <AuthProvider>
-          <BrowserRouter>
-            <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route index path="/" element={<Navigate to="/dashboard" replace />} />
-                <Route path="dashboard" element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }>
-                  <Route index element={<DashboardHome />} />
-                  <Route path="tasks/:taskId" element={
-                      <TaskDetail />
-                  } />
-                  <Route path="tasks" element={<MyTask />} />
-                  <Route path="vital-tasks" element={<VitalTask />} />
-                  <Route path="task-categories" element={<TaskCategories />} />
-                  <Route path="settings" element={<Settings />} />
-                  <Route path="help" element={<Help />} />
-                </Route>
-                <Route path="login" element={<Login />} />
-                <Route path="books" element={
-                  <ProtectedRoute>
-                    <Books />
-                  </ProtectedRoute>
-                } />
-                <Route path="books/create" element={
-                  <ProtectedRoute>
-                    <CreateBook />
-                  </ProtectedRoute>
-                } />
-                <Route path="user" element={<UserForm />} />
-                <Route path="people" element={<People />} />
-                <Route path="student" element={<Student />} />
-                <Route path="sign-up" element={<SignUp />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </AuthProvider>
-      </ErrorBoundary>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <TodoQuery />
+      <TodoQueryDetail todoId={1} />
+    </QueryClientProvider>
+    // <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    //   <ErrorBoundary>
+    //     <AuthProvider>
+    //       <BrowserRouter>
+    //         <Suspense fallback={<Loading />}>
+    //           <Routes>
+    //             <Route index path="/" element={<Navigate to="/dashboard" replace />} />
+    //             <Route path="dashboard" element={
+    //               <ProtectedRoute>
+    //                 <Dashboard />
+    //               </ProtectedRoute>
+    //             }>
+    //               <Route index element={<DashboardHome />} />
+    //               <Route path="tasks/:taskId" element={
+    //                   <TaskDetail />
+    //               } />
+    //               <Route path="tasks" element={<MyTask />} />
+    //               <Route path="vital-tasks" element={<VitalTask />} />
+    //               <Route path="task-categories" element={<TaskCategories />} />
+    //               <Route path="settings" element={<Settings />} />
+    //               <Route path="help" element={<Help />} />
+    //             </Route>
+    //             <Route path="login" element={<Login />} />
+    //             <Route path="books" element={
+    //               <ProtectedRoute>
+    //                 <Books />
+    //               </ProtectedRoute>
+    //             } />
+    //             <Route path="books/create" element={
+    //               <ProtectedRoute>
+    //                 <CreateBook />
+    //               </ProtectedRoute>
+    //             } />
+    //             <Route path="user" element={<UserForm />} />
+    //             <Route path="people" element={<People />} />
+    //             <Route path="student" element={<Student />} />
+    //             <Route path="sign-up" element={<SignUp />} />
+    //             <Route path="*" element={<NotFound />} />
+    //           </Routes>
+    //         </Suspense>
+    //       </BrowserRouter>
+    //     </AuthProvider>
+    //   </ErrorBoundary>
+    // </ThemeProvider>
   )
 }
 

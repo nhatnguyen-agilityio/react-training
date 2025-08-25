@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Loading from './components/Loading'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import TodoQueryPagination from './components/TodoQueryPagination'
+import TodoLoadMore from './components/TodoLoadMore'
 
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
@@ -42,7 +43,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* <TodoQuery /> */}
-      <TodoQueryPagination />
+      {/* <TodoQueryPagination /> */}
+      <TodoLoadMore />
       {/* <TodoQueryDetail todoId={1} /> */}
     </QueryClientProvider>
     // <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">

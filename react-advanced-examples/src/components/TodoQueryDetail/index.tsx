@@ -18,6 +18,7 @@ const TodoQueryDetail = ({ todoId }: { todoId: number }) => {
   const {isPending, isError, data, error} = useQuery({
     queryKey: ['todo', todoId],
     queryFn: fetchTodoDetail,
+    enabled: !!todoId,
   })
 
   if (isPending) return <div>Loading...</div>;

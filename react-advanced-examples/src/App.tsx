@@ -7,6 +7,7 @@ import { lazy, Suspense } from 'react'
 import ErrorBoundary from './components/ErrorBoundary'
 import Loading from './components/Loading'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import TodoQueryPagination from './components/TodoQueryPagination'
 
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
@@ -33,14 +34,16 @@ function App() {
       queries: {
         staleTime: 5000,
         refetchOnWindowFocus: false,
+        retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
       },
     },
   })
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TodoQuery />
-      <TodoQueryDetail todoId={1} />
+      {/* <TodoQuery /> */}
+      <TodoQueryPagination />
+      {/* <TodoQueryDetail todoId={1} /> */}
     </QueryClientProvider>
     // <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
     //   <ErrorBoundary>

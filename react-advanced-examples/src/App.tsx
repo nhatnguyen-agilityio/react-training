@@ -43,7 +43,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <TodoQuery /> */}
+      <TodoQuery />
       {/* <TodoQueryPagination /> */}
       {/* <TodoLoadMore /> */}
       <TodoMutations />

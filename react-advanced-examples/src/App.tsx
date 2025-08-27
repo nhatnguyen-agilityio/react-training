@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import TodoQueryPagination from './components/TodoQueryPagination'
 import TodoLoadMore from './components/TodoLoadMore'
 import TodoMutations from './components/TodoMutations'
+import TodoUpdate from './components/TodoUpdate'
 
 const Login = lazy(() => import('./pages/Login'))
 const Books = lazy(() => import('./pages/Book'))
@@ -46,8 +47,9 @@ function App() {
       <TodoQuery />
       {/* <TodoQueryPagination /> */}
       {/* <TodoLoadMore /> */}
+      <TodoQueryDetail todoId={24} />
       <TodoMutations />
-      {/* <TodoQueryDetail todoId={1} /> */}
+      <TodoUpdate />
     </QueryClientProvider>
     // <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
     //   <ErrorBoundary>

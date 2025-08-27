@@ -1,6 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const TodoMutations = () => {
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async (newTodo: {
       title: string,
@@ -23,6 +24,7 @@ const TodoMutations = () => {
     },
     onSuccess: (data) => {
       console.log('Todo added successfully:', data);
+      queryClient.invalidateQueries({ queryKey: ['todo'] });
     },
     onError: (error) => {
       console.error('Error adding todo:', error);
@@ -50,7 +52,7 @@ const TodoMutations = () => {
             className="border-2 p-2 mt-2 bg-amber-200 hover:bg-amber-500"
             onClick={() =>
               mutation.mutate({
-                title: 'New Task',
+                title: 'New Task1',
                 createdAt: new Date().toISOString(),
                 priority: 'High',
                 description: 'This is a new task added via mutation',

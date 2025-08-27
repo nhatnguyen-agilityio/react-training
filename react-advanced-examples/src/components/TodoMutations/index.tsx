@@ -20,7 +20,16 @@ const TodoMutations = () => {
         throw new Error('Network response was not ok');
       }
       return res.json();
-    }
+    },
+    onSuccess: (data) => {
+      console.log('Todo added successfully:', data);
+    },
+    onError: (error) => {
+      console.error('Error adding todo:', error);
+    },
+    onSettled: () => {
+      console.log('Mutation settled');
+    },
   });
 
   return (

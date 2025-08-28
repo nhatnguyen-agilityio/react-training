@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# React Practice - eCommerce website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## OVERVIEW
 
-Currently, two official plugins are available:
+This document provides information about React Practice based on the React basic [training plan](https://docs.google.com/document/d/13K5lz3l1q0oJstRi7BaKdwMVItpjZvyQ6vpUB0NWnY4/edit?tab=t.0), the React Advanced [training plan](https://docs.google.com/document/d/1DE6iPvsavnmNL736epd9nwoDnI9bGdScU2redCrAIEo/edit?tab=t.0), and this [design](https://www.figma.com/design/yxriCRTOLjK55nuWVU97so/Oasis---Modern---Contemporary-eCommerce-UI-KIt--Community-?node-id=2633-22295&t=Ns4xQZXkq9ffuZ2v-0). 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## TARGETS
 
-## Expanding the ESLint configuration
+- Apply the knowledge learned about React basic and React advanced concepts
+- Build a web application that meets the requirements
+- Apply Tailwind CSS for build UI
+- Apply Shadnc/ui for build UI
+- Apply React Router to manage routing in the app
+- Apply React Hook Form for form validation and handling user input
+- Apply React Query for data fetching and caching
+- Apply unit test and storybook
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## TECHNICAL
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **React** 
+- **Type Script** 
+- **TailwindCSS**
+- **Shadcn/ui**
+- **React Router**
+- **React Hook Form**
+- **TanStack Query**
+- **Storybook** 
+- **Jest** 
+- **React Testing Library** 
+## TIMELINE
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Estimate: 21 days (part-time, 4 hours per day, it can go faster if I don’t have project tasks)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## TEAM SIZE
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- 1 developer
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## EDITOR
+
+- Visual Studio Code
+
+## DOCUMENTS
+
+- **My training plan**:
+  - [React basic training plan](https://docs.google.com/document/d/13K5lz3l1q0oJstRi7BaKdwMVItpjZvyQ6vpUB0NWnY4/edit?tab=t.0)
+  - [React advanced training plan](https://docs.google.com/document/d/1DE6iPvsavnmNL736epd9nwoDnI9bGdScU2redCrAIEo/edit?tab=t.0)
+- **Practice estimation**: [link](https://docs.google.com/document/d/19ZbOJo4uLHLAUkGcAp3478sueCNNihHR341xd53XzEI/edit?tab=t.0)
+
+## GUIDELINE
+
+1. Clone repository: `git clone git@gitlab.asoft-python.com:nhat.nguyen/react-training.git`
+2. Check out branch: `git checkout dev`
+3. CD to the main folder: `cd practice-one/web/furniture-store`
+4. Install packages: `pnpm install`
+5. Run the project: `pnpm run dev`
+6. Run the storybook: `pnpm storybook`
+7. Run the tests: `pnpm test`
+
+## Deployment
+

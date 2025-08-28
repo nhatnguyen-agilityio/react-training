@@ -8,8 +8,8 @@ This document provides information about React Practice based on the React basic
 
 - Apply the knowledge learned about React basic and React advanced concepts
 - Build a web application that meets the requirements
-- Apply Tailwind CSS for build UI
-- Apply Shadnc/ui for build UI
+- Apply Tailwind CSS to build the UI
+- Apply Shadcn/ui to build the UI
 - Apply React Router to manage routing in the app
 - Apply React Hook Form for form validation and handling user input
 - Apply React Query for data fetching and caching

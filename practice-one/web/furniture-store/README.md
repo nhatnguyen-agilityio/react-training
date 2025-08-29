@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-This document provides information about React Practice based on the React basic [training plan](https://docs.google.com/document/d/13K5lz3l1q0oJstRi7BaKdwMVItpjZvyQ6vpUB0NWnY4/edit?tab=t.0), the React Advanced [training plan](https://docs.google.com/document/d/1DE6iPvsavnmNL736epd9nwoDnI9bGdScU2redCrAIEo/edit?tab=t.0), and this [design](https://www.figma.com/design/yxriCRTOLjK55nuWVU97so/Oasis---Modern---Contemporary-eCommerce-UI-KIt--Community-?node-id=2633-22295&t=Ns4xQZXkq9ffuZ2v-0). 
+This document provides information about React Practice based on the React basic [training plan](https://docs.google.com/document/d/13K5lz3l1q0oJstRi7BaKdwMVItpjZvyQ6vpUB0NWnY4/edit?tab=t.0), the React Advanced [training plan](https://docs.google.com/document/d/1DE6iPvsavnmNL736epd9nwoDnI9bGdScU2redCrAIEo/edit?tab=t.0), and this [design](https://www.figma.com/design/yxriCRTOLjK55nuWVU97so/Oasis---Modern---Contemporary-eCommerce-UI-KIt--Community-?node-id=2633-22295&t=Ns4xQZXkq9ffuZ2v-0).
 
 ## TARGETS
 
@@ -15,19 +15,19 @@ This document provides information about React Practice based on the React basic
 - Apply React Query for data fetching and caching
 - Apply unit test and storybook
 
-
 ## TECHNICAL
 
-- **React** 
-- **Type Script** 
+- **React**
+- **Type Script**
 - **TailwindCSS**
 - **Shadcn/ui**
 - **React Router**
 - **React Hook Form**
 - **TanStack Query**
-- **Storybook** 
-- **Jest** 
-- **React Testing Library** 
+- **Storybook**
+- **Jest**
+- **React Testing Library**
+
 ## TIMELINE
 
 - Estimate: 21 days (part-time, 4 hours per day, it can go faster if I don’t have project tasks)
@@ -58,4 +58,3 @@ This document provides information about React Practice based on the React basic
 7. Run the tests: `pnpm test`
 
 ## Deployment
-

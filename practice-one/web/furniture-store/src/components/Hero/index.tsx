@@ -11,9 +11,6 @@ const Hero = () => {
           luxury meets innovation in every piece for ultimate relaxation
         </p>
       </div>
-      {/* <div className="w-full md:h-38">
-      <Image src="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png" alt="banner" className="w-full h-full object-cover" />
-    </div> */}
       <div
         className="
         w-full h-59 md:h-100 lg:h-106 bg-center bg-cover

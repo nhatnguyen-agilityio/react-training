@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Cart from '../components/Cart';
 import GetStarted from '../components/GetStarted';
 import Hero from '../components/Hero';
+import Categories from '../components/Categories';
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
         <AlignJustify className="w-6 h-6 lg:hidden" />
       </header>
       <Hero />
+      <Categories />
     </>
   );
 };

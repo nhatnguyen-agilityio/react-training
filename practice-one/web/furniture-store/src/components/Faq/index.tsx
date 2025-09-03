@@ -34,7 +34,7 @@ const faqList = [
 
 const Faq = () => {
   return (
-    <div className="mt-15">
+    <div className="mt-15 container">
       <p className="text-left text-xl font-bold md:text-2xl lg:text-4xl">
         We have got the answers to your questions
       </p>

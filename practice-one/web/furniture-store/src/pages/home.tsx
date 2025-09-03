@@ -8,11 +8,12 @@ import Categories from '../components/Categories';
 import TopProducts from '../components/TopProducts';
 import ImageGallery from '../components/ImageGallery';
 import Faq from '../components/Faq';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
     <>
-      <header className="flex justify-between items-center">
+      <header className="flex justify-between items-center container">
         <h1>
           <Image
             src="https://ucarecdn.com/1394912f-7999-4eae-ad41-8f21805d50bd/branding.png"
@@ -33,6 +34,7 @@ const Home = () => {
       <TopProducts />
       <ImageGallery />
       <Faq />
+      <Footer />
     </>
   );
 };

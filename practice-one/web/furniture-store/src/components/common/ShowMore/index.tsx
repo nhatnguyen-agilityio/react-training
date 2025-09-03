@@ -1,4 +1,4 @@
-import { Button } from "../../ui/button";
+import { Button } from '../../ui/button';
 
 const ShowMore = () => {
   return (
@@ -11,6 +11,6 @@ const ShowMore = () => {
       </Button>
     </div>
   );
-}
+};
 
 export default ShowMore;

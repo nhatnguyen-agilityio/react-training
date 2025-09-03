@@ -1,0 +1,139 @@
+import { useState } from 'react';
+import Image from '../common/Image';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
+import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
+import { Progress } from '../ui/progress';
+import ShowMore from '../common/ShowMore';
+
+const buttonList = [
+  'All',
+  'Bedroom',
+  'Living Room',
+  'Kitchen',
+  'Workspace',
+  'Outdoor',
+  'Bathroom',
+  'Home office',
+  'Dinning room',
+];
+
+const images = [
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 10,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 5,
+    desktopSpan: 5,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 10,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 5,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 10,
+    desktopSpan: 5,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 5,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 10,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 5,
+    desktopSpan: 10,
+  },
+  {
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    mobileSpan: 10,
+    desktopSpan: 5,
+  },
+];
+
+const ImageGallery = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div className="mt-10">
+      <h2 className="font-bold text-xl text-left">
+        Design inspiration and modern home ideas
+      </h2>
+      <div className="mt-4">
+        <Carousel className="w-full">
+          <CarouselContent className="-ml-1">
+            {buttonList.map((item, index) => (
+              <CarouselItem key={index} className="pl-1 basis-auto">
+                <div className="p-1">
+                  <Button
+                    onClick={() => setActiveIndex(index)}
+                    variant={'outline'}
+                    className={`rounded-2xl hover:bg-gray-300 py-5 border-none transition-colors ${
+                      activeIndex === index
+                        ? 'bg-app-primary text-white hover:bg-app-primary hover:text-white'
+                        : 'bg-background-primary'
+                    }`}
+                  >
+                    {item}
+                  </Button>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+      <div className="mx-auto py-6">
+        <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 gap-3 auto-rows-[10px] md:hidden">
+          {images.slice(0, 8).map((img, i) => (
+            <Card
+              key={i}
+              className={`overflow-hidden rounded-none shadow-none border-none py-0`}
+            >
+              <img
+                src={img.src}
+                alt={`Gallery ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </Card>
+          ))}
+        </div>
+        <div className="hidden md:grid grid-cols-2 grid-rows-3 md:grid-cols-3 gap-4 auto-rows-[20px]">
+          {images.map((img, i) => (
+            <Card
+              key={i}
+              className={`overflow-hidden rounded-none border-none shadow-none py-0`}
+            >
+              <Image
+                src={img.src}
+                alt={`Gallery ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </Card>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8 md:w-1/2 mx-auto">
+        <p>Showing {images.length} of 100 results</p>
+        <Progress value={45} className="mt-6 h-1" />
+        <ShowMore />
+      </div>
+    </div>
+  );
+};
+
+export default ImageGallery;

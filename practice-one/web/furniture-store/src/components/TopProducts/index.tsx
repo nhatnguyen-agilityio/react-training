@@ -1,7 +1,7 @@
-import ShowMore from "../common/ShowMore";
-import FilterDropdown from "../FilterDropdown";
-import ProductItem from "../ProductItem";
-import { Progress } from "../ui/progress";
+import ShowMore from '../common/ShowMore';
+import FilterDropdown from '../FilterDropdown';
+import ProductItem from '../ProductItem';
+import { Progress } from '../ui/progress';
 
 const listProducts = [
   {
@@ -97,28 +97,30 @@ const listProducts = [
 ];
 
 const TopProducts = () => {
-  return <div className="mt-6">
-    <p className="text-left text-xl font-bold mb-4">Top Products</p>
-    <div className="flex justify-start">
-      <FilterDropdown />
+  return (
+    <div className="mt-6">
+      <p className="text-left text-xl font-bold mb-4">Top Products</p>
+      <div className="flex justify-start">
+        <FilterDropdown />
+      </div>
+      <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {listProducts.map((product) => (
+          <ProductItem
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            imageUrl={product.image.url}
+            imageAlt={product.image.alt}
+          />
+        ))}
+      </div>
+      <div className="mt-8 md:w-1/2 mx-auto">
+        <p>Showing {listProducts.length} of 100 results</p>
+        <Progress value={45} className="mt-6 h-1" />
+        <ShowMore />
+      </div>
     </div>
-    <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-      {listProducts.map(product => (
-        <ProductItem
-          key={product.id}
-          name={product.name}
-          price={product.price}
-          imageUrl={product.image.url}
-          imageAlt={product.image.alt}
-        />
-      ))}
-    </div>
-    <div className="mt-8">
-      <p>Showing {listProducts.length} of 100 results</p>
-      <Progress value={45} className="mt-6 h-1" />
-      <ShowMore />
-    </div>
-  </div>;
+  );
 };
 
 export default TopProducts;

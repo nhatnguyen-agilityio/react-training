@@ -5,6 +5,7 @@ import Cart from '../components/Cart';
 import GetStarted from '../components/GetStarted';
 import Hero from '../components/Hero';
 import Categories from '../components/Categories';
+import TopProducts from '../components/TopProducts';
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
       </header>
       <Hero />
       <Categories />
+      <TopProducts />
     </>
   );
 };

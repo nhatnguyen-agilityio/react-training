@@ -42,6 +42,7 @@ const Categories = () => {
       <div className="grid gap-6 md:grid-cols-2">
         {CategoriesList.map((category, index) => (
           <CategoryItem
+            key={category.id}
             name={category.name}
             imageUrl={category.image.url}
             imageAlt={category.image.alt}

@@ -17,7 +17,7 @@ const CategoryItem = ({
 }) => {
   return (
     <div
-      className={`bg-bg-primary w-full h-43 md:h-75 mb-6 md:mb-2 flex justify-between md:flex-col-reverse md:items-center lg:flex-row ${className}`}
+      className={`bg-background-primary w-full h-43 md:h-75 mb-2 flex justify-between md:flex-col-reverse md:items-center lg:flex-row ${className}`}
     >
       <div className="ml-7 md:ml-0 flex items-center md:flex-col">
         <p className="md:mt-2 text-xl font-semibold lg:text-4xl">{name}</p>

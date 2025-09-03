@@ -37,7 +37,7 @@ const CategoriesList = [
 
 const Categories = () => {
   return (
-    <div className="mt-6">
+    <div className="mt-6 container">
       <p className="text-left text-xl font-bold mb-2">Categories</p>
       <div className="grid gap-6 md:grid-cols-2">
         {CategoriesList.map((category, index) => (

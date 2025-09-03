@@ -98,7 +98,7 @@ const listProducts = [
 
 const TopProducts = () => {
   return (
-    <div className="mt-6">
+    <div className="mt-6 container">
       <p className="text-left text-xl font-bold mb-4">Top Products</p>
       <div className="flex justify-start">
         <FilterDropdown />

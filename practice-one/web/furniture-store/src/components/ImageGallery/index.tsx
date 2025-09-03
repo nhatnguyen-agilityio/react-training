@@ -70,7 +70,7 @@ const ImageGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 container">
       <h2 className="font-bold text-xl text-left">
         Design inspiration and modern home ideas
       </h2>

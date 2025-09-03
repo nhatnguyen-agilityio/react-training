@@ -1,0 +1,30 @@
+import { Button } from "../ui/button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "../ui/dropdown-menu";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+const FilterDropdown = () => {
+  const [position, setPosition] = useState("mostRecent")
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="w-48 p-6 rounded-3xl text-base">
+          {position === "mostRecent" ? "Most Recent" : position === "lowToHigh" ? "Price: Low to High" : "Price: High to Low"}
+          <ChevronDown className="ml-2 h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+          <DropdownMenuRadioItem value="mostRecent">Most Recent</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="lowToHigh">Price: Low to High</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="highToLow">Price: High to Low</DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
+export default FilterDropdown;

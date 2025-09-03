@@ -6,6 +6,7 @@ import GetStarted from '../components/GetStarted';
 import Hero from '../components/Hero';
 import Categories from '../components/Categories';
 import TopProducts from '../components/TopProducts';
+import ImageGallery from '../components/ImageGallery';
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
       <Hero />
       <Categories />
       <TopProducts />
+      <ImageGallery />
     </>
   );
 };

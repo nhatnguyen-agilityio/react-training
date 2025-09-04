@@ -67,7 +67,7 @@ const images = [
 const ImageGallery = () => {
   return (
     <div className="mt-10 container">
-      <h2 className="font-bold text-xl text-left">
+      <h2 className="font-bold text-xl md:text-4xl text-left">
         Design inspiration and modern home ideas
       </h2>
       <CategoryButtons buttonList={buttonList} />

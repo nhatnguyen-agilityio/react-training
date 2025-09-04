@@ -98,10 +98,14 @@ const listProducts = [
 
 const TopProducts = () => {
   return (
-    <div className="mt-6 container">
-      <p className="text-left text-xl font-bold mb-4">Top Products</p>
-      <div className="flex justify-start">
-        <FilterDropdown />
+    <div className="mt-6 md:mt-12 container">
+      <div className="flex flex-col md:flex-row md:justify-between">
+        <p className="text-left text-xl md:text-4xl font-bold mb-4 my-auto">
+          Top Products
+        </p>
+        <div className="flex justify-start">
+          <FilterDropdown />
+        </div>
       </div>
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
         {listProducts.map((product) => (

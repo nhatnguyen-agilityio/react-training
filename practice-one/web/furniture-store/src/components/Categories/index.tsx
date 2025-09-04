@@ -37,8 +37,10 @@ const CategoriesList = [
 
 const Categories = () => {
   return (
-    <div className="mt-6 container">
-      <p className="text-left text-xl font-bold mb-2">Categories</p>
+    <div className="mt-6 md:mt-12 container">
+      <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
+        Categories
+      </p>
       <div className="grid gap-6 md:grid-cols-2">
         {CategoriesList.map((category, index) => (
           <CategoryItem

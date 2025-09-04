@@ -16,6 +16,7 @@ import {
 } from '../components/ui/carousel';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
+import PeopleViewed from '../components/PeopleViewed';
 
 const colors = ['#E5E1D8', '#D1C4E9', '#FFCC80'];
 
@@ -152,6 +153,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <PeopleViewed />
     </div>
   );
 };

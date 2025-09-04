@@ -4,17 +4,19 @@ import Image from '../components/common/Image';
 import GetStarted from '../components/GetStarted';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Main = () => {
   return (
     <>
       <header className="flex justify-between items-center container">
         <h1>
-          <Image
-            src="https://ucarecdn.com/1394912f-7999-4eae-ad41-8f21805d50bd/branding.png"
-            alt="logo"
-          />
+          <Link to="/">
+            <Image
+              src="https://ucarecdn.com/1394912f-7999-4eae-ad41-8f21805d50bd/branding.png"
+              alt="logo"
+            />
+          </Link>
         </h1>
         <div className="hidden lg:block">
           <Navbar />

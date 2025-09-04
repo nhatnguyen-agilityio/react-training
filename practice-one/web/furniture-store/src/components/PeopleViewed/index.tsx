@@ -141,6 +141,8 @@ const PeopleViewed = () => {
             {listProducts.map((item, index) => (
               <CarouselItem key={index} className="basis-1/2 lg:basis-1/4">
                 <ProductItem
+                  key={item.id}
+                  id={item.id}
                   name={item.name}
                   price={item.price}
                   imageUrl={item.image.url}

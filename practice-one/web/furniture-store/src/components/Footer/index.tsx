@@ -64,7 +64,7 @@ const Footer = () => {
                 <ArrowUp className="size-6" />
               </Button>
               <p className="text-sm text-white font-light mt-14 opacity-50">
-                © 2023 — Copyright
+                © 2025 — Copyright
               </p>
             </div>
           </div>

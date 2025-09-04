@@ -19,6 +19,10 @@ const ProductItem = ({
   imageUrl: string;
   imageAlt: string;
 }) => {
+  console.log("🚀 ~ ProductItem ~ imageAlt:", imageAlt)
+  console.log("🚀 ~ ProductItem ~ imageUrl:", imageUrl)
+  console.log("🚀 ~ ProductItem ~ price:", price)
+  console.log("🚀 ~ ProductItem ~ name:", name)
   const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

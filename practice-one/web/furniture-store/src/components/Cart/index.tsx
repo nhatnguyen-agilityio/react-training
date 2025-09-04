@@ -1,8 +1,7 @@
 import { ShoppingCart } from 'lucide-react';
-import { useState } from 'react';
 
 const Cart = () => {
-  const [cartCount, setCartCount] = useState(3);
+  const cartCount = 3;
 
   return (
     <>

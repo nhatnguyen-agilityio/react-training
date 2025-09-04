@@ -10,6 +10,7 @@ import { Search } from 'lucide-react';
 import { Input } from '../components/ui/input';
 import CategoryButtons from '../components/CategoryButtons';
 import TopProducts from '../components/TopProducts';
+import PeopleViewed from '../components/PeopleViewed';
 
 const buttonList = [
   'All',
@@ -63,6 +64,7 @@ const Products = () => {
         <CategoryButtons buttonList={buttonList} />
       </div>
       <TopProducts />
+      <PeopleViewed />
     </>
   );
 };

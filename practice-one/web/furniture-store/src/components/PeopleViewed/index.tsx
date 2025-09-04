@@ -126,7 +126,7 @@ const PeopleViewed = () => {
 
   return (
     <div className="container my-12">
-      <Carousel setApi={setApi} className="w-full">
+      <Carousel setApi={(api) => setApi(api ?? null)} className="w-full">
         <div className="flex justify-between">
           <p className="text-xl md:text-2xl font-bold md:font-semibold">
             People Also Viewed

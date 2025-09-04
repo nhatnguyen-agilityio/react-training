@@ -6,7 +6,19 @@ import { Toaster } from '../ui/sonner';
 import { useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductItem = ({ id, name, price, imageUrl, imageAlt }: {id: number, name: string, price: number, imageUrl: string, imageAlt: string}) => {
+const ProductItem = ({
+  id,
+  name,
+  price,
+  imageUrl,
+  imageAlt,
+}: {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  imageAlt: string;
+}) => {
   const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();

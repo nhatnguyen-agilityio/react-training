@@ -3,6 +3,7 @@ import { lazy } from 'react';
 import './App.css';
 const Main = lazy(() => import('./pages/main'));
 const Home = lazy(() => import('./pages/home'));
+const Products = lazy(() => import('./pages/products'));
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />}>
           <Route index element={<Home />} />
-          <Route path="products" element={<h1>Products</h1>} />
+          <Route path="products" element={<Products />} />
         </Route>
       </Routes>
     </BrowserRouter>

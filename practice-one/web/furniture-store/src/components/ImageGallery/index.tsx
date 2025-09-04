@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import Image from '../common/Image';
-import { Button } from '../ui/button';
 import { Card } from '../ui/card';
-import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
 import { Progress } from '../ui/progress';
 import ShowMore from '../common/ShowMore';
+import CategoryButtons from '../CategoryButtons';
 
 const buttonList = [
   'All',
@@ -67,36 +65,12 @@ const images = [
 ];
 
 const ImageGallery = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <div className="mt-10 container">
       <h2 className="font-bold text-xl text-left">
         Design inspiration and modern home ideas
       </h2>
-      <div className="mt-4">
-        <Carousel className="w-full">
-          <CarouselContent className="-ml-1">
-            {buttonList.map((item, index) => (
-              <CarouselItem key={index} className="pl-1 basis-auto">
-                <div className="p-1">
-                  <Button
-                    onClick={() => setActiveIndex(index)}
-                    variant={'outline'}
-                    className={`rounded-2xl hover:bg-gray-300 py-5 border-none transition-colors ${
-                      activeIndex === index
-                        ? 'bg-app-primary text-white hover:bg-app-primary hover:text-white'
-                        : 'bg-background-primary'
-                    }`}
-                  >
-                    {item}
-                  </Button>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+      <CategoryButtons buttonList={buttonList} />
       <div className="mx-auto py-6">
         <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 gap-3 auto-rows-[10px] md:hidden">
           {images.slice(0, 8).map((img, i) => (

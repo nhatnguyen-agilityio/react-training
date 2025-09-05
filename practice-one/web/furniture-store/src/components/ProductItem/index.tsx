@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react';
 import Image from '../common/Image';
 import { Button } from '../ui/button';
 import { toast } from 'sonner';
-import { Toaster } from '../ui/sonner';
 import { useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 

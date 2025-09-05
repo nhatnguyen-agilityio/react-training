@@ -3,7 +3,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -42,7 +41,7 @@ const Sidebar = ({
               {title}
             </DrawerTitle>
           </DrawerHeader>
-          {children}
+          <div className="w-full md:w-1/2 md:mx-auto lg:w-3/5">{children}</div>
         </div>
       </DrawerContent>
     </Drawer>

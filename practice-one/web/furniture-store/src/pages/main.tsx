@@ -1,6 +1,6 @@
 import { AlignJustify } from 'lucide-react';
 import { Toaster } from '../components/ui/sonner';
-import Cart from '../components/Cart';
+import CartButton from '../components/CartButton';
 import Image from '../components/common/Image';
 import GetStarted from '../components/GetStarted';
 import Navbar from '../components/Navbar';
@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Login from '../components/Login';
+import Cart from '../components/Cart';
 
 const Main = () => {
   return (
@@ -25,7 +26,7 @@ const Main = () => {
           <Navbar />
         </div>
         <div className="hidden lg:flex">
-          <Cart />
+          <Sidebar button={<CartButton />} children={<Cart />} title="Cart" />
           <Sidebar button={<GetStarted />} children={<Login />} title="Login" />
         </div>
         <AlignJustify className="w-6 h-6 lg:hidden" />

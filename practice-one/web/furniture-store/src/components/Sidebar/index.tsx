@@ -25,9 +25,9 @@ const Sidebar = ({
       <DrawerTrigger asChild>{button}</DrawerTrigger>
       <DrawerContent
         data-vaul-drawer-direction="right"
-        className="w-full md:w-1/2 border-none"
+        className="w-full lg:w-1/2 border-none"
       >
-        <div className="mx-auto w-full ml-4">
+        <div className="mx-auto w-full ml-1 md:ml-3">
           <DrawerHeader className="!flex-row relative !items-center !justify-center my-5">
             <DrawerClose asChild>
               <Button
@@ -43,12 +43,6 @@ const Sidebar = ({
             </DrawerTitle>
           </DrawerHeader>
           {children}
-          <DrawerFooter>
-            <Button>Submit</Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
         </div>
       </DrawerContent>
     </Drawer>

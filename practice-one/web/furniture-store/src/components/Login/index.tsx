@@ -40,14 +40,16 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="w-full md:w-1/2 md:mx-auto lg:w-3/5">
       <div className=" w-1/3 mx-auto">
         <Image
           src="https://ucarecdn.com/e0cf545f-60e1-4fb0-bf22-e22c6198b08d/Nightstand101.png"
           alt="Accessories"
         />
       </div>
-      <p className="mt-4 text-center md:text-left md:ml-3 md:text-2xl text-lg font-semibold">Welcome back</p>
+      <p className="mt-4 text-center md:text-left md:ml-3 md:text-2xl text-lg font-semibold">
+        Welcome back
+      </p>
       <div className="ml-3 mr-4 mt-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
@@ -141,7 +143,7 @@ const Login = () => {
           title="Create an account"
         />
       </p>
-    </>
+    </div>
   );
 };
 

@@ -1,18 +1,22 @@
-import { ShoppingCart } from 'lucide-react';
+import { Button } from '../ui/button';
+import CartItem from './CartItem';
 
 const Cart = () => {
-  const cartCount = 3;
-
   return (
     <>
-      <button className="relative p-5 mr-5 bg-app-secondary rounded-full hover:bg-gray-200 transition">
-        <ShoppingCart className="w-6 h-6 text-app-primary" />
-        {cartCount > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-            {cartCount}
-          </span>
-        )}
-      </button>
+      <div className="px-2 flex flex-col items-center md:w-4/5 mx-auto lg:px-7">
+        <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
+        <CartItem />
+      </div>
+      <div className="sticky bottom-0 ">
+        <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
+          Next
+        </Button>
+      </div>
     </>
   );
 };

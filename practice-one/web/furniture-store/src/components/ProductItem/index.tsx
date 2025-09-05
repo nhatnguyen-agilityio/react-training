@@ -19,10 +19,10 @@ const ProductItem = ({
   imageUrl: string;
   imageAlt: string;
 }) => {
-  console.log("🚀 ~ ProductItem ~ imageAlt:", imageAlt)
-  console.log("🚀 ~ ProductItem ~ imageUrl:", imageUrl)
-  console.log("🚀 ~ ProductItem ~ price:", price)
-  console.log("🚀 ~ ProductItem ~ name:", name)
+  console.log('🚀 ~ ProductItem ~ imageAlt:', imageAlt);
+  console.log('🚀 ~ ProductItem ~ imageUrl:', imageUrl);
+  console.log('🚀 ~ ProductItem ~ price:', price);
+  console.log('🚀 ~ ProductItem ~ name:', name);
   const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -63,7 +63,6 @@ const ProductItem = ({
           <div className="w-7 h-7 mr-4 rounded-full bg-amber-400"></div>
           <div className="w-7 h-7 rounded-full bg-amber-400"></div>
         </div>
-        <Toaster />
       </Link>
     </div>
   );

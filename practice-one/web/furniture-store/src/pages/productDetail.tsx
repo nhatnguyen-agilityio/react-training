@@ -24,8 +24,8 @@ const ProductDetail = () => {
   const [selected, setSelected] = useState<number>(0);
 
   return (
-    <div className="container mt-12">
-      <Breadcrumb>
+    <div className="mt-12">
+      <Breadcrumb className="container">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Homepage</BreadcrumbLink>
@@ -46,7 +46,7 @@ const ProductDetail = () => {
       </Breadcrumb>
 
       {/* Images slide for mobile */}
-      <div className="grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7 mt-4 md:mt-8 grid">
+      <div className="container grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7 mt-4 md:mt-8 grid">
         <div className="flex justify-center mt-4 bg-background-primary py-4 md:hidden">
           <Carousel className="w-full max-w-xs">
             <CarouselContent>
@@ -123,7 +123,7 @@ const ProductDetail = () => {
                 </div>
               ))}
             </div>
-            <div className="h-12 w-12">
+            <div className="h-12 w-12 mr-4">
               <Input
                 type="number"
                 min={1}

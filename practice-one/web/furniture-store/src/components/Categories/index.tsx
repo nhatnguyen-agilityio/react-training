@@ -45,6 +45,7 @@ const Categories = () => {
         {CategoriesList.map((category, index) => (
           <CategoryItem
             key={category.id}
+            id={category.id}
             name={category.name}
             imageUrl={category.image.url}
             imageAlt={category.image.alt}

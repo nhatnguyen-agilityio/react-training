@@ -60,7 +60,10 @@ const Footer = () => {
               />
             </div>
             <div className="flex w-full flex-col items-end lg:justify-between">
-              <Button className="w-14 h-14 mt-10 lg:mt-0 rounded-full bg-background-primary text-black hover:bg-gray-300" onClick={() => window.scrollTo(0, 0)}>
+              <Button
+                className="w-14 h-14 mt-10 lg:mt-0 rounded-full bg-background-primary text-black hover:bg-gray-300"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <ArrowUp className="size-6" />
               </Button>
               <p className="text-sm text-white font-light mt-14 opacity-50">

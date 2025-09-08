@@ -1,3 +1,5 @@
+import Checkout from '../Checkout';
+import Sidebar from '../Sidebar';
 import { Button } from '../ui/button';
 import CartItem from './CartItem';
 
@@ -13,9 +15,15 @@ const Cart = () => {
         <CartItem />
       </div>
       <div className="sticky bottom-0 ">
-        <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-          Next
-        </Button>
+        <Sidebar
+          button={
+            <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
+              Next
+            </Button>
+          }
+          children={<Checkout />}
+          title="Checkout"
+        />
       </div>
     </>
   );

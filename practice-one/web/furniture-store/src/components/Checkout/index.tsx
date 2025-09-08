@@ -12,6 +12,7 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import Payment from '../Payment';
 
 const checkoutFormSchema = z.object({
   email: z
@@ -76,37 +77,101 @@ const Checkout = () => {
           />
         </p>
       </div>
-      <div>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
-            <div className="px-2 lg:px-7 md:w-3/5 md:mx-auto ml-3 mr-4 mt-6">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
+          <div className="px-2 lg:px-7 md:w-3/5 md:mx-auto ml-3 mr-4 mt-6">
+            <FormField
+              name="email"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Email"
+                      className="pl-5 h-15 rounded-3xl"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <p className="text-lg font-semibold mt-3 text-body-sub mb-4">
+              Shipping Address
+            </p>
+            <FormField
+              name="firstName"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-5">
+                  <FormControl>
+                    <Input
+                      placeholder="First Name"
+                      className="pl-5 h-15 rounded-3xl"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="lastName"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-5">
+                  <FormControl>
+                    <Input
+                      placeholder="Last Name"
+                      className="pl-5 h-15 rounded-3xl"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="phoneNumber"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-5">
+                  <FormControl>
+                    <Input
+                      placeholder="Phone Number"
+                      className="pl-5 h-15 rounded-3xl"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="address"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem className="mb-5">
+                  <FormControl>
+                    <Input
+                      placeholder="Address"
+                      className="pl-5 h-15 rounded-3xl"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="grid grid-cols-2 gap-4">
               <FormField
-                name="email"
+                name="city"
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
                       <Input
-                        placeholder="Email"
-                        className="pl-5 h-15 rounded-3xl"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <p className="text-lg font-semibold mt-3 text-body-sub mb-4">
-                Shipping Address
-              </p>
-              <FormField
-                name="firstName"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className="mb-5">
-                    <FormControl>
-                      <Input
-                        placeholder="First Name"
+                        placeholder="City"
                         className="pl-5 h-15 rounded-3xl"
                         {...field}
                       />
@@ -116,13 +181,13 @@ const Checkout = () => {
                 )}
               />
               <FormField
-                name="lastName"
+                name="country"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className="mb-5">
+                  <FormItem>
                     <FormControl>
                       <Input
-                        placeholder="Last Name"
+                        placeholder="Country"
                         className="pl-5 h-15 rounded-3xl"
                         {...field}
                       />
@@ -130,91 +195,25 @@ const Checkout = () => {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
-              <FormField
-                name="phoneNumber"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className="mb-5">
-                    <FormControl>
-                      <Input
-                        placeholder="Phone Number"
-                        className="pl-5 h-15 rounded-3xl"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="address"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className="mb-5">
-                    <FormControl>
-                      <Input
-                        placeholder="Address"
-                        className="pl-5 h-15 rounded-3xl"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-2 gap-4">
-                <FormField
-                  name="city"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="City"
-                          className="pl-5 h-15 rounded-3xl"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  name="country"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Country"
-                          className="pl-5 h-15 rounded-3xl"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
-            <div className="fixed bottom-0 left-0 right-0">
-              <Sidebar
-                button={
-                  <Button
-                    type="submit"
-                    className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
-                  >
-                    Next
-                  </Button>
-                }
-                children={<Checkout />}
-                title="Checkout"
               />
             </div>
-          </form>
-        </Form>
-      </div>
+          </div>
+          <div className="fixed bottom-0 left-0 right-0">
+            <Sidebar
+              button={
+                <Button
+                  type="submit"
+                  className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
+                >
+                  Proceed to payment
+                </Button>
+              }
+              children={<Payment />}
+              title="Payment"
+            />
+          </div>
+        </form>
+      </Form>
     </>
   );
 };

@@ -11,6 +11,7 @@ import { Input } from '../components/ui/input';
 import CategoryButtons from '../components/CategoryButtons';
 import TopProducts from '../components/TopProducts';
 import PeopleViewed from '../components/PeopleViewed';
+import { useSearchParams } from 'react-router-dom';
 
 const buttonList = [
   'All',
@@ -24,11 +25,14 @@ const buttonList = [
 ];
 
 const Products = () => {
+  const [searchParams] = useSearchParams();
+  const productTitle = searchParams.get('productTitle');
+
   return (
     <>
       <div className="container flex flex-col mt-15">
         <h2 className="text-2xl font-semibold mb-6 md:text-5xl md:font-bold">
-          Sitting Room
+          {productTitle ? productTitle : 'All Products'}
         </h2>
         <p className="text-sm font-light mb-6 md:px-1 md:text-lg">
           Transform your sitting room with our elegant and functional seating
@@ -40,14 +44,14 @@ const Products = () => {
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Components</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Sitting Room</BreadcrumbPage>
-              </BreadcrumbItem>
+              {productTitle && (
+                <>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{productTitle}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </>
+              )}
             </BreadcrumbList>
           </Breadcrumb>
         </div>

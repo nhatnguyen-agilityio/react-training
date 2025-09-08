@@ -1,14 +1,17 @@
 import { MoveRight } from 'lucide-react';
 import Image from '../../common/Image';
 import { Button } from '../../ui/button';
+import { Link } from 'react-router-dom';
 
 const CategoryItem = ({
+  id,
   name,
   imageUrl,
   imageAlt,
   className = '',
   imageClassName = '',
 }: {
+  id: number;
   name: string;
   imageUrl: string;
   imageAlt: string;
@@ -21,13 +24,15 @@ const CategoryItem = ({
     >
       <div className="ml-7 md:ml-0 flex items-center md:flex-col">
         <p className="md:mt-2 text-xl font-semibold lg:text-4xl">{name}</p>
-        <Button
-          variant="ghost"
-          className="hidden border-1 border-black rounded-4xl items-center hover:bg-gray-300 mt-4 w-32 p-5 md:flex"
-        >
-          Shop now
-          <MoveRight className="inline-block w-4 h-4 font-semibold" />
-        </Button>
+        <Link to={`/products?productId=${id}&productTitle=${name}`}>
+          <Button
+            variant="ghost"
+            className="hidden border-1 border-black rounded-4xl items-center hover:bg-gray-300 mt-4 w-32 p-5 md:flex"
+          >
+            Shop now
+            <MoveRight className="inline-block w-4 h-4 font-semibold" />
+          </Button>
+        </Link>
       </div>
       <div className={`w-1/2 py-2 md:py-0 ${imageClassName}`}>
         <Image

@@ -12,7 +12,6 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import Payment from '../Payment';
 
 const checkoutFormSchema = z.object({
   email: z
@@ -44,7 +43,7 @@ const checkoutFormSchema = z.object({
     .max(100, { message: 'Country must be at most 100 characters' }),
 });
 
-const Checkout = () => {
+const Checkout = ({ onNext }: { onNext: () => void }) => {
   const form = useForm<z.infer<typeof checkoutFormSchema>>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
@@ -60,6 +59,7 @@ const Checkout = () => {
 
   const handleSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
     console.log('Form submitted with data:', data);
+    onNext();
   };
 
   return (
@@ -199,18 +199,12 @@ const Checkout = () => {
             </div>
           </div>
           <div className="fixed bottom-0 left-0 right-0">
-            <Sidebar
-              button={
-                <Button
-                  type="submit"
-                  className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
-                >
-                  Proceed to payment
-                </Button>
-              }
-              children={<Payment />}
-              title="Payment"
-            />
+            <Button
+              type="submit"
+              className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
+            >
+              Proceed to payment
+            </Button>
           </div>
         </form>
       </Form>

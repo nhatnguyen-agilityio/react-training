@@ -9,8 +9,16 @@ import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Login from '../components/Login';
 import Cart from '../components/Cart';
+import { useState } from 'react';
+import Checkout from '../components/Checkout';
+import Payment from '../components/Payment';
+import OrderSuccess from '../components/OrderSuccess';
 
 const Main = () => {
+  const [step, setStep] = useState<
+    'closed' | 'cart' | 'checkout' | 'payment' | 'orderSuccess'
+  >('closed');
+
   return (
     <>
       <header className="flex justify-between items-center container">
@@ -26,7 +34,40 @@ const Main = () => {
           <Navbar />
         </div>
         <div className="hidden lg:flex">
-          <Sidebar button={<CartButton />} children={<Cart />} title="Cart" />
+          <Sidebar
+            open={step !== 'closed'}
+            onOpenChange={(open) => {
+              if (!open) setStep('closed');
+            }}
+            button={
+              <CartButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  setStep('cart');
+                }}
+              />
+            }
+            title={
+              step === 'cart'
+                ? 'Cart'
+                : step === 'checkout'
+                  ? 'Checkout'
+                  : step === 'payment'
+                    ? 'Payment'
+                    : ''
+            }
+          >
+            {step === 'cart' && <Cart onNext={() => setStep('checkout')} />}
+            {step === 'checkout' && (
+              <Checkout onNext={() => setStep('payment')} />
+            )}
+            {step === 'payment' && (
+              <Payment onNext={() => setStep('orderSuccess')} />
+            )}
+            {step === 'orderSuccess' && (
+              <OrderSuccess onBack={() => setStep('closed')} />
+            )}
+          </Sidebar>
           <Sidebar button={<GetStarted />} children={<Login />} title="Login" />
         </div>
         <AlignJustify className="w-6 h-6 lg:hidden" />

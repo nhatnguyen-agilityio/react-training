@@ -14,14 +14,18 @@ const Sidebar = ({
   button,
   children,
   title,
+  open,
+  onOpenChange,
 }: {
-  button: ReactElement;
+  button?: ReactElement;
   children: ReactNode;
   title?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }) => {
   return (
-    <Drawer>
-      <DrawerTrigger asChild>{button}</DrawerTrigger>
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      {button && <DrawerTrigger asChild>{button}</DrawerTrigger>}
       <DrawerContent
         data-vaul-drawer-direction="right"
         className="w-full lg:w-1/2 border-none overflow-y-auto overflow-x-hidden max-h-screen"

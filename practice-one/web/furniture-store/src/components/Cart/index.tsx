@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import Checkout from '../Checkout';
 import Image from '../common/Image';
 import Sidebar from '../Sidebar';
 import { Button } from '../ui/button';
 import CartItem from './CartItem';
 import Login from '../Login';
 
-const Cart = () => {
+const Cart = ({ onNext }: { onNext: () => void }) => {
   const cartItems = 6;
   const isLogin = true;
+
   return (
     <>
       <div className="px-2 flex flex-col items-center md:w-4/5 mx-auto lg:px-7">
@@ -57,15 +57,12 @@ const Cart = () => {
             <div
               className={`${cartItems < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
             >
-              <Sidebar
-                button={
-                  <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-                    Next
-                  </Button>
-                }
-                children={<Checkout />}
-                title="Checkout"
-              />
+              <Button
+                onClick={onNext}
+                className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
+              >
+                Next
+              </Button>
             </div>
           ) : (
             <div className="fixed bottom-0 left-0 right-0">

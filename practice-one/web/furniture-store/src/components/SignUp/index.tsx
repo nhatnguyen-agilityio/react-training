@@ -17,12 +17,21 @@ import Sidebar from '../Sidebar';
 import Login from '../Login';
 
 const loginFormSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
-  }),
-  password: z.string().min(8, {
-    message: 'Password must be at least 8 characters.',
-  }),
+  username: z
+    .string()
+    .min(8, { message: 'Username must be at least 8 characters.' })
+    .max(20, { message: 'Username must be at most 20 characters.' })
+    .regex(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d._@-]{2,20}$/,
+      'Username must include letters, numbers, and may contain . _ @ -',
+    ),
+  password: z
+    .string()
+    .min(8, { message: 'Password must be at least 8 characters.' })
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._@#$%^&*!?])[A-Za-z\d._@#$%^&*!?]{8,}$/,
+      'Password must include uppercase, lowercase, number, and special character',
+    ),
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: 'You must accept the terms and conditions.',
   }),
@@ -112,7 +121,7 @@ const SignUp = () => {
                         onCheckedChange={field.onChange}
                         ref={field.ref}
                         name={field.name}
-                        className="mt-1 h-6 w-6"
+                        className="mt-1 h-6 w-6 aria-[invalid=true]:border-input aria-[invalid=true]:ring-0"
                       />
                     </FormControl>
                     <FormLabel

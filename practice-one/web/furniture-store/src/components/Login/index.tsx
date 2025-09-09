@@ -35,16 +35,17 @@ const loginFormSchema = z.object({
     })
     .regex(
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d._@-]{2,20}$/,
-      "Username must include letters and numbers"
+      'Username must include letters and numbers',
     ),
-  password: z.string()
-  .min(8, {
-    message: 'Password must be at least 8 characters.',
-  })
-  .regex(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._@#$%^&*!?])[A-Za-z\d._@#$%^&*!?]{8,}$/,
-    "Password must include uppercase, lowercase, number, and special character"
-  ),
+  password: z
+    .string()
+    .min(8, {
+      message: 'Password must be at least 8 characters.',
+    })
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._@#$%^&*!?])[A-Za-z\d._@#$%^&*!?]{8,}$/,
+      'Password must include uppercase, lowercase, number, and special character',
+    ),
 });
 
 const Login = () => {

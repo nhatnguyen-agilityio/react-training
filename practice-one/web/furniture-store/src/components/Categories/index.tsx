@@ -1,48 +1,47 @@
+import { useMainCategories } from '../../hooks.ts/useMainCategories';
 import CategoryItem from './CategoryItem';
 
-const CategoriesList = [
-  {
-    id: 1,
-    name: 'Sitting Room',
-    image: {
-      url: 'https://ucarecdn.com/e46a35c3-adb1-49d2-a264-19aba2691c2a/sittingroom.png',
-      alt: 'Sitting Room',
-    },
-  },
-  {
-    id: 2,
-    name: 'Accessories',
-    image: {
-      url: 'https://ucarecdn.com/e0cf545f-60e1-4fb0-bf22-e22c6198b08d/Nightstand101.png',
-      alt: 'Accessories',
-    },
-  },
-  {
-    id: 3,
-    name: 'Kitchen',
-    image: {
-      url: 'https://ucarecdn.com/abd86426-3195-427b-99e4-35b7e6198dea/Nightstand1011.png',
-      alt: 'Kitchen',
-    },
-  },
-  {
-    id: 4,
-    name: 'Bedroom',
-    image: {
-      url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-      alt: 'Bedroom',
-    },
-  },
-];
+interface CategoryInterface {
+  id: number;
+  name: string;
+  image: {
+    url: string;
+    alt: string;
+  };
+}
 
 const Categories = () => {
+  const { data: categories, isPending, isError, error } = useMainCategories();
+
+  if (isPending) {
+    return (
+      <div className="mt-6 md:mt-12 container">
+        <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
+          Categories
+        </p>
+        <p>Loading categories...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="mt-6 md:mt-12 container">
+        <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
+          Categories
+        </p>
+        <p className="text-red-500">Error: {error.message}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-6 md:mt-12 container">
       <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
         Categories
       </p>
       <div className="grid gap-6 md:grid-cols-2">
-        {CategoriesList.map((category, index) => (
+        {categories.map((category: CategoryInterface, index: number) => (
           <CategoryItem
             key={category.id}
             id={category.id}
@@ -50,12 +49,12 @@ const Categories = () => {
             imageUrl={category.image.url}
             imageAlt={category.image.alt}
             className={
-              index === 0 || index === CategoriesList.length - 1
+              index === 0 || index === categories.length - 1
                 ? 'md:col-span-2 md:flex-row md:justify-between md:pl-10'
                 : 'md:justify-center lg:justify-around lg:items-end lg:pb-8'
             }
             imageClassName={
-              index === 0 || index === CategoriesList.length - 1
+              index === 0 || index === categories.length - 1
                 ? 'md:w-auto md:h-full'
                 : 'md:w-38 lg:w-52'
             }

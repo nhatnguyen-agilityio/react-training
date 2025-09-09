@@ -1,6 +1,4 @@
 import z from 'zod';
-import Login from '../Login';
-import Sidebar from '../Sidebar';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -19,31 +17,63 @@ const checkoutFormSchema = z.object({
     .min(1, { message: 'Email is required' }),
   firstName: z
     .string()
+    .trim()
     .min(1, { message: 'First name is required' })
-    .max(50, { message: 'First name must be at most 50 characters' }),
+    .max(50, { message: 'First name must be at most 50 characters' })
+    .regex(/^[a-zA-ZÀ-ỹ' -]+$/, {
+      message:
+        'First name can only contain letters, spaces, apostrophes, or hyphens',
+    }),
   lastName: z
     .string()
+    .trim()
     .min(1, { message: 'Last name is required' })
-    .max(50, { message: 'Last name must be at most 50 characters' }),
+    .max(50, { message: 'Last name must be at most 50 characters' })
+    .regex(/^[a-zA-ZÀ-ỹ' -]+$/, {
+      message:
+        'Last name can only contain letters, spaces, apostrophes, or hyphens',
+    }),
   phoneNumber: z
     .string()
+    .trim()
     .min(1, { message: 'Phone number is required' })
-    .regex(/^[0-9]{8,15}$/, { message: 'Phone number must be 8–15 digits' }),
+    .regex(/^\+?[0-9]{8,15}$/, {
+      message: 'Phone number must be 8–15 digits and may start with +',
+    }),
   address: z
     .string()
+    .trim()
     .min(1, { message: 'Address is required' })
-    .max(200, { message: 'Address must be at most 200 characters' }),
+    .max(200, { message: 'Address must be at most 200 characters' })
+    .regex(/^[a-zA-Z0-9À-ỹ\s,.'-/#]+$/, {
+      message: 'Address contains invalid characters',
+    }),
   city: z
     .string()
+    .trim()
     .min(1, { message: 'City is required' })
-    .max(100, { message: 'City must be at most 100 characters' }),
+    .max(100, { message: 'City must be at most 100 characters' })
+    .regex(/^[a-zA-ZÀ-ỹ\s.'-]+$/, {
+      message: 'City can only contain letters, spaces, apostrophes, or hyphens',
+    }),
   country: z
     .string()
+    .trim()
     .min(1, { message: 'Country is required' })
-    .max(100, { message: 'Country must be at most 100 characters' }),
+    .max(100, { message: 'Country must be at most 100 characters' })
+    .regex(/^[a-zA-ZÀ-ỹ\s.'-]+$/, {
+      message:
+        'Country can only contain letters, spaces, apostrophes, or hyphens',
+    }),
 });
 
-const Checkout = ({ onNext }: { onNext: () => void }) => {
+const Checkout = ({
+  onNext,
+  onLogin,
+}: {
+  onNext: () => void;
+  onLogin: () => void;
+}) => {
   const form = useForm<z.infer<typeof checkoutFormSchema>>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
@@ -70,11 +100,9 @@ const Checkout = ({ onNext }: { onNext: () => void }) => {
         </p>
         <p className="text-body-sub mt-1">
           Have an account?{' '}
-          <Sidebar
-            button={<span className="text-app-primary">Login</span>}
-            children={<Login />}
-            title="Login"
-          />
+          <span onClick={onLogin} className="text-app-primary">
+            Login
+          </span>
         </p>
       </div>
       <Form {...form}>
@@ -138,6 +166,7 @@ const Checkout = ({ onNext }: { onNext: () => void }) => {
                 <FormItem className="mb-5">
                   <FormControl>
                     <Input
+                      type="number"
                       placeholder="Phone Number"
                       className="pl-5 h-15 rounded-3xl"
                       {...field}

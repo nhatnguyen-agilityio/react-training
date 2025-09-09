@@ -13,8 +13,6 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Image from '../common/Image';
 import { Checkbox } from '../ui/checkbox';
-import Sidebar from '../Sidebar';
-import Login from '../Login';
 
 const loginFormSchema = z.object({
   username: z
@@ -37,7 +35,7 @@ const loginFormSchema = z.object({
   }),
 });
 
-const SignUp = () => {
+const SignUp = ({ onNext }: { onNext: () => void }) => {
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -158,15 +156,12 @@ const SignUp = () => {
         </Form>
         <p className="text-center mt-6 text-lg font-normal">
           Already have an account?{' '}
-          <Sidebar
-            button={
-              <span className="text-app-primary hover:underline hover:underline-offset-1">
-                Login
-              </span>
-            }
-            children={<Login />}
-            title="Create an account"
-          />
+          <span
+            onClick={onNext}
+            className="text-app-primary hover:underline hover:underline-offset-1"
+          >
+            Login
+          </span>
         </p>
       </div>
     </div>

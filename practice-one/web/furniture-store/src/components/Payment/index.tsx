@@ -17,6 +17,8 @@ const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
   let shouldDouble = false;
 
+  // ex: 378282246310005
+
   // Remove spaces/dashes
   const digits = cardNumber.replace(/[\s-]/g, '');
 
@@ -124,9 +126,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
                     {...field}
                   />
                 </FormControl>
-                <div className="min-h-5">
-                  <FormMessage />
-                </div>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -144,9 +144,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
                       {...field}
                     />
                   </FormControl>
-                  <div className="min-h-5">
-                    <FormMessage />
-                  </div>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -163,9 +161,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
                       {...field}
                     />
                   </FormControl>
-                  <div className="min-h-5">
-                    <FormMessage />
-                  </div>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -183,9 +179,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
                     {...field}
                   />
                 </FormControl>
-                <div className="min-h-5">
-                  <FormMessage />
-                </div>
+                <FormMessage />
               </FormItem>
             )}
           />

@@ -1,7 +1,7 @@
 import Image from '../common/Image';
 import { Button } from '../ui/button';
 
-const OrderSuccess = () => {
+const OrderSuccess = ({ onBack }: { onBack: () => void }) => {
   return (
     <div className="px-2 lg:px-7 md:w-3/5 lg:w-4/5 md:mx-auto ml-3 mr-4 mt-6 flex flex-col items-center">
       <div className="w-2/5 h-2/5">
@@ -20,7 +20,10 @@ const OrderSuccess = () => {
           way and will be with you soon. Get ready to transform your space!
         </p>
       </div>
-      <Button className="h-12 mt-20 w-full bg-app-primary rounded-3xl font-semibold hover:bg-app-tertiary">
+      <Button
+        onClick={onBack}
+        className="h-12 mt-20 w-full bg-app-primary rounded-3xl font-semibold hover:bg-app-tertiary"
+      >
         Done
       </Button>
     </div>

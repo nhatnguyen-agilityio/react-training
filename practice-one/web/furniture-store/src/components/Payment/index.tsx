@@ -1,33 +1,68 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '../ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '../ui/form';
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
-import Sidebar from '../Sidebar';
 import { Button } from '../ui/button';
-import OrderSuccess from '../OrderSuccess';
+
+const cardNumberCheck = (cardNumber: string) => {
+  let sum = 0;
+  let shouldDouble = false;
+
+  // Remove spaces/dashes
+  const digits = cardNumber.replace(/[\s-]/g, '');
+
+  // Process digits from right to left
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let digit = parseInt(digits[i], 10);
+
+    if (shouldDouble) {
+      digit *= 2;
+      if (digit > 9) digit -= 9;
+    }
+
+    sum += digit;
+    shouldDouble = !shouldDouble;
+  }
+
+  return sum % 10 === 0;
+};
 
 const paymentFormSchema = z.object({
   name: z
     .string()
-    .min(1, { message: 'Cardholder name is required' })
-    .max(100, { message: 'Name must be at most 100 characters' }),
+    .min(2, { message: 'Cardholder name is required' })
+    .max(100, { message: 'Name must be at most 100 characters' })
+    .regex(/^[A-Za-z\s]+$/, {
+      message: 'Name can only contain letters and spaces',
+    }),
 
   cardNumber: z
     .string()
-    .min(1, { message: 'Card number is required' })
-    .regex(/^[0-9]{16}$/, { message: 'Card number must be 16 digits' }),
+    .min(13, { message: 'Card number must be at least 13 digits' })
+    .max(19, { message: 'Card number must be at most 19 digits' })
+    .regex(/^[0-9\s-]+$/, {
+      message: 'Card number can only contain digits, spaces, or dashes',
+    })
+    .refine((val) => cardNumberCheck(val), {
+      message: 'Invalid card number',
+    }),
 
   cvv: z
     .string()
-    .min(1, { message: 'CVV is required' })
     .regex(/^[0-9]{3,4}$/, { message: 'CVV must be 3 or 4 digits' }),
 
   expirationDate: z
     .string()
-    .min(1, { message: 'Expiration date is required' })
-    .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2}|[0-9]{4})$/, {
+    .regex(/^(0[1-9]|1[0-2])\/([0-9]{2}|[0-9]{4})$/, {
       message: 'Expiration date must be MM/YY or MM/YYYY',
     })
     .refine(
@@ -50,16 +85,11 @@ const paymentFormSchema = z.object({
       },
       { message: 'Card has expired' },
     ),
-  useShippingAddress: z.boolean({
-    message: 'You must specify if using shipping address',
-  }),
-
-  rememberMe: z.boolean({
-    message: 'You must specify if you want to be remembered',
-  }),
+  useShippingAddress: z.boolean(),
+  rememberMe: z.boolean(),
 });
 
-const Payment = () => {
+const Payment = ({ onNext }: { onNext: () => void }) => {
   const form = useForm<z.infer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
     defaultValues: {
@@ -74,6 +104,7 @@ const Payment = () => {
 
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
     console.log(data);
+    onNext();
   };
 
   return (
@@ -93,6 +124,9 @@ const Payment = () => {
                     {...field}
                   />
                 </FormControl>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
@@ -110,6 +144,9 @@ const Payment = () => {
                       {...field}
                     />
                   </FormControl>
+                  <div className="min-h-5">
+                    <FormMessage />
+                  </div>
                 </FormItem>
               )}
             />
@@ -126,6 +163,9 @@ const Payment = () => {
                       {...field}
                     />
                   </FormControl>
+                  <div className="min-h-5">
+                    <FormMessage />
+                  </div>
                 </FormItem>
               )}
             />
@@ -143,6 +183,9 @@ const Payment = () => {
                     {...field}
                   />
                 </FormControl>
+                <div className="min-h-5">
+                  <FormMessage />
+                </div>
               </FormItem>
             )}
           />
@@ -197,18 +240,15 @@ const Payment = () => {
           </div>
         </div>
         <div className="fixed bottom-0 left-0 right-0">
-          <Sidebar
-            button={
-              <Button
-                type="submit"
-                className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
-              >
-                Pay Now
-              </Button>
-            }
-            children={<OrderSuccess />}
-            title=""
-          />
+          <div className="fixed bottom-0 left-0 right-0">
+            <Button
+              type="submit"
+              className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? 'Processing...' : 'Pay Now'}
+            </Button>
+          </div>
         </div>
       </form>
     </Form>

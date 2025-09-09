@@ -13,10 +13,17 @@ import { useState } from 'react';
 import Checkout from '../components/Checkout';
 import Payment from '../components/Payment';
 import OrderSuccess from '../components/OrderSuccess';
+import SignUp from '../components/SignUp';
 
 const Main = () => {
   const [step, setStep] = useState<
-    'closed' | 'cart' | 'checkout' | 'payment' | 'orderSuccess'
+    | 'closed'
+    | 'cart'
+    | 'checkout'
+    | 'payment'
+    | 'orderSuccess'
+    | 'login'
+    | 'signup'
   >('closed');
 
   return (
@@ -40,12 +47,20 @@ const Main = () => {
               if (!open) setStep('closed');
             }}
             button={
-              <CartButton
-                onClick={(e) => {
-                  e.preventDefault();
-                  setStep('cart');
-                }}
-              />
+              <>
+                <CartButton
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setStep('cart');
+                  }}
+                />
+                <GetStarted
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setStep('login');
+                  }}
+                />
+              </>
             }
             title={
               step === 'cart'
@@ -57,9 +72,17 @@ const Main = () => {
                     : ''
             }
           >
-            {step === 'cart' && <Cart onNext={() => setStep('checkout')} />}
+            {step === 'cart' && (
+              <Cart
+                onNext={() => setStep('checkout')}
+                onLogin={() => setStep('login')}
+              />
+            )}
             {step === 'checkout' && (
-              <Checkout onNext={() => setStep('payment')} />
+              <Checkout
+                onNext={() => setStep('payment')}
+                onLogin={() => setStep('login')}
+              />
             )}
             {step === 'payment' && (
               <Payment onNext={() => setStep('orderSuccess')} />
@@ -67,8 +90,9 @@ const Main = () => {
             {step === 'orderSuccess' && (
               <OrderSuccess onBack={() => setStep('closed')} />
             )}
+            {step === 'login' && <Login onNext={() => setStep('signup')} />}
+            {step === 'signup' && <SignUp onNext={() => setStep('login')} />}
           </Sidebar>
-          <Sidebar button={<GetStarted />} children={<Login />} title="Login" />
         </div>
         <AlignJustify className="w-6 h-6 lg:hidden" />
       </header>

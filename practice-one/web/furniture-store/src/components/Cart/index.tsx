@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
 import Image from '../common/Image';
-import Sidebar from '../Sidebar';
 import { Button } from '../ui/button';
 import CartItem from './CartItem';
-import Login from '../Login';
 
-const Cart = ({ onNext }: { onNext: () => void }) => {
+const Cart = ({
+  onNext,
+  onLogin,
+}: {
+  onNext: () => void;
+  onLogin: () => void;
+}) => {
   const cartItems = 6;
   const isLogin = true;
+
+  console.log('come to this component');
 
   return (
     <>
@@ -76,15 +82,12 @@ const Cart = ({ onNext }: { onNext: () => void }) => {
         </>
       ) : (
         <div className="fixed bottom-0 left-0 right-0">
-          <Sidebar
-            button={
-              <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-                Login
-              </Button>
-            }
-            children={<Login />}
-            title="Login"
-          />
+          <Button
+            onClick={onLogin}
+            className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary"
+          >
+            Login
+          </Button>
         </div>
       )}
     </>

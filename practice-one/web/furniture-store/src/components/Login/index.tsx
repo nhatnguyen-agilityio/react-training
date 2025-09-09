@@ -14,8 +14,6 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
-import Sidebar from '../Sidebar';
-import SignUp from '../SignUp';
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -48,7 +46,7 @@ const loginFormSchema = z.object({
     ),
 });
 
-const Login = () => {
+const Login = ({ onNext }: { onNext: () => void }) => {
   const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -159,15 +157,12 @@ const Login = () => {
         </div>
         <p className="text-center mt-6 text-lg font-normal">
           First time here?{' '}
-          <Sidebar
-            button={
-              <span className="text-app-primary hover:underline hover:underline-offset-1">
-                Create an account
-              </span>
-            }
-            children={<SignUp />}
-            title="Create an account"
-          />
+          <span
+            onClick={onNext}
+            className="text-app-primary hover:underline hover:underline-offset-1"
+          >
+            Create an account
+          </span>
         </p>
       </div>
       <AlertDialog open={open} onOpenChange={setOpen}>

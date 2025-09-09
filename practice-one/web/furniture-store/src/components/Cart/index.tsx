@@ -38,43 +38,47 @@ const Cart = () => {
           </>
         ) : (
           <>
-            <div className = "mt-15 text-center text-2xl">
+            <div className="mt-15 text-center text-2xl">
               <p>Your need login to see your cart</p>
-            <div className="mt-5 w-3/5 h-3/5 mx-auto">
-              <Image
-                src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png"
-                alt="Squircle"
-                className="w-full h-full object-contain"
-              />
+              <div className="mt-5 w-3/5 h-3/5 mx-auto">
+                <Image
+                  src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png"
+                  alt="Squircle"
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
-          </div >
           </>
         )}
       </div>
-      {isLogin ? (<>
-        {cartItems > 0 ? (
-          <div className={`${cartItems < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}>
-            <Sidebar
-              button={
+      {isLogin ? (
+        <>
+          {cartItems > 0 ? (
+            <div
+              className={`${cartItems < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
+            >
+              <Sidebar
+                button={
+                  <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
+                    Next
+                  </Button>
+                }
+                children={<Checkout />}
+                title="Checkout"
+              />
+            </div>
+          ) : (
+            <div className="fixed bottom-0 left-0 right-0">
+              <Link to="/products">
                 <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-                  Next
+                  SHOP ALL
                 </Button>
-              }
-              children={<Checkout />}
-              title="Checkout"
-            />
-          </div>
-        ) : (
-          <div className="fixed bottom-0 left-0 right-0">
-            <Link to="/products">
-              <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-                SHOP ALL
-              </Button>
-            </Link>
-          </div>
-        )}
-      </>) : (
-          <div className="fixed bottom-0 left-0 right-0">
+              </Link>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="fixed bottom-0 left-0 right-0">
           <Sidebar
             button={
               <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">

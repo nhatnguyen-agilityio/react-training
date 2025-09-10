@@ -1,4 +1,5 @@
 import { useMainCategories } from '../../hooks.ts/useMainCategories';
+import { Skeleton } from '../ui/skeleton';
 import CategoryItem from './CategoryItem';
 
 interface CategoryInterface {
@@ -14,12 +15,43 @@ const Categories = () => {
   const { data: categories, isPending, isError, error } = useMainCategories();
 
   if (isPending) {
+    const fakeMainCategoriesItems = Array.from({ length: 4 });
+
     return (
       <div className="mt-6 md:mt-12 container">
         <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
           Categories
         </p>
-        <p>Loading categories...</p>
+        <div className="grid gap-6 md:grid-cols-2">
+          {fakeMainCategoriesItems.map((_, index) => {
+            const isLarge =
+              index === 0 || index === fakeMainCategoriesItems.length - 1;
+            return (
+              <div
+                key={index}
+                className={`flex justify-between gap-4 h-43 md:h-75 p-4 rounded-xl bg-muted/30
+                  ${
+                    isLarge
+                      ? 'md:col-span-2 md:items-center'
+                      : 'md:flex-col-reverse md:items-center md:justify-around lg:justify-between lg:items-end lg:flex-row lg:pb-8'
+                  }
+                `}
+              >
+                <div
+                  className={`flex w-1/2 ${isLarge ? 'md:w-2/5 md:ml-4 items-center lg:items-start' : 'md:w-3/5 items-center'}  md:flex-col`}
+                >
+                  <Skeleton className="h-6 w-full md:w-2/3" />
+                  <Skeleton className="h-10 rounded-3xl w-full hidden md:block mt-4 md:w-2/3" />
+                </div>
+                <Skeleton
+                  className={`rounded-xl w-1/2 py-2 md:py-0
+                    ${isLarge ? 'h-32 md:h-64 md:w-3/5' : 'h-32 md:w-38 lg:w-52'}
+                  `}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

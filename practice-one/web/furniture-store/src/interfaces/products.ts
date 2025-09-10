@@ -7,7 +7,6 @@ interface ProductVariant {
   id: number;
   hex: string;
   size: string;
-  price: number;
   stock: number;
   images: ProductImage[];
 }
@@ -15,5 +14,6 @@ interface ProductVariant {
 export interface ProductInterface {
   id: number;
   name: string;
+  price: number;
   variants: ProductVariant[];
 }

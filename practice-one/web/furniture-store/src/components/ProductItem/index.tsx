@@ -18,10 +18,6 @@ const ProductItem = ({
   imageUrl: string;
   imageAlt: string;
 }) => {
-  console.log('🚀 ~ ProductItem ~ imageAlt:', imageAlt);
-  console.log('🚀 ~ ProductItem ~ imageUrl:', imageUrl);
-  console.log('🚀 ~ ProductItem ~ price:', price);
-  console.log('🚀 ~ ProductItem ~ name:', name);
   const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -41,8 +37,8 @@ const ProductItem = ({
       <Link to={`/products/${id}`}>
         <div className="bg-background-primary min-h-48 md:min-h-78 flex items-center relative group">
           <Image
-            src="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
-            alt="product"
+            src={imageUrl}
+            alt={imageAlt}
             className="w-3/5 h-3/5 object-contain mx-auto"
           />
           <Button
@@ -55,8 +51,8 @@ const ProductItem = ({
           </Button>
         </div>
         <div className="flex justify-between items-center my-2 font-bold">
-          <p className="line-clamp-1 text-left">Modern Nightstand</p>
-          <p className="px-4 py-1 bg-background-primary rounded-2xl">$225</p>
+          <p className="line-clamp-1 text-left">{name}</p>
+          <p className="px-4 py-1 bg-background-primary rounded-2xl">{`$${price}`}</p>
         </div>
         <div className="flex">
           <div className="w-7 h-7 mr-4 rounded-full bg-amber-400"></div>

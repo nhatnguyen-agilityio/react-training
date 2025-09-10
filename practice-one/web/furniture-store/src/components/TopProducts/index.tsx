@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { GetProductsInfinite } from '../../apis/products';
 import type { ProductInterface } from '../../interfaces/products';
 import ShowMore from '../common/ShowMore';
@@ -9,6 +9,8 @@ import { Skeleton } from '../ui/skeleton';
 import { Loader2 } from 'lucide-react';
 
 const TopProducts = () => {
+  const [position, setPosition] = useState('mostRecent');
+
   const pageSize = 20;
   const {
     data,
@@ -18,7 +20,7 @@ const TopProducts = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = GetProductsInfinite(pageSize);
+  } = GetProductsInfinite(pageSize, position);
 
   const items: ProductInterface[] = useMemo(() => {
     return data?.pages?.flat?.() ?? [];
@@ -69,7 +71,7 @@ const TopProducts = () => {
     return (
       <div className="mt-6 md:mt-12 container">
         <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
-          Categories
+          Products
         </p>
         <p className="text-red-500">Error: {error.message}</p>
       </div>
@@ -83,20 +85,26 @@ const TopProducts = () => {
           Top Products
         </p>
         <div className="flex justify-start">
-          <FilterDropdown />
+          <FilterDropdown position={position} setPosition={setPosition} />
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-        {items.map((product: ProductInterface) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            price={product.variants[0].price}
-            imageUrl={product.variants[0].images[0].url}
-            imageAlt={product.variants[0].images[0].alt}
-          />
-        ))}
+        {items.map((product: ProductInterface) => {
+          const firstVariant = product.variants && product.variants[0];
+          const firstImage =
+            firstVariant && firstVariant.images && firstVariant.images[0];
+          if (!firstVariant || !firstImage) return null;
+          return (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              imageUrl={firstImage.url}
+              imageAlt={firstImage.alt}
+            />
+          );
+        })}
       </div>
       <div className="mt-8 md:w-1/2 mx-auto">
         <p>Showing {items.length} of 100 results</p>

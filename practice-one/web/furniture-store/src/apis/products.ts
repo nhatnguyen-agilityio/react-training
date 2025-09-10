@@ -4,10 +4,17 @@ import { API_ROUTES } from '../constants/api-routers';
 import { API_ENDPOINT } from '../constants/env-variables';
 import { QUERY_KEY } from '../constants/query-keys';
 
-const fetchProducts = async (start = 0, end = 20) => {
+const fetchProducts = async (
+  start = 0,
+  end = 20,
+  sortBy = 'createdAt',
+  order: 'asc' | 'desc' = 'desc',
+) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}`);
   url.searchParams.set('_start', String(start));
   url.searchParams.set('_end', String(end));
+  url.searchParams.set('_sort', String(sortBy));
+  url.searchParams.set('_order', String(order));
   const res = await fetch(url.toString());
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -17,7 +24,7 @@ const fetchProducts = async (start = 0, end = 20) => {
 
 export const GetProducts = (start = 0, end = 20, enabled = true) => {
   return useQuery({
-    queryKey: [QUERY_KEY.PRODUCTS, start, end],
+    queryKey: QUERY_KEY.PRODUCTS(start, end),
     queryFn: () => fetchProducts(start, end),
     enabled,
     staleTime: 1000 * 60 * 5,
@@ -25,16 +32,40 @@ export const GetProducts = (start = 0, end = 20, enabled = true) => {
   });
 };
 
-const fetchProductsPage = async (pageIndex = 0, pageSize = 20) => {
-  const start = pageIndex * pageSize;
-  const end = start + pageSize;
-  return fetchProducts(start, end);
+const mapSort = (
+  position: string,
+): { sortBy: 'createdAt' | 'price'; order: 'asc' | 'desc' } => {
+  switch (position) {
+    case 'lowToHigh':
+      return { sortBy: 'price', order: 'asc' };
+    case 'highToLow':
+      return { sortBy: 'price', order: 'desc' };
+    case 'mostRecent':
+    default:
+      return { sortBy: 'createdAt', order: 'desc' };
+  }
 };
 
-export const GetProductsInfinite = (pageSize = 20, enabled = true) => {
+const fetchProductsPage = async (
+  pageIndex = 0,
+  pageSize = 20,
+  position = 'mostRecent',
+) => {
+  const start = pageIndex * pageSize;
+  const end = start + pageSize;
+  const { sortBy, order } = mapSort(position);
+  return fetchProducts(start, end, sortBy, order);
+};
+
+export const GetProductsInfinite = (
+  pageSize = 20,
+  position = 'mostRecent',
+  enabled = true,
+) => {
   return useInfiniteQuery({
-    queryKey: [QUERY_KEY.PRODUCTS, 'infinite', pageSize],
-    queryFn: ({ pageParam = 0 }) => fetchProductsPage(pageParam, pageSize),
+    queryKey: QUERY_KEY.PRODUCTS_INFINITE(pageSize, position),
+    queryFn: ({ pageParam = 0 }) =>
+      fetchProductsPage(pageParam, pageSize, position),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       return Array.isArray(lastPage) && lastPage.length === pageSize

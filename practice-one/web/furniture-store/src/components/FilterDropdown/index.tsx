@@ -8,12 +8,15 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
 } from '../ui/dropdown-menu';
-import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-const FilterDropdown = () => {
-  const [position, setPosition] = useState('mostRecent');
-
+const FilterDropdown = ({
+  position,
+  setPosition,
+}: {
+  position: string;
+  setPosition: (value: string) => void;
+}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,7 +30,7 @@ const FilterDropdown = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuLabel>Sort By</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
           <DropdownMenuRadioItem value="mostRecent">

@@ -76,7 +76,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-09-09T11:26:39.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -91,17 +92,8 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
                             "alt": "Modern Sofa"
@@ -113,17 +105,8 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
                             "alt": "Modern Sofa"
@@ -135,10 +118,11 @@
         {
             "id": 2,
             "name": "Golden Table Lamp",
-            "description": "Luxury bedside lamp with warm LED light.",
+            "description": "Luxury bedside lamp with warm LED lighting.",
             "mainCategoryId": 4,
             "subCategoryId": 5,
-            "basePrice": 199.99,
+            "price": 199.99,
+            "createdAt": "2024-12-19T11:26:39.000Z",
             "rating": {
                 "average": 4.2,
                 "count": 32
@@ -152,73 +136,43 @@
                     "id": 201,
                     "color": "Gold",
                     "hex": "#D4AF37",
-                    "price": 199.99,
                     "stock": 12,
                     "images": [
-                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Golden Lamp"
+                        }
                     ]
                 }
             ]
         },
         {
             "id": 3,
-            "name": "Modern Sofa",
-            "description": "A comfortable gray sofa with a contemporary design.",
-            "mainCategoryId": 1,
-            "subCategoryId": 1,
-            "basePrice": 799.99,
+            "name": "Scandinavian Coffee Table",
+            "description": "Minimalist wooden coffee table with a natural oak finish.",
+            "mainCategoryId": 2,
+            "subCategoryId": 3,
+            "price": 299.99,
+            "createdAt": "2025-01-05T14:15:00.000Z",
             "rating": {
-                "average": 4.5,
-                "count": 12
+                "average": 4.8,
+                "count": 55
             },
             "sale": {
                 "isOnSale": true,
-                "discountPercent": 20
+                "discountPercent": 10
             },
             "variants": [
                 {
-                    "id": 101,
-                    "color": "Gray",
-                    "hex": "#808080",
-                    "size": "3-seater",
-                    "price": 799.99,
-                    "stock": 10,
+                    "id": 301,
+                    "color": "Oak",
+                    "hex": "#C3B091",
+                    "size": "Medium",
+                    "stock": 15,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
-                    ]
-                },
-                {
-                    "id": 102,
-                    "color": "Blue",
-                    "hex": "#1E90FF",
-                    "size": "3-seater",
-                    "price": 849.99,
-                    "stock": 7,
-                    "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Coffee Table"
                         }
                     ]
                 }
@@ -226,61 +180,31 @@
         },
         {
             "id": 4,
-            "name": "Modern Sofa",
-            "description": "A comfortable gray sofa with a contemporary design.",
+            "name": "Velvet Armchair",
+            "description": "Elegant velvet armchair with plush comfort.",
             "mainCategoryId": 1,
-            "subCategoryId": 1,
-            "basePrice": 799.99,
+            "subCategoryId": 2,
+            "price": 499.99,
+            "createdAt": "2025-03-12T09:10:00.000Z",
             "rating": {
-                "average": 4.5,
-                "count": 12
+                "average": 4.6,
+                "count": 23
             },
             "sale": {
-                "isOnSale": true,
-                "discountPercent": 20
+                "isOnSale": false,
+                "discountPercent": null
             },
             "variants": [
                 {
-                    "id": 101,
-                    "color": "Gray",
-                    "hex": "#808080",
-                    "size": "3-seater",
-                    "price": 799.99,
-                    "stock": 10,
+                    "id": 401,
+                    "color": "Emerald Green",
+                    "hex": "#50C878",
+                    "size": "Single",
+                    "stock": 8,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
-                    ]
-                },
-                {
-                    "id": 102,
-                    "color": "Blue",
-                    "hex": "#1E90FF",
-                    "size": "3-seater",
-                    "price": 849.99,
-                    "stock": 7,
-                    "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Velvet Armchair"
                         }
                     ]
                 }
@@ -288,61 +212,31 @@
         },
         {
             "id": 5,
-            "name": "Modern Sofa",
-            "description": "A comfortable gray sofa with a contemporary design.",
-            "mainCategoryId": 1,
-            "subCategoryId": 1,
-            "basePrice": 799.99,
+            "name": "Marble Dining Table",
+            "description": "Luxury marble dining table with steel legs.",
+            "mainCategoryId": 2,
+            "subCategoryId": 4,
+            "price": 1499.99,
+            "createdAt": "2025-05-01T18:20:00.000Z",
             "rating": {
-                "average": 4.5,
-                "count": 12
+                "average": 4.9,
+                "count": 75
             },
             "sale": {
                 "isOnSale": true,
-                "discountPercent": 20
+                "discountPercent": 15
             },
             "variants": [
                 {
-                    "id": 101,
-                    "color": "Gray",
-                    "hex": "#808080",
-                    "size": "3-seater",
-                    "price": 799.99,
-                    "stock": 10,
+                    "id": 501,
+                    "color": "White Marble",
+                    "hex": "#F5F5F5",
+                    "size": "6-seater",
+                    "stock": 5,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
-                    ]
-                },
-                {
-                    "id": 102,
-                    "color": "Blue",
-                    "hex": "#1E90FF",
-                    "size": "3-seater",
-                    "price": 849.99,
-                    "stock": 7,
-                    "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Marble Dining Table"
                         }
                     ]
                 }
@@ -350,61 +244,30 @@
         },
         {
             "id": 6,
-            "name": "Modern Sofa",
-            "description": "A comfortable gray sofa with a contemporary design.",
-            "mainCategoryId": 1,
-            "subCategoryId": 1,
-            "basePrice": 799.99,
+            "name": "Leather Office Chair",
+            "description": "Ergonomic leather office chair with adjustable height.",
+            "mainCategoryId": 3,
+            "subCategoryId": 6,
+            "price": 349.99,
+            "createdAt": "2025-06-15T13:00:00.000Z",
             "rating": {
-                "average": 4.5,
-                "count": 12
+                "average": 4.3,
+                "count": 40
             },
             "sale": {
-                "isOnSale": true,
-                "discountPercent": 20
+                "isOnSale": false,
+                "discountPercent": null
             },
             "variants": [
                 {
-                    "id": 101,
-                    "color": "Gray",
-                    "hex": "#808080",
-                    "size": "3-seater",
-                    "price": 799.99,
-                    "stock": 10,
+                    "id": 601,
+                    "color": "Black",
+                    "hex": "#000000",
+                    "stock": 20,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
-                    ]
-                },
-                {
-                    "id": 102,
-                    "color": "Blue",
-                    "hex": "#1E90FF",
-                    "size": "3-seater",
-                    "price": 849.99,
-                    "stock": 7,
-                    "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Office Chair"
                         }
                     ]
                 }
@@ -412,61 +275,38 @@
         },
         {
             "id": 7,
-            "name": "Modern Sofa",
-            "description": "A comfortable gray sofa with a contemporary design.",
-            "mainCategoryId": 1,
-            "subCategoryId": 1,
-            "basePrice": 799.99,
+            "name": "Outdoor Patio Set",
+            "description": "Weather-resistant rattan patio set with cushions.",
+            "mainCategoryId": 5,
+            "subCategoryId": 7,
+            "price": 899.99,
+            "createdAt": "2025-07-04T08:45:00.000Z",
             "rating": {
-                "average": 4.5,
-                "count": 12
+                "average": 4.7,
+                "count": 60
             },
             "sale": {
                 "isOnSale": true,
-                "discountPercent": 20
+                "discountPercent": 25
             },
             "variants": [
                 {
-                    "id": 101,
-                    "color": "Gray",
-                    "hex": "#808080",
-                    "size": "3-seater",
-                    "price": 799.99,
-                    "stock": 10,
+                    "id": 701,
+                    "color": "Brown",
+                    "hex": "#8B4513",
+                    "stock": 12,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
-                    ]
-                },
-                {
-                    "id": 102,
-                    "color": "Blue",
-                    "hex": "#1E90FF",
-                    "size": "3-seater",
-                    "price": 849.99,
-                    "stock": 7,
-                    "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -478,7 +318,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-06T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -493,20 +334,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -515,20 +355,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -540,7 +379,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-08-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -555,20 +395,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -577,20 +416,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -602,7 +440,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-09-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -617,20 +456,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -639,20 +477,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -664,7 +501,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-01T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -679,20 +517,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -701,20 +538,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -726,7 +562,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-19T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -741,20 +578,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -763,20 +599,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -788,7 +623,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-02-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -803,20 +639,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -825,20 +660,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -850,7 +684,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-01-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -865,20 +700,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -887,20 +721,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -912,7 +745,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2024-07-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -927,20 +761,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -949,20 +782,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -974,7 +806,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-01T012:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -989,20 +822,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1011,20 +843,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1036,7 +867,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-03-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1051,20 +883,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1073,20 +904,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1098,7 +928,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-28T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1113,20 +944,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1135,20 +965,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1160,7 +989,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-06-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1175,20 +1005,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1197,20 +1026,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1222,7 +1050,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-14T01:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1237,20 +1066,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1259,20 +1087,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1285,7 +1112,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2024-11-04T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1300,20 +1128,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1322,20 +1149,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1346,7 +1172,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-01-14T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1361,20 +1188,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1383,20 +1209,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1408,7 +1233,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-06-24T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1423,20 +1249,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1445,20 +1270,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1470,7 +1294,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-18T08:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1485,20 +1310,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1507,21 +1331,11 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        },
-                        {
-                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
-                        }
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
                     ]
                 }
             ]
@@ -1532,7 +1346,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-04T021:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1547,20 +1362,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1569,20 +1383,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }
@@ -1594,7 +1407,8 @@
             "description": "A comfortable gray sofa with a contemporary design.",
             "mainCategoryId": 1,
             "subCategoryId": 1,
-            "basePrice": 799.99,
+            "price": 799.99,
+            "createdAt": "2025-07-02T018:45:00.000Z",
             "rating": {
                 "average": 4.5,
                 "count": 12
@@ -1609,20 +1423,19 @@
                     "color": "Gray",
                     "hex": "#808080",
                     "size": "3-seater",
-                    "price": 799.99,
                     "stock": 10,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 },
@@ -1631,20 +1444,19 @@
                     "color": "Blue",
                     "hex": "#1E90FF",
                     "size": "3-seater",
-                    "price": 849.99,
                     "stock": 7,
                     "images": [
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         },
                         {
                             "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
-                            "alt": "Modern Sofa"
+                            "alt": "Outdoor Patio Set"
                         }
                     ]
                 }

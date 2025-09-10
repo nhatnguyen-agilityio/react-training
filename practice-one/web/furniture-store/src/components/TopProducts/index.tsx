@@ -1,14 +1,28 @@
-import { GetProducts } from '../../apis/products';
+import { useMemo } from 'react';
+import { GetProductsInfinite } from '../../apis/products';
 import type { ProductInterface } from '../../interfaces/products';
 import ShowMore from '../common/ShowMore';
 import FilterDropdown from '../FilterDropdown';
 import ProductItem from '../ProductItem';
 import { Progress } from '../ui/progress';
 import { Skeleton } from '../ui/skeleton';
-
+import { Loader2 } from 'lucide-react';
 
 const TopProducts = () => {
-  const { data: products, isPending, isError, error } = GetProducts(0, 20);
+  const pageSize = 20;
+  const {
+    data,
+    isPending,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = GetProductsInfinite(pageSize);
+
+  const items: ProductInterface[] = useMemo(() => {
+    return data?.pages?.flat?.() ?? [];
+  }, [data]);
 
   if (isPending) {
     return (
@@ -39,9 +53,9 @@ const TopProducts = () => {
           ))}
         </div>
         <div className="mt-8 md:w-1/2 mx-auto">
-          <p>
+          <div>
             <Skeleton className="h-4 w-48" />
-          </p>
+          </div>
           <Skeleton className="mt-6 h-1 w-full" />
           <div className="mt-6 flex justify-center">
             <Skeleton className="h-10 w-40" />
@@ -73,7 +87,7 @@ const TopProducts = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-        {products.map((product: ProductInterface) => (
+        {items.map((product: ProductInterface) => (
           <ProductItem
             key={product.id}
             id={product.id}
@@ -85,9 +99,18 @@ const TopProducts = () => {
         ))}
       </div>
       <div className="mt-8 md:w-1/2 mx-auto">
-        <p>Showing {products.length} of 100 results</p>
-        <Progress value={45} className="mt-6 h-1" />
-        <ShowMore />
+        <p>Showing {items.length} of 100 results</p>
+        <Progress value={hasNextPage ? 50 : 100} className="mt-6 h-1" />
+        {isFetchingNextPage && (
+          <div className="flex items-center gap-2 my-4 justify-center">
+            <Loader2 className="h-8 w-8 text-app-primary animate-spin" />
+            <p className="text-app-primary">Loading more...</p>
+          </div>
+        )}
+        <ShowMore
+          onClick={() => fetchNextPage()}
+          disabled={!hasNextPage || isFetchingNextPage}
+        />
       </div>
     </div>
   );

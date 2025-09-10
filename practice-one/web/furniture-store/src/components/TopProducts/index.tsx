@@ -8,7 +8,6 @@ import { Progress } from '../ui/progress';
 import { Skeleton } from '../ui/skeleton';
 import { Loader2 } from 'lucide-react';
 
-
 const TopProducts = () => {
   const pageSize = 20;
   const {
@@ -105,7 +104,7 @@ const TopProducts = () => {
         {isFetchingNextPage && (
           <div className="flex items-center gap-2 my-4 justify-center">
             <Loader2 className="h-8 w-8 text-app-primary animate-spin" />
-            <p className='text-app-primary'>Loading more...</p>
+            <p className="text-app-primary">Loading more...</p>
           </div>
         )}
         <ShowMore

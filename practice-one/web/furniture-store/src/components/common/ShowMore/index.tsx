@@ -1,6 +1,12 @@
 import { Button } from '../../ui/button';
 
-const ShowMore = ({ onClick, disabled=false }: { onClick: () => void, disabled?: boolean }) => {
+const ShowMore = ({
+  onClick,
+  disabled = false,
+}: {
+  onClick: () => void;
+  disabled?: boolean;
+}) => {
   return (
     <div className="mt-6 flex justify-center">
       <Button

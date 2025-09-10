@@ -94,8 +94,18 @@
                     "price": 799.99,
                     "stock": 10,
                     "images": [
-                        "https://picsum.photos/id/1018/800/600",
-                        "https://picsum.photos/id/1015/800/600"
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
                     ]
                 },
                 {
@@ -106,8 +116,18 @@
                     "price": 849.99,
                     "stock": 7,
                     "images": [
-                        "https://picsum.photos/id/1025/800/600",
-                        "https://picsum.photos/id/1020/800/600"
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
                     ]
                 }
             ]
@@ -135,7 +155,1497 @@
                     "price": 199.99,
                     "stock": 12,
                     "images": [
-                        "https://picsum.photos/id/1035/800/600"
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                        "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "id": 21,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },{
+            "id": 22,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "name": "Modern Sofa",
+            "description": "A comfortable gray sofa with a contemporary design.",
+            "mainCategoryId": 1,
+            "subCategoryId": 1,
+            "basePrice": 799.99,
+            "rating": {
+                "average": 4.5,
+                "count": 12
+            },
+            "sale": {
+                "isOnSale": true,
+                "discountPercent": 20
+            },
+            "variants": [
+                {
+                    "id": 101,
+                    "color": "Gray",
+                    "hex": "#808080",
+                    "size": "3-seater",
+                    "price": 799.99,
+                    "stock": 10,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
+                    ]
+                },
+                {
+                    "id": 102,
+                    "color": "Blue",
+                    "hex": "#1E90FF",
+                    "size": "3-seater",
+                    "price": 849.99,
+                    "stock": 7,
+                    "images": [
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        },
+                        {
+                            "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png",
+                            "alt": "Modern Sofa"
+                        }
                     ]
                 }
             ]

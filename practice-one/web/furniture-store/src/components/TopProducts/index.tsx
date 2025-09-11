@@ -11,9 +11,11 @@ import { Loader2 } from 'lucide-react';
 const TopProducts = ({
   categoryId,
   searchProducts = '',
+  subCategoryName = 'All',
 }: {
   categoryId?: string | null;
   searchProducts?: string | null;
+  subCategoryName?: string;
 }) => {
   const [position, setPosition] = useState('mostRecent');
 
@@ -26,7 +28,13 @@ const TopProducts = ({
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = GetProductsInfinite(pageSize, position, categoryId, searchProducts);
+  } = GetProductsInfinite(
+    pageSize,
+    position,
+    categoryId,
+    searchProducts,
+    subCategoryName,
+  );
 
   const items: ProductInterface[] = useMemo(() => {
     return data?.pages?.flat?.() ?? [];

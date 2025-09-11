@@ -1,14 +1,11 @@
-interface ProductImage {
-  url: string;
-  alt: string;
-}
+import type { ImageInterface } from './image';
 
 interface ProductVariant {
   id: number;
   hex: string;
   size: string;
   stock: number;
-  images: ProductImage[];
+  images: ImageInterface[];
 }
 
 export interface ProductInterface {

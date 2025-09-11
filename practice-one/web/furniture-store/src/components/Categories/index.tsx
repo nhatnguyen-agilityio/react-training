@@ -1,4 +1,4 @@
-import { useMainCategories } from '../../hooks.ts/useMainCategories';
+import { GetMainCategories } from '../../apis/main-categories';
 import { Skeleton } from '../ui/skeleton';
 import CategoryItem from './CategoryItem';
 
@@ -12,7 +12,7 @@ interface CategoryInterface {
 }
 
 const Categories = () => {
-  const { data: categories, isPending, isError, error } = useMainCategories();
+  const { data: categories, isPending, isError, error } = GetMainCategories();
 
   if (isPending) {
     const fakeMainCategoriesItems = Array.from({ length: 4 });

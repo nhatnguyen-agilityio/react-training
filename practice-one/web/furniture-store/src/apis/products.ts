@@ -11,6 +11,7 @@ const fetchProducts = async (
   order: 'asc' | 'desc' = 'desc',
   categoryId?: string | null,
   searchParam?: string | null,
+  subCategoryName?: string | null,
 ) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}`);
   url.searchParams.set('_start', String(start));
@@ -18,8 +19,14 @@ const fetchProducts = async (
   url.searchParams.set('_sort', String(sortBy));
   url.searchParams.set('_order', String(order));
 
+  // If categoryId exists, filter the list of products by main category
   if (categoryId) {
     url.searchParams.set('mainCategoryId', String(categoryId));
+  }
+
+  // If subCategoryName exists and not 'All', filter by subcategory
+  if (subCategoryName && subCategoryName !== 'All') {
+    url.searchParams.set('subCategoryId', String(subCategoryName));
   }
 
   if (searchParam) {
@@ -63,11 +70,20 @@ const fetchProductsPage = async (
   position = 'mostRecent',
   categoryId?: string | null,
   searchParam?: string | null,
+  subCategoryName?: string | null,
 ) => {
   const start = pageIndex * pageSize;
   const end = start + pageSize;
   const { sortBy, order } = mapSort(position);
-  return fetchProducts(start, end, sortBy, order, categoryId, searchParam);
+  return fetchProducts(
+    start,
+    end,
+    sortBy,
+    order,
+    categoryId,
+    searchParam,
+    subCategoryName,
+  );
 };
 
 export const GetProductsInfinite = (
@@ -75,6 +91,7 @@ export const GetProductsInfinite = (
   position = 'mostRecent',
   categoryId?: string | null,
   searchParam?: string | null,
+  subCategoryName?: string | null,
   enabled = true,
 ) => {
   return useInfiniteQuery({
@@ -83,9 +100,17 @@ export const GetProductsInfinite = (
       position,
       categoryId,
       searchParam,
+      subCategoryName,
     ),
     queryFn: ({ pageParam = 0 }) =>
-      fetchProductsPage(pageParam, pageSize, position, categoryId, searchParam),
+      fetchProductsPage(
+        pageParam,
+        pageSize,
+        position,
+        categoryId,
+        searchParam,
+        subCategoryName,
+      ),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       return Array.isArray(lastPage) && lastPage.length === pageSize

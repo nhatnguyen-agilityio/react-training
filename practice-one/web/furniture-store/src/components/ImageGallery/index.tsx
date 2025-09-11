@@ -3,6 +3,7 @@ import { Card } from '../ui/card';
 import { Progress } from '../ui/progress';
 import ShowMore from '../common/ShowMore';
 import CategoryButtons from '../CategoryButtons';
+import { useState } from 'react';
 
 const buttonList = [
   'All',
@@ -65,12 +66,18 @@ const images = [
 ];
 
 const ImageGallery = () => {
+  const [selectedItem, setSelectedItem] = useState("All")
+
   return (
     <div className="mt-10 container">
       <h2 className="font-bold text-xl md:text-4xl text-left">
         Design inspiration and modern home ideas
       </h2>
-      <CategoryButtons buttonList={buttonList} />
+      <CategoryButtons
+        buttonList={buttonList || []}
+        selectedCategory={selectedItem}
+        onCategorySelect={setSelectedItem}
+      />
       <div className="mx-auto py-6">
         <div className="grid grid-cols-2 grid-rows-4 md:grid-cols-3 gap-3 auto-rows-[10px] md:hidden">
           {images.slice(0, 8).map((img, i) => (

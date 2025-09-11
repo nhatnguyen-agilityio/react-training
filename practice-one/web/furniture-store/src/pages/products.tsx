@@ -12,25 +12,97 @@ import CategoryButtons from '../components/CategoryButtons';
 import TopProducts from '../components/TopProducts';
 import PeopleViewed from '../components/PeopleViewed';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
-
-const buttonList = [
-  'All',
-  'Sofa',
-  'Accent chair',
-  'Lounge chair',
-  'Coffee table',
-  'Center table',
-  'Flower pot',
-  'Lamp',
-];
+import { useEffect, useState } from 'react';
+import { GetMainCategories } from '../apis/main-categories';
+import { GetSubCategories } from '../apis/sub-categories';
+import type { CategoryInterface } from '../interfaces/category';
+import { Skeleton } from '../components/ui/skeleton';
 
 const Products = () => {
   const [searchProductsInput, setSearchProductsInput] = useState('');
   const [searchProducts, setSearchProducts] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [mainCategoryId, setMainCategoryId] = useState<string | null>(null);
   const [searchParams] = useSearchParams();
   const categoryTitle = searchParams.get('categoryTitle');
   const categoryId = searchParams.get('categoryId');
+
+  useEffect(() => {
+    if (categoryId) {
+      setMainCategoryId(categoryId);
+    }
+  }, [categoryId]);
+
+  const mainCategoriesQuery = GetMainCategories(!categoryId);
+  const subCategoriesQuery = GetSubCategories(categoryId, !!categoryId);
+
+  const {
+    data: categoriesData,
+    isPending,
+    isError,
+    error,
+  } = categoryId ? subCategoriesQuery : mainCategoriesQuery;
+
+  const categories = [
+    'All',
+    ...(categoriesData?.map((category: CategoryInterface) => category.name) ||
+      []),
+  ];
+
+  const categoryNameToId =
+    categoriesData?.reduce(
+      (acc: Record<string, number>, category: CategoryInterface) => {
+        acc[category.name] = category.id;
+        return acc;
+      },
+      {},
+    ) || {};
+
+  const handleSelectCategory = (category: string) => {
+    if (categoryId) {
+      setSelectedCategory(category === 'All' ? 'All' : category);
+    } else {
+      setSelectedCategory(category);
+      setMainCategoryId(
+        category === 'All' ? null : String(categoryNameToId[category]),
+      );
+    }
+  };
+
+  if (isPending) {
+    return (
+      <div className="mt-6 md:mt-12 container">
+        <div className="flex flex-col md:flex-row md:justify-between">
+          <Skeleton className="h-8 w-48 mb-4" />
+          <Skeleton className="h-10 w-40" />
+        </div>
+        <div className="mt-6 mb-4 w-full relative flex justify-between mx-auto lg:w-160">
+          <Skeleton className="h-14 w-full rounded-3xl" />
+        </div>
+        <div className="mt-4">
+          <div className="flex gap-2">
+            {Array.from({ length: 8 }).map((_, idx) => (
+              <Skeleton key={idx} className="h-12 w-24 rounded-2xl" />
+            ))}
+          </div>
+        </div>
+        <div className="mt-6">
+          <Skeleton className="h-64 w-full" />
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="mt-6 md:mt-12 container">
+        <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
+          Categories Buttons
+        </p>
+        <p className="text-red-500">Error: {error.message}</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -80,9 +152,23 @@ const Products = () => {
             <Search className="text-gray-400 h-5 w-full" />
           </div>
         </div>
-        <CategoryButtons buttonList={buttonList} />
+        <CategoryButtons
+          buttonList={categories || []}
+          selectedCategory={selectedCategory}
+          onCategorySelect={handleSelectCategory}
+        />
       </div>
-      <TopProducts categoryId={categoryId} searchProducts={searchProducts} />
+      <TopProducts
+        categoryId={mainCategoryId}
+        searchProducts={searchProducts}
+        subCategoryName={
+          categoryId
+            ? selectedCategory === 'All'
+              ? 'All'
+              : String(categoryNameToId[selectedCategory])
+            : 'All'
+        }
+      />
       <PeopleViewed />
     </>
   );

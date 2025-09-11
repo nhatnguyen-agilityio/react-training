@@ -90,7 +90,12 @@ const Main = () => {
             {step === 'orderSuccess' && (
               <OrderSuccess onBack={() => setStep('closed')} />
             )}
-            {step === 'login' && <Login onNext={() => setStep('signup')} />}
+            {step === 'login' && (
+              <Login
+                onNext={() => setStep('signup')}
+                onBack={() => setStep('closed')}
+              />
+            )}
             {step === 'signup' && <SignUp onNext={() => setStep('login')} />}
           </Sidebar>
         </div>

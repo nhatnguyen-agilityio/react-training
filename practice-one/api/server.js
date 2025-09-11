@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5001;
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
+// api to handle signup
 server.post("/signup", (req, res) => {
     const {
         username,
@@ -44,6 +45,30 @@ server.post("/signup", (req, res) => {
     router.db.get("users").push(newUser).write();
 
     return res.status(201).json(newUser);
+});
+
+// api to handle login
+server.post("/login", (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: "Username and password are required" });
+    }
+
+    const users = router.db.get("users").value();
+    const user = users.find(
+        (u) => u.username === username && u.password === password
+    );
+
+    if (!user) {
+        return res.status(401).json({ error: "Invalid username or password" });
+    }
+
+    const { password: _, ...userWithoutPassword } = user;
+
+    return res.status(200).json({
+        user: userWithoutPassword,
+    });
 });
 
 server.use(router);

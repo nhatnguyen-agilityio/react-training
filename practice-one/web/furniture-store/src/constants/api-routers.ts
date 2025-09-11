@@ -5,4 +5,6 @@ export const API_ROUTES = {
 
   // sign up
   SIGN_UP: 'signup/',
+  // login
+  LOGIN: 'login/',
 };

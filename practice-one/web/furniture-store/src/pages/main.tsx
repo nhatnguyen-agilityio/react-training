@@ -1,4 +1,4 @@
-import { AlignJustify, CircleUser } from 'lucide-react';
+import { AlignJustify } from 'lucide-react';
 import { Toaster } from '../components/ui/sonner';
 import CartButton from '../components/CartButton';
 import Image from '../components/common/Image';

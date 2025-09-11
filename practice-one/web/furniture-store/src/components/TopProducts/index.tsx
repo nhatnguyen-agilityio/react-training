@@ -8,7 +8,7 @@ import { Progress } from '../ui/progress';
 import { Skeleton } from '../ui/skeleton';
 import { Loader2 } from 'lucide-react';
 
-const TopProducts = () => {
+const TopProducts = ({ categoryId }: { categoryId?: string | null }) => {
   const [position, setPosition] = useState('mostRecent');
 
   const pageSize = 20;
@@ -20,7 +20,7 @@ const TopProducts = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = GetProductsInfinite(pageSize, position);
+  } = GetProductsInfinite(pageSize, position, categoryId);
 
   const items: ProductInterface[] = useMemo(() => {
     return data?.pages?.flat?.() ?? [];

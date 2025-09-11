@@ -5,5 +5,6 @@ export const QUERY_KEY = {
     pageSize: number,
     position: string,
     categoryId?: string | null,
-  ) => ['products', 'infinite', pageSize, position, categoryId],
+    searchParam?: string | null,
+  ) => ['products', 'infinite', pageSize, position, categoryId, searchParam],
 };

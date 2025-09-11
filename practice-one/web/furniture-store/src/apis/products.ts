@@ -10,6 +10,7 @@ const fetchProducts = async (
   sortBy = 'createdAt',
   order: 'asc' | 'desc' = 'desc',
   categoryId?: string | null,
+  searchParam?: string | null,
 ) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}`);
   url.searchParams.set('_start', String(start));
@@ -19,6 +20,10 @@ const fetchProducts = async (
 
   if (categoryId) {
     url.searchParams.set('mainCategoryId', String(categoryId));
+  }
+
+  if (searchParam) {
+    url.searchParams.set('name_like', searchParam);
   }
 
   const res = await fetch(url.toString());
@@ -57,23 +62,30 @@ const fetchProductsPage = async (
   pageSize = 20,
   position = 'mostRecent',
   categoryId?: string | null,
+  searchParam?: string | null,
 ) => {
   const start = pageIndex * pageSize;
   const end = start + pageSize;
   const { sortBy, order } = mapSort(position);
-  return fetchProducts(start, end, sortBy, order, categoryId);
+  return fetchProducts(start, end, sortBy, order, categoryId, searchParam);
 };
 
 export const GetProductsInfinite = (
   pageSize = 20,
   position = 'mostRecent',
   categoryId?: string | null,
+  searchParam?: string | null,
   enabled = true,
 ) => {
   return useInfiniteQuery({
-    queryKey: QUERY_KEY.PRODUCTS_INFINITE(pageSize, position, categoryId),
+    queryKey: QUERY_KEY.PRODUCTS_INFINITE(
+      pageSize,
+      position,
+      categoryId,
+      searchParam,
+    ),
     queryFn: ({ pageParam = 0 }) =>
-      fetchProductsPage(pageParam, pageSize, position, categoryId),
+      fetchProductsPage(pageParam, pageSize, position, categoryId, searchParam),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       return Array.isArray(lastPage) && lastPage.length === pageSize

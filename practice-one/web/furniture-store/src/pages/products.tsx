@@ -12,6 +12,7 @@ import CategoryButtons from '../components/CategoryButtons';
 import TopProducts from '../components/TopProducts';
 import PeopleViewed from '../components/PeopleViewed';
 import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const buttonList = [
   'All',
@@ -25,6 +26,8 @@ const buttonList = [
 ];
 
 const Products = () => {
+  const [searchProductsInput, setSearchProductsInput] = useState('');
+  const [searchProducts, setSearchProducts] = useState('');
   const [searchParams] = useSearchParams();
   const categoryTitle = searchParams.get('categoryTitle');
   const categoryId = searchParams.get('categoryId');
@@ -59,16 +62,27 @@ const Products = () => {
         <div className="mt-6 mb-4 w-full relative flex justify-between mx-auto lg:w-160">
           <Input
             type="text"
+            value={searchProductsInput}
+            onChange={(e) => setSearchProductsInput(e.target.value)}
             placeholder="Search by name or category..."
-            className="rounded-3xl h-14 shadow-none placeholder:font-light pl-5 pr-14 text-base"
+            className="rounded-3xl h-14 shadow-none placeholder:font-light pl-5 pr-14 text-base focus:border-none"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                setSearchProducts(searchProductsInput);
+              }
+            }}
           />
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 h-full w-12 flex items-center justify-center">
+          <div
+            onClick={() => setSearchProducts(searchProductsInput)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 rounded-r-3xl border-l-1 border-l-background-primary h-full w-16 flex items-center justify-center hover:bg-background-primary"
+          >
             <Search className="text-gray-400 h-5 w-full" />
           </div>
         </div>
         <CategoryButtons buttonList={buttonList} />
       </div>
-      <TopProducts categoryId={categoryId} />
+      <TopProducts categoryId={categoryId} searchProducts={searchProducts} />
       <PeopleViewed />
     </>
   );

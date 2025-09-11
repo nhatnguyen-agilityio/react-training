@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { API_STALE_TIME } from './constants/api';
 import Loading from './components/Loading';
+import { AuthProvider } from './auth/AuthProvider';
 const Main = lazy(() => import('./pages/main'));
 const Home = lazy(() => import('./pages/home'));
 const Products = lazy(() => import('./pages/products'));
@@ -21,20 +22,22 @@ function App() {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Suspense fallback={<Loading />}>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Main />}>
-              <Route index element={<Home />} />
-              <Route path="products" element={<Products />} />
-              <Route path="products/:id" element={<ProductDetail />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Suspense fallback={<Loading />}>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Main />}>
+                <Route index element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="products/:id" element={<ProductDetail />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AuthProvider>
   );
 }
 

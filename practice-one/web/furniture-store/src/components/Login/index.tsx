@@ -26,6 +26,7 @@ import {
 import { useState } from 'react';
 import { useLogin } from '../../apis/login';
 import { Loader2 } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 
 const loginFormSchema = z.object({
   username: z
@@ -56,7 +57,7 @@ const Login = ({
   onBack: () => void;
 }) => {
   const [open, setOpen] = useState(false);
-
+  const { setUser } = useAuth();
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -70,7 +71,8 @@ const Login = ({
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
     console.log('Form submitted with data:', data);
     mutate(data, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        setUser(data.user);
         onBack();
       },
       onError: () => {
@@ -193,9 +195,7 @@ const Login = ({
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Error</AlertDialogTitle>
-            <AlertDialogDescription>
-              {error}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{error}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel

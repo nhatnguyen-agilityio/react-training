@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import type { LoginInterface } from '../interfaces/login';
 import { API_ENDPOINT } from '../constants/env-variables';
 import { API_ROUTES } from '../constants/api-routers';
+import type { UserInterface } from '../interfaces/user';
 
 const postLogin = async (loginPayload: LoginInterface) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.LOGIN}`);
@@ -29,7 +30,7 @@ const postLogin = async (loginPayload: LoginInterface) => {
 
 export const useLogin = () => {
   const { mutate, mutateAsync, isPending, error, ...rest } = useMutation<
-    string,
+    UserInterface,
     Error,
     LoginInterface
   >({

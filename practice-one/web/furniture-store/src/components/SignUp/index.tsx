@@ -13,6 +13,9 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Image from '../common/Image';
 import { Checkbox } from '../ui/checkbox';
+import { useSignUp } from '../../apis/signup';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 const loginFormSchema = z.object({
   username: z
@@ -45,8 +48,23 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
     },
   });
 
+  const { mutate, isLoading, error } = useSignUp();
+
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
-    console.log('Form submitted with data:', data);
+    const { username, password } = data;
+
+    mutate(
+      { username, password },
+      {
+        onSuccess: () => {
+          toast(
+            '🎉 Account created successfully. Please login to continue.',
+            {},
+          );
+          onNext();
+        },
+      },
+    );
   };
 
   return (
@@ -149,9 +167,19 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
                 type="submit"
                 className="bg-app-primary w-full h-15 rounded-3xl text-base font-semibold hover:bg-app-tertiary"
               >
-                Create account
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Creating...
+                  </span>
+                ) : (
+                  'Create account'
+                )}
               </Button>
             </div>
+            {error && (
+              <p className="mt-3 text-md text-center text-red-600">{error}</p>
+            )}
           </form>
         </Form>
         <p className="text-center mt-6 text-lg font-normal">

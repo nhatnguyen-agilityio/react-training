@@ -47,7 +47,7 @@ const Main = () => {
               if (!open) setStep('closed');
             }}
             button={
-              <>
+              <div className="flex">
                 <CartButton
                   onClick={(e) => {
                     e.preventDefault();
@@ -60,7 +60,7 @@ const Main = () => {
                     setStep('login');
                   }}
                 />
-              </>
+              </div>
             }
             title={
               step === 'cart'

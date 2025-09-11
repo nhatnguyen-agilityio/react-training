@@ -9,12 +9,18 @@ const fetchProducts = async (
   end = 20,
   sortBy = 'createdAt',
   order: 'asc' | 'desc' = 'desc',
+  categoryId?: string | null,
 ) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}`);
   url.searchParams.set('_start', String(start));
   url.searchParams.set('_end', String(end));
   url.searchParams.set('_sort', String(sortBy));
   url.searchParams.set('_order', String(order));
+
+  if (categoryId) {
+    url.searchParams.set('mainCategoryId', String(categoryId));
+  }
+
   const res = await fetch(url.toString());
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -50,22 +56,24 @@ const fetchProductsPage = async (
   pageIndex = 0,
   pageSize = 20,
   position = 'mostRecent',
+  categoryId?: string | null,
 ) => {
   const start = pageIndex * pageSize;
   const end = start + pageSize;
   const { sortBy, order } = mapSort(position);
-  return fetchProducts(start, end, sortBy, order);
+  return fetchProducts(start, end, sortBy, order, categoryId);
 };
 
 export const GetProductsInfinite = (
   pageSize = 20,
   position = 'mostRecent',
+  categoryId?: string | null,
   enabled = true,
 ) => {
   return useInfiniteQuery({
-    queryKey: QUERY_KEY.PRODUCTS_INFINITE(pageSize, position),
+    queryKey: QUERY_KEY.PRODUCTS_INFINITE(pageSize, position, categoryId),
     queryFn: ({ pageParam = 0 }) =>
-      fetchProductsPage(pageParam, pageSize, position),
+      fetchProductsPage(pageParam, pageSize, position, categoryId),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
       return Array.isArray(lastPage) && lastPage.length === pageSize

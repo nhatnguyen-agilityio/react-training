@@ -26,13 +26,14 @@ const buttonList = [
 
 const Products = () => {
   const [searchParams] = useSearchParams();
-  const productTitle = searchParams.get('productTitle');
+  const categoryTitle = searchParams.get('categoryTitle');
+  const categoryId = searchParams.get('categoryId');
 
   return (
     <>
       <div className="container flex flex-col mt-15">
         <h2 className="text-2xl font-semibold mb-6 md:text-5xl md:font-bold">
-          {productTitle ? productTitle : 'All Products'}
+          {categoryTitle ? categoryTitle : 'All Products'}
         </h2>
         <p className="text-sm font-light mb-6 md:px-1 md:text-lg">
           Transform your sitting room with our elegant and functional seating
@@ -44,11 +45,11 @@ const Products = () => {
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
-              {productTitle && (
+              {categoryTitle && (
                 <>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
-                    <BreadcrumbPage>{productTitle}</BreadcrumbPage>
+                    <BreadcrumbPage>{categoryTitle}</BreadcrumbPage>
                   </BreadcrumbItem>
                 </>
               )}
@@ -67,7 +68,7 @@ const Products = () => {
         </div>
         <CategoryButtons buttonList={buttonList} />
       </div>
-      <TopProducts />
+      <TopProducts categoryId={categoryId} />
       <PeopleViewed />
     </>
   );

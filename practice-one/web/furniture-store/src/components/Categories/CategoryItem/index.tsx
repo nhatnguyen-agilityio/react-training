@@ -24,7 +24,7 @@ const CategoryItem = ({
     >
       <div className="ml-7 md:ml-0 flex items-center md:flex-col">
         <p className="md:mt-2 text-xl font-semibold lg:text-4xl">{name}</p>
-        <Link to={`/products?productId=${id}&productTitle=${name}`}>
+        <Link to={`/products?categoryId=${id}&categoryTitle=${name}`}>
           <Button
             variant="ghost"
             className="hidden border-1 border-black rounded-4xl items-center hover:bg-gray-300 mt-4 w-32 p-5 md:flex"

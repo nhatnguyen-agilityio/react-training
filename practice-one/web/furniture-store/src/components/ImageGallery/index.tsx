@@ -66,7 +66,7 @@ const images = [
 ];
 
 const ImageGallery = () => {
-  const [selectedItem, setSelectedItem] = useState("All")
+  const [selectedItem, setSelectedItem] = useState('All');
 
   return (
     <div className="mt-10 container">

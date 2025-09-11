@@ -1,4 +1,4 @@
-import { AlignJustify } from 'lucide-react';
+import { AlignJustify, CircleUser } from 'lucide-react';
 import { Toaster } from '../components/ui/sonner';
 import CartButton from '../components/CartButton';
 import Image from '../components/common/Image';
@@ -14,6 +14,8 @@ import Checkout from '../components/Checkout';
 import Payment from '../components/Payment';
 import OrderSuccess from '../components/OrderSuccess';
 import SignUp from '../components/SignUp';
+import { useAuth } from '../hooks/useAuth';
+import UserButton from '../components/UserButton';
 
 const Main = () => {
   const [step, setStep] = useState<
@@ -25,6 +27,8 @@ const Main = () => {
     | 'login'
     | 'signup'
   >('closed');
+
+  const { user } = useAuth();
 
   return (
     <>
@@ -47,19 +51,23 @@ const Main = () => {
               if (!open) setStep('closed');
             }}
             button={
-              <div className="flex">
+              <div className="flex items-center">
                 <CartButton
                   onClick={(e) => {
                     e.preventDefault();
                     setStep('cart');
                   }}
                 />
-                <GetStarted
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setStep('login');
-                  }}
-                />
+                {user ? (
+                  <UserButton />
+                ) : (
+                  <GetStarted
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setStep('login');
+                    }}
+                  />
+                )}
               </div>
             }
             title={

@@ -24,6 +24,8 @@ import {
   AlertDialogTitle,
 } from '../ui/alert-dialog';
 import { useState } from 'react';
+import { useLogin } from '../../apis/login';
+import { Loader2 } from 'lucide-react';
 
 const loginFormSchema = z.object({
   username: z
@@ -46,7 +48,13 @@ const loginFormSchema = z.object({
     ),
 });
 
-const Login = ({ onNext }: { onNext: () => void }) => {
+const Login = ({
+  onNext,
+  onBack,
+}: {
+  onNext: () => void;
+  onBack: () => void;
+}) => {
   const [open, setOpen] = useState(false);
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -57,9 +65,18 @@ const Login = ({ onNext }: { onNext: () => void }) => {
     },
   });
 
+  const { mutate, isLoading, error } = useLogin();
+
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
     console.log('Form submitted with data:', data);
-    setOpen(true);
+    mutate(data, {
+      onSuccess: () => {
+        onBack();
+      },
+      onError: () => {
+        setOpen(true);
+      },
+    });
   };
 
   return (
@@ -128,7 +145,14 @@ const Login = ({ onNext }: { onNext: () => void }) => {
                   type="submit"
                   className="bg-app-primary w-full h-15 rounded-3xl text-base font-semibold hover:bg-app-tertiary"
                 >
-                  Login
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Logging in...
+                    </span>
+                  ) : (
+                    'Login'
+                  )}
                 </Button>
               </div>
             </form>
@@ -170,7 +194,7 @@ const Login = ({ onNext }: { onNext: () => void }) => {
           <AlertDialogHeader>
             <AlertDialogTitle>Error</AlertDialogTitle>
             <AlertDialogDescription>
-              Invalid username or password.
+              {error}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

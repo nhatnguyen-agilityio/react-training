@@ -13,4 +13,7 @@ export const API_ROUTES = {
 
   // payment
   PAYMENTS: 'payments/',
+
+  // order
+  ORDERS: 'orders/',
 };

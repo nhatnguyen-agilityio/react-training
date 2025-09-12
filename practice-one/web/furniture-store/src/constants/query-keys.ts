@@ -21,4 +21,5 @@ export const QUERY_KEY = {
     subCategoryName,
   ],
   PRODUCT_DETAIL: (id: string) => ['product', id],
+  USER_CART: (userId: number) => ['cart', userId],
 };

@@ -1,5 +1,8 @@
 import { ShoppingCart } from 'lucide-react';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { useGetUserCart } from '../../apis/user-cart';
+import { Button } from '../ui/button';
 
 const CartButton = forwardRef<
   HTMLButtonElement,
@@ -8,12 +11,24 @@ const CartButton = forwardRef<
   // DrawerTrigger asChild clones its child and injects things like onClick, role, aria - expanded, and ref.
   // If your component doesn’t accept / pass these props → the trigger is broken.
   // forwardRef + spreading ...props ensures your button behaves just like a normal<button>, so the drawer opens.
-  const cartCount = 3;
+  // const cartCount = 3;
+  const [cartCount, setCartCount] = useState<number>(0);
+
+  const { user } = useAuth();
+  const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
+
+  useEffect(() => {
+    if (userCart) {
+      setCartCount(userCart.length);
+    } else {
+      setCartCount(0);
+    }
+  }, [userCart]);
 
   return (
-    <button
+    <Button
       ref={ref}
-      className={`relative p-5 mr-5 bg-app-secondary rounded-full hover:bg-gray-200 transition ${className ?? ''}`}
+      className={`relative w-16 h-16 [&_svg:not([class*='size-'])]:size-6 p-5 mr-5 bg-app-secondary rounded-full hover:bg-gray-200 transition ${className ?? ''}`}
       {...props}
     >
       <ShoppingCart className="w-6 h-6 text-app-primary" />
@@ -22,7 +37,7 @@ const CartButton = forwardRef<
           {cartCount}
         </span>
       )}
-    </button>
+    </Button>
   );
 });
 

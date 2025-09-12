@@ -169,7 +169,7 @@ const Products = () => {
             : 'All'
         }
       />
-      <PeopleViewed />
+      <PeopleViewed categoryId={Number(mainCategoryId)} />
     </>
   );
 };

@@ -343,7 +343,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <PeopleViewed />
+      <PeopleViewed categoryId={productDetail.mainCategoryId} />
     </div>
   );
 };

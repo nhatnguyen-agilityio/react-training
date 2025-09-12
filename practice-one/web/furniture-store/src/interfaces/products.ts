@@ -1,6 +1,6 @@
 import type { ImageInterface } from './image';
 
-interface ProductVariant {
+export interface ProductVariant {
   id: number;
   hex: string;
   size: string;

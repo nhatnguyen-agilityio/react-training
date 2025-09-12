@@ -20,4 +20,5 @@ export const QUERY_KEY = {
     searchParam,
     subCategoryName,
   ],
+  PRODUCT_DETAIL: (id: string) => ['product', id],
 };

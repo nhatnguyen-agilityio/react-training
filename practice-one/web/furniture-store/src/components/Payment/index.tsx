@@ -14,6 +14,10 @@ import { Checkbox } from '../ui/checkbox';
 import { Button } from '../ui/button';
 import { useAuth } from '../../hooks/useAuth';
 import { useAddPayment } from '../../apis/add-payment';
+import { useGetUserCart } from '../../apis/user-cart';
+import type { CartInterface } from '../../interfaces/cart';
+import { useAddOrder } from '../../apis/add-order';
+import { useDeleteCart } from '../../apis/delete-cart';
 
 const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
@@ -99,31 +103,43 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   const form = useForm<z.infer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
     defaultValues: {
-      name: '',
-      cardNumber: '',
-      cvv: '',
-      expirationDate: '',
+      name: customerInfo?.name || '',
+      cardNumber: customerInfo?.cardNumber || '',
+      cvv: customerInfo?.cvv || '',
+      expirationDate: customerInfo?.expirationDate || '',
       useShippingAddress: false,
       rememberMe: false,
     },
   });
 
-  const { mutate } = useAddPayment();
+  const { mutate: addPayment } = useAddPayment();
+  const { mutate: addOrder } = useAddOrder();
+  const { mutate: deleteCart } = useDeleteCart();
+
+  const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
 
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
-    console.log(data);
-
     if (data.rememberMe && user) {
       const paymentPayload = { ...data, ...customerInfo, userId: user.id };
 
-      mutate(paymentPayload, {
+      addPayment(paymentPayload, {
         onSuccess: () => {
           removeCustomerInfo();
         },
       });
     }
 
-    // onNext();
+    const orderPayload = {
+      ...customerInfo,
+      userId: user?.id,
+      items: userCart?.flatMap((cart: CartInterface) => cart.items) || [],
+    };
+    addOrder(orderPayload, {
+      onSuccess: () => {
+        deleteCart({ userId: String(user?.id) });
+        onNext();
+      },
+    });
   };
 
   return (

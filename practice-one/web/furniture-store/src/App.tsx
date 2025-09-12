@@ -22,8 +22,8 @@ function App() {
   });
 
   return (
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <BrowserRouter>
           <Suspense fallback={<Loading />}>
             <ScrollToTop />
@@ -36,8 +36,8 @@ function App() {
             </Routes>
           </Suspense>
         </BrowserRouter>
-      </QueryClientProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

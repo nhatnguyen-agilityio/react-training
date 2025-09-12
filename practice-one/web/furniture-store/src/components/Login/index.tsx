@@ -69,7 +69,6 @@ const Login = ({
   const { mutate, isLoading, error } = useLogin();
 
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
-    console.log('Form submitted with data:', data);
     mutate(data, {
       onSuccess: (data) => {
         setUser(data.user);

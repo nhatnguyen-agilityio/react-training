@@ -71,6 +71,16 @@ server.post("/login", (req, res) => {
     });
 });
 
+// api to handle delete all carts by user
+server.delete("/carts/users/:userId", (req, res) => {
+    const { userId } = req.params;
+    router.db
+        .get("carts")
+        .remove({ userId: Number(userId) })
+        .write();
+    return res.status(200).json({ message: "All carts deleted for userId " + userId });
+});
+
 server.use(router);
 
 server.listen(PORT, () => {

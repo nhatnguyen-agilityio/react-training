@@ -69,7 +69,7 @@ const checkoutFormSchema = z.object({
 });
 
 const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
-  const { customerInfo, setCustomerInfo } = useAuth();
+  const { customerInfo } = useAuth();
 
   const form = useForm<z.infer<typeof checkoutFormSchema>>({
     resolver: zodResolver(checkoutFormSchema),
@@ -84,8 +84,7 @@ const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
     },
   });
 
-  const handleSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
-    setCustomerInfo(data);
+  const handleSubmit = () => {
     onNext();
   };
 

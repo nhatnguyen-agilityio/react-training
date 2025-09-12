@@ -103,10 +103,10 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   const form = useForm<z.infer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
     defaultValues: {
-      name: '',
-      cardNumber: '',
-      cvv: '',
-      expirationDate: '',
+      name: customerInfo?.name || '',
+      cardNumber: customerInfo?.cardNumber || '',
+      cvv: customerInfo?.cvv || '',
+      expirationDate: customerInfo?.expirationDate || '',
       useShippingAddress: false,
       rememberMe: false,
     },
@@ -119,8 +119,6 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
 
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
-    console.log(data);
-
     if (data.rememberMe && user) {
       const paymentPayload = { ...data, ...customerInfo, userId: user.id };
 

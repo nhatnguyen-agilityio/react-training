@@ -15,9 +15,6 @@ const Cart = ({
   onNext: () => void;
   onLogin: () => void;
 }) => {
-  const cartItems = 6;
-  const isLogin = true;
-
   const { user } = useAuth();
 
   const {
@@ -128,11 +125,11 @@ const Cart = ({
           </>
         )}
       </div>
-      {isLogin ? (
+      {user ? (
         <>
-          {cartItems > 0 ? (
+          {userCart.length > 0 && (
             <div
-              className={`${cartItems < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
+              className={`${userCart < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
             >
               <Button
                 onClick={onNext}
@@ -140,14 +137,6 @@ const Cart = ({
               >
                 Next
               </Button>
-            </div>
-          ) : (
-            <div className="fixed bottom-0 left-0 right-0">
-              <Link to="/products">
-                <Button className="w-full h-14 bg-app-primary rounded-none text-white text-lg font-semibold hover:bg-app-tertiary">
-                  SHOP ALL
-                </Button>
-              </Link>
             </div>
           )}
         </>

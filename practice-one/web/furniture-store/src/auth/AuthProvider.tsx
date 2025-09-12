@@ -1,11 +1,15 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import type { UserStoreInterface } from '../interfaces/user';
 import { AuthContext } from './AuthContext';
-import type { CustomerInfoInterface } from '../interfaces/customerInfo';
+import { useGetPayment } from '../apis/get-payment';
+import type { PaymentInterface } from '../interfaces/payment';
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUserData] = useState<UserStoreInterface | null>(null);
-  const [customerInfo, setCustomerInfoData] =
-    useState<CustomerInfoInterface | null>(null);
+  const [customerInfo, setCustomerInfoData] = useState<PaymentInterface | null>(
+    null,
+  );
+
+  const { data: payment } = useGetPayment(Number(user?.id), !!user?.id);
 
   useEffect(() => {
     const savedUser =
@@ -15,10 +19,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const savedCustomerInfo = localStorage.getItem('customerInfo');
-    if (savedCustomerInfo) {
+    if (payment) {
+      setCustomerInfo(payment[0]);
+    } else if (savedCustomerInfo) {
       setCustomerInfo(JSON.parse(savedCustomerInfo));
     }
-  }, []);
+  }, [payment]);
 
   const setUser = (user: UserStoreInterface | null) => {
     if (user) {
@@ -34,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     sessionStorage.removeItem('authUser');
   };
 
-  const setCustomerInfo = (customerInfo: CustomerInfoInterface) => {
+  const setCustomerInfo = (customerInfo: PaymentInterface) => {
     localStorage.setItem('customerInfo', JSON.stringify(customerInfo));
     setCustomerInfoData(customerInfo);
   };

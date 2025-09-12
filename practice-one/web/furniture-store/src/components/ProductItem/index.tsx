@@ -5,15 +5,18 @@ import { toast } from 'sonner';
 import { useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useAddCart } from '../../apis/add-cart';
 
 const ProductItem = ({
   id,
+  variantId,
   name,
   price,
   imageUrl,
   imageAlt,
 }: {
   id: number;
+  variantId: number;
   name: string;
   price: number;
   imageUrl: string;
@@ -21,18 +24,40 @@ const ProductItem = ({
 }) => {
   const { user } = useAuth();
 
-  const handleAddToCart = useCallback((e: MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toast('Product A has been added to your cart', {
-      description: 'Sunday, December 03, 2023 at 9:00 AM',
-      className: 'text-left',
-      action: {
-        label: 'View Cart',
-        onClick: () => console.log('Undo'),
-      },
-    });
-  }, []);
+  const { mutate, isLoading } = useAddCart();
+
+  const handleAddToCart = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!user?.id) return;
+
+      const cartPayload = {
+        userId: user.id,
+        items: [
+          {
+            productId: id,
+            variantId: variantId,
+            quantity: 1,
+          },
+        ],
+      };
+      mutate(cartPayload, {
+        onSuccess: () => {
+          toast(`Product ${name} has been added to your cart`, {
+            className: 'text-left',
+          });
+        },
+        onError: () => {
+          toast('Failed to add product to cart. Please try again.', {
+            className: 'text-left',
+          });
+        },
+      });
+    },
+    [id, name, mutate, user?.id, variantId],
+  );
 
   return (
     <div className="mt-6">
@@ -47,6 +72,7 @@ const ProductItem = ({
             <Button
               variant="outline"
               onClick={handleAddToCart}
+              disabled={isLoading}
               className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-6 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
               Add to cart

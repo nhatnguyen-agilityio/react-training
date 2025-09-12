@@ -10,4 +10,7 @@ export const API_ROUTES = {
 
   // carts
   CARTS: 'carts/',
+
+  // payment
+  PAYMENTS: 'payments/',
 };

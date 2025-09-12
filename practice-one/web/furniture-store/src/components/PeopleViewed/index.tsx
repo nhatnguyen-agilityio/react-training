@@ -9,205 +9,17 @@ import {
   CarouselPrevious,
 } from '../ui/carousel';
 import { Progress } from '../ui/progress';
+import { Skeleton } from '../ui/skeleton';
 import type { ProductInterface } from '../../interfaces/products';
+import { GetProducts } from '../../apis/products';
+import { TriangleAlert } from 'lucide-react';
 
-const listProducts: ProductInterface[] = [
-  {
-    id: 1,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 1,
-        hex: '#E5E1D8',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 2,
-        hex: '#D1C4E9',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 3,
-        hex: '#FFCC80',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 4,
-        hex: '#E5E1D8',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 5,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 5,
-        hex: '#D1C4E9',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 6,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 6,
-        hex: '#FFCC80',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 7,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 7,
-        hex: '#E5E1D8',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 8,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 8,
-        hex: '#D1C4E9',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 9,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 9,
-        hex: '#FFCC80',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 10,
-    name: 'Modern Nightstand',
-    price: 225,
-    variants: [
-      {
-        id: 10,
-        hex: '#E5E1D8',
-        size: 'Medium',
-        stock: 10,
-        images: [
-          {
-            url: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
-            alt: 'Modern Nightstand',
-          },
-        ],
-      },
-    ],
-  },
-];
-
-const PeopleViewed = () => {
+const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
   const [api, setApi] = useState<EmblaCarouselType | null>(null);
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  const { data: listProducts, isPending, isError } = GetProducts(0, 4, String(categoryId));
 
   useEffect(() => {
     if (!api) return;
@@ -224,6 +36,56 @@ const PeopleViewed = () => {
       api.off('select', update);
     };
   }, [api]);
+
+  if (isPending) {
+    return (
+      <div className="container my-12">
+        <div className="flex justify-between mb-6">
+          <Skeleton className="h-8 w-48" />
+          <div className="hidden mr-4 md:flex">
+            <Skeleton className="w-8 h-8 mr-3" />
+            <Skeleton className="w-8 h-8" />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className="mt-6">
+              <Skeleton className="bg-background-primary min-h-48 md:min-h-78 mb-4" />
+              <div className="flex justify-between items-center mb-2">
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-6 w-16 rounded-2xl" />
+              </div>
+              <div className="flex">
+                <Skeleton className="w-7 h-7 mr-4 rounded-full" />
+                <Skeleton className="w-7 h-7 rounded-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <Skeleton className="my-8 h-2 md:hidden" />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="container my-12">
+        <div className="flex justify-between mb-6">
+          <h2 className="text-xl md:text-2xl font-bold md:font-semibold">
+            People Also Viewed
+          </h2>
+        </div>
+        <div className="flex flex-col items-center justify-center min-h-48 text-center">
+          <div className="mb-4">
+            <TriangleAlert className="w-16 h-16 text-red-500 mx-aut" />
+          </div>
+          <p className="text-gray-600 mb-4">
+            Failed to load recommended products
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container my-12">

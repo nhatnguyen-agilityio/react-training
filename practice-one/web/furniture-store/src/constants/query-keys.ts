@@ -4,7 +4,12 @@ export const QUERY_KEY = {
     'subCategories',
     mainCategory,
   ],
-  PRODUCTS: (start: number, end: number, mainCategoryId?: string) => ['products', start, end, mainCategoryId],
+  PRODUCTS: (start: number, end: number, mainCategoryId?: string) => [
+    'products',
+    start,
+    end,
+    mainCategoryId,
+  ],
   PRODUCTS_INFINITE: (
     pageSize: number,
     position: string,

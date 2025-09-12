@@ -40,10 +40,16 @@ const fetchProducts = async (
   return res.json();
 };
 
-export const GetProducts = (start = 0, end = 20, mainCategoryId = "", enabled = true ) => {
+export const GetProducts = (
+  start = 0,
+  end = 20,
+  mainCategoryId = '',
+  enabled = true,
+) => {
   return useQuery({
     queryKey: QUERY_KEY.PRODUCTS(start, end, mainCategoryId),
-    queryFn: () => fetchProducts(start, end, 'createdAt', 'desc', mainCategoryId),
+    queryFn: () =>
+      fetchProducts(start, end, 'createdAt', 'desc', mainCategoryId),
     enabled,
     staleTime: 1000 * 60 * 5,
     placeholderData: keepPreviousData,

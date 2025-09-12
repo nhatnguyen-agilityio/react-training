@@ -19,7 +19,11 @@ const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
-  const { data: listProducts, isPending, isError } = GetProducts(0, 4, String(categoryId));
+  const {
+    data: listProducts,
+    isPending,
+    isError,
+  } = GetProducts(0, 4, String(categoryId));
 
   useEffect(() => {
     if (!api) return;

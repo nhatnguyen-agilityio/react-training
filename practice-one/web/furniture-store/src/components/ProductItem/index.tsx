@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import { toast } from 'sonner';
 import { useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 const ProductItem = ({
   id,
@@ -18,10 +19,11 @@ const ProductItem = ({
   imageUrl: string;
   imageAlt: string;
 }) => {
+  const { user } = useAuth();
+
   const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Add to cart');
     toast('Product A has been added to your cart', {
       description: 'Sunday, December 03, 2023 at 9:00 AM',
       className: 'text-left',
@@ -35,20 +37,22 @@ const ProductItem = ({
   return (
     <div className="mt-6">
       <Link to={`/products/${id}`}>
-        <div className="bg-background-primary min-h-48 md:min-h-78 flex items-center relative group">
+        <div className="bg-background-primary min-h-48 md:min-h-78 flex items-center relative group hover:bg-gray-200">
           <Image
             src={imageUrl}
             alt={imageAlt}
             className="w-3/5 h-3/5 object-contain mx-auto"
           />
-          <Button
-            variant="outline"
-            onClick={handleAddToCart}
-            className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-6 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            Add to cart
-            <ArrowRight />
-          </Button>
+          {user && (
+            <Button
+              variant="outline"
+              onClick={handleAddToCart}
+              className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-6 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              Add to cart
+              <ArrowRight />
+            </Button>
+          )}
         </div>
         <div className="flex justify-between items-center my-2 font-bold">
           <p className="line-clamp-1 text-left">{name}</p>

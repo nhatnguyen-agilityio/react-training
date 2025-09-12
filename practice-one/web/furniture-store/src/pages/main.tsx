@@ -52,12 +52,14 @@ const Main = () => {
             }}
             button={
               <div className="flex items-center">
-                <CartButton
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setStep('cart');
-                  }}
-                />
+                {user && (
+                  <CartButton
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setStep('cart');
+                    }}
+                  />
+                )}
                 {user ? (
                   <UserButton />
                 ) : (

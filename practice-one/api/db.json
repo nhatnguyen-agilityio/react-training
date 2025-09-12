@@ -1605,15 +1605,43 @@
       ]
     }
   ],
-  "paymentMethods": [
+  "payments": [
     {
       "id": 1,
       "userId": 1,
       "cardNumber": "4111111111111111",
-      "expiredAt": "2026-08",
+      "expiredDate": "2026-08",
       "cvv": "123",
-      "cardName": "Alice Nguyen",
-      "isDefault": true
+      "name": "Alice Nguyen",
+      "useSippingAddress": true,
+      "createdAt": "2025-08-10T10:00:00Z",
+      "address": "123 Main St, Hanoi, Vietnam",
+      "city": "Hanoi",
+      "country": "Vietnam",
+      "email": "alice@example.com",
+      "firstName": "Alice",
+      "lastName": "Nguyen",
+      "phoneNumber": "+84 987654321"
+    },
+    {
+      "data": {
+        "name": "Alex",
+        "cardNumber": "378282246310005",
+        "cvv": "123",
+        "expirationDate": "02/2029",
+        "useShippingAddress": true,
+        "rememberMe": true
+      },
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyennn",
+      "phoneNumber": "2347773863",
+      "address": "Da nang",
+      "city": "DN",
+      "country": "HX",
+      "userId": 2,
+      "createdAt": "2025-09-12T08:55:59.580Z",
+      "id": 2
     }
   ],
   "reviews": [

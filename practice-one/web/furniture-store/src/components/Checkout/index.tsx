@@ -10,6 +10,7 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { useAuth } from '../../hooks/useAuth';
 
 const checkoutFormSchema = z.object({
   email: z
@@ -67,28 +68,24 @@ const checkoutFormSchema = z.object({
     }),
 });
 
-const Checkout = ({
-  onNext,
-  onLogin,
-}: {
-  onNext: () => void;
-  onLogin: () => void;
-}) => {
+const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
+  const { customerInfo, setCustomerInfo } = useAuth();
+
   const form = useForm<z.infer<typeof checkoutFormSchema>>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      address: '',
-      city: '',
-      country: '',
+      email: customerInfo?.email || '',
+      firstName: customerInfo?.firstName || '',
+      lastName: customerInfo?.lastName || '',
+      phoneNumber: customerInfo?.phoneNumber || '',
+      address: customerInfo?.address || '',
+      city: customerInfo?.city || '',
+      country: customerInfo?.country || '',
     },
   });
 
   const handleSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
-    console.log('Form submitted with data:', data);
+    setCustomerInfo(data);
     onNext();
   };
 
@@ -97,12 +94,6 @@ const Checkout = ({
       <div className="px-5 flex flex-col items-start md:w-3/5 mx-auto lg:px-7">
         <p className="text-lg font-semibold text-body-sub">
           Customer Information
-        </p>
-        <p className="text-body-sub mt-1">
-          Have an account?{' '}
-          <span onClick={onLogin} className="text-app-primary">
-            Login
-          </span>
         </p>
       </div>
       <Form {...form}>

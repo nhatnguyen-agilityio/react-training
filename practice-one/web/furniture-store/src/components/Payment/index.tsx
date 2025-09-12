@@ -12,6 +12,8 @@ import {
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
 import { Button } from '../ui/button';
+import { useAuth } from '../../hooks/useAuth';
+import { useAddPayment } from '../../apis/add-payment';
 
 const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
@@ -92,6 +94,8 @@ const paymentFormSchema = z.object({
 });
 
 const Payment = ({ onNext }: { onNext: () => void }) => {
+  const { user, customerInfo, removeCustomerInfo } = useAuth();
+
   const form = useForm<z.infer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
     defaultValues: {
@@ -104,9 +108,22 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
     },
   });
 
+  const { mutate } = useAddPayment();
+
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
     console.log(data);
-    onNext();
+
+    if (data.rememberMe && user) {
+      const paymentPayload = { ...data, ...customerInfo, userId: user.id };
+
+      mutate(paymentPayload, {
+        onSuccess: () => {
+          removeCustomerInfo();
+        },
+      });
+    }
+
+    // onNext();
   };
 
   return (

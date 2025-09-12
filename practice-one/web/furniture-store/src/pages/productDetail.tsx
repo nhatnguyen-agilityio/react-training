@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback, type MouseEvent } from 'react';
 import { Check, Box, Sprout, TriangleAlert } from 'lucide-react';
 import Image from '../components/common/Image';
 import {
@@ -20,18 +20,67 @@ import { Skeleton } from '../components/ui/skeleton';
 import PeopleViewed from '../components/PeopleViewed';
 import { useParams } from 'react-router-dom';
 import { useGetProductDetail } from '../apis/product-detail';
+import { useAddCart } from '../apis/add-cart';
+import { toast } from 'sonner';
 import type { ProductVariant } from '../interfaces/products';
 import type { ImageInterface } from '../interfaces/image';
+import { useAuth } from '../hooks/useAuth';
 
 const ProductDetail = () => {
   const [selected, setSelected] = useState<number>(0);
+  const [selectedVariantId, setSelectedVariantId] = useState<number | null>(
+    null,
+  );
+  const [quantity, setQuantity] = useState<number>(1);
   const { id } = useParams<{ id: string }>();
+
+  const { user } = useAuth();
+  const { mutate, isLoading } = useAddCart();
 
   const {
     data: productDetail,
     isPending,
     isError,
   } = useGetProductDetail(id || '', !!id);
+
+  useEffect(() => {
+    if (productDetail?.variants?.[0]) {
+      setSelectedVariantId(productDetail.variants[0].id);
+    }
+  }, [productDetail]);
+
+  const handleAddToCart = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (!user?.id || !selectedVariantId) return;
+
+      const cartPayload = {
+        userId: user.id,
+        items: [
+          {
+            productId: Number(id),
+            variantId: selectedVariantId,
+            quantity: quantity,
+          },
+        ],
+      };
+      mutate(cartPayload, {
+        onSuccess: () => {
+          toast(`Product ${productDetail?.name} has been added to your cart`, {
+            className: 'text-left',
+          });
+        },
+        onError: () => {
+          toast('Failed to add product to cart. Please try again.', {
+            className: 'text-left',
+          });
+        },
+      });
+    },
+    [id, mutate, user?.id, selectedVariantId, productDetail?.name, quantity],
+  );
 
   if (isPending) {
     return (
@@ -100,7 +149,6 @@ const ProductDetail = () => {
 
             <div className="mt-10 w-full">
               <Skeleton className="w-full h-16 rounded-3xl" />
-              <Skeleton className="w-full h-16 rounded-3xl mt-4" />
             </div>
 
             <div className="mt-12 space-y-6">
@@ -248,7 +296,10 @@ const ProductDetail = () => {
                 (item: ProductVariant, index: number) => (
                   <div
                     key={index}
-                    onClick={() => setSelected(index)}
+                    onClick={() => {
+                      setSelected(index);
+                      setSelectedVariantId(item.id);
+                    }}
                     className="h-12 w-12 mr-3 rounded-2xl flex items-center justify-center cursor-pointer"
                     style={{ backgroundColor: item.hex }}
                   >
@@ -264,7 +315,8 @@ const ProductDetail = () => {
                 type="number"
                 min={1}
                 max={100}
-                defaultValue={1}
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
                 className="bg-background-primary rounded-2xl h-full p-0 text-center lg:pl-3"
               />
             </div>
@@ -272,15 +324,11 @@ const ProductDetail = () => {
           <div className="mt-10 w-full">
             <Button
               variant={'outline'}
-              className="w-full py-6 bg-background-primary hover:bg-gray-200 hover:text-black border-1 border-gray-200 rounded-3xl text-gray-500 font-light text-xl"
+              onClick={handleAddToCart}
+              disabled={isLoading}
+              className="w-full py-6 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
             >
-              Add to cart
-            </Button>
-            <Button
-              variant={'outline'}
-              className="w-full py-6 mt-4 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
-            >
-              Buy now
+              {isLoading ? 'Adding to cart...' : 'Add to cart'}
             </Button>
           </div>
           <div>

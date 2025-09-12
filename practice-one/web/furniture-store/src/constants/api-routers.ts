@@ -7,4 +7,7 @@ export const API_ROUTES = {
   SIGN_UP: 'signup/',
   // login
   LOGIN: 'login/',
+
+  // carts
+  CARTS: 'carts/',
 };

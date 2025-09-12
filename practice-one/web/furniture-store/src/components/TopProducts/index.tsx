@@ -112,6 +112,7 @@ const TopProducts = ({
             <ProductItem
               key={product.id}
               id={product.id}
+              variantId={firstVariant.id}
               name={product.name}
               price={product.price}
               imageUrl={firstImage.url}

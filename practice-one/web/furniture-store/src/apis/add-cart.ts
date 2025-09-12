@@ -6,12 +6,16 @@ import { QUERY_KEY } from '../constants/query-keys';
 
 const postCart = async (cartPayload: CartInterface) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}`);
+  const payload = {
+    ...cartPayload,
+    createdAt: new Date().toISOString(),
+  };
   const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(cartPayload),
+    body: JSON.stringify(payload),
   });
 
   if (!res.ok) {

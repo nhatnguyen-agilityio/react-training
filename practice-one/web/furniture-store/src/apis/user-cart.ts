@@ -3,8 +3,14 @@ import { QUERY_KEY } from '../constants/query-keys';
 import { API_ENDPOINT } from '../constants/env-variables';
 import { API_ROUTES } from '../constants/api-routers';
 
-const fetchCartByUser = async (userId: number) => {
+const fetchCartByUser = async (
+  userId: number,
+  sortBy = 'createdAt',
+  order: 'asc' | 'desc' = 'desc',
+) => {
   const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}`);
+  url.searchParams.set('_sort', String(sortBy));
+  url.searchParams.set('_order', String(order));
   if (userId) {
     url.searchParams.set('userId', String(userId));
   }

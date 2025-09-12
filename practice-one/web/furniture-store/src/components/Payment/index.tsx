@@ -17,6 +17,7 @@ import { useAddPayment } from '../../apis/add-payment';
 import { useGetUserCart } from '../../apis/user-cart';
 import type { CartInterface } from '../../interfaces/cart';
 import { useAddOrder } from '../../apis/add-order';
+import { useDeleteCart } from '../../apis/delete-cart';
 
 const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
@@ -113,6 +114,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
 
   const { mutate: addPayment } = useAddPayment();
   const { mutate: addOrder } = useAddOrder();
+  const { mutate: deleteCart } = useDeleteCart();
 
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
 
@@ -136,6 +138,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
     };
     addOrder(orderPayload, {
       onSuccess: () => {
+        deleteCart({ userId: String(user?.id) });
         onNext();
       },
     });

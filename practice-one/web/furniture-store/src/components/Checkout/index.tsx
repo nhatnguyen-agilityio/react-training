@@ -84,7 +84,8 @@ const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
+    localStorage.setItem('checkout', JSON.stringify(data));
     onNext();
   };
 

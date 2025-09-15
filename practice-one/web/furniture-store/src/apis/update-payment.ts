@@ -4,22 +4,21 @@ import { API_ROUTES } from '../constants/api-routers';
 import type { PaymentInterface } from '../interfaces/payment';
 import { QUERY_KEY } from '../constants/query-keys';
 
-const postPayment = async (paymentPayload: PaymentInterface) => {
-  const url = new URL(`${API_ENDPOINT}${API_ROUTES.PAYMENTS}`);
-  const payload = {
-    ...paymentPayload,
-    createdAt: new Date().toISOString(),
-  };
+const putPayment = async (
+  paymentId: string | number,
+  paymentPayload: PaymentInterface,
+) => {
+  const url = new URL(`${API_ENDPOINT}${API_ROUTES.PAYMENTS}${paymentId}`);
   const res = await fetch(url, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(paymentPayload),
   });
 
   if (!res.ok) {
-    let message = 'Failed to create payment information';
+    let message = 'Failed to update payment information';
     try {
       const data = await res.json();
       if (data?.error) message = data.error;
@@ -32,21 +31,20 @@ const postPayment = async (paymentPayload: PaymentInterface) => {
   return res.json();
 };
 
-export const useAddPayment = () => {
+export const useUpdatePayment = () => {
   const queryClient = useQueryClient();
 
   const { mutate, mutateAsync, isPending, error, ...rest } = useMutation<
     PaymentInterface,
     Error,
-    PaymentInterface
+    { paymentId: number | string; paymentPayload: PaymentInterface }
   >({
-    mutationFn: (paymentPayload) => postPayment(paymentPayload),
+    mutationFn: ({ paymentId, paymentPayload }) =>
+      putPayment(paymentId, paymentPayload),
     onSuccess: (_, variables) => {
-      if (variables.userId) {
-        queryClient.invalidateQueries({
-          queryKey: QUERY_KEY.PAYMENT(variables.userId),
-        });
-      }
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEY.PAYMENT(Number(variables.paymentPayload.userId)),
+      });
     },
   });
 

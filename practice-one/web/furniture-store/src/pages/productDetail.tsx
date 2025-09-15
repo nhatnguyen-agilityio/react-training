@@ -54,6 +54,10 @@ const ProductDetail = () => {
       e.preventDefault();
       e.stopPropagation();
 
+      if (!user) {
+        toast('You must be logged in to perform this action', {});
+      }
+
       if (!user?.id || !selectedVariantId) return;
 
       const cartPayload = {

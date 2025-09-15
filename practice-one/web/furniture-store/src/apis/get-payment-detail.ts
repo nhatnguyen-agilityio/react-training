@@ -3,18 +3,18 @@ import { QUERY_KEY } from '../constants/query-keys';
 import { API_ROUTES } from '../constants/api-routers';
 import { API_ENDPOINT } from '../constants/env-variables';
 
-const fetchProductDetail = async (id: string) => {
-  const res = await fetch(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}${id}`);
+const fetchPaymentDetail = async (id: string) => {
+  const res = await fetch(`${API_ENDPOINT}${API_ROUTES.PAYMENTS}${id}`);
   if (!res.ok) {
     throw new Error('Network response was not ok');
   }
   return res.json();
 };
 
-export const useGetProductDetail = (id: string, enabled = true) => {
+export const useGetPaymentDetail = (id: string, enabled = true) => {
   return useQuery({
-    queryKey: QUERY_KEY.PRODUCT_DETAIL(id),
-    queryFn: () => fetchProductDetail(id),
+    queryKey: QUERY_KEY.PAYMENT_DETAIL(id),
+    queryFn: () => fetchPaymentDetail(id),
     enabled,
     staleTime: 1000 * 60 * 5,
   });

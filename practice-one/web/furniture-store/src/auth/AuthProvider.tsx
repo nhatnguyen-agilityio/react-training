@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeCustomerInfo = () => {
-    localStorage.removeItem('customerInfo');
+    localStorage.removeItem('checkout');
   };
 
   return (

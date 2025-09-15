@@ -60,7 +60,7 @@ const ProductItem = ({
   );
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 max-w-85">
       <Link to={`/products/${id}`}>
         <div className="bg-background-primary min-h-48 md:min-h-78 flex items-center relative group hover:bg-gray-200">
           <Image

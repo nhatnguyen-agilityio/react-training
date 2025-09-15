@@ -1,14 +1,7 @@
 import { useState, useEffect, useCallback, type MouseEvent } from 'react';
 import { Check, Box, Sprout, TriangleAlert } from 'lucide-react';
 import Image from '../components/common/Image';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '../components/ui/breadcrumb';
+import BreadcrumbComponent from '../components/common/Breadcrumb';
 import {
   Carousel,
   CarouselContent,
@@ -83,33 +76,21 @@ const ProductDetail = () => {
         },
       });
     },
-    [id, mutate, user?.id, selectedVariantId, productDetail?.name, quantity],
+    [id, mutate, user, selectedVariantId, productDetail?.name, quantity],
   );
 
   if (isPending) {
     return (
       <div className="mt-12">
-        <Breadcrumb className="container">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Homepage</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Categories</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Sitting Room</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>
-                <Skeleton className="h-4 w-32" />
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <BreadcrumbComponent
+          className="container"
+          items={[
+            { label: 'Homepage', href: '/' },
+            { label: 'Categories', href: '/' },
+            { label: 'Sitting Room', href: '/' },
+            { label: <Skeleton className="h-4 w-32" />, isCurrentPage: true },
+          ]}
+        />
 
         <div className="container grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7 mt-4 md:mt-8 grid">
           <div className="flex justify-center mt-4 bg-background-primary py-4 md:hidden">
@@ -175,25 +156,15 @@ const ProductDetail = () => {
   if (isError) {
     return (
       <div className="mt-12">
-        <Breadcrumb className="container">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Homepage</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Categories</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Sitting Room</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Product Detail</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <BreadcrumbComponent
+          className="container"
+          items={[
+            { label: 'Homepage', href: '/' },
+            { label: 'Categories', href: '/' },
+            { label: 'Sitting Room', href: '/' },
+            { label: 'Product Detail', isCurrentPage: true },
+          ]}
+        />
 
         <div className="container mt-8">
           <div className="flex flex-col items-center justify-center min-h-96 text-center">
@@ -218,25 +189,15 @@ const ProductDetail = () => {
 
   return (
     <div className="mt-12">
-      <Breadcrumb className="container">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Homepage</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Categories</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Sitting Room</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Luxe Armchair - Left Arm Chute</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <BreadcrumbComponent
+        className="container"
+        items={[
+          { label: 'Homepage', href: '/' },
+          { label: 'Categories', href: '/' },
+          { label: 'Sitting Room', href: '/' },
+          { label: 'Luxe Armchair - Left Arm Chute', isCurrentPage: true },
+        ]}
+      />
 
       {/* Images slide for mobile */}
       <div className="container grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7 mt-4 md:mt-8 grid">

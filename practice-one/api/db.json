@@ -53,6 +53,33 @@
       "email": "",
       "address": "",
       "phone": ""
+    },
+    {
+      "id": 7,
+      "username": "Ducnhat@1998",
+      "password": "Abcd@1234",
+      "name": "",
+      "email": "",
+      "address": "",
+      "phone": ""
+    },
+    {
+      "id": 8,
+      "username": "Ducnhat@1997",
+      "password": "Abcd@1234",
+      "name": "",
+      "email": "",
+      "address": "",
+      "phone": ""
+    },
+    {
+      "id": 9,
+      "username": "Ducnhat@1996",
+      "password": "Abcd@1234",
+      "name": "",
+      "email": "",
+      "address": "",
+      "phone": ""
     }
   ],
   "mainCategories": [
@@ -1536,7 +1563,44 @@
       ]
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": 2,
+      "items": [
+        {
+          "productId": 26,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "createdAt": "2025-09-15T01:25:17.619Z",
+      "id": 1
+    },
+    {
+      "userId": 7,
+      "items": [
+        {
+          "productId": 26,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "createdAt": "2025-09-15T02:00:47.481Z",
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "items": [
+        {
+          "productId": 11,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "createdAt": "2025-09-15T02:26:49.570Z",
+      "id": 3
+    }
+  ],
   "orders": [
     {
       "id": 1,
@@ -1833,6 +1897,170 @@
         }
       ],
       "orderDate": "2025-09-12T10:15:50.147Z"
+    },
+    {
+      "userId": 7,
+      "items": [
+        {
+          "productId": 26,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T01:37:33.237Z",
+      "id": 16
+    },
+    {
+      "userId": 8,
+      "items": [
+        {
+          "productId": 26,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:07:58.064Z",
+      "id": 17
+    },
+    {
+      "name": "Lex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 8,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347772961",
+      "address": "Da Nang",
+      "city": "DN",
+      "country": "HX",
+      "createdAt": "2025-09-15T02:07:58.064Z",
+      "items": [
+        {
+          "productId": 11,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:24:56.079Z",
+      "id": 18
+    },
+    {
+      "name": "Lex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 8,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347772961",
+      "address": "Da Nang",
+      "city": "DN",
+      "country": "HX",
+      "createdAt": "2025-09-15T02:07:58.064Z",
+      "items": [
+        {
+          "productId": 11,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:26:33.261Z",
+      "id": 19
+    },
+    {
+      "userId": 9,
+      "items": [
+        {
+          "productId": 11,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:29:34.860Z",
+      "id": 20
+    },
+    {
+      "userId": 9,
+      "items": [
+        {
+          "productId": 5,
+          "variantId": 501,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:31:24.309Z",
+      "id": 21
+    },
+    {
+      "name": "LEx",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 9,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347771393",
+      "address": "Da Nanx",
+      "city": "DN",
+      "country": "HX",
+      "createdAt": "2025-09-15T02:31:24.308Z",
+      "items": [
+        {
+          "productId": 9,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:33:55.731Z",
+      "id": 22
+    },
+    {
+      "userId": 9,
+      "items": [
+        {
+          "productId": 8,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:35:29.741Z",
+      "id": 23
+    },
+    {
+      "name": "Lex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 9,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347771936",
+      "address": "Da Nang",
+      "city": "DN",
+      "country": "HX",
+      "createdAt": "2025-09-15T02:35:29.740Z",
+      "items": [
+        {
+          "productId": 7,
+          "variantId": 701,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-15T02:36:12.343Z",
+      "id": 24
     }
   ],
   "payments": [
@@ -2122,6 +2350,42 @@
       "userId": 2,
       "createdAt": "2025-09-12T09:50:12.839Z",
       "id": 15
+    },
+    {
+      "name": "Lex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 8,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347772961",
+      "address": "Da Nang",
+      "city": "DN",
+      "country": "HXX",
+      "createdAt": "2025-09-15T02:07:58.064Z",
+      "id": 17
+    },
+    {
+      "name": "Lex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 9,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "2347771936",
+      "address": "Da Nang",
+      "city": "DNN",
+      "country": "HX",
+      "createdAt": "2025-09-15T02:35:29.740Z",
+      "id": 18
     }
   ],
   "reviews": [

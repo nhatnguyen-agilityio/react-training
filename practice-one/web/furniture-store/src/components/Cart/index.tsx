@@ -129,7 +129,7 @@ const Cart = ({
         <>
           {userCart.length > 0 && (
             <div
-              className={`${userCart < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
+              className={`${userCart.length < 4 ? 'fixed bottom-0 left-0 right-0' : 'sticky bottom-0'}`}
             >
               <Button
                 onClick={onNext}

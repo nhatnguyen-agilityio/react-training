@@ -18,6 +18,8 @@ import { useGetUserCart } from '../../apis/user-cart';
 import type { CartInterface } from '../../interfaces/cart';
 import { useAddOrder } from '../../apis/add-order';
 import { useDeleteCart } from '../../apis/delete-cart';
+import { useGetPayment } from '../../apis/get-payment';
+import { useUpdatePayment } from '../../apis/update-payment';
 
 const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
@@ -98,7 +100,7 @@ const paymentFormSchema = z.object({
 });
 
 const Payment = ({ onNext }: { onNext: () => void }) => {
-  const { user, customerInfo, removeCustomerInfo } = useAuth();
+  const { user, customerInfo, removeCustomerInfo, setCustomerInfo } = useAuth();
 
   const form = useForm<z.infer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
@@ -113,24 +115,48 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   });
 
   const { mutate: addPayment } = useAddPayment();
+  const { mutate: updatePayment } = useUpdatePayment();
   const { mutate: addOrder } = useAddOrder();
   const { mutate: deleteCart } = useDeleteCart();
 
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
+  const { data: payment } = useGetPayment(Number(user?.id), !!user?.id);
 
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
     if (data.rememberMe && user) {
-      const paymentPayload = { ...data, ...customerInfo, userId: user.id };
+      let paymentPayload = { ...data, ...customerInfo, userId: user.id };
 
-      addPayment(paymentPayload, {
-        onSuccess: () => {
-          removeCustomerInfo();
-        },
-      });
+      const checkoutInformation = localStorage.getItem('checkout');
+      if (checkoutInformation) {
+        paymentPayload = {
+          ...paymentPayload,
+          ...JSON.parse(checkoutInformation),
+        };
+      }
+      if (payment && payment.length > 0) {
+        updatePayment(
+          { paymentId: payment[0].id, paymentPayload },
+          {
+            onSuccess: (data) => {
+              removeCustomerInfo();
+              setCustomerInfo(data);
+            },
+          },
+        );
+      } else {
+        addPayment(paymentPayload, {
+          onSuccess: (data) => {
+            removeCustomerInfo();
+            setCustomerInfo(data);
+          },
+        });
+      }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...customerPayload } = customerInfo || {};
     const orderPayload = {
-      ...customerInfo,
+      ...customerPayload,
       userId: user?.id,
       items: userCart?.flatMap((cart: CartInterface) => cart.items) || [],
     };

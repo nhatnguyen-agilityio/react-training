@@ -12,4 +12,5 @@ export interface PaymentInterface {
   cvv?: string;
   expirationDate?: string;
   useShippingAddress?: boolean;
+  userId?: number;
 }

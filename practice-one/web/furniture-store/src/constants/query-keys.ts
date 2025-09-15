@@ -28,4 +28,5 @@ export const QUERY_KEY = {
   PRODUCT_DETAIL: (id: string) => ['product', id],
   USER_CART: (userId: number) => ['cart', userId],
   PAYMENT: (userId: number) => ['payment', userId],
+  PAYMENT_DETAIL: (id: string) => ['payment', id],
 };

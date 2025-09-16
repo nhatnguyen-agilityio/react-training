@@ -16,20 +16,20 @@ Object.assign(global, { TextEncoder, TextDecoder });
 // Mock IntersectionObserver
 Object.assign(global, {
   IntersectionObserver: class IntersectionObserver {
-    constructor() { }
-    observe() { }
-    disconnect() { }
-    unobserve() { }
+    constructor() {}
+    observe() {}
+    disconnect() {}
+    unobserve() {}
   },
 });
 
 // Mock ResizeObserver
 Object.assign(global, {
   ResizeObserver: class ResizeObserver {
-    constructor() { }
-    observe() { }
-    disconnect() { }
-    unobserve() { }
+    constructor() {}
+    observe() {}
+    disconnect() {}
+    unobserve() {}
   },
 });
 

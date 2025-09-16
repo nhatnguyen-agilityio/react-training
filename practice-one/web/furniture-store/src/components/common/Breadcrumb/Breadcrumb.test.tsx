@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import BreadcrumbComponent from './index';
+import type { ReactNode } from 'react';
 
-const TestQueryClient = ({ children }: { children: React.ReactNode }) => (
+const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );
 
@@ -135,7 +136,7 @@ describe('BreadcrumbComponent', () => {
         </TestQueryClient>,
       );
 
-      const breadcrumbElement = document.querySelector('font-bold');
+      const breadcrumbElement = document.querySelector('nav.font-bold');
       expect(breadcrumbElement).toBeInTheDocument();
     });
   });

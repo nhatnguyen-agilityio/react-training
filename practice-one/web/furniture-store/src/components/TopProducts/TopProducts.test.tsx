@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import TopProducts from '.';
+import userEvent from '@testing-library/user-event';
 
 jest.mock('../../apis/products', () => ({
   GetProductsInfinite: jest.fn(),
@@ -283,6 +284,40 @@ describe('TopProductsComponent', () => {
       );
 
       expect(screen.getByText('Showing 0 of 100 results')).toBeInTheDocument();
+    });
+  });
+
+  describe('Show more click', () => {
+    it('calls fetchNextPage when show more button is clicked', async () => {
+      mockGetProductsInfinite.mockReturnValue({
+        data: mockProducts,
+        isPending: false,
+        isError: false,
+        error: null,
+        fetchNextPage: jest.fn(),
+        hasNextPage: true,
+        isFetchingNextPage: false,
+      });
+
+      render(
+        <TestQueryClient>
+          <TopProducts
+            categoryId="1"
+            searchProducts="chair"
+            subCategoryName="Furniture"
+          />
+        </TestQueryClient>,
+      );
+      const showMoreButton = screen.getByTestId('show-more-button');
+      expect(showMoreButton).toBeInTheDocument();
+      await userEvent.click(showMoreButton);
+      expect(mockGetProductsInfinite).toHaveBeenCalledWith(
+        20,
+        'mostRecent',
+        '1',
+        'chair',
+        'Furniture',
+      );
     });
   });
 });

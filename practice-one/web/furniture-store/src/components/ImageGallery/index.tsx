@@ -85,7 +85,7 @@ const ImageGallery = () => {
               key={i}
               className={`overflow-hidden rounded-none shadow-none border-none py-0`}
             >
-              <img
+              <Image
                 src={img.src}
                 alt={`Gallery ${i + 1}`}
                 className="w-full h-full object-cover"

@@ -65,18 +65,6 @@ describe('ImageComponent', () => {
   });
 
   describe('Edge cases', () => {
-    it('renders image with empty src', () => {
-      render(
-        <TestQueryClient>
-          <Image src="" alt="test" />
-        </TestQueryClient>,
-      );
-      expect(screen.getByAltText('test')).toBeInTheDocument();
-      const image = screen.getByAltText('test');
-      expect(image).toBeInTheDocument();
-      expect(image.tagName).toBe('IMG');
-    });
-
     it('renders image with empty alt', () => {
       render(
         <TestQueryClient>

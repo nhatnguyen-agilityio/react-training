@@ -25,12 +25,13 @@ const SearchProduct = ({
           }
         }}
       />
-      <div
+      <button
+        type="button"
         onClick={() => setSearchProducts(searchProductsInput)}
         className="absolute right-0 top-1/2 -translate-y-1/2 rounded-r-3xl border-l-1 border-l-background-primary h-full w-16 flex items-center justify-center hover:bg-background-primary"
       >
         <Search className="text-gray-400 h-5 w-full" />
-      </div>
+      </button>
     </div>
   );
 };

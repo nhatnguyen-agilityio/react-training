@@ -86,7 +86,6 @@ const ProductDetail = () => {
           className="container"
           items={[
             { label: 'Homepage', href: '/' },
-            { label: 'Categories', href: '/' },
             { label: 'Sitting Room', href: '/' },
             { label: <Skeleton className="h-4 w-32" />, isCurrentPage: true },
           ]}
@@ -193,7 +192,6 @@ const ProductDetail = () => {
         className="container"
         items={[
           { label: 'Homepage', href: '/' },
-          { label: 'Categories', href: '/' },
           { label: 'Sitting Room', href: '/' },
           { label: 'Luxe Armchair - Left Arm Chute', isCurrentPage: true },
         ]}

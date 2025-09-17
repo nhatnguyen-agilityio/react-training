@@ -1,4 +1,4 @@
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import {
   Drawer,
   DrawerClose,

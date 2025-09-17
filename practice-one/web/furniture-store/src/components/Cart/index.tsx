@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Image from '../common/Image';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import { Skeleton } from '../ui/skeleton';
 import { TriangleAlert } from 'lucide-react';
 import CartItem from './CartItem';

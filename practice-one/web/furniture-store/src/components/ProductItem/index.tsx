@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import Image from '../common/Image';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import { toast } from 'sonner';
 import { useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
@@ -73,7 +73,7 @@ const ProductItem = ({
               variant="outline"
               onClick={handleAddToCart}
               disabled={isLoading}
-              className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-6 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-3 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
               Add to cart
               <ArrowRight />

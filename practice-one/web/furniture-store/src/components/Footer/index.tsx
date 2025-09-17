@@ -1,5 +1,5 @@
 import Image from '../common/Image';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import { ArrowUp } from 'lucide-react';
 import InformationItem from './InfomationItem';
 

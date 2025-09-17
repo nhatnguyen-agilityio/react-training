@@ -1,4 +1,4 @@
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
 
 const CategoryButtons = ({
@@ -22,10 +22,10 @@ const CategoryButtons = ({
                     onCategorySelect(item);
                   }}
                   variant={'outline'}
-                  className={`rounded-2xl hover:bg-gray-300 py-5 border-none transition-colors ${
+                  className={`rounded-2xl py-2 px-4 text-sm text-black font-medium hover:bg-gray-300 border-none transition-colors ${
                     selectedCategory === item
                       ? 'bg-app-primary text-white hover:bg-app-primary hover:text-white'
-                      : 'bg-background-primary'
+                      : 'bg-background-primary hover:text-black'
                   }`}
                 >
                   {item}

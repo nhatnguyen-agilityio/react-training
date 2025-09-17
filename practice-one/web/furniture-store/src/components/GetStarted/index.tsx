@@ -1,5 +1,6 @@
 import { MoveRight } from 'lucide-react';
 import { forwardRef } from 'react';
+import Button from '../common/Button';
 
 const GetStarted = forwardRef<
   HTMLButtonElement,
@@ -10,14 +11,14 @@ const GetStarted = forwardRef<
   // forwardRef + spreading ...props ensures your button behaves just like a normal<button>, so the drawer opens.
 
   return (
-    <button
+    <Button
       ref={ref}
-      className={`bg-app-primary px-7 py-4 text-white flex items-center text-base font-semibold rounded-4xl hover:bg-app-tertiary ${className ?? ''}`}
+      className={`bg-app-primary px-7 w-44 py-4 h-auto text-white flex items-center text-base font-semibold rounded-4xl hover:bg-app-tertiary ${className ?? ''}`}
       {...props}
     >
       Get Started
       <MoveRight className="inline-block w-4 h-4 ml-4 font-semibold" />
-    </button>
+    </Button>
   );
 });
 

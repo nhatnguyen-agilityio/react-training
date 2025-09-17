@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import Image from '../common/Image';
 import { Checkbox } from '../ui/checkbox';
 import { useSignUp } from '../../apis/signup';

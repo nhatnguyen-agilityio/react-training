@@ -1,4 +1,4 @@
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -20,7 +20,10 @@ const FilterDropdown = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-48 p-6 rounded-3xl text-base">
+        <Button
+          variant="ghost"
+          className="w-48 border-1 py-0 rounded-4xl text-base"
+        >
           {position === 'mostRecent'
             ? 'Most Recent'
             : position === 'lowToHigh'

@@ -1,5 +1,4 @@
-import { Button } from '../../ui/button';
-
+import Button from '../Button';
 const ShowMore = ({
   onClick,
   disabled = false,
@@ -10,10 +9,10 @@ const ShowMore = ({
   return (
     <div className="mt-6 flex justify-center">
       <Button
-        variant="outline"
+        variant="ghost"
         onClick={onClick}
         disabled={disabled}
-        className="rounded-full border-black p-6 w-42 text-sm font-medium text-black transition hover:bg-gray-300"
+        className="rounded-full border-1 border-black w-42 text-sm font-medium text-black transition hover:bg-gray-300"
       >
         Show More
       </Button>

@@ -23,6 +23,8 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/**/*.stories.{ts,tsx}',
     '!src/test/**/*',
+    '!src/constants/env-variables.ts',
+    '!src/main.tsx',
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],

@@ -84,7 +84,7 @@ const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
     },
   });
 
-  const handleSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
+  const onSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
     localStorage.setItem('checkout', JSON.stringify(data));
     onNext();
   };
@@ -97,7 +97,7 @@ const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
         </p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
           <div className="px-2 lg:px-7 md:w-3/5 md:mx-auto ml-3 mr-4 mt-6">
             <FormField
               name="email"

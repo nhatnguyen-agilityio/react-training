@@ -86,7 +86,11 @@ jest.mock('../ui/form', () => ({
     <div data-testid="form-wrapper">{children}</div>
   ),
   FormControl: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  FormField: ({ render }: { render: (props: { field: unknown }) => ReactNode }) => {
+  FormField: ({
+    render,
+  }: {
+    render: (props: { field: unknown }) => ReactNode;
+  }) => {
     const fieldProps = {
       onChange: jest.fn(),
       onBlur: jest.fn(),
@@ -96,17 +100,30 @@ jest.mock('../ui/form', () => ({
     };
     return <div>{render({ field: fieldProps })}</div>;
   },
-  FormItem: ({ children, className }: { children: ReactNode; className?: string }) => (
-    <div className={className}>{children}</div>
-  ),
-  FormLabel: ({ children, htmlFor }: { children: ReactNode; htmlFor?: string }) => (
-    <label htmlFor={htmlFor}>{children}</label>
-  ),
+  FormItem: ({
+    children,
+    className,
+  }: {
+    children: ReactNode;
+    className?: string;
+  }) => <div className={className}>{children}</div>,
+  FormLabel: ({
+    children,
+    htmlFor,
+  }: {
+    children: ReactNode;
+    htmlFor?: string;
+  }) => <label htmlFor={htmlFor}>{children}</label>,
   FormMessage: () => <div data-testid="form-message"></div>,
 }));
 
 jest.mock('../ui/input', () => ({
-  Input: ({ placeholder, type, className, ...props }: Record<string, unknown>) => (
+  Input: ({
+    placeholder,
+    type,
+    className,
+    ...props
+  }: Record<string, unknown>) => (
     <input
       placeholder={placeholder as string}
       type={type as string}
@@ -118,12 +135,19 @@ jest.mock('../ui/input', () => ({
 }));
 
 jest.mock('../ui/checkbox', () => ({
-  Checkbox: ({ id, checked, onCheckedChange, className }: Record<string, unknown>) => (
+  Checkbox: ({
+    id,
+    checked,
+    onCheckedChange,
+    className,
+  }: Record<string, unknown>) => (
     <input
       id={id as string}
       type="checkbox"
       checked={checked as boolean}
-      onChange={(e) => (onCheckedChange as (value: boolean) => void)?.(e.target.checked)}
+      onChange={(e) =>
+        (onCheckedChange as (value: boolean) => void)?.(e.target.checked)
+      }
       className={className as string}
       data-testid={`checkbox-${id as string}`}
     />
@@ -132,7 +156,13 @@ jest.mock('../ui/checkbox', () => ({
 
 jest.mock('../common/Button', () => ({
   __esModule: true,
-  default: ({ children, type, className, disabled, onClick }: Record<string, unknown>) => (
+  default: ({
+    children,
+    type,
+    className,
+    disabled,
+    onClick,
+  }: Record<string, unknown>) => (
     <button
       type={type as 'submit' | 'reset' | 'button'}
       className={className as string}
@@ -174,7 +204,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       expect(screen.getByTestId('form-wrapper')).toBeInTheDocument();
@@ -182,7 +212,9 @@ describe('Payment Component', () => {
       expect(screen.getByTestId('input-expiration-date')).toBeInTheDocument();
       expect(screen.getByTestId('input-cvv')).toBeInTheDocument();
       expect(screen.getByTestId('input-cardholder-name')).toBeInTheDocument();
-      expect(screen.getByTestId('checkbox-useShippingAddress')).toBeInTheDocument();
+      expect(
+        screen.getByTestId('checkbox-useShippingAddress'),
+      ).toBeInTheDocument();
       expect(screen.getByTestId('checkbox-rememberMe')).toBeInTheDocument();
       expect(screen.getByTestId('submit-button')).toBeInTheDocument();
     });
@@ -191,7 +223,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       expect(screen.getByTestId('form-wrapper')).toBeInTheDocument();
@@ -204,7 +236,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const cardNumberInput = screen.getByTestId('input-card-number');
@@ -216,7 +248,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const expirationInput = screen.getByTestId('input-expiration-date');
@@ -228,7 +260,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const cvvInput = screen.getByTestId('input-cvv');
@@ -240,7 +272,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const nameInput = screen.getByTestId('input-cardholder-name');
@@ -252,23 +284,29 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
-      expect(screen.getByText('Use shipping address as billing address')).toBeInTheDocument();
-      expect(screen.getByText('Save my information for faster checkout')).toBeInTheDocument();
+      expect(
+        screen.getByText('Use shipping address as billing address'),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText('Save my information for faster checkout'),
+      ).toBeInTheDocument();
     });
   });
 
   describe('User Interactions', () => {
     it('handles form submission', async () => {
       const user = userEvent.setup();
-      mockLocalStorage.getItem.mockReturnValue(JSON.stringify(mockCustomerInfo));
+      mockLocalStorage.getItem.mockReturnValue(
+        JSON.stringify(mockCustomerInfo),
+      );
 
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const submitButton = screen.getByTestId('submit-button');
@@ -279,12 +317,14 @@ describe('Payment Component', () => {
 
     it('calls onNext when form is submitted successfully', async () => {
       const user = userEvent.setup();
-      mockLocalStorage.getItem.mockReturnValue(JSON.stringify(mockCustomerInfo));
+      mockLocalStorage.getItem.mockReturnValue(
+        JSON.stringify(mockCustomerInfo),
+      );
 
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const submitButton = screen.getByTestId('submit-button');
@@ -303,10 +343,12 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
-      const useShippingCheckbox = screen.getByTestId('checkbox-useShippingAddress');
+      const useShippingCheckbox = screen.getByTestId(
+        'checkbox-useShippingAddress',
+      );
       const rememberMeCheckbox = screen.getByTestId('checkbox-rememberMe');
 
       await user.click(useShippingCheckbox);
@@ -322,7 +364,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       expect(screen.getByTestId('form-wrapper')).toBeInTheDocument();
@@ -333,7 +375,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const formMessages = screen.getAllByTestId('form-message');
@@ -354,7 +396,7 @@ describe('Payment Component', () => {
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       expect(screen.getByTestId('form-wrapper')).toBeInTheDocument();
@@ -364,12 +406,14 @@ describe('Payment Component', () => {
   describe('API Integration', () => {
     it('handles form submission with valid data', async () => {
       const user = userEvent.setup();
-      mockLocalStorage.getItem.mockReturnValue(JSON.stringify(mockCustomerInfo));
+      mockLocalStorage.getItem.mockReturnValue(
+        JSON.stringify(mockCustomerInfo),
+      );
 
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const submitButton = screen.getByTestId('submit-button');
@@ -380,12 +424,14 @@ describe('Payment Component', () => {
 
     it('handles rememberMe checkbox interaction', async () => {
       const user = userEvent.setup();
-      mockLocalStorage.getItem.mockReturnValue(JSON.stringify(mockCustomerInfo));
+      mockLocalStorage.getItem.mockReturnValue(
+        JSON.stringify(mockCustomerInfo),
+      );
 
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
       const rememberMeCheckbox = screen.getByTestId('checkbox-rememberMe');
@@ -396,15 +442,19 @@ describe('Payment Component', () => {
 
     it('handles useShippingAddress checkbox interaction', async () => {
       const user = userEvent.setup();
-      mockLocalStorage.getItem.mockReturnValue(JSON.stringify(mockCustomerInfo));
+      mockLocalStorage.getItem.mockReturnValue(
+        JSON.stringify(mockCustomerInfo),
+      );
 
       render(
         <TestWrapper>
           <Payment onNext={mockOnNext} />
-        </TestWrapper>
+        </TestWrapper>,
       );
 
-      const useShippingCheckbox = screen.getByTestId('checkbox-useShippingAddress');
+      const useShippingCheckbox = screen.getByTestId(
+        'checkbox-useShippingAddress',
+      );
       await user.click(useShippingCheckbox);
 
       expect(useShippingCheckbox).toBeInTheDocument();

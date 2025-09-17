@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import Main from './main';
@@ -95,6 +95,12 @@ jest.mock('../components/GetStarted', () => {
 jest.mock('../components/UserButton', () => {
   return function MockUserButton() {
     return <button data-testid="user-button">User Menu</button>;
+  };
+});
+
+jest.mock('../components/Loading', () => {
+  return function MockLoading() {
+    return <div data-testid="loading">Loading...</div>;
   };
 });
 
@@ -336,7 +342,10 @@ describe('Main Component', () => {
 
       const sidebar = screen.getByTestId('sidebar');
       expect(sidebar).toHaveAttribute('data-open', 'true');
-      expect(screen.getByTestId('cart-component')).toBeInTheDocument();
+
+      await waitFor(() => {
+        expect(screen.getByTestId('cart-component')).toBeInTheDocument();
+      });
       expect(screen.getByTestId('sidebar-title')).toHaveTextContent('Cart');
     });
 
@@ -355,7 +364,10 @@ describe('Main Component', () => {
 
       const sidebar = screen.getByTestId('sidebar');
       expect(sidebar).toHaveAttribute('data-open', 'true');
-      expect(screen.getByTestId('login-component')).toBeInTheDocument();
+
+      await waitFor(() => {
+        expect(screen.getByTestId('login-component')).toBeInTheDocument();
+      });
       expect(screen.getByTestId('sidebar-title')).toHaveTextContent('');
     });
 
@@ -396,9 +408,15 @@ describe('Main Component', () => {
 
       await user.click(screen.getByTestId('cart-button'));
 
+      await waitFor(() => {
+        expect(screen.getByTestId('cart-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('cart-next'));
 
-      expect(screen.getByTestId('checkout-component')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId('checkout-component')).toBeInTheDocument();
+      });
       expect(screen.getByTestId('sidebar-title')).toHaveTextContent('Checkout');
     });
 
@@ -412,10 +430,22 @@ describe('Main Component', () => {
       );
 
       await user.click(screen.getByTestId('cart-button'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('cart-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('cart-next'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('checkout-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('checkout-next'));
 
-      expect(screen.getByTestId('payment-component')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId('payment-component')).toBeInTheDocument();
+      });
       expect(screen.getByTestId('sidebar-title')).toHaveTextContent('Payment');
     });
 
@@ -429,11 +459,30 @@ describe('Main Component', () => {
       );
 
       await user.click(screen.getByTestId('cart-button'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('cart-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('cart-next'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('checkout-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('checkout-next'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('payment-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('payment-next'));
 
-      expect(screen.getByTestId('order-success-component')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(
+          screen.getByTestId('order-success-component'),
+        ).toBeInTheDocument();
+      });
     });
 
     it('returns to closed state from order success', async () => {
@@ -470,9 +519,15 @@ describe('Main Component', () => {
 
       await user.click(screen.getByTestId('get-started-button'));
 
+      await waitFor(() => {
+        expect(screen.getByTestId('login-component')).toBeInTheDocument();
+      });
+
       await user.click(screen.getByTestId('login-next'));
 
-      expect(screen.getByTestId('signup-component')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId('signup-component')).toBeInTheDocument();
+      });
     });
 
     it('navigates from signup back to login', async () => {

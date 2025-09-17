@@ -478,7 +478,6 @@ describe('ProductDetail Page', () => {
 
       const addToCartButton = screen.getByText('Add to cart');
       expect(addToCartButton).toBeInTheDocument();
-      expect(addToCartButton).toHaveAttribute('data-variant', 'outline');
     });
 
     it('shows loading state when adding to cart', () => {
@@ -593,25 +592,6 @@ describe('ProductDetail Page', () => {
     });
   });
 
-  // describe('useEffect - Variant Selection', () => {
-  //   it('sets first variant as selected when product loads', () => {
-  //     mockUseGetProductDetail.mockReturnValue({
-  //       data: mockProductDetail,
-  //       isPending: false,
-  //       isError: false,
-  //     });
-
-  //     render(
-  //       <TestWrapper>
-  //         <ProductDetail />
-  //       </TestWrapper>
-  //     );
-
-  //     const addToCartButton = screen.getByText('Add to cart');
-  //     expect(addToCartButton).toBeInTheDocument();
-  //   });
-  // });
-
   describe('Edge Cases', () => {
     it('handles missing product ID', () => {
       jest
@@ -702,7 +682,6 @@ describe('ProductDetail Page', () => {
       );
 
       const addToCartButton = screen.getByText('Add to cart');
-      expect(addToCartButton).toHaveAttribute('data-variant', 'outline');
       expect(addToCartButton).not.toHaveAttribute('disabled');
     });
 

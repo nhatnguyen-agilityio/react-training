@@ -81,7 +81,7 @@ const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
         </div>
         <div className="flex flex-col items-center justify-center min-h-48 text-center">
           <div className="mb-4">
-            <TriangleAlert className="w-16 h-16 text-red-500 mx-aut" />
+            <TriangleAlert className="w-16 h-16 text-red-500 mx-auto" />
           </div>
           <p className="text-gray-600 mb-4">
             Failed to load recommended products

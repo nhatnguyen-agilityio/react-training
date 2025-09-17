@@ -7,15 +7,17 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import Login from '../components/Login';
-import Cart from '../components/Cart';
-import { useState } from 'react';
-import Checkout from '../components/Checkout';
-import Payment from '../components/Payment';
-import OrderSuccess from '../components/OrderSuccess';
-import SignUp from '../components/SignUp';
+import { useState, lazy, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import UserButton from '../components/UserButton';
+import Loading from '../components/Loading';
+
+const Login = lazy(() => import('../components/Login'));
+const Cart = lazy(() => import('../components/Cart'));
+const Checkout = lazy(() => import('../components/Checkout'));
+const Payment = lazy(() => import('../components/Payment'));
+const OrderSuccess = lazy(() => import('../components/OrderSuccess'));
+const SignUp = lazy(() => import('../components/SignUp'));
 
 const Main = () => {
   const [step, setStep] = useState<
@@ -82,31 +84,33 @@ const Main = () => {
                     : ''
             }
           >
-            {step === 'cart' && (
-              <Cart
-                onNext={() => setStep('checkout')}
-                onLogin={() => setStep('login')}
-              />
-            )}
-            {step === 'checkout' && (
-              <Checkout
-                onNext={() => setStep('payment')}
-                onLogin={() => setStep('login')}
-              />
-            )}
-            {step === 'payment' && (
-              <Payment onNext={() => setStep('orderSuccess')} />
-            )}
-            {step === 'orderSuccess' && (
-              <OrderSuccess onBack={() => setStep('closed')} />
-            )}
-            {step === 'login' && (
-              <Login
-                onNext={() => setStep('signup')}
-                onBack={() => setStep('closed')}
-              />
-            )}
-            {step === 'signup' && <SignUp onNext={() => setStep('login')} />}
+            <Suspense fallback={<Loading />}>
+              {step === 'cart' && (
+                <Cart
+                  onNext={() => setStep('checkout')}
+                  onLogin={() => setStep('login')}
+                />
+              )}
+              {step === 'checkout' && (
+                <Checkout
+                  onNext={() => setStep('payment')}
+                  onLogin={() => setStep('login')}
+                />
+              )}
+              {step === 'payment' && (
+                <Payment onNext={() => setStep('orderSuccess')} />
+              )}
+              {step === 'orderSuccess' && (
+                <OrderSuccess onBack={() => setStep('closed')} />
+              )}
+              {step === 'login' && (
+                <Login
+                  onNext={() => setStep('signup')}
+                  onBack={() => setStep('closed')}
+                />
+              )}
+              {step === 'signup' && <SignUp onNext={() => setStep('login')} />}
+            </Suspense>
           </Sidebar>
         </div>
         <AlignJustify className="w-6 h-6 lg:hidden" />

@@ -1,11 +1,17 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import type { ReactNode } from "react";
-import { BrowserRouter } from "react-router-dom";
-import OrderSuccess from ".";
+import { fireEvent, render, screen } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import OrderSuccess from '.';
 
 jest.mock('../common/Button', () => ({
   __esModule: true,
-  default: ({ children, type, className, disabled, onClick }: Record<string, unknown>) => (
+  default: ({
+    children,
+    type,
+    className,
+    disabled,
+    onClick,
+  }: Record<string, unknown>) => (
     <button
       type={type as 'submit' | 'reset' | 'button'}
       className={className as string}
@@ -42,23 +48,42 @@ describe('OrderSuccess Component', () => {
   const mockOnNext = jest.fn();
 
   it('renders order success component', () => {
-    render(<TestWrapper><OrderSuccess onBack={() => {}}/></TestWrapper>);
+    render(
+      <TestWrapper>
+        <OrderSuccess onBack={() => {}} />
+      </TestWrapper>,
+    );
     expect(screen.getByText('Your Order is Confirmed!')).toBeInTheDocument();
-    expect(screen.getByText('Thank you for shopping with us! Your beautiful new furniture is on its way and will be with you soon. Get ready to transform your space!')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Thank you for shopping with us! Your beautiful new furniture is on its way and will be with you soon. Get ready to transform your space!',
+      ),
+    ).toBeInTheDocument();
     expect(screen.getByTestId('done-button')).toBeInTheDocument();
   });
 
   it('calls onBack when done button is clicked', () => {
-    render(<TestWrapper><OrderSuccess onBack={mockOnNext}/></TestWrapper>);
+    render(
+      <TestWrapper>
+        <OrderSuccess onBack={mockOnNext} />
+      </TestWrapper>,
+    );
     fireEvent.click(screen.getByTestId('done-button'));
     expect(mockOnNext).toHaveBeenCalled();
   });
 
   it('renders image', () => {
-    render(<TestWrapper><OrderSuccess onBack={() => {}}/></TestWrapper>);
+    render(
+      <TestWrapper>
+        <OrderSuccess onBack={() => {}} />
+      </TestWrapper>,
+    );
     const mockImage = screen.getByTestId('mock-image');
     expect(mockImage).toBeInTheDocument();
-    expect(mockImage).toHaveAttribute('src', 'https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/Squircle.png');
+    expect(mockImage).toHaveAttribute(
+      'src',
+      'https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/Squircle.png',
+    );
     expect(mockImage).toHaveAttribute('alt', 'Squircle');
     expect(mockImage).toHaveClass('w-full h-full object-contain');
   });

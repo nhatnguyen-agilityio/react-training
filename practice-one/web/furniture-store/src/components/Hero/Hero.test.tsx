@@ -3,6 +3,12 @@ import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Hero from '.';
 
+jest.mock('react-helmet-async', () => ({
+  Helmet: ({ children }: { children: ReactNode }) => (
+    <div data-testid="helmet">{children}</div>
+  ),
+}));
+
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );
@@ -48,15 +54,29 @@ describe('HeroComponent', () => {
       expect(description).toBeInTheDocument();
     });
 
-    it('renders hero image container', () => {
+    it('renders hero image with picture element', () => {
       render(
         <TestQueryClient>
           <Hero />
         </TestQueryClient>,
       );
 
-      const imageContainer = document.querySelector('div[class*="bg-center"]');
-      expect(imageContainer).toBeInTheDocument();
+      const picture = document.querySelector('picture');
+      expect(picture).toBeInTheDocument();
+
+      const img = screen.getByAltText('Modern contemporary furniture');
+      expect(img).toBeInTheDocument();
+    });
+
+    it('renders Helmet component for preloading', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const helmet = screen.getByTestId('helmet');
+      expect(helmet).toBeInTheDocument();
     });
   });
 
@@ -115,13 +135,121 @@ describe('HeroComponent', () => {
         </TestQueryClient>,
       );
 
-      const imageContainer = document.querySelector('div[class*="bg-center"]');
+      const imageContainer = document.querySelector('div[class*="h-59"]');
       expect(imageContainer).toHaveClass('w-full');
       expect(imageContainer).toHaveClass('h-59');
       expect(imageContainer).toHaveClass('md:h-100');
       expect(imageContainer).toHaveClass('lg:h-106');
-      expect(imageContainer).toHaveClass('bg-center');
-      expect(imageContainer).toHaveClass('bg-cover');
+      expect(imageContainer).toHaveClass('relative');
+    });
+
+    it('applies correct classes to hero image', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const img = screen.getByAltText('Modern contemporary furniture');
+      expect(img).toHaveClass('w-full');
+      expect(img).toHaveClass('h-full');
+      expect(img).toHaveClass('object-contain');
+    });
+
+    it('applies correct classes to main section', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const section = document.querySelector('section');
+      expect(section).toHaveClass('mt-12');
+      expect(section).toHaveClass('container');
+    });
+  });
+
+  describe('Image Sources and Attributes', () => {
+    it('renders picture element with correct source elements', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const picture = document.querySelector('picture');
+      expect(picture).toBeInTheDocument();
+
+      const sources = document.querySelectorAll('source');
+      expect(sources).toHaveLength(2);
+
+      // Check desktop source
+      const desktopSource = sources[0];
+      expect(desktopSource).toHaveAttribute('media', '(min-width: 1024px)');
+      expect(desktopSource).toHaveAttribute(
+        'srcSet',
+        'https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png',
+      );
+
+      // Check tablet source
+      const tabletSource = sources[1];
+      expect(tabletSource).toHaveAttribute('media', '(min-width: 640px)');
+      expect(tabletSource).toHaveAttribute(
+        'srcSet',
+        'https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png',
+      );
+    });
+
+    it('renders img element with correct attributes', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const img = screen.getByAltText('Modern contemporary furniture');
+      expect(img).toHaveAttribute(
+        'src',
+        'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png',
+      );
+      expect(img).toHaveAttribute('alt', 'Modern contemporary furniture');
+      expect(img).toHaveAttribute('fetchPriority', 'high');
+      expect(img).toHaveAttribute('loading', 'eager');
+      expect(img).toHaveAttribute('decoding', 'async');
+    });
+  });
+
+  describe('Content Structure', () => {
+    it('renders content wrapper with correct classes', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      const contentWrapper = document.querySelector('div[class*="lg:px-0"]');
+      expect(contentWrapper).toBeInTheDocument();
+      expect(contentWrapper).toHaveClass('lg:px-0');
+      expect(contentWrapper).toHaveClass('mb-8');
+    });
+
+    it('renders all required headings and text elements', () => {
+      render(
+        <TestQueryClient>
+          <Hero />
+        </TestQueryClient>,
+      );
+
+      expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 3 })).toBeInTheDocument();
+
+      expect(
+        screen.getByText(/Experience the elegance and functionality/),
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByAltText('Modern contemporary furniture'),
+      ).toBeInTheDocument();
     });
   });
 });

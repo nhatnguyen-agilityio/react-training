@@ -1,6 +1,31 @@
+import { Helmet } from 'react-helmet-async';
+
 const Hero = () => {
   return (
     <section className="mt-12 container">
+      <Helmet>
+        <link
+          rel="preload"
+          as="image"
+          href="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png"
+          fetchPriority="high"
+          media="(min-width: 1024px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png"
+          fetchPriority="high"
+          media="(min-width: 640px) and (max-width: 1023px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png"
+          fetchPriority="high"
+          media="(max-width: 639px)"
+        />
+      </Helmet>
       <div className="lg:px-0 mb-8">
         <h2 className="text-sm mb-4 md:mb-6 md:text-lg">FURNITURE STORE</h2>
         <h3 className="px-6 text-2xl mb-4 font-semibold md:mb-6 md:text-5xl md:font-bold lg:text-6xl">
@@ -11,14 +36,26 @@ const Hero = () => {
           luxury meets innovation in every piece for ultimate relaxation
         </p>
       </div>
-      <div
-        className="
-        w-full h-59 md:h-100 lg:h-106 bg-center bg-cover
-        sm:bg-[url('https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png')]
-        lg:bg-[url('https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png')]
-        bg-[url('https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png')]
-      "
-      />
+      <div className="w-full h-59 md:h-100 lg:h-106 relative">
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            srcSet="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png"
+          />
+          <source
+            media="(min-width: 640px)"
+            srcSet="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png"
+          />
+          <img
+            src="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png"
+            alt="Modern contemporary furniture"
+            className="w-full h-full object-contain"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </div>
     </section>
   );
 };

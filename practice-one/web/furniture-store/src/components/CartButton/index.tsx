@@ -2,7 +2,7 @@ import { ShoppingCart } from 'lucide-react';
 import { forwardRef, useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useGetUserCart } from '../../apis/user-cart';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 
 const CartButton = forwardRef<
   HTMLButtonElement,

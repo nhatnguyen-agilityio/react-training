@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from '../common/Image';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 
 import GoogleLogo from '../../assets/images/google_logo.svg';
 import AppleLogo from '../../assets/images/apple_logo.svg';
@@ -167,14 +167,14 @@ const Login = ({
         <div className="flex flex-col gap-6 ml-3 mr-4">
           <Button
             variant={'ghost'}
-            className="border-1 rounded-3xl py-6 font-semibold hover:bg-gray-100"
+            className="border-1 rounded-3xl py-3 font-semibold hover:bg-gray-100"
           >
             <Image src={GoogleLogo} alt="Google Logo" className="w-6 h-6" />
             Continue with Google
           </Button>
           <Button
             variant={'ghost'}
-            className="border-1 rounded-3xl py-6 font-semibold hover:bg-gray-100"
+            className="border-1 rounded-3xl py-3 font-semibold hover:bg-gray-100"
           >
             <Image src={AppleLogo} alt="Apple Logo" className="w-6 h-6" />
             Continue with Apple

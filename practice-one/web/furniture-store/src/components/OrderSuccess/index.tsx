@@ -1,5 +1,5 @@
 import Image from '../common/Image';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 
 const OrderSuccess = ({ onBack }: { onBack: () => void }) => {
   return (

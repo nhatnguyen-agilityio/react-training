@@ -11,7 +11,7 @@ import {
 } from '../ui/form';
 import { Input } from '../ui/input';
 import { Checkbox } from '../ui/checkbox';
-import { Button } from '../ui/button';
+import Button from '../common/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { useAddPayment } from '../../apis/add-payment';
 import { useGetUserCart } from '../../apis/user-cart';

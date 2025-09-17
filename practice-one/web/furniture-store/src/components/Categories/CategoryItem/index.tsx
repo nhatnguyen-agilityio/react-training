@@ -1,7 +1,7 @@
 import { MoveRight } from 'lucide-react';
 import Image from '../../common/Image';
-import { Button } from '../../ui/button';
 import { Link } from 'react-router-dom';
+import Button from '../../common/Button';
 
 const CategoryItem = ({
   id,
@@ -27,7 +27,7 @@ const CategoryItem = ({
         <Link to={`/products?categoryId=${id}&categoryTitle=${name}`}>
           <Button
             variant="ghost"
-            className="hidden border-1 border-black rounded-4xl items-center hover:bg-gray-300 mt-4 w-32 p-5 md:flex"
+            className="hidden border-1 px-6 py-3 font-medium text-sm border-black rounded-4xl items-center hover:bg-gray-300 mt-4 w-32 md:flex"
           >
             Shop now
             <MoveRight className="inline-block w-4 h-4 font-semibold" />

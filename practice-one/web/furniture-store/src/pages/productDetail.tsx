@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, type MouseEvent } from 'react';
 import { Check, Box, Sprout, TriangleAlert } from 'lucide-react';
 import Image from '../components/common/Image';
 import BreadcrumbComponent from '../components/common/Breadcrumb';
+import Button from '../components/common/Button';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from '../components/ui/carousel';
-import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Skeleton } from '../components/ui/skeleton';
 import PeopleViewed from '../components/PeopleViewed';
@@ -289,7 +289,7 @@ const ProductDetail = () => {
               variant={'outline'}
               onClick={handleAddToCart}
               disabled={isLoading}
-              className="w-full py-6 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
+              className="w-full py-3 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
             >
               {isLoading ? 'Adding to cart...' : 'Add to cart'}
             </Button>

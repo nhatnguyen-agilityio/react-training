@@ -25,7 +25,9 @@ import { QUERY_KEY } from '../constants/query-keys';
 global.fetch = jest.fn();
 
 const mockFetch = fetch as jest.MockedFunction<typeof fetch>;
-const mockQueryKey = QUERY_KEY.USER_CART as jest.MockedFunction<typeof QUERY_KEY.USER_CART>;
+const mockQueryKey = QUERY_KEY.USER_CART as jest.MockedFunction<
+  typeof QUERY_KEY.USER_CART
+>;
 
 const createMockResponse = (data: unknown, ok = true) =>
   ({
@@ -181,7 +183,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/carts/cart-123');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/carts/cart-123',
+      );
     });
 
     it('should handle cartId as number', async () => {
@@ -268,7 +272,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(singleItemPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        singleItemPayload.cartPayload,
+      );
     });
 
     it('should handle cart with multiple items', async () => {
@@ -311,7 +317,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(multiItemPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        multiItemPayload.cartPayload,
+      );
     });
   });
 
@@ -580,8 +588,14 @@ describe('useUpdateCart', () => {
         wrapper: createWrapper(),
       });
 
-      const payload1 = { cartId: 1, cartPayload: { ...mockCartPayload, userId: 1 } };
-      const payload2 = { cartId: 2, cartPayload: { ...mockCartPayload, userId: 2 } };
+      const payload1 = {
+        cartId: 1,
+        cartPayload: { ...mockCartPayload, userId: 1 },
+      };
+      const payload2 = {
+        cartId: 2,
+        cartPayload: { ...mockCartPayload, userId: 2 },
+      };
 
       result.current.mutate(payload1);
 
@@ -679,11 +693,21 @@ describe('useUpdateCart', () => {
 
       const wrapper = createWrapper();
 
-      const { result: result1 } = renderHook(() => useUpdateCart(), { wrapper });
-      const { result: result2 } = renderHook(() => useUpdateCart(), { wrapper });
+      const { result: result1 } = renderHook(() => useUpdateCart(), {
+        wrapper,
+      });
+      const { result: result2 } = renderHook(() => useUpdateCart(), {
+        wrapper,
+      });
 
-      const payload1 = { cartId: 1, cartPayload: { ...mockCartPayload, userId: 1 } };
-      const payload2 = { cartId: 2, cartPayload: { ...mockCartPayload, userId: 2 } };
+      const payload1 = {
+        cartId: 1,
+        cartPayload: { ...mockCartPayload, userId: 1 },
+      };
+      const payload2 = {
+        cartId: 2,
+        cartPayload: { ...mockCartPayload, userId: 2 },
+      };
 
       result1.current.mutate(payload1);
       result2.current.mutate(payload2);
@@ -705,8 +729,14 @@ describe('useUpdateCart', () => {
         wrapper: createWrapper(),
       });
 
-      const payload1 = { cartId: 1, cartPayload: { ...mockCartPayload, userId: 1 } };
-      const payload2 = { cartId: 2, cartPayload: { ...mockCartPayload, userId: 2 } };
+      const payload1 = {
+        cartId: 1,
+        cartPayload: { ...mockCartPayload, userId: 1 },
+      };
+      const payload2 = {
+        cartId: 2,
+        cartPayload: { ...mockCartPayload, userId: 2 },
+      };
 
       result.current.mutate(payload1);
       result.current.mutate(payload2);
@@ -741,7 +771,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/carts/cart-123_test');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/carts/cart-123_test',
+      );
     });
 
     it('should handle cartId with spaces', async () => {
@@ -765,7 +797,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/carts/%20cart%20123');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/carts/%20cart%20123',
+      );
     });
 
     it('should handle cartId with very long string', async () => {
@@ -789,7 +823,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe(`http://localhost:3001/carts/${'a'.repeat(1000)}`);
+      expect(callArgs[0].toString()).toBe(
+        `http://localhost:3001/carts/${'a'.repeat(1000)}`,
+      );
     });
 
     it('should handle malformed cart payload', async () => {
@@ -822,7 +858,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(malformedPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        malformedPayload.cartPayload,
+      );
     });
 
     it('should handle zero cartId', async () => {
@@ -903,7 +941,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(largeQuantityPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        largeQuantityPayload.cartPayload,
+      );
     });
 
     it('should handle cart with zero quantities', async () => {
@@ -936,7 +976,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(zeroQuantityPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        zeroQuantityPayload.cartPayload,
+      );
     });
 
     it('should handle cart with negative quantities', async () => {
@@ -969,7 +1011,9 @@ describe('useUpdateCart', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(negativeQuantityPayload.cartPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        negativeQuantityPayload.cartPayload,
+      );
     });
   });
 });

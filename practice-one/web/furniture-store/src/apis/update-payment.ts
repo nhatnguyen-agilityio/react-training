@@ -42,6 +42,10 @@ export const useUpdatePayment = () => {
     mutationFn: ({ paymentId, paymentPayload }) =>
       putPayment(paymentId, paymentPayload),
     onSuccess: (_, variables) => {
+      queryClient.setQueryData(
+        QUERY_KEY.PAYMENT_DETAIL(String(variables.paymentId)),
+        variables.paymentPayload,
+      );
       queryClient.invalidateQueries({
         queryKey: QUERY_KEY.PAYMENT(Number(variables.paymentPayload.userId)),
       });

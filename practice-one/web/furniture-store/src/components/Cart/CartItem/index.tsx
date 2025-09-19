@@ -86,7 +86,7 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
   );
 
   return (
-    <div className="ml-3 mr-4 flex justify-between mb-10 pb-10 border-b-1 border-gray-300">
+    <div className="ml-3 mr-4 flex justify-between mb-10 pb-10 border-b-1 border-gray-300 w-full px-3 md:px-0">
       <div className="flex">
         <div className="h-25 w-25 md:w-30 md:h-30 lg:w-36 lg:h-36 flex-shrink-0 flex justify-center items-center bg-background-primary">
           <Image

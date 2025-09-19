@@ -17,7 +17,10 @@ jest.mock('../constants/env-variables', () => ({
 jest.mock('../constants/query-keys', () => ({
   QUERY_KEY: {
     PAYMENT: jest.fn((userId: number) => ['payment', userId]),
-    PAYMENT_DETAIL: jest.fn((paymentId: string) => ['paymentDetail', paymentId]),
+    PAYMENT_DETAIL: jest.fn((paymentId: string) => [
+      'paymentDetail',
+      paymentId,
+    ]),
   },
 }));
 
@@ -26,8 +29,13 @@ import { QUERY_KEY } from '../constants/query-keys';
 global.fetch = jest.fn();
 
 const mockFetch = fetch as jest.MockedFunction<typeof fetch>;
-const mockQueryKeyPayment = QUERY_KEY.PAYMENT as jest.MockedFunction<typeof QUERY_KEY.PAYMENT>;
-const mockQueryKeyPaymentDetail = QUERY_KEY.PAYMENT_DETAIL as jest.MockedFunction<typeof QUERY_KEY.PAYMENT_DETAIL>;
+const mockQueryKeyPayment = QUERY_KEY.PAYMENT as jest.MockedFunction<
+  typeof QUERY_KEY.PAYMENT
+>;
+const mockQueryKeyPaymentDetail =
+  QUERY_KEY.PAYMENT_DETAIL as jest.MockedFunction<
+    typeof QUERY_KEY.PAYMENT_DETAIL
+  >;
 
 const createMockResponse = (data: unknown, ok = true) =>
   ({
@@ -142,7 +150,9 @@ describe('useUpdatePayment', () => {
       expect(callArgs[1]?.headers).toEqual({
         'Content-Type': 'application/json',
       });
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(mockPaymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        mockPaymentPayload,
+      );
     });
 
     it('should handle async mutation with mutateAsync', async () => {
@@ -184,7 +194,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/paymentspayment-123');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/paymentspayment-123',
+      );
     });
 
     it('should handle paymentId as number', async () => {
@@ -274,7 +286,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(fullPaymentPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        fullPaymentPayload.paymentPayload,
+      );
     });
 
     it('should handle payment with undefined optional fields', async () => {
@@ -311,7 +325,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(partialPaymentPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        partialPaymentPayload.paymentPayload,
+      );
     });
   });
 
@@ -692,8 +708,14 @@ describe('useUpdatePayment', () => {
         wrapper: createWrapper(),
       });
 
-      const payload1 = { paymentId: 1, paymentPayload: { ...mockPaymentPayload, userId: 1 } };
-      const payload2 = { paymentId: 2, paymentPayload: { ...mockPaymentPayload, userId: 2 } };
+      const payload1 = {
+        paymentId: 1,
+        paymentPayload: { ...mockPaymentPayload, userId: 1 },
+      };
+      const payload2 = {
+        paymentId: 2,
+        paymentPayload: { ...mockPaymentPayload, userId: 2 },
+      };
 
       result.current.mutate(payload1);
 
@@ -791,11 +813,21 @@ describe('useUpdatePayment', () => {
 
       const wrapper = createWrapper();
 
-      const { result: result1 } = renderHook(() => useUpdatePayment(), { wrapper });
-      const { result: result2 } = renderHook(() => useUpdatePayment(), { wrapper });
+      const { result: result1 } = renderHook(() => useUpdatePayment(), {
+        wrapper,
+      });
+      const { result: result2 } = renderHook(() => useUpdatePayment(), {
+        wrapper,
+      });
 
-      const payload1 = { paymentId: 1, paymentPayload: { ...mockPaymentPayload, userId: 1 } };
-      const payload2 = { paymentId: 2, paymentPayload: { ...mockPaymentPayload, userId: 2 } };
+      const payload1 = {
+        paymentId: 1,
+        paymentPayload: { ...mockPaymentPayload, userId: 1 },
+      };
+      const payload2 = {
+        paymentId: 2,
+        paymentPayload: { ...mockPaymentPayload, userId: 2 },
+      };
 
       result1.current.mutate(payload1);
       result2.current.mutate(payload2);
@@ -817,8 +849,14 @@ describe('useUpdatePayment', () => {
         wrapper: createWrapper(),
       });
 
-      const payload1 = { paymentId: 1, paymentPayload: { ...mockPaymentPayload, userId: 1 } };
-      const payload2 = { paymentId: 2, paymentPayload: { ...mockPaymentPayload, userId: 2 } };
+      const payload1 = {
+        paymentId: 1,
+        paymentPayload: { ...mockPaymentPayload, userId: 1 },
+      };
+      const payload2 = {
+        paymentId: 2,
+        paymentPayload: { ...mockPaymentPayload, userId: 2 },
+      };
 
       result.current.mutate(payload1);
       result.current.mutate(payload2);
@@ -853,7 +891,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/paymentspayment-123_test');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/paymentspayment-123_test',
+      );
     });
 
     it('should handle paymentId with spaces', async () => {
@@ -877,7 +917,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe('http://localhost:3001/payments%20payment%20123');
+      expect(callArgs[0].toString()).toBe(
+        'http://localhost:3001/payments%20payment%20123',
+      );
     });
 
     it('should handle paymentId with very long string', async () => {
@@ -901,7 +943,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(callArgs[0].toString()).toBe(`http://localhost:3001/payments${'a'.repeat(1000)}`);
+      expect(callArgs[0].toString()).toBe(
+        `http://localhost:3001/payments${'a'.repeat(1000)}`,
+      );
     });
 
     it('should handle malformed payment payload', async () => {
@@ -935,7 +979,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(malformedPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        malformedPayload.paymentPayload,
+      );
     });
 
     it('should handle zero paymentId', async () => {
@@ -1018,7 +1064,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(longFieldPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        longFieldPayload.paymentPayload,
+      );
     });
 
     it('should handle payment with empty string field values', async () => {
@@ -1054,7 +1102,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(emptyStringPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        emptyStringPayload.paymentPayload,
+      );
     });
 
     it('should handle payment with boolean field variations', async () => {
@@ -1081,7 +1131,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(booleanPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        booleanPayload.paymentPayload,
+      );
     });
 
     it('should handle payment with numeric field variations', async () => {
@@ -1110,7 +1162,9 @@ describe('useUpdatePayment', () => {
       });
 
       const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(numericPayload.paymentPayload);
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        numericPayload.paymentPayload,
+      );
     });
   });
 });

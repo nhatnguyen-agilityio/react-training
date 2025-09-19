@@ -11,6 +11,7 @@ import { useState, lazy, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import UserButton from '../components/UserButton';
 import Loading from '../components/Loading';
+import MobileSidebar from '../components/MobileSidebar';
 
 const Login = lazy(() => import('../components/Login'));
 const Cart = lazy(() => import('../components/Cart'));
@@ -28,6 +29,7 @@ const Main = () => {
     | 'orderSuccess'
     | 'login'
     | 'signup'
+    | 'mobileSidebar'
   >('closed');
 
   const { user } = useAuth();
@@ -110,10 +112,20 @@ const Main = () => {
                 />
               )}
               {step === 'signup' && <SignUp onNext={() => setStep('login')} />}
+              {step === 'mobileSidebar' && (
+                <MobileSidebar
+                  onClose={() => setStep('closed')}
+                  onCartClick={() => setStep('cart')}
+                  onLoginClick={() => setStep('login')}
+                />
+              )}
             </Suspense>
           </Sidebar>
         </div>
-        <AlignJustify className="w-6 h-6 lg:hidden" />
+        <AlignJustify
+          className="w-6 h-6 lg:hidden"
+          onClick={() => setStep('mobileSidebar')}
+        />
       </header>
       <Outlet />
       <Footer />

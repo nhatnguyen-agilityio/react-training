@@ -155,7 +155,7 @@ const ProductDetail = () => {
   }
 
   if (isError) {
-    if (error.message === 'Product not found') {
+    if (error?.message === 'Product not found') {
       return <NotFound />;
     }
     return (

@@ -39,7 +39,7 @@ jest.mock('../common/Button', () => {
       <button
         onClick={onClick}
         className={className}
-        data-testid="close-button"
+        data-testid="mock-button"
         data-variant={variant}
         data-size={size}
         {...props}

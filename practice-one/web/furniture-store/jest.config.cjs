@@ -4,6 +4,8 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(svg)$': '<rootDir>/src/test/__mocks__/svgMock.js',
+    '\\.(png|jpg|jpeg|gif|webp|svg)$':
+      '<rootDir>/src/test/__mocks__/fileMock.js',
   },
   transform: {
     '^.+\\.(ts|tsx)$': [

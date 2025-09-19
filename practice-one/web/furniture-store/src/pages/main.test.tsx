@@ -65,42 +65,54 @@ jest.mock('../components/Sidebar', () => ({
 }));
 
 jest.mock('../components/CartButton', () => {
-  return function MockCartButton({
-    onClick,
-  }: {
-    onClick?: (e: React.MouseEvent) => void;
-  }) {
-    return (
-      <button data-testid="cart-button" onClick={onClick}>
-        Cart
-      </button>
-    );
+  return {
+    __esModule: true,
+    default: function MockCartButton({
+      onClick,
+    }: {
+      onClick?: (e: React.MouseEvent) => void;
+    }) {
+      return (
+        <button data-testid="cart-button" onClick={onClick}>
+          Cart
+        </button>
+      );
+    },
   };
 });
 
 jest.mock('../components/GetStarted', () => {
-  return function MockGetStarted({
-    onClick,
-  }: {
-    onClick?: (e: React.MouseEvent) => void;
-  }) {
-    return (
-      <button data-testid="get-started-button" onClick={onClick}>
-        Get Started
-      </button>
-    );
+  return {
+    __esModule: true,
+    default: function MockGetStarted({
+      onClick,
+    }: {
+      onClick?: (e: React.MouseEvent) => void;
+    }) {
+      return (
+        <button data-testid="get-started-button" onClick={onClick}>
+          Get Started
+        </button>
+      );
+    },
   };
 });
 
 jest.mock('../components/UserButton', () => {
-  return function MockUserButton() {
-    return <button data-testid="user-button">User Menu</button>;
+  return {
+    __esModule: true,
+    default: function MockUserButton() {
+      return <button data-testid="user-button">User Menu</button>;
+    },
   };
 });
 
 jest.mock('../components/Loading', () => {
-  return function MockLoading() {
-    return <div data-testid="loading">Loading...</div>;
+  return {
+    __esModule: true,
+    default: function MockLoading() {
+      return <div data-testid="loading">Loading...</div>;
+    },
   };
 });
 
@@ -295,7 +307,7 @@ describe('Main Component', () => {
       expect(screen.queryByTestId('user-button')).not.toBeInTheDocument();
     });
 
-    it('renders CartButton and UserButton when user is logged in', () => {
+    it('renders CartButton and UserButton when user is logged in', async () => {
       mockUseAuth.mockReturnValue({ user: mockUser });
 
       render(
@@ -304,11 +316,13 @@ describe('Main Component', () => {
         </TestWrapper>,
       );
 
-      expect(screen.getByTestId('cart-button')).toBeInTheDocument();
-      expect(screen.getByTestId('user-button')).toBeInTheDocument();
-      expect(
-        screen.queryByTestId('get-started-button'),
-      ).not.toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId('cart-button')).toBeInTheDocument();
+        expect(screen.getByTestId('user-button')).toBeInTheDocument();
+        expect(
+          screen.queryByTestId('get-started-button'),
+        ).not.toBeInTheDocument();
+      });
     });
   });
 

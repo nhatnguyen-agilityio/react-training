@@ -9,7 +9,9 @@ import { useCallback, useState, memo } from 'react';
 import { useUpdateCart } from '../../../apis/update-cart';
 
 const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
-  const [quantityValue, setQuantityValue] = useState<number>(cartItem.items[0].quantity);
+  const [quantityValue, setQuantityValue] = useState<number>(
+    cartItem.items[0].quantity,
+  );
   const productId = cartItem.items[0].productId;
   const variantId = cartItem.items[0].variantId;
 

@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'lucide-react';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, memo } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { useGetUserCart } from '../../apis/user-cart';
 import Button from '../common/Button';
@@ -11,19 +11,10 @@ const CartButton = forwardRef<
   // DrawerTrigger asChild clones its child and injects things like onClick, role, aria - expanded, and ref.
   // If your component doesn’t accept / pass these props → the trigger is broken.
   // forwardRef + spreading ...props ensures your button behaves just like a normal<button>, so the drawer opens.
-  // const cartCount = 3;
-  const [cartCount, setCartCount] = useState<number>(0);
-
   const { user } = useAuth();
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
 
-  useEffect(() => {
-    if (userCart) {
-      setCartCount(userCart.length);
-    } else {
-      setCartCount(0);
-    }
-  }, [userCart]);
+  const cartCount = userCart?.length || 0;
 
   return (
     <Button
@@ -46,4 +37,4 @@ const CartButton = forwardRef<
 
 CartButton.displayName = 'CartButton';
 
-export default CartButton;
+export default memo(CartButton);

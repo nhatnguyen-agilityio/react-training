@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
 interface NavbarProps {
@@ -47,4 +48,4 @@ const Navbar = ({ onClose }: NavbarProps) => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

@@ -3,6 +3,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -44,6 +45,7 @@ const Sidebar = ({
             <DrawerTitle className="text-center text-xl font-semibold">
               {title}
             </DrawerTitle>
+            <DrawerDescription></DrawerDescription>
           </DrawerHeader>
           {children}
         </div>

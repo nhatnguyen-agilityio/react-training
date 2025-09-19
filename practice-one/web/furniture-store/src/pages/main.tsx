@@ -1,6 +1,5 @@
 import { AlignJustify } from 'lucide-react';
 import { Toaster } from '../components/ui/sonner';
-import CartButton from '../components/CartButton';
 import Image from '../components/common/Image';
 import GetStarted from '../components/GetStarted';
 import Navbar from '../components/Navbar';
@@ -9,10 +8,11 @@ import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { useState, lazy, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import UserButton from '../components/UserButton';
 import Loading from '../components/Loading';
-import MobileSidebar from '../components/MobileSidebar';
 
+const MobileSidebar = lazy(() => import('../components/MobileSidebar'));
+const UserButton = lazy(() => import('../components/UserButton'));
+const CartButton = lazy(() => import('../components/CartButton'));
 const Login = lazy(() => import('../components/Login'));
 const Cart = lazy(() => import('../components/Cart'));
 const Checkout = lazy(() => import('../components/Checkout'));

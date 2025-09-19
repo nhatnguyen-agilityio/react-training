@@ -5,11 +5,11 @@ import { Input } from '../../ui/input';
 import { Skeleton } from '../../ui/skeleton';
 import { TriangleAlert } from 'lucide-react';
 import type { ProductVariant } from '../../../interfaces/products';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState, memo } from 'react';
 import { useUpdateCart } from '../../../apis/update-cart';
 
 const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
-  const [quantityValue, setQuantityValue] = useState<number>(1);
+  const [quantityValue, setQuantityValue] = useState<number>(cartItem.items[0].quantity);
   const productId = cartItem.items[0].productId;
   const variantId = cartItem.items[0].variantId;
 
@@ -21,18 +21,15 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
 
   const { mutate } = useUpdateCart();
 
-  useEffect(() => {
-    setQuantityValue(cartItem.items[0].quantity);
-  }, [cartItem]);
-
   const handleChangeQuantity = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setQuantityValue(Number(e.target.value));
+      const newQuantity = Number(e.target.value);
+      setQuantityValue(newQuantity);
 
       const updatedCart = {
         ...cartItem,
         items: cartItem.items.map((item, idx) =>
-          idx === 0 ? { ...item, quantity: Number(e.target.value) } : item,
+          idx === 0 ? { ...item, quantity: newQuantity } : item,
         ),
       };
 
@@ -133,4 +130,4 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
   );
 };
 
-export default CartItem;
+export default memo(CartItem);

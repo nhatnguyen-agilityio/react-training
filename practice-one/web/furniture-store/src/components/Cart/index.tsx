@@ -93,8 +93,8 @@ const Cart = ({
           <>
             {userCart.length > 0 ? (
               <>
-                {userCart.map((item: CartInterface, index: number) => (
-                  <CartItem key={index} cartItem={item} />
+                {userCart.map((item: CartInterface) => (
+                  <CartItem key={item.id} cartItem={item} />
                 ))}
               </>
             ) : (

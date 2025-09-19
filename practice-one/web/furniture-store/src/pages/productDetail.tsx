@@ -18,6 +18,7 @@ import { toast } from 'sonner';
 import type { ProductVariant } from '../interfaces/products';
 import type { ImageInterface } from '../interfaces/image';
 import { useAuth } from '../hooks/useAuth';
+import NotFound from '../components/NotFound';
 
 const ProductDetail = () => {
   const [selected, setSelected] = useState<number>(0);
@@ -34,6 +35,7 @@ const ProductDetail = () => {
     data: productDetail,
     isPending,
     isError,
+    error,
   } = useGetProductDetail(id || '', !!id);
 
   useEffect(() => {
@@ -153,6 +155,9 @@ const ProductDetail = () => {
   }
 
   if (isError) {
+    if (error.message === 'Product not found') {
+      return <NotFound />;
+    }
     return (
       <div className="mt-12">
         <BreadcrumbComponent

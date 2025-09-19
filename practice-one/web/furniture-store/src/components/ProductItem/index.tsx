@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import Image from '../common/Image';
 import Button from '../common/Button';
 import { toast } from 'sonner';
-import { useCallback, type MouseEvent } from 'react';
+import { memo, useCallback, type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useAddCart } from '../../apis/add-cart';
@@ -93,4 +93,4 @@ const ProductItem = ({
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem);

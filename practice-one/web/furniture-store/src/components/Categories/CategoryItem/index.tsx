@@ -2,6 +2,7 @@ import { MoveRight } from 'lucide-react';
 import Image from '../../common/Image';
 import { Link } from 'react-router-dom';
 import Button from '../../common/Button';
+import { memo } from 'react';
 
 const CategoryItem = ({
   id,
@@ -45,4 +46,4 @@ const CategoryItem = ({
   );
 };
 
-export default CategoryItem;
+export default memo(CategoryItem);

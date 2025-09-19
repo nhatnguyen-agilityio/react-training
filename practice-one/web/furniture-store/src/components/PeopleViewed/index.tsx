@@ -1,5 +1,5 @@
 import type { EmblaCarouselType } from 'embla-carousel';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import {
   Carousel,
@@ -129,4 +129,4 @@ const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
   );
 };
 
-export default PeopleViewed;
+export default memo(PeopleViewed);

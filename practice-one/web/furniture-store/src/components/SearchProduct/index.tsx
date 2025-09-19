@@ -1,5 +1,6 @@
 import { Search } from 'lucide-react';
 import { Input } from '../ui/input';
+import { memo } from 'react';
 
 const SearchProduct = ({
   searchProductsInput,
@@ -36,4 +37,4 @@ const SearchProduct = ({
   );
 };
 
-export default SearchProduct;
+export default memo(SearchProduct);

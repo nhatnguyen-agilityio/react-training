@@ -194,7 +194,7 @@ const Login = ({
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Error</AlertDialogTitle>
-            <AlertDialogDescription>{error}</AlertDialogDescription>
+            <AlertDialogDescription>{error || ''}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel

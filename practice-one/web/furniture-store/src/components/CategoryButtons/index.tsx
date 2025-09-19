@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Button from '../common/Button';
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel';
 
@@ -39,4 +40,4 @@ const CategoryButtons = ({
   );
 };
 
-export default CategoryButtons;
+export default memo(CategoryButtons);

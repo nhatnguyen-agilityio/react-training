@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Button from '../common/Button';
 import {
   DropdownMenu,
@@ -51,4 +52,4 @@ const FilterDropdown = ({
   );
 };
 
-export default FilterDropdown;
+export default memo(FilterDropdown);

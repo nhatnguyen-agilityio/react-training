@@ -1574,34 +1574,34 @@
   ],
   "carts": [
     {
-      "userId": 7,
+      "userId": 10,
       "item": {
-        "productId": 9,
+        "productId": 18,
         "variantId": 101,
         "quantity": 2
       },
-      "createdAt": "2025-09-22T04:18:23.934Z",
+      "createdAt": "2025-09-22T07:09:21.989Z",
+      "id": 1
+    },
+    {
+      "userId": 10,
+      "item": {
+        "productId": 7,
+        "variantId": 701,
+        "quantity": 3
+      },
+      "createdAt": "2025-09-22T07:09:42.682Z",
       "id": 2
     },
     {
       "userId": 10,
       "item": {
-        "productId": 9,
-        "variantId": 101,
-        "quantity": 3
+        "productId": 4,
+        "variantId": 401,
+        "quantity": 2
       },
-      "createdAt": "2025-09-22T04:22:37.696Z",
+      "createdAt": "2025-09-22T07:11:51.277Z",
       "id": 3
-    },
-    {
-      "userId": 10,
-      "item": {
-        "productId": 18,
-        "variantId": 101,
-        "quantity": 1
-      },
-      "createdAt": "2025-09-22T04:23:55.001Z",
-      "id": 4
     }
   ],
   "orders": [
@@ -2064,6 +2064,23 @@
       ],
       "orderDate": "2025-09-15T02:36:12.343Z",
       "id": 24
+    },
+    {
+      "userId": 10,
+      "items": [
+        {
+          "productId": 18,
+          "variantId": 101,
+          "quantity": 1
+        },
+        {
+          "productId": 9,
+          "variantId": 101,
+          "quantity": 3
+        }
+      ],
+      "orderDate": "2025-09-22T05:18:53.851Z",
+      "id": 25
     }
   ],
   "payments": [
@@ -2389,6 +2406,24 @@
       "country": "HX",
       "createdAt": "2025-09-15T02:35:29.740Z",
       "id": 18
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "id": 19
     }
   ],
   "reviews": [

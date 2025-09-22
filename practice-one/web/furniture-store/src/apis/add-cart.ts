@@ -5,7 +5,7 @@ import { API_ROUTES } from '../constants/api-routers';
 import { QUERY_KEY } from '../constants/query-keys';
 
 const postCart = async (cartPayload: CartInterface) => {
-  const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}`);
+  const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}add-to-cart`);
   const payload = {
     ...cartPayload,
     createdAt: new Date().toISOString(),

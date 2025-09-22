@@ -1,5 +1,7 @@
-import { Button as ButtonUI } from '../../ui/button';
 import { cva } from 'class-variance-authority';
+import { lazy } from 'react';
+
+const ButtonUI = lazy(() => import('../../ui/button').then(module => ({ default: module.Button })));
 
 const buttonVariants = cva('cursor-pointer flex items-center font-semibold', {
   variants: {

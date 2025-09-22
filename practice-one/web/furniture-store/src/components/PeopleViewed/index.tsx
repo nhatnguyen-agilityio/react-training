@@ -105,19 +105,21 @@ const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
         </div>
         <div>
           <CarouselContent>
-            {listProducts.map((item: ProductInterface, index: number) => (
-              <CarouselItem key={index} className="basis-1/2 lg:basis-1/4">
-                <ProductItem
-                  key={item.id}
-                  id={item.id}
-                  variantId={item.variants[0]?.id}
-                  name={item.name}
-                  price={item.price}
-                  imageUrl={item.variants[0]?.images[0].url}
-                  imageAlt={item.variants[0]?.images[0].alt}
-                />
-              </CarouselItem>
-            ))}
+            {listProducts?.items?.map(
+              (item: ProductInterface, index: number) => (
+                <CarouselItem key={index} className="basis-1/2 lg:basis-1/4">
+                  <ProductItem
+                    key={item.id}
+                    id={item.id}
+                    variantId={item.variants[0]?.id}
+                    name={item.name}
+                    price={item.price}
+                    imageUrl={item.variants[0]?.images[0].url}
+                    imageAlt={item.variants[0]?.images[0].alt}
+                  />
+                </CarouselItem>
+              ),
+            )}
           </CarouselContent>
         </div>
       </Carousel>

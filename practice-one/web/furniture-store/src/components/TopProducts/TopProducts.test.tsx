@@ -165,7 +165,7 @@ describe('TopProductsComponent', () => {
   describe('Success State', () => {
     it('renders products when data is loaded', () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: { pages: [mockProducts] },
+        data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
         isError: false,
         error: null,
@@ -187,7 +187,7 @@ describe('TopProductsComponent', () => {
 
     it('renders filter dropdown and show more button', () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: { pages: [mockProducts] },
+        data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
         isError: false,
         error: null,
@@ -212,7 +212,7 @@ describe('TopProductsComponent', () => {
 
     it('displays correct results count', () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: mockProducts,
+        data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
         isError: false,
         error: null,
@@ -236,7 +236,7 @@ describe('TopProductsComponent', () => {
   describe('Props Handling', () => {
     it('passes all props to GetProductsInfinite', () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: mockProducts,
+        data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
         isError: false,
         error: null,
@@ -268,7 +268,7 @@ describe('TopProductsComponent', () => {
   describe('Edge Cases', () => {
     it('handles empty products array', () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: [],
+        data: { pages: [{ items: [], total: '100' }] },
         isPending: false,
         isError: false,
         error: null,
@@ -290,7 +290,7 @@ describe('TopProductsComponent', () => {
   describe('Show more click', () => {
     it('calls fetchNextPage when show more button is clicked', async () => {
       mockGetProductsInfinite.mockReturnValue({
-        data: mockProducts,
+        data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
         isError: false,
         error: null,

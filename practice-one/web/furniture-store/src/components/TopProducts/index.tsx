@@ -37,7 +37,11 @@ const TopProducts = ({
   );
 
   const items: ProductInterface[] = useMemo(() => {
-    return data?.pages?.flat?.() ?? [];
+    return data?.pages?.flatMap((page) => page.items) ?? [];
+  }, [data]);
+
+  const total = useMemo(() => {
+    return Number(data?.pages?.[0]?.total) || 0;
   }, [data]);
 
   if (isPending) {
@@ -122,8 +126,13 @@ const TopProducts = ({
         })}
       </div>
       <div className="mt-8 md:w-1/2 mx-auto">
-        <p>Showing {items.length} of 100 results</p>
-        <Progress value={hasNextPage ? 50 : 100} className="mt-6 h-1" />
+        <p>
+          Showing {items.length} of {total} results
+        </p>
+        <Progress
+          value={hasNextPage ? (items.length / total) * 100 : 100}
+          className="mt-6 h-1"
+        />
         {isFetchingNextPage && (
           <div className="flex items-center gap-2 my-4 justify-center">
             <Loader2 className="h-8 w-8 text-app-primary animate-spin" />

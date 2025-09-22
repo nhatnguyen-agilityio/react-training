@@ -37,7 +37,11 @@ const fetchProducts = async (
   if (!res.ok) {
     throw new Error('Network response was not ok');
   }
-  return res.json();
+  const items = await res.json();
+  return {
+    items,
+    total: res.headers.get('X-Total-Count'),
+  };
 };
 
 export const GetProducts = (
@@ -119,7 +123,7 @@ export const GetProductsInfinite = (
       ),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
-      return Array.isArray(lastPage) && lastPage.length === pageSize
+      return lastPage.items && lastPage.items.length === pageSize
         ? allPages.length
         : undefined;
     },

@@ -62,11 +62,11 @@ jest.mock('../components/TopProducts', () => {
 });
 
 jest.mock('../components/PeopleViewed', () => {
-  return function MockPeopleViewed({ categoryId }: { categoryId: number }) {
+  return function MockPeopleViewed({ categoryId }: { categoryId?: number }) {
     return (
       <div data-testid="people-viewed">
         <h3>People Also Viewed</h3>
-        <div data-testid="people-viewed-category-id">{categoryId}</div>
+        <div data-testid="people-viewed-category-id">{categoryId ?? 0}</div>
       </div>
     );
   };

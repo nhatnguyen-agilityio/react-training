@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem('authUser');
+    localStorage.removeItem('customerInfo');
   };
 
   const setCustomerInfo = (customerInfo: PaymentInterface) => {

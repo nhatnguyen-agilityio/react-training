@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { GetMainCategories } from '../../apis/main-categories';
 import CategoryItem from './CategoryItem';
 
@@ -14,7 +14,11 @@ interface CategoryInterface {
 }
 
 const Categories = () => {
-  const { data: categories, isPending, isError, error } = GetMainCategories();
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    requestAnimationFrame(() => setEnabled(true));
+  }, []);
+  const { data: categories, isPending, isError, error } = GetMainCategories(enabled);
 
   if (isPending) {
     const fakeMainCategoriesItems = Array.from({ length: 4 });

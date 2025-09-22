@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="py-20 flex flex-col items-start">
           <div>
             <Image
-              src="https://ucarecdn.com/15cd9ab3-c422-4a15-8dfe-4dae05794b87/Oasis.png"
+              src="https://ucarecdn.com/15cd9ab3-c422-4a15-8dfe-4dae05794b87/-/format/auto/"
               alt="logo"
             />
           </div>

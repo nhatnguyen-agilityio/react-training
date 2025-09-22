@@ -188,7 +188,7 @@ describe('HeroComponent', () => {
       expect(desktopSource).toHaveAttribute('media', '(min-width: 1024px)');
       expect(desktopSource).toHaveAttribute(
         'srcSet',
-        'https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png',
+        'https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/-/format/auto/',
       );
 
       // Check tablet source
@@ -196,7 +196,7 @@ describe('HeroComponent', () => {
       expect(tabletSource).toHaveAttribute('media', '(min-width: 640px)');
       expect(tabletSource).toHaveAttribute(
         'srcSet',
-        'https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png',
+        'https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/-/format/auto/',
       );
     });
 
@@ -210,7 +210,7 @@ describe('HeroComponent', () => {
       const img = screen.getByAltText('Modern contemporary furniture');
       expect(img).toHaveAttribute(
         'src',
-        'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png',
+        'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/format/auto/',
       );
       expect(img).toHaveAttribute('alt', 'Modern contemporary furniture');
       expect(img).toHaveAttribute('fetchPriority', 'high');

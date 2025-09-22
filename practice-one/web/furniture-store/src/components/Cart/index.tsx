@@ -102,7 +102,7 @@ const Cart = ({
                 <p>Your cart is empty</p>
                 <div className="mt-5 w-3/5 h-3/5 mx-auto">
                   <Image
-                    src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png"
+                    src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/-/format/auto/"
                     alt="Squircle"
                     className="w-full h-full object-contain"
                   />
@@ -116,7 +116,7 @@ const Cart = ({
               <p>Your need login to see your cart</p>
               <div className="mt-5 w-3/5 h-3/5 mx-auto">
                 <Image
-                  src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png"
+                  src="https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/-/format/auto/"
                   alt="Squircle"
                   className="w-full h-full object-contain"
                 />

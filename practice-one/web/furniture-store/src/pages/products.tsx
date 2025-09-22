@@ -100,7 +100,7 @@ const Products = () => {
     <>
       <div className="container flex flex-col mt-15">
         <h2 className="text-2xl font-semibold mb-6 md:text-5xl md:font-bold">
-          {categoryTitle ? categoryTitle : 'All Products'}
+          {`${selectedCategory} Products`}
         </h2>
         <p className="text-sm font-light mb-6 md:px-1 md:text-lg">
           Transform your sitting room with our elegant and functional seating

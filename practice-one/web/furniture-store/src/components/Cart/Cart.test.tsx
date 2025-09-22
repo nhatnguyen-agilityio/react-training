@@ -587,7 +587,7 @@ describe('Cart Component', () => {
       const image = screen.getByTestId('mock-image');
       expect(image).toHaveAttribute(
         'src',
-        'https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png',
+        'https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/-/format/auto/',
       );
       expect(image).toHaveAttribute('alt', 'Squircle');
       expect(image).toHaveClass('w-full h-full object-contain');
@@ -611,7 +611,7 @@ describe('Cart Component', () => {
       const image = screen.getByTestId('mock-image');
       expect(image).toHaveAttribute(
         'src',
-        'https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/Squircle.png',
+        'https://ucarecdn.com/7c8fb29d-1c6e-43bd-af7e-dbb55c271c1f/-/format/auto/',
       );
       expect(image).toHaveAttribute('alt', 'Squircle');
       expect(image).toHaveClass('w-full h-full object-contain');

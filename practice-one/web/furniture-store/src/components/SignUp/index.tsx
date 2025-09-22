@@ -71,7 +71,7 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
     <div className="w-full md:w-1/2 md:mx-auto lg:w-3/5">
       <div className=" w-1/3 mx-auto">
         <Image
-          src="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+          src="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
           alt="Accessories"
         />
       </div>

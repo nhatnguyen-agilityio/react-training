@@ -52,7 +52,7 @@ export const Default: Story = {
     id: 1,
     name: 'Living Room',
     imageUrl:
-      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     imageAlt: 'Living Room Furniture',
     className: 'md:col-span-2 md:flex-row md:justify-between md:pl-10',
     imageClassName: 'md:w-auto md:h-full',

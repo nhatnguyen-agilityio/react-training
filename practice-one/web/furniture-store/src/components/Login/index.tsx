@@ -85,7 +85,7 @@ const Login = ({
       <div className="w-full md:w-1/2 md:mx-auto lg:w-3/5">
         <div className=" w-1/3 mx-auto">
           <Image
-            src="https://ucarecdn.com/e0cf545f-60e1-4fb0-bf22-e22c6198b08d/Nightstand101.png"
+            src="https://ucarecdn.com/e0cf545f-60e1-4fb0-bf22-e22c6198b08d/-/format/auto/"
             alt="Accessories"
           />
         </div>

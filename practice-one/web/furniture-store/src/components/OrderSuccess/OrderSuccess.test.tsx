@@ -50,7 +50,7 @@ describe('OrderSuccess Component', () => {
   it('renders order success component', () => {
     render(
       <TestWrapper>
-        <OrderSuccess onBack={() => {}} />
+        <OrderSuccess onBack={() => { }} />
       </TestWrapper>,
     );
     expect(screen.getByText('Your Order is Confirmed!')).toBeInTheDocument();
@@ -75,14 +75,14 @@ describe('OrderSuccess Component', () => {
   it('renders image', () => {
     render(
       <TestWrapper>
-        <OrderSuccess onBack={() => {}} />
+        <OrderSuccess onBack={() => { }} />
       </TestWrapper>,
     );
     const mockImage = screen.getByTestId('mock-image');
     expect(mockImage).toBeInTheDocument();
     expect(mockImage).toHaveAttribute(
       'src',
-      'https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/Squircle.png',
+      'https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/-/format/auto/',
     );
     expect(mockImage).toHaveAttribute('alt', 'Squircle');
     expect(mockImage).toHaveClass('w-full h-full object-contain');

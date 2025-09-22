@@ -78,7 +78,7 @@ describe('FooterComponent', () => {
       expect(logo).toBeInTheDocument();
       expect(logo).toHaveAttribute(
         'src',
-        'https://ucarecdn.com/15cd9ab3-c422-4a15-8dfe-4dae05794b87/Oasis.png',
+        'https://ucarecdn.com/15cd9ab3-c422-4a15-8dfe-4dae05794b87/-/format/auto/',
       );
       expect(logo).toHaveAttribute('alt', 'logo');
     });

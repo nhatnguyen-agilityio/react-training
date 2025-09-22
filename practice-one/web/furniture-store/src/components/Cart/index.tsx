@@ -8,7 +8,9 @@ import { useGetUserCart } from '../../apis/user-cart';
 import type { CartInterface } from '../../interfaces/cart';
 import { lazy } from 'react';
 
-const Skeleton = lazy(() => import('../ui/skeleton').then(module => ({ default: module.Skeleton })));
+const Skeleton = lazy(() =>
+  import('../ui/skeleton').then((module) => ({ default: module.Skeleton })),
+);
 
 const Cart = ({
   onNext,

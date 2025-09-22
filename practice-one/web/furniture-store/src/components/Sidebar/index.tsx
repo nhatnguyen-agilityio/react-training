@@ -2,13 +2,29 @@ import Button from '../common/Button';
 import { X as Cancel } from 'lucide-react';
 import { type ReactElement, type ReactNode, lazy } from 'react';
 
-const Drawer = lazy(() => import('../ui/drawer').then(module => ({ default: module.Drawer })));
-const DrawerClose = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerClose })));
-const DrawerContent = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerContent })));
-const DrawerDescription = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerDescription })));
-const DrawerHeader = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerHeader })));
-const DrawerTitle = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerTitle })));
-const DrawerTrigger = lazy(() => import('../ui/drawer').then(module => ({ default: module.DrawerTrigger })));
+const Drawer = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.Drawer })),
+);
+const DrawerClose = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.DrawerClose })),
+);
+const DrawerContent = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.DrawerContent })),
+);
+const DrawerDescription = lazy(() =>
+  import('../ui/drawer').then((module) => ({
+    default: module.DrawerDescription,
+  })),
+);
+const DrawerHeader = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.DrawerHeader })),
+);
+const DrawerTitle = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.DrawerTitle })),
+);
+const DrawerTrigger = lazy(() =>
+  import('../ui/drawer').then((module) => ({ default: module.DrawerTrigger })),
+);
 
 const Sidebar = ({
   button,

@@ -5,8 +5,12 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { lazy } from 'react';
 
-const Card = lazy(() => import('../ui/card').then(module => ({ default: module.Card })));
-const Progress = lazy(() => import('../ui/progress').then(module => ({ default: module.Progress })));
+const Card = lazy(() =>
+  import('../ui/card').then((module) => ({ default: module.Card })),
+);
+const Progress = lazy(() =>
+  import('../ui/progress').then((module) => ({ default: module.Progress })),
+);
 
 const buttonList = [
   'All',

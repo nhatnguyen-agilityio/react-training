@@ -3,12 +3,31 @@ import Button from '../common/Button';
 import { lazy } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 
-const DropdownMenu = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenu })));
-const DropdownMenuContent = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuContent })));
-const DropdownMenuGroup = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuGroup })));
-const DropdownMenuItem = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuItem })));
-const DropdownMenuTrigger = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuTrigger })));
-
+const DropdownMenu = lazy(() =>
+  import('../ui/dropdown-menu').then((module) => ({
+    default: module.DropdownMenu,
+  })),
+);
+const DropdownMenuContent = lazy(() =>
+  import('../ui/dropdown-menu').then((module) => ({
+    default: module.DropdownMenuContent,
+  })),
+);
+const DropdownMenuGroup = lazy(() =>
+  import('../ui/dropdown-menu').then((module) => ({
+    default: module.DropdownMenuGroup,
+  })),
+);
+const DropdownMenuItem = lazy(() =>
+  import('../ui/dropdown-menu').then((module) => ({
+    default: module.DropdownMenuItem,
+  })),
+);
+const DropdownMenuTrigger = lazy(() =>
+  import('../ui/dropdown-menu').then((module) => ({
+    default: module.DropdownMenuTrigger,
+  })),
+);
 
 const UserButton = () => {
   const { logout } = useAuth();

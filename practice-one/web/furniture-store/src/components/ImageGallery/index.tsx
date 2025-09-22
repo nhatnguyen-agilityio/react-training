@@ -112,7 +112,14 @@ const ImageGallery = () => {
       <div className="mt-8 md:w-1/2 mx-auto">
         <p>Showing {images.length} of 100 results</p>
         <Progress value={9} className="mt-6 h-1" />
-        <ShowMore onClick={() => { toast('This feature is currently in development and will be available soon.') }} disabled={false} />
+        <ShowMore
+          onClick={() => {
+            toast(
+              'This feature is currently in development and will be available soon.',
+            );
+          }}
+          disabled={false}
+        />
       </div>
     </div>
   );

@@ -37,14 +37,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     alt: 'Default image',
   },
 };
 
 export const CustomDimensions: Story = {
   args: {
-    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     alt: 'Custom dimensions image',
     width: '400',
     height: '300',
@@ -53,7 +53,7 @@ export const CustomDimensions: Story = {
 
 export const ProductImage: Story = {
   args: {
-    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+    src: 'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     alt: 'Modern chair product',
     className: 'w-64 h-64 object-cover rounded-lg',
   },

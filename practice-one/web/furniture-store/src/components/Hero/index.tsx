@@ -7,21 +7,21 @@ const Hero = () => {
         <link
           rel="preload"
           as="image"
-          href="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png"
+          href="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/-/format/auto/"
           fetchPriority="high"
           media="(min-width: 1024px)"
         />
         <link
           rel="preload"
           as="image"
-          href="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png"
+          href="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/-/format/auto/"
           fetchPriority="high"
           media="(min-width: 640px) and (max-width: 1023px)"
         />
         <link
           rel="preload"
           as="image"
-          href="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png"
+          href="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/format/auto/"
           fetchPriority="high"
           media="(max-width: 639px)"
         />
@@ -40,14 +40,14 @@ const Hero = () => {
         <picture>
           <source
             media="(min-width: 1024px)"
-            srcSet="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/image.png"
+            srcSet="https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/-/format/auto/"
           />
           <source
             media="(min-width: 640px)"
-            srcSet="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/bannertablet.png"
+            srcSet="https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/-/format/auto/"
           />
           <img
-            src="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/bannermobile.png"
+            src="https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/format/auto/"
             alt="Modern contemporary furniture"
             className="w-full h-full object-contain"
             fetchPriority="high"

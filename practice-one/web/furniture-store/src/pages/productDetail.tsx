@@ -239,7 +239,7 @@ const ProductDetail = () => {
           </h2>
           <div className="flex items-center mt-2">
             <Image
-              src="https://ucarecdn.com/6d4896c2-5d21-4d7c-ae54-fa89f9f73410/StarRatings.png"
+              src="https://ucarecdn.com/6d4896c2-5d21-4d7c-ae54-fa89f9f73410/-/format/auto/"
               alt="Rate Stars"
             />
             <p className="text-sm ml-4 font-light">

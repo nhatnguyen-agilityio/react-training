@@ -42,7 +42,7 @@ const Main = () => {
         <h1>
           <Link to="/">
             <Image
-              src="https://ucarecdn.com/1394912f-7999-4eae-ad41-8f21805d50bd/branding.png"
+              src="https://ucarecdn.com/1394912f-7999-4eae-ad41-8f21805d50bd/-/format/auto/"
               alt="logo"
             />
           </Link>

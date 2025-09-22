@@ -74,7 +74,7 @@ export const Default: Story = {
     name: 'Modern Dining Chair',
     price: 299,
     imageUrl:
-      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     imageAlt: 'Modern Dining Chair',
   },
 };
@@ -86,7 +86,7 @@ export const LongProductName: Story = {
     name: 'Premium Handcrafted Oak Wood Dining Table with Extendable Leaf',
     price: 899,
     imageUrl:
-      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png',
+      'https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/',
     imageAlt: 'Premium Handcrafted Oak Wood Dining Table',
   },
 };
@@ -99,7 +99,7 @@ export const ProductGrid: Story = {
         variantId={1}
         name="Modern Chair"
         price={299}
-        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Modern Chair"
       />
       <ProductItem
@@ -107,7 +107,7 @@ export const ProductGrid: Story = {
         variantId={2}
         name="Luxury Sofa"
         price={1299}
-        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Luxury Sofa"
       />
       <ProductItem
@@ -115,7 +115,7 @@ export const ProductGrid: Story = {
         variantId={3}
         name="Coffee Table"
         price={89}
-        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/Nightstand1012.png"
+        imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Coffee Table"
       />
     </div>

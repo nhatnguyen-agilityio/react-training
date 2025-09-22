@@ -4,6 +4,7 @@ import { Progress } from '../ui/progress';
 import ShowMore from '../common/ShowMore';
 import CategoryButtons from '../CategoryButtons';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 const buttonList = [
   'All',
@@ -19,47 +20,47 @@ const buttonList = [
 
 const images = [
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 10,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 5,
     desktopSpan: 5,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 10,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 5,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 10,
     desktopSpan: 5,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 5,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 10,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 5,
     desktopSpan: 10,
   },
   {
-    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/GalleryImage1.png',
+    src: 'https://ucarecdn.com/95ff3f50-97fb-4954-b2d5-87ffc702c62f/-/format/auto/',
     mobileSpan: 10,
     desktopSpan: 5,
   },
@@ -111,7 +112,7 @@ const ImageGallery = () => {
       <div className="mt-8 md:w-1/2 mx-auto">
         <p>Showing {images.length} of 100 results</p>
         <Progress value={9} className="mt-6 h-1" />
-        <ShowMore onClick={() => {}} disabled={false} />
+        <ShowMore onClick={() => { toast('This feature is currently in development and will be available soon.') }} disabled={false} />
       </div>
     </div>
   );

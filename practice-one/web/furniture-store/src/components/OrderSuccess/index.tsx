@@ -6,7 +6,7 @@ const OrderSuccess = ({ onBack }: { onBack: () => void }) => {
     <div className="px-2 lg:px-7 md:w-3/5 lg:w-4/5 md:mx-auto ml-3 mr-4 mt-6 flex flex-col items-center">
       <div className="w-2/5 h-2/5">
         <Image
-          src="https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/Squircle.png"
+          src="https://ucarecdn.com/e16a953e-9f0b-4842-987d-da9496c6e677/-/format/auto/"
           alt="Squircle"
           className="w-full h-full object-contain"
         />

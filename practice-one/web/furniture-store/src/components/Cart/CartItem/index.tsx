@@ -10,10 +10,10 @@ import { useUpdateCart } from '../../../apis/update-cart';
 
 const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
   const [quantityValue, setQuantityValue] = useState<number>(
-    cartItem.items[0].quantity,
+    cartItem.item.quantity,
   );
-  const productId = cartItem.items[0].productId;
-  const variantId = cartItem.items[0].variantId;
+  const productId = cartItem.item.productId;
+  const variantId = cartItem.item.variantId;
 
   const {
     data: productDetail,
@@ -30,9 +30,7 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
 
       const updatedCart = {
         ...cartItem,
-        items: cartItem.items.map((item, idx) =>
-          idx === 0 ? { ...item, quantity: newQuantity } : item,
-        ),
+        item: { ...cartItem.item, quantity: newQuantity },
       };
 
       mutate({ cartId: cartItem.id || 0, cartPayload: updatedCart }, {});
@@ -115,7 +113,7 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
       </div>
       <div className="flex flex-col justify-between lg:items-end ml-3">
         <p className="text-app-primary font-semibold text-sm md:text:lg lg:text-xl">
-          {`$${(productDetail.price * cartItem.items[0].quantity).toFixed(2)}`}
+          {`$${(productDetail.price * cartItem.item.quantity).toFixed(2)}`}
         </p>
         <div className="h-12 w-12 mr-4 lg:mr-0 flex items-end">
           <Input

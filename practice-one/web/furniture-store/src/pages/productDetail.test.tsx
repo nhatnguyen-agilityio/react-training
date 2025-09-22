@@ -511,13 +511,11 @@ describe('ProductDetail Page', () => {
       expect(mockMutate).toHaveBeenCalledWith(
         {
           userId: 1,
-          items: [
-            {
-              productId: 123,
-              variantId: 1,
-              quantity: 1,
-            },
-          ],
+          item: {
+            productId: 123,
+            variantId: 1,
+            quantity: 1,
+          },
         },
         expect.objectContaining({
           onSuccess: expect.any(Function),
@@ -526,7 +524,7 @@ describe('ProductDetail Page', () => {
       );
     });
 
-    it('shows toast when user is not logged in', async () => {
+    it('shows disabled button when user is not logged in', async () => {
       const user = userEvent.setup();
       mockUseAuth.mockReturnValue({ user: null });
 
@@ -536,13 +534,14 @@ describe('ProductDetail Page', () => {
         </TestWrapper>,
       );
 
-      const addToCartButton = screen.getByText('Add to cart');
+      const addToCartButton = screen.getByText('Sign in to add item');
+      expect(addToCartButton).toBeDisabled();
+
+      // Button should be disabled, so clicking won't trigger any action
       await user.click(addToCartButton);
 
-      expect(mockToast).toHaveBeenCalledWith(
-        'You must be logged in to perform this action',
-        {},
-      );
+      // No toast should be called since button is disabled
+      expect(mockToast).not.toHaveBeenCalled();
     });
 
     it('shows success toast when product is added to cart', async () => {

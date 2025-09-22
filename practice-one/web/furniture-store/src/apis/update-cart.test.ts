@@ -6,7 +6,7 @@ import type { CartInterface } from '../interfaces/cart';
 
 jest.mock('../constants/api-routers', () => ({
   API_ROUTES: {
-    CARTS: '/carts',
+    CARTS: '/carts/',
   },
 }));
 
@@ -74,18 +74,11 @@ const createWrapper = () => {
 
 const mockCartPayload: CartInterface = {
   userId: 1,
-  items: [
-    {
-      productId: 101,
-      variantId: 1,
-      quantity: 2,
-    },
-    {
-      productId: 102,
-      variantId: 2,
-      quantity: 1,
-    },
-  ],
+  item: {
+    productId: 101,
+    variantId: 1,
+    quantity: 2,
+  },
 };
 
 const mockUpdatePayload = {
@@ -212,12 +205,16 @@ describe('useUpdateCart', () => {
       expect(callArgs[0].toString()).toBe('http://localhost:3001/carts/456');
     });
 
-    it('should handle cart with empty items array', async () => {
-      const emptyItemsPayload = {
+    it('should handle cart with single item', async () => {
+      const singleItemPayload = {
         cartId: 123,
         cartPayload: {
           userId: 1,
-          items: [],
+          item: {
+            productId: 101,
+            variantId: 1,
+            quantity: 1,
+          },
         },
       };
 
@@ -229,7 +226,7 @@ describe('useUpdateCart', () => {
         wrapper: createWrapper(),
       });
 
-      result.current.mutate(emptyItemsPayload);
+      result.current.mutate(singleItemPayload);
 
       await waitFor(() => {
         expect(result.current.isSuccess).toBe(true);
@@ -238,22 +235,57 @@ describe('useUpdateCart', () => {
       const callArgs = mockFetch.mock.calls[0];
       expect(JSON.parse(callArgs[1]?.body as string)).toEqual({
         userId: 1,
-        items: [],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 1,
+        },
       });
     });
 
-    it('should handle cart with single item', async () => {
+    it('should handle cart with different item', async () => {
+      const differentItemPayload = {
+        cartId: 123,
+        cartPayload: {
+          userId: 1,
+          item: {
+            productId: 102,
+            variantId: 2,
+            quantity: 3,
+          },
+        },
+      };
+
+      const mockResponse = true;
+
+      mockFetch.mockResolvedValueOnce(createMockResponse(mockResponse));
+
+      const { result } = renderHook(() => useUpdateCart(), {
+        wrapper: createWrapper(),
+      });
+
+      result.current.mutate(differentItemPayload);
+
+      await waitFor(() => {
+        expect(result.current.isSuccess).toBe(true);
+      });
+
+      const callArgs = mockFetch.mock.calls[0];
+      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
+        differentItemPayload.cartPayload,
+      );
+    });
+
+    it('should handle cart with multiple items', async () => {
       const singleItemPayload = {
         cartId: 123,
         cartPayload: {
           userId: 1,
-          items: [
-            {
-              productId: 101,
-              variantId: 1,
-              quantity: 1,
-            },
-          ],
+          item: {
+            productId: 101,
+            variantId: 1,
+            quantity: 2,
+          },
         },
       };
 
@@ -274,51 +306,6 @@ describe('useUpdateCart', () => {
       const callArgs = mockFetch.mock.calls[0];
       expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
         singleItemPayload.cartPayload,
-      );
-    });
-
-    it('should handle cart with multiple items', async () => {
-      const multiItemPayload = {
-        cartId: 123,
-        cartPayload: {
-          userId: 1,
-          items: [
-            {
-              productId: 101,
-              variantId: 1,
-              quantity: 2,
-            },
-            {
-              productId: 102,
-              variantId: 2,
-              quantity: 1,
-            },
-            {
-              productId: 103,
-              variantId: 3,
-              quantity: 5,
-            },
-          ],
-        },
-      };
-
-      const mockResponse = true;
-
-      mockFetch.mockResolvedValueOnce(createMockResponse(mockResponse));
-
-      const { result } = renderHook(() => useUpdateCart(), {
-        wrapper: createWrapper(),
-      });
-
-      result.current.mutate(multiItemPayload);
-
-      await waitFor(() => {
-        expect(result.current.isSuccess).toBe(true);
-      });
-
-      const callArgs = mockFetch.mock.calls[0];
-      expect(JSON.parse(callArgs[1]?.body as string)).toEqual(
-        multiItemPayload.cartPayload,
       );
     });
   });
@@ -833,13 +820,11 @@ describe('useUpdateCart', () => {
         cartId: 123,
         cartPayload: {
           userId: 'invalid',
-          items: [
-            {
-              productId: null,
-              variantId: 'invalid',
-              quantity: 'not-a-number',
-            },
-          ],
+          item: {
+            productId: null,
+            variantId: 'invalid',
+            quantity: 'not-a-number',
+          },
         },
       } as unknown as { cartId: number; cartPayload: CartInterface };
 
@@ -916,13 +901,11 @@ describe('useUpdateCart', () => {
         cartId: 123,
         cartPayload: {
           userId: 1,
-          items: [
-            {
-              productId: 101,
-              variantId: 1,
-              quantity: 999999,
-            },
-          ],
+          item: {
+            productId: 101,
+            variantId: 1,
+            quantity: 999999,
+          },
         },
       };
 
@@ -951,13 +934,11 @@ describe('useUpdateCart', () => {
         cartId: 123,
         cartPayload: {
           userId: 1,
-          items: [
-            {
-              productId: 101,
-              variantId: 1,
-              quantity: 0,
-            },
-          ],
+          item: {
+            productId: 101,
+            variantId: 1,
+            quantity: 0,
+          },
         },
       };
 
@@ -986,13 +967,11 @@ describe('useUpdateCart', () => {
         cartId: 123,
         cartPayload: {
           userId: 1,
-          items: [
-            {
-              productId: 101,
-              variantId: 1,
-              quantity: -1,
-            },
-          ],
+          item: {
+            productId: 101,
+            variantId: 1,
+            quantity: -1,
+          },
         },
       };
 

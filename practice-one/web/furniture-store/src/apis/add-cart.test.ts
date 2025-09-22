@@ -74,13 +74,11 @@ const createWrapper = () => {
 
 const mockCartPayload = {
   userId: 1,
-  items: [
-    {
-      productId: 101,
-      variantId: 1,
-      quantity: 2,
-    },
-  ],
+  item: {
+    productId: 101,
+    variantId: 1,
+    quantity: 2,
+  },
 };
 
 describe('useAddCart', () => {
@@ -147,13 +145,11 @@ describe('useAddCart', () => {
     it('should handle cart item with minimal required fields', async () => {
       const minimalPayload = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 1,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 1,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -171,21 +167,14 @@ describe('useAddCart', () => {
       expect(mockFetch).toHaveBeenCalledTimes(1);
     });
 
-    it('should handle cart with multiple items', async () => {
-      const multiItemPayload = {
+    it('should handle cart with single item', async () => {
+      const singleItemPayload = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-          {
-            productId: 102,
-            variantId: 2,
-            quantity: 1,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -194,7 +183,7 @@ describe('useAddCart', () => {
         wrapper: createWrapper(),
       });
 
-      result.current.mutate(multiItemPayload);
+      result.current.mutate(singleItemPayload);
 
       await waitFor(() => {
         expect(result.current.isSuccess).toBe(true);
@@ -202,16 +191,10 @@ describe('useAddCart', () => {
 
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse((callArgs?.[1]?.body as string) || '{}');
-      expect(body.items).toHaveLength(2);
-      expect(body.items[0]).toMatchObject({
+      expect(body.item).toMatchObject({
         productId: 101,
         variantId: 1,
         quantity: 2,
-      });
-      expect(body.items[1]).toMatchObject({
-        productId: 102,
-        variantId: 2,
-        quantity: 1,
       });
     });
   });
@@ -341,24 +324,20 @@ describe('useAddCart', () => {
 
       const payload1 = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       const payload2 = {
         userId: 2,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       result.current.mutate(payload1);
@@ -404,24 +383,20 @@ describe('useAddCart', () => {
 
       const payload1 = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       const payload2 = {
         userId: 1,
-        items: [
-          {
-            productId: 102,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 102,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       result.current.mutate(payload1);
@@ -499,24 +474,20 @@ describe('useAddCart', () => {
 
       const payload1 = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       const payload2 = {
         userId: 2,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       result1.current.mutate(payload1);
@@ -539,24 +510,20 @@ describe('useAddCart', () => {
 
       const payload1 = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       const payload2 = {
         userId: 1,
-        items: [
-          {
-            productId: 102,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 102,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       result.current.mutate(payload1);
@@ -574,13 +541,11 @@ describe('useAddCart', () => {
     it('should handle cart payload with zero quantity', async () => {
       const zeroQuantityPayload = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 0,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 0,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -597,19 +562,17 @@ describe('useAddCart', () => {
 
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse((callArgs?.[1]?.body as string) || '{}');
-      expect(body.items[0].quantity).toBe(0);
+      expect(body.item.quantity).toBe(0);
     });
 
     it('should handle cart payload with large quantity', async () => {
       const largeQuantityPayload = {
         userId: 1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 9999,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 9999,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -626,19 +589,17 @@ describe('useAddCart', () => {
 
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse((callArgs?.[1]?.body as string) || '{}');
-      expect(body.items[0].quantity).toBe(9999);
+      expect(body.item.quantity).toBe(9999);
     });
 
     it('should handle cart payload with zero userId', async () => {
       const zeroUserIdPayload = {
         userId: 0,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -659,13 +620,11 @@ describe('useAddCart', () => {
     it('should handle cart payload with negative userId', async () => {
       const negativeUserIdPayload = {
         userId: -1,
-        items: [
-          {
-            productId: 101,
-            variantId: 1,
-            quantity: 2,
-          },
-        ],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 2,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -686,13 +645,11 @@ describe('useAddCart', () => {
     it('should handle malformed cart payload', async () => {
       const malformedPayload = {
         userId: 'invalid',
-        items: [
-          {
-            productId: null,
-            variantId: 'invalid',
-            quantity: 'not-a-number',
-          },
-        ],
+        item: {
+          productId: null,
+          variantId: 'invalid',
+          quantity: 'not-a-number',
+        },
       } as unknown;
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -712,10 +669,14 @@ describe('useAddCart', () => {
       expect(body.userId).toBe('invalid');
     });
 
-    it('should handle cart with empty items array', async () => {
-      const emptyItemsPayload = {
+    it('should handle cart with single item', async () => {
+      const singleItemPayload = {
         userId: 1,
-        items: [],
+        item: {
+          productId: 101,
+          variantId: 1,
+          quantity: 1,
+        },
       };
 
       mockFetch.mockResolvedValueOnce(createMockResponse(true));
@@ -724,7 +685,7 @@ describe('useAddCart', () => {
         wrapper: createWrapper(),
       });
 
-      result.current.mutate(emptyItemsPayload);
+      result.current.mutate(singleItemPayload);
 
       await waitFor(() => {
         expect(result.current.isSuccess).toBe(true);
@@ -732,7 +693,11 @@ describe('useAddCart', () => {
 
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse((callArgs?.[1]?.body as string) || '{}');
-      expect(body.items).toEqual([]);
+      expect(body.item).toMatchObject({
+        productId: 101,
+        variantId: 1,
+        quantity: 1,
+      });
     });
   });
 });

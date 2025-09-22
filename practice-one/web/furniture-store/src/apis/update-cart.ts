@@ -8,7 +8,7 @@ const updateCart = async (
   cartId: number | string,
   cartPayload: CartInterface,
 ) => {
-  const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}/${cartId}`);
+  const url = new URL(`${API_ENDPOINT}${API_ROUTES.CARTS}${cartId}`);
 
   const res = await fetch(url, {
     method: 'PUT',

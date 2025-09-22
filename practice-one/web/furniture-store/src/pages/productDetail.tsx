@@ -57,13 +57,11 @@ const ProductDetail = () => {
 
       const cartPayload = {
         userId: user.id,
-        items: [
-          {
-            productId: Number(id),
-            variantId: selectedVariantId,
-            quantity: quantity,
-          },
-        ],
+        item: {
+          productId: Number(id),
+          variantId: selectedVariantId,
+          quantity: quantity,
+        },
       };
       mutate(cartPayload, {
         onSuccess: () => {
@@ -293,10 +291,14 @@ const ProductDetail = () => {
             <Button
               variant={'outline'}
               onClick={handleAddToCart}
-              disabled={isLoading}
+              disabled={isLoading || !user}
               className="w-full py-3 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
             >
-              {isLoading ? 'Adding to cart...' : 'Add to cart'}
+              {!user
+                ? 'Sign in to add item'
+                : isLoading
+                  ? 'Adding to cart...'
+                  : 'Add to cart'}
             </Button>
           </div>
           <div>

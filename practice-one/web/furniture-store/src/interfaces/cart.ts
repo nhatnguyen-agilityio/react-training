@@ -7,5 +7,5 @@ export interface CartItemInterface {
 export interface CartInterface {
   id?: number;
   userId: number;
-  items: CartItemInterface[];
+  item: CartItemInterface;
 }

@@ -81,6 +81,52 @@ server.delete("/carts/users/:userId", (req, res) => {
     return res.status(200).json({ message: "All carts deleted for userId " + userId });
 });
 
+// Custom route: add to cart
+server.post("/carts/add-to-cart", (req, res) => {
+    const db = router.db; // lowdb instance
+    const { userId, item, createdAt } = req.body;
+
+    if (!userId || !item || !item.productId || !item.variantId || !item.quantity) {
+        return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Check if cart already exists
+    const existingCart = db
+        .get("carts")
+        .find(c =>
+            c.userId === userId &&
+            c.item.productId === item.productId &&
+            c.item.variantId === item.variantId
+        )
+        .value();
+
+    if (existingCart) {
+        // Update quantity
+        const updated = db
+            .get("carts")
+            .find({ id: existingCart.id })
+            .assign({
+                item: {
+                    ...existingCart.item,
+                    quantity: existingCart.item.quantity + item.quantity,
+                },
+            })
+            .write();
+
+        return res.json(updated);
+    } else {
+        // Create new row
+        const newCart = {
+            userId,
+            item,
+            createdAt: createdAt || new Date().toISOString(),
+        };
+
+        const inserted = db.get("carts").insert(newCart).write();
+        return res.status(201).json(inserted);
+    }
+});
+
 server.use(router);
 
 server.listen(PORT, () => {

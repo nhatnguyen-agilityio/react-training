@@ -41,8 +41,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const setCustomerInfo = (customerInfo: PaymentInterface) => {
-    localStorage.setItem('customerInfo', JSON.stringify(customerInfo));
-    setCustomerInfoData(customerInfo);
+    if (customerInfo) {
+      localStorage.setItem('customerInfo', JSON.stringify(customerInfo));
+      setCustomerInfoData(customerInfo);
+    }
   };
 
   const removeCustomerInfo = () => {

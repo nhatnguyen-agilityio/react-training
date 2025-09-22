@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import Image from '../common/Image';
 import Button from '../common/Button';
-import { Skeleton } from '../ui/skeleton';
 import { TriangleAlert } from 'lucide-react';
 import CartItem from './CartItem';
 import { useAuth } from '../../hooks/useAuth';
 import { useGetUserCart } from '../../apis/user-cart';
 import type { CartInterface } from '../../interfaces/cart';
+import { lazy } from 'react';
+
+const Skeleton = lazy(() => import('../ui/skeleton').then(module => ({ default: module.Skeleton })));
 
 const Cart = ({
   onNext,

@@ -1,13 +1,14 @@
 import { CircleUser, LogOut } from 'lucide-react';
 import Button from '../common/Button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+import { lazy } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+
+const DropdownMenu = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenu })));
+const DropdownMenuContent = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuContent })));
+const DropdownMenuGroup = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuGroup })));
+const DropdownMenuItem = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuItem })));
+const DropdownMenuTrigger = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuTrigger })));
+
 
 const UserButton = () => {
   const { logout } = useAuth();

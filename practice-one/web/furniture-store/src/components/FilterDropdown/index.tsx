@@ -1,15 +1,15 @@
-import { memo } from 'react';
+import { lazy, memo } from 'react';
 import Button from '../common/Button';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-} from '../ui/dropdown-menu';
+
 import { ChevronDown } from 'lucide-react';
+
+const DropdownMenu = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenu })));
+const DropdownMenuTrigger = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuTrigger })));
+const DropdownMenuContent = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuContent })));
+const DropdownMenuLabel = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuLabel })));
+const DropdownMenuSeparator = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuSeparator })));
+const DropdownMenuRadioGroup = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuRadioGroup })));
+const DropdownMenuRadioItem = lazy(() => import('../ui/dropdown-menu').then(module => ({ default: module.DropdownMenuRadioItem })));
 
 const FilterDropdown = ({
   position,

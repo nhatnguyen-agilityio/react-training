@@ -14,19 +14,19 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
-import {
-  AlertDialog,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '../ui/alert-dialog';
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { useLogin } from '../../apis/login';
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+
+const AlertDialog = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialog })));
+const AlertDialogCancel = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogCancel })));
+const AlertDialogContent = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogContent })));
+const AlertDialogDescription = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogDescription })));
+const AlertDialogFooter = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogFooter })));
+const AlertDialogHeader = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogHeader })));
+const AlertDialogTitle = lazy(() => import('../ui/alert-dialog').then(module => ({ default: module.AlertDialogTitle })));
+
 
 const loginFormSchema = z.object({
   username: z

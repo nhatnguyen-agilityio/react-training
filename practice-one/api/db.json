@@ -80,6 +80,15 @@
       "email": "",
       "address": "",
       "phone": ""
+    },
+    {
+      "id": 10,
+      "username": "Ducnhat@1990",
+      "password": "Abcd@1234",
+      "name": "",
+      "email": "",
+      "address": "",
+      "phone": ""
     }
   ],
   "mainCategories": [
@@ -1565,40 +1574,34 @@
   ],
   "carts": [
     {
-      "userId": 2,
-      "items": [
-        {
-          "productId": 26,
-          "variantId": 101,
-          "quantity": 1
-        }
-      ],
-      "createdAt": "2025-09-15T01:25:17.619Z",
-      "id": 1
-    },
-    {
       "userId": 7,
-      "items": [
-        {
-          "productId": 26,
-          "variantId": 101,
-          "quantity": 1
-        }
-      ],
-      "createdAt": "2025-09-15T02:00:47.481Z",
+      "item": {
+        "productId": 9,
+        "variantId": 101,
+        "quantity": 2
+      },
+      "createdAt": "2025-09-22T04:18:23.934Z",
       "id": 2
     },
     {
-      "userId": 8,
-      "items": [
-        {
-          "productId": 11,
-          "variantId": 101,
-          "quantity": 1
-        }
-      ],
-      "createdAt": "2025-09-15T02:26:49.570Z",
+      "userId": 10,
+      "item": {
+        "productId": 9,
+        "variantId": 101,
+        "quantity": 3
+      },
+      "createdAt": "2025-09-22T04:22:37.696Z",
       "id": 3
+    },
+    {
+      "userId": 10,
+      "item": {
+        "productId": 18,
+        "variantId": 101,
+        "quantity": 1
+      },
+      "createdAt": "2025-09-22T04:23:55.001Z",
+      "id": 4
     }
   ],
   "orders": [

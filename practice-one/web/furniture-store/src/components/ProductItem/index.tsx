@@ -35,13 +35,11 @@ const ProductItem = ({
 
       const cartPayload = {
         userId: user.id,
-        items: [
-          {
-            productId: id,
-            variantId: variantId,
-            quantity: 1,
-          },
-        ],
+        item: {
+          productId: id,
+          variantId: variantId,
+          quantity: 1,
+        },
       };
       mutate(cartPayload, {
         onSuccess: () => {

@@ -158,7 +158,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
     const orderPayload = {
       ...customerPayload,
       userId: user?.id,
-      items: userCart?.flatMap((cart: CartInterface) => cart.items) || [],
+      items: userCart?.flatMap((cart: CartInterface) => cart.item) || [],
     };
     addOrder(orderPayload, {
       onSuccess: () => {

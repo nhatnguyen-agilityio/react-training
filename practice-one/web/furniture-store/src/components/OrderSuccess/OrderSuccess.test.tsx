@@ -50,7 +50,7 @@ describe('OrderSuccess Component', () => {
   it('renders order success component', () => {
     render(
       <TestWrapper>
-        <OrderSuccess onBack={() => { }} />
+        <OrderSuccess onBack={() => {}} />
       </TestWrapper>,
     );
     expect(screen.getByText('Your Order is Confirmed!')).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe('OrderSuccess Component', () => {
   it('renders image', () => {
     render(
       <TestWrapper>
-        <OrderSuccess onBack={() => { }} />
+        <OrderSuccess onBack={() => {}} />
       </TestWrapper>,
     );
     const mockImage = screen.getByTestId('mock-image');

@@ -110,7 +110,7 @@ const ImageGallery = () => {
       </div>
       <div className="mt-8 md:w-1/2 mx-auto">
         <p>Showing {images.length} of 100 results</p>
-        <Progress value={45} className="mt-6 h-1" />
+        <Progress value={9} className="mt-6 h-1" />
         <ShowMore onClick={() => {}} disabled={false} />
       </div>
     </div>

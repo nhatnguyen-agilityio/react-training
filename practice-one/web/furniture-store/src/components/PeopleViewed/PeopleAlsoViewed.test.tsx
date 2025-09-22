@@ -72,7 +72,7 @@ describe('PeopleAlsoViewedComponent', () => {
   describe('Rendering', () => {
     it('renders PeopleAlsoViewed component with correct title', () => {
       mockGetProducts.mockReturnValue({
-        data: mockProducts,
+        data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
@@ -86,7 +86,7 @@ describe('PeopleAlsoViewedComponent', () => {
 
     it('renders product items when data is available', () => {
       mockGetProducts.mockReturnValue({
-        data: mockProducts,
+        data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
@@ -106,7 +106,7 @@ describe('PeopleAlsoViewedComponent', () => {
 
     it('renders PeopleAlsoViewed component with category id', () => {
       mockGetProducts.mockReturnValue({
-        data: mockProducts,
+        data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
@@ -167,7 +167,7 @@ describe('PeopleAlsoViewedComponent', () => {
   describe('User Interaction', () => {
     it('renders navigation buttons when data is available', () => {
       mockGetProducts.mockReturnValue({
-        data: mockProducts,
+        data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });

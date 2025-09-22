@@ -26,7 +26,9 @@ const createMockResponse = (data: unknown, ok = true) =>
     json: async () => data,
     status: ok ? 200 : 500,
     statusText: ok ? 'OK' : 'Internal Server Error',
-    headers: new Headers(),
+    headers: new Headers({
+      'X-Total-Count': '100',
+    }),
     redirected: false,
     type: 'basic' as ResponseType,
     url: '',
@@ -107,7 +109,10 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual(mockProducts);
+      expect(result.current.data).toEqual({
+        items: mockProducts,
+        total: '100',
+      });
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
@@ -124,7 +129,10 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual(mockProducts);
+      expect(result.current.data).toEqual({
+        items: mockProducts,
+        total: '100',
+      });
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=10&_end=30&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
@@ -150,7 +158,10 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual(mockProducts);
+      expect(result.current.data).toEqual({
+        items: mockProducts,
+        total: '100',
+      });
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=2`,
       );
@@ -291,7 +302,10 @@ describe('GetProducts', () => {
       });
 
       expect(result.current.isLoading).toBe(false);
-      expect(result.current.data).toEqual(mockProducts);
+      expect(result.current.data).toEqual({
+        items: mockProducts,
+        total: '100',
+      });
     });
   });
 
@@ -363,7 +377,7 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual([]);
+      expect(result.current.data).toEqual({ items: [], total: '100' });
     });
 
     it('should handle single product response', async () => {
@@ -379,7 +393,10 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual(singleProduct);
+      expect(result.current.data).toEqual({
+        items: singleProduct,
+        total: '100',
+      });
     });
   });
 });
@@ -406,7 +423,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
@@ -426,7 +445,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=10&_sort=price&_order=asc&mainCategoryId=1`,
       );
@@ -446,7 +467,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=chair`,
       );
@@ -466,7 +489,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1&subCategoryId=Chairs`,
       );
@@ -486,7 +511,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
@@ -569,7 +596,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+      ]);
       expect(result.current.hasNextPage).toBe(true);
 
       // Fetch next page
@@ -579,7 +608,10 @@ describe('GetProductsInfinite', () => {
         expect(result.current.data?.pages).toHaveLength(2);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage, secondPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+        { items: secondPage, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(mockFetch).toHaveBeenLastCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=2&_end=4&_sort=createdAt&_order=desc`,
@@ -599,7 +631,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([lastPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: lastPage, total: '100' },
+      ]);
       expect(result.current.hasNextPage).toBe(false);
     });
 
@@ -619,7 +653,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+      ]);
 
       // Fetch next page
       const fetchPromise = result.current.fetchNextPage();
@@ -630,7 +666,10 @@ describe('GetProductsInfinite', () => {
         expect(result.current.data?.pages).toHaveLength(2);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage, secondPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+        { items: secondPage, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(mockFetch).toHaveBeenLastCalledWith(
         `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=1&_end=2&_sort=createdAt&_order=desc`,
@@ -705,7 +744,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+      ]);
       expect(result.current.hasNextPage).toBe(true);
 
       // Fetch next page
@@ -715,7 +756,10 @@ describe('GetProductsInfinite', () => {
         expect(result.current.data?.pages).toHaveLength(2);
       });
 
-      expect(result.current.data?.pages).toEqual([firstPage, secondPage]);
+      expect(result.current.data?.pages).toEqual([
+        { items: firstPage, total: '100' },
+        { items: secondPage, total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
     });
   });
@@ -767,7 +811,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts, total: '100' },
+      ]);
 
       rerender({ categoryId: '2', searchParam: 'test' as string | null });
 
@@ -775,7 +821,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([mockProducts.slice(0, 1)]);
+      expect(result.current.data?.pages).toEqual([
+        { items: mockProducts.slice(0, 1), total: '100' },
+      ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
     });
   });
@@ -792,7 +840,7 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([[]]);
+      expect(result.current.data?.pages).toEqual([{ items: [], total: '100' }]);
       expect(result.current.hasNextPage).toBe(false);
     });
 
@@ -807,7 +855,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([null]);
+      expect(result.current.data?.pages).toEqual([
+        { items: null, total: '100' },
+      ]);
     });
   });
 
@@ -829,7 +879,9 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([malformedData]);
+      expect(result.current.data?.pages).toEqual([
+        { items: malformedData, total: '100' },
+      ]);
     });
 
     it('should handle special characters in search parameter', async () => {

@@ -74,25 +74,21 @@ const mockProductDetail: ProductInterface = {
 const mockCartItem: CartInterface = {
   id: 1,
   userId: 1,
-  items: [
-    {
-      productId: 1,
-      variantId: 1,
-      quantity: 2,
-    },
-  ],
+  item: {
+    productId: 1,
+    variantId: 1,
+    quantity: 2,
+  },
 };
 
 const mockSecondCartItem: CartInterface = {
   id: 2,
   userId: 1,
-  items: [
-    {
-      productId: 1,
-      variantId: 2,
-      quantity: 1,
-    },
-  ],
+  item: {
+    productId: 1,
+    variantId: 2,
+    quantity: 1,
+  },
 };
 
 const TestQueryClient = ({ children }: { children: ReactNode }) => {
@@ -293,13 +289,11 @@ describe('CartItem Component', () => {
             cartId: 1,
             cartPayload: {
               ...mockCartItem,
-              items: [
-                {
-                  productId: 1,
-                  variantId: 1,
-                  quantity: 5,
-                },
-              ],
+              item: {
+                productId: 1,
+                variantId: 1,
+                quantity: 5,
+              },
             },
           },
           {},
@@ -311,13 +305,11 @@ describe('CartItem Component', () => {
       const cartItemWithQuantity3: CartInterface = {
         id: 1,
         userId: 1,
-        items: [
-          {
-            productId: 1,
-            variantId: 1,
-            quantity: 3,
-          },
-        ],
+        item: {
+          productId: 1,
+          variantId: 1,
+          quantity: 3,
+        },
       };
 
       render(

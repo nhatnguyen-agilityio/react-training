@@ -138,7 +138,9 @@ const Products = () => {
             : 'All'
         }
       />
-      <PeopleViewed categoryId={Number(mainCategoryId)} />
+      <PeopleViewed
+        categoryId={mainCategoryId ? Number(mainCategoryId) : undefined}
+      />
     </>
   );
 };

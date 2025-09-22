@@ -9,6 +9,7 @@ import Sidebar from '../components/Sidebar';
 import { useState, lazy, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Loading from '../components/Loading';
+import SiteMetadata from '../components/SiteMetadata';
 
 const MobileSidebar = lazy(() => import('../components/MobileSidebar'));
 const UserButton = lazy(() => import('../components/UserButton'));
@@ -36,6 +37,7 @@ const Main = () => {
 
   return (
     <>
+      <SiteMetadata />
       <header className="flex justify-between items-center container">
         <h1>
           <Link to="/">

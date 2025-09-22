@@ -14,7 +14,11 @@ import type { ProductInterface } from '../../interfaces/products';
 import { GetProducts } from '../../apis/products';
 import { TriangleAlert } from 'lucide-react';
 
-const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
+const PeopleViewed = ({
+  categoryId = 1,
+}: {
+  categoryId?: number | undefined;
+}) => {
   const [api, setApi] = useState<EmblaCarouselType | null>(null);
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -23,7 +27,7 @@ const PeopleViewed = ({ categoryId = 1 }: { categoryId?: number }) => {
     data: listProducts,
     isPending,
     isError,
-  } = GetProducts(0, 4, String(categoryId));
+  } = GetProducts(0, 8, String(categoryId));
 
   useEffect(() => {
     if (!api) return;

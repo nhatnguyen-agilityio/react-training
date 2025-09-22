@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Main from './main';
 
 jest.mock('../hooks/useAuth', () => ({
@@ -238,7 +239,9 @@ jest.mock('react-router-dom', () => ({
 const mockUseAuth = jest.mocked(jest.requireMock('../hooks/useAuth').useAuth);
 
 const TestWrapper = ({ children }: { children: ReactNode }) => (
-  <BrowserRouter>{children}</BrowserRouter>
+  <HelmetProvider>
+    <BrowserRouter>{children}</BrowserRouter>
+  </HelmetProvider>
 );
 
 describe('Main Component', () => {

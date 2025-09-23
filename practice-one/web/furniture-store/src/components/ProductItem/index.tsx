@@ -14,6 +14,7 @@ const ProductItem = ({
   price,
   imageUrl,
   imageAlt,
+  variantColor,
 }: {
   id: number;
   variantId: number;
@@ -21,6 +22,7 @@ const ProductItem = ({
   price: number;
   imageUrl: string;
   imageAlt: string;
+  variantColor?: string;
 }) => {
   const { user } = useAuth();
 
@@ -83,8 +85,7 @@ const ProductItem = ({
           <p className="px-4 py-1 bg-background-primary rounded-2xl">{`$${price}`}</p>
         </div>
         <div className="flex">
-          <div className="w-7 h-7 mr-4 rounded-full bg-amber-400"></div>
-          <div className="w-7 h-7 rounded-full bg-amber-400"></div>
+          <div className="w-7 h-7 mr-4 rounded-full" style={{ backgroundColor: variantColor }}></div>
         </div>
       </Link>
     </div>

@@ -101,6 +101,7 @@ export const ProductGrid: Story = {
         price={299}
         imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Modern Chair"
+        variantColor="red"
       />
       <ProductItem
         id={2}
@@ -109,6 +110,7 @@ export const ProductGrid: Story = {
         price={1299}
         imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Luxury Sofa"
+        variantColor="blue"
       />
       <ProductItem
         id={3}
@@ -117,6 +119,7 @@ export const ProductGrid: Story = {
         price={89}
         imageUrl="https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/"
         imageAlt="Coffee Table"
+        variantColor="green"
       />
     </div>
   ),

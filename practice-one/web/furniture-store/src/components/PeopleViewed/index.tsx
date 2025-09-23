@@ -137,6 +137,7 @@ const PeopleViewed = ({
                     price={item.price}
                     imageUrl={item.variants[0]?.images[0].url}
                     imageAlt={item.variants[0]?.images[0].alt}
+                    variantColor={item.variants[0]?.hex}
                   />
                 </CarouselItem>
               ),

@@ -85,7 +85,10 @@ const ProductItem = ({
           <p className="px-4 py-1 bg-background-primary rounded-2xl">{`$${price}`}</p>
         </div>
         <div className="flex">
-          <div className="w-7 h-7 mr-4 rounded-full" style={{ backgroundColor: variantColor }}></div>
+          <div
+            className="w-7 h-7 mr-4 rounded-full"
+            style={{ backgroundColor: variantColor }}
+          ></div>
         </div>
       </Link>
     </div>

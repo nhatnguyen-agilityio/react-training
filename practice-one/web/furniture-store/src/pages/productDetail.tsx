@@ -250,8 +250,8 @@ const ProductDetail = () => {
             <p className="text-app-primary font-semibold text-2xl mr-3">
               {`$${productDetail.price}`}
             </p>
-            <p className="opacity-50 line-through mr-3">{`$${productDetail.basePrice}`}</p>
-            <p className="py-1 px-3 bg-red-1/20 rounded-4xl text-red-1">-40%</p>
+            <p className="text-gray-500 line-through mr-3">{`$${productDetail.basePrice}`}</p>
+            <p className="py-1 px-3 bg-red-50 rounded-4xl text-red-700">-40%</p>
           </div>
           <p className="mt-4 md:text-lg lg:text-xl font-light">
             {productDetail.description}
@@ -278,6 +278,7 @@ const ProductDetail = () => {
             </div>
             <div className="h-12 w-12 mr-4">
               <Input
+                aria-label="Quantity"
                 type="number"
                 min={1}
                 max={100}
@@ -292,10 +293,10 @@ const ProductDetail = () => {
               variant={'outline'}
               onClick={handleAddToCart}
               disabled={isLoading || !user}
-              className="w-full py-3 bg-app-tertiary hover:bg-app-primary hover:text-white border-none rounded-3xl text-white font-light text-xl"
+              className="w-full py-3 bg-app-primary hover:bg-app-tertiary hover:text-white border-none rounded-3xl text-white font-light text-xl [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]"
             >
               {!user
-                ? 'Sign in to add item'
+                ? 'Sign in to add item to cart'
                 : isLoading
                   ? 'Adding to cart...'
                   : 'Add to cart'}

@@ -49,18 +49,16 @@ const BreadcrumbComponent = ({ items, className = '' }: BreadcrumbProps) => {
     <Breadcrumb className={className}>
       <BreadcrumbList>
         {items.map((item, index) => (
-          <div key={index} className="flex items-center">
-            <BreadcrumbItem>
-              {item.isCurrentPage ? (
-                <BreadcrumbPage>{item.label}</BreadcrumbPage>
-              ) : (
-                <BreadcrumbLink href={item.href || '#'}>
-                  {item.label}
-                </BreadcrumbLink>
-              )}
-            </BreadcrumbItem>
+          <BreadcrumbItem key={index} className="flex items-center">
+            {item.isCurrentPage ? (
+              <BreadcrumbPage>{item.label}</BreadcrumbPage>
+            ) : (
+              <BreadcrumbLink href={item.href || '#'}>
+                {item.label}
+              </BreadcrumbLink>
+            )}
             {index < items.length - 1 && <BreadcrumbSeparator />}
-          </div>
+          </BreadcrumbItem>
         ))}
       </BreadcrumbList>
     </Breadcrumb>

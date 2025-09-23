@@ -532,7 +532,7 @@ describe('ProductDetail Page', () => {
         </TestWrapper>,
       );
 
-      const addToCartButton = screen.getByText('Sign in to add item');
+      const addToCartButton = screen.getByText('Sign in to add item to cart');
       expect(addToCartButton).toBeDisabled();
 
       // Button should be disabled, so clicking won't trigger any action

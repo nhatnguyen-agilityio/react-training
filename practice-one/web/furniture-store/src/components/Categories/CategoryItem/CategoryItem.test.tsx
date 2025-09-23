@@ -118,7 +118,7 @@ describe('CategoryItemComponent', () => {
           />
         </TestQueryClient>,
       );
-      expect(screen.getByRole('button')).toHaveTextContent('Shop now');
+      expect(screen.getByRole('link')).toHaveTextContent('Shop now');
     });
     it('renders CategoryItem component with correct button icon', () => {
       render(
@@ -131,9 +131,7 @@ describe('CategoryItemComponent', () => {
           />
         </TestQueryClient>,
       );
-      expect(
-        screen.getByRole('button').querySelector('svg'),
-      ).toBeInTheDocument();
+      expect(screen.getByRole('link').querySelector('svg')).toBeInTheDocument();
     });
   });
   describe('User Interactions', () => {

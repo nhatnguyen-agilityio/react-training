@@ -1,5 +1,5 @@
 export const QUERY_KEY = {
-  MAIN_CATEGORIES: ['mainCategories'],
+  MAIN_CATEGORIES: (pageSize?: number) => ['mainCategories', pageSize],
   SUB_CATEGORIES: (mainCategory: string | null) => [
     'subCategories',
     mainCategory,

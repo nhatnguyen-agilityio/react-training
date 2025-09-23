@@ -16,7 +16,7 @@ interface CategoryInterface {
 }
 
 const Categories = () => {
-  const { data: categories, isPending, isError, error } = GetMainCategories();
+  const { data: categories, isPending, isError, error } = GetMainCategories(true, 4);
 
   if (isPending) {
     const fakeMainCategoriesItems = Array.from({ length: 4 });

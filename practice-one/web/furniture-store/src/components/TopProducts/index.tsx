@@ -101,6 +101,23 @@ const TopProducts = ({
     );
   }
 
+  if (items.length === 0) {
+    return (
+      <>
+        <div className="mt-6 md:mt-12 container">
+          <p className="text-left text-xl font-bold mb-2 md:mb-5 md:text-4xl">
+            Top Products
+          </p>
+        </div>
+        <div className="mt-8 md:w-1/2 mx-auto min-h-96 flex items-center px-5 justify-center">
+          <p className="text-center text-xl font-medium">
+            No products found. Try adjusting your filters or search
+          </p>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="mt-6 md:mt-12 container">
       <div className="flex flex-col md:flex-row md:justify-between">

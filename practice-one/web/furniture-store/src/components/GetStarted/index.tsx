@@ -13,7 +13,7 @@ const GetStarted = forwardRef<
   return (
     <Button
       ref={ref}
-      className={`bg-app-primary px-7 w-44 py-4 h-auto text-white flex items-center text-base font-semibold rounded-4xl hover:bg-app-tertiary ${className ?? ''}`}
+      className={`bg-app-primary px-7 w-44 py-4 h-auto text-white flex items-center text-base font-semibold rounded-4xl hover:bg-app-tertiary [text-shadow:0_1px_2px_rgba(0,0,0,0.6)] ${className ?? ''}`}
       {...props}
     >
       Get Started

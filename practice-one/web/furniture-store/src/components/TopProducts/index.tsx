@@ -1,4 +1,4 @@
-import { useMemo, useState, lazy, useEffect } from 'react';
+import { useMemo, useState, lazy } from 'react';
 import { GetProductsInfinite } from '../../apis/products';
 import type { ProductInterface } from '../../interfaces/products';
 import ShowMore from '../common/ShowMore';
@@ -6,8 +6,12 @@ import FilterDropdown from '../FilterDropdown';
 import ProductItem from '../ProductItem';
 import { Loader2 } from 'lucide-react';
 
-const Progress = lazy(() => import('../ui/progress').then(module => ({ default: module.Progress })));
-const Skeleton = lazy(() => import('../ui/skeleton').then(module => ({ default: module.Skeleton })));
+const Progress = lazy(() =>
+  import('../ui/progress').then((module) => ({ default: module.Progress })),
+);
+const Skeleton = lazy(() =>
+  import('../ui/skeleton').then((module) => ({ default: module.Skeleton })),
+);
 
 const TopProducts = ({
   categoryId,
@@ -19,10 +23,6 @@ const TopProducts = ({
   subCategoryName?: string;
 }) => {
   const [position, setPosition] = useState('mostRecent');
-  const [enabled, setEnabled] = useState(false);
-  useEffect(() => {
-    requestAnimationFrame(() => setEnabled(true));
-  }, []);
 
   const pageSize = 20;
   const {
@@ -39,7 +39,6 @@ const TopProducts = ({
     categoryId,
     searchProducts,
     subCategoryName,
-    enabled,
   );
 
   const items: ProductInterface[] = useMemo(() => {

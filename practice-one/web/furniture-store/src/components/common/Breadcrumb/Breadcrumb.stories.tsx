@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import BreadcrumbComponent from '.';
 import { lazy } from 'react';
 
-const Skeleton = lazy(() => import('../../ui/skeleton').then(module => ({ default: module.Skeleton })));
+const Skeleton = lazy(() =>
+  import('../../ui/skeleton').then((module) => ({ default: module.Skeleton })),
+);
 
 const meta: Meta<typeof BreadcrumbComponent> = {
   title: 'Common/Breadcrumb',

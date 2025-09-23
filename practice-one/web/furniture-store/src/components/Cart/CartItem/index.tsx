@@ -6,8 +6,12 @@ import type { ProductVariant } from '../../../interfaces/products';
 import { useCallback, useState, memo, lazy } from 'react';
 import { useUpdateCart } from '../../../apis/update-cart';
 
-const Input = lazy(() => import('../../ui/input').then(module => ({ default: module.Input })));
-const Skeleton = lazy(() => import('../../ui/skeleton').then(module => ({ default: module.Skeleton })));
+const Input = lazy(() =>
+  import('../../ui/input').then((module) => ({ default: module.Input })),
+);
+const Skeleton = lazy(() =>
+  import('../../ui/skeleton').then((module) => ({ default: module.Skeleton })),
+);
 
 const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
   const [quantityValue, setQuantityValue] = useState<number>(

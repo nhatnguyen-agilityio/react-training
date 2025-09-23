@@ -1,8 +1,10 @@
-import { lazy, useEffect, useState } from 'react';
+import { lazy } from 'react';
 import { GetMainCategories } from '../../apis/main-categories';
 import CategoryItem from './CategoryItem';
 
-const Skeleton = lazy(() => import('../ui/skeleton').then(module => ({ default: module.Skeleton })));
+const Skeleton = lazy(() =>
+  import('../ui/skeleton').then((module) => ({ default: module.Skeleton })),
+);
 
 interface CategoryInterface {
   id: number;
@@ -14,11 +16,7 @@ interface CategoryInterface {
 }
 
 const Categories = () => {
-  const [enabled, setEnabled] = useState(false);
-  useEffect(() => {
-    requestAnimationFrame(() => setEnabled(true));
-  }, []);
-  const { data: categories, isPending, isError, error } = GetMainCategories(enabled);
+  const { data: categories, isPending, isError, error } = GetMainCategories();
 
   if (isPending) {
     const fakeMainCategoriesItems = Array.from({ length: 4 });

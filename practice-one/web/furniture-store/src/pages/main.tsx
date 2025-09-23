@@ -57,7 +57,7 @@ const Main = () => {
               if (!open) setStep('closed');
             }}
             button={
-              <div className="flex items-center">
+              <>
                 {user && (
                   <CartButton
                     onClick={(e) => {
@@ -76,7 +76,7 @@ const Main = () => {
                     }}
                   />
                 )}
-              </div>
+              </>
             }
             title={
               step === 'cart'

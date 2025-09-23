@@ -37,7 +37,7 @@ const CategoryButtons = ({
                   variant={'outline'}
                   className={`rounded-2xl py-2 px-4 text-sm text-black font-medium hover:bg-gray-300 border-none transition-colors ${
                     selectedCategory === item
-                      ? 'bg-app-primary text-white hover:bg-app-primary hover:text-white'
+                      ? 'bg-app-primary text-white hover:bg-app-primary hover:text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]'
                       : 'bg-background-primary hover:text-black'
                   }`}
                 >

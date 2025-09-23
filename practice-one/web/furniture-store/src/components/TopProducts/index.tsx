@@ -137,6 +137,7 @@ const TopProducts = ({
         <Progress
           value={hasNextPage ? (items.length / total) * 100 : 100}
           className="mt-6 h-1"
+          aria-label="Progress"
         />
         {isFetchingNextPage && (
           <div className="flex items-center gap-2 my-4 justify-center">

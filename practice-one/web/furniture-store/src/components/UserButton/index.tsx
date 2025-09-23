@@ -37,6 +37,7 @@ const UserButton = () => {
       <DropdownMenuTrigger asChild>
         <Button
           className={`w-16 h-16 [&_svg:not([class*='size-'])]:size-7 bg-app-secondary rounded-full hover:bg-gray-200 transition`}
+          aria-label="User"
         >
           <CircleUser className="text-app-primary" />
         </Button>
@@ -46,7 +47,11 @@ const UserButton = () => {
         align="start"
       >
         <DropdownMenuGroup className="ml-2">
-          <DropdownMenuItem className="flex justify-between" onClick={logout}>
+          <DropdownMenuItem
+            className="flex justify-between"
+            onClick={logout}
+            aria-label="Logout"
+          >
             Logout
             <LogOut />
           </DropdownMenuItem>

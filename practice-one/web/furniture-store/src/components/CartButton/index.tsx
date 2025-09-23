@@ -19,6 +19,7 @@ const CartButton = forwardRef<
   return (
     <Button
       ref={ref}
+      aria-label="Cart"
       className={`relative w-16 h-16 [&_svg:not([class*='size-'])]:size-6 p-5 mr-5 bg-app-secondary rounded-full hover:bg-gray-200 transition ${className ?? ''}`}
       {...props}
     >

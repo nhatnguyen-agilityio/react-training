@@ -18,6 +18,7 @@ import { useState, lazy } from 'react';
 import { useLogin } from '../../apis/login';
 import { Loader2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import { toast } from 'sonner';
 
 const AlertDialog = lazy(() =>
   import('../ui/alert-dialog').then((module) => ({
@@ -195,6 +196,11 @@ const Login = ({
           <Button
             variant={'ghost'}
             className="border-1 rounded-3xl py-3 font-semibold hover:bg-gray-100"
+            onClick={() => {
+              toast.error(
+                'Google login is not available yet. Please use email/password to login.',
+              );
+            }}
           >
             <Image src={GoogleLogo} alt="Google Logo" className="w-6 h-6" />
             Continue with Google
@@ -202,6 +208,11 @@ const Login = ({
           <Button
             variant={'ghost'}
             className="border-1 rounded-3xl py-3 font-semibold hover:bg-gray-100"
+            onClick={() => {
+              toast.error(
+                'Apple login is not available yet. Please use email/password to login.',
+              );
+            }}
           >
             <Image src={AppleLogo} alt="Apple Logo" className="w-6 h-6" />
             Continue with Apple

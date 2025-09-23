@@ -29,7 +29,7 @@ server.post("/signup", (req, res) => {
     const existingUser = users.find((u) => u.username === username);
 
     if (existingUser) {
-        return res.status(400).json({ error: "Username already taken" });
+        return res.status(400).json({ error: "Username already used. Please use another username or contact support team for help" });
     }
 
     const newUser = {

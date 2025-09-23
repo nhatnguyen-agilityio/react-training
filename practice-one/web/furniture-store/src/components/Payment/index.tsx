@@ -124,7 +124,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
 
   const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
     if (data.rememberMe && user) {
-      let paymentPayload = { ...data, ...customerInfo, userId: user.id };
+      let paymentPayload = { ...customerInfo, ...data, userId: user.id };
 
       const checkoutInformation = localStorage.getItem('checkout');
       if (checkoutInformation) {

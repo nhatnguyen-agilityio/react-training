@@ -17,22 +17,34 @@ const Footer = () => {
           <div className="w-full lg:grid lg:grid-cols-7">
             <ul className="flex flex-wrap text-sm text-white font-semibold mt-10 w-1/2 lg:w-fit lg:h-full lg:items-end lg:col-span-2 lg:mt-0">
               <li className="after:content-['/'] after:mx-3 after:font-light">
-                <a href="#" className="hover:underline">
+                <a
+                  href="#"
+                  className="hover:underline min-h-6 py-1 md:py-0 inline-flex items-center"
+                >
                   Home
                 </a>
               </li>
               <li className="after:content-['/'] after:mx-3 after:font-light">
-                <a href="#" className="hover:underline">
+                <a
+                  href="#"
+                  className="hover:underline min-h-6 py-1 md:py-0 inline-flex items-center"
+                >
                   Blog
                 </a>
               </li>
               <li className="after:content-['/'] after:mx-3 after:font-light">
-                <a href="#" className="hover:underline">
+                <a
+                  href="#"
+                  className="hover:underline min-h-6 py-1 md:py-0 inline-flex items-center"
+                >
                   Sale
                 </a>
               </li>
               <li className="after:content-['/'] after:mx-3 after:font-light">
-                <a href="#" className="hover:underline">
+                <a
+                  href="#"
+                  className="hover:underline min-h-6 py-1 md:py-0 inline-flex items-center"
+                >
                   About Us
                 </a>
               </li>
@@ -63,6 +75,7 @@ const Footer = () => {
               <Button
                 className="w-14 h-14 mt-10 lg:mt-0 rounded-full bg-background-primary text-black hover:bg-gray-300"
                 onClick={() => window.scrollTo(0, 0)}
+                aria-label="Scroll to top"
               >
                 <ArrowUp className="size-6" />
               </Button>

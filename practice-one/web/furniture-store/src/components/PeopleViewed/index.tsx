@@ -147,6 +147,7 @@ const PeopleViewed = ({
       <Progress
         value={count > 0 ? (current / count) * 100 : 0}
         className="my-8 h-2 md:hidden"
+        aria-label="Progress"
       />
     </div>
   );

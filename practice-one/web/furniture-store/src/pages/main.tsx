@@ -57,7 +57,7 @@ const Main = () => {
               if (!open) setStep('closed');
             }}
             button={
-              <>
+              <nav className="flex items-center" aria-label="User actions">
                 {user && (
                   <CartButton
                     onClick={(e) => {
@@ -76,7 +76,7 @@ const Main = () => {
                     }}
                   />
                 )}
-              </>
+              </nav>
             }
             title={
               step === 'cart'

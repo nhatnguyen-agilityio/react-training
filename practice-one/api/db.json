@@ -123,6 +123,30 @@
         "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
         "alt": "Bedroom"
       }
+    },
+    {
+      "id": 5,
+      "name": "Living room",
+      "image": {
+        "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+        "alt": "Living Room"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Outdoor",
+      "image": {
+        "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+        "alt": "Outdoor"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Workspace",
+      "image": {
+        "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+        "alt": "Workspace"
+      }
     }
   ],
   "subCategories": [
@@ -150,17 +174,142 @@
       "id": 5,
       "mainCategoryId": 4,
       "name": "Lamps"
+    },
+    {
+      "id": 6,
+      "mainCategoryId": 1,
+      "name": "Armchairs"
+    },
+    {
+      "id": 8,
+      "mainCategoryId": 1,
+      "name": "Side Tables"
+    },
+    {
+      "id": 9,
+      "mainCategoryId": 1,
+      "name": "Console Tables"
+    },
+    {
+      "id": 10,
+      "mainCategoryId": 1,
+      "name": "Recliners & Loungers"
+    },
+    {
+      "id": 11,
+      "mainCategoryId": 2,
+      "name": "Rugs & Carpets"
+    },
+    {
+      "id": 12,
+      "mainCategoryId": 2,
+      "name": "Cushions & Throws"
+    },
+    {
+      "id": 13,
+      "mainCategoryId": 2,
+      "name": "Curtains & Blinds"
+    },
+    {
+      "id": 14,
+      "mainCategoryId": 2,
+      "name": "Lamps & Lighting"
+    },
+    {
+      "id": 15,
+      "mainCategoryId": 2,
+      "name": "Clocks"
+    },
+    {
+      "id": 16,
+      "mainCategoryId": 2,
+      "name": "Storage Baskets"
+    },
+    {
+      "id": 17,
+      "mainCategoryId": 3,
+      "name": "Kitchen Cabinets"
+    },
+    {
+      "id": 18,
+      "mainCategoryId": 3,
+      "name": "Kitchen Islands & Carts"
+    },
+    {
+      "id": 19,
+      "mainCategoryId": 3,
+      "name": "Dining Tables"
+    },
+    {
+      "id": 20,
+      "mainCategoryId": 3,
+      "name": "Dining Chairs"
+    },
+    {
+      "id": 21,
+      "mainCategoryId": 3,
+      "name": "Bar Stools"
+    },
+    {
+      "id": 22,
+      "mainCategoryId": 3,
+      "name": "Sideboards & Buffets"
+    },
+    {
+      "id": 23,
+      "mainCategoryId": 4,
+      "name": "Beds & Headboards"
+    },
+    {
+      "id": 24,
+      "mainCategoryId": 4,
+      "name": "Mattresses"
+    },
+    {
+      "id": 25,
+      "mainCategoryId": 4,
+      "name": "Bedside Tables"
+    },
+    {
+      "id": 26,
+      "mainCategoryId": 4,
+      "name": "Wardrobes & Closets"
+    },
+    {
+      "id": 27,
+      "mainCategoryId": 4,
+      "name": "Bedding"
+    },
+    {
+      "id": 28,
+      "mainCategoryId": 5,
+      "name": "Bedroom Lighting"
+    },
+    {
+      "id": 29,
+      "mainCategoryId": 5,
+      "name": "Bookcases & Shelving"
+    },
+    {
+      "id": 30,
+      "mainCategoryId": 5,
+      "name": "Display Cabinets"
+    },
+    {
+      "id": 31,
+      "mainCategoryId": 5,
+      "name": "Coffee & Center Tables"
     }
   ],
   "products": [
     {
       "id": 1,
-      "name": "Modern Sofa",
+      "name": "Boucle Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "price": 44,
+      "basePrice": 100,
       "createdAt": "2025-09-09T11:26:39.000Z",
       "rating": {
         "average": 4.5,
@@ -179,7 +328,7 @@
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Modern Sofa"
             }
           ]
@@ -203,8 +352,8 @@
       "id": 2,
       "name": "Golden Table Lamp",
       "description": "Luxury bedside lamp with warm LED lighting.",
-      "mainCategoryId": 4,
-      "subCategoryId": 5,
+      "mainCategoryId": 3,
+      "subCategoryId": 2,
       "price": 199.99,
       "basePrice": 1000,
       "createdAt": "2024-12-19T11:26:39.000Z",
@@ -224,7 +373,7 @@
           "stock": 12,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/5ba63a63-2166-49a4-814e-d01c3fbd925b/-/format/auto/",
               "alt": "Golden Lamp"
             }
           ]
@@ -235,7 +384,7 @@
       "id": 3,
       "name": "Scandinavian Coffee Table",
       "description": "Minimalist wooden coffee table with a natural oak finish.",
-      "mainCategoryId": 2,
+      "mainCategoryId": 1,
       "subCategoryId": 3,
       "price": 299.99,
       "basePrice": 1000,
@@ -257,7 +406,7 @@
           "stock": 15,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/5a3216f8-f48d-47cf-84a6-2cfc8959b456/-/format/auto/",
               "alt": "Coffee Table"
             }
           ]
@@ -268,8 +417,8 @@
       "id": 4,
       "name": "Velvet Armchair",
       "description": "Elegant velvet armchair with plush comfort.",
-      "mainCategoryId": 1,
-      "subCategoryId": 2,
+      "mainCategoryId": 2,
+      "subCategoryId": 4,
       "price": 499.99,
       "basePrice": 600,
       "createdAt": "2025-03-12T09:10:00.000Z",
@@ -290,7 +439,7 @@
           "stock": 8,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/8cf7ad67-f53b-40ac-98ca-82c5c21f439b/-/format/auto/",
               "alt": "Velvet Armchair"
             }
           ]
@@ -301,8 +450,8 @@
       "id": 5,
       "name": "Marble Dining Table",
       "description": "Luxury marble dining table with steel legs.",
-      "mainCategoryId": 2,
-      "subCategoryId": 4,
+      "mainCategoryId": 4,
+      "subCategoryId": 5,
       "price": 1499.99,
       "basePrice": 1700,
       "createdAt": "2025-05-01T18:20:00.000Z",
@@ -323,7 +472,7 @@
           "stock": 5,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/d485d7c2-742c-4978-81f1-5090ee4bcc8c/-/format/auto/",
               "alt": "Marble Dining Table"
             }
           ]
@@ -334,8 +483,8 @@
       "id": 6,
       "name": "Leather Office Chair",
       "description": "Ergonomic leather office chair with adjustable height.",
-      "mainCategoryId": 3,
-      "subCategoryId": 6,
+      "mainCategoryId": 4,
+      "subCategoryId": 5,
       "price": 349.99,
       "basePrice": 500,
       "createdAt": "2025-06-15T13:00:00.000Z",
@@ -355,7 +504,7 @@
           "stock": 20,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Office Chair"
             }
           ]
@@ -366,8 +515,8 @@
       "id": 7,
       "name": "Outdoor Patio Set",
       "description": "Weather-resistant rattan patio set with cushions.",
-      "mainCategoryId": 5,
-      "subCategoryId": 7,
+      "mainCategoryId": 1,
+      "subCategoryId": 6,
       "price": 899.99,
       "basePrice": 1000,
       "createdAt": "2025-07-04T08:45:00.000Z",
@@ -382,12 +531,12 @@
       "variants": [
         {
           "id": 701,
-          "color": "Brown",
+          "color": "Brown", 
           "hex": "#8B4513",
           "stock": 12,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ae1b8d09-1192-4c16-80f6-b53ab4c92b0b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -395,7 +544,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/5ba63a63-2166-49a4-814e-d01c3fbd925b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -404,12 +553,12 @@
     },
     {
       "id": 8,
-      "name": "Modern Sofa",
+      "name": "Natural Wood Table",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "price": 102,
+      "basePrice": 130,
       "createdAt": "2025-07-06T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -423,20 +572,20 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#667080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/61d75add-6f2d-48c1-83db-be4b8f0e0f43/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -466,12 +615,12 @@
     },
     {
       "id": 9,
-      "name": "Modern Sofa",
+      "name": "Metro Luxe Duo Sofa",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 900,
+      "price": 120,
+      "basePrice": 150,
       "createdAt": "2025-08-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -485,20 +634,20 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#444080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ff67e43d-d8dd-47c2-b8c6-0ef38b04ebb0/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ff67e43d-d8dd-47c2-b8c6-0ef38b04ebb0/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ff67e43d-d8dd-47c2-b8c6-0ef38b04ebb0/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -528,12 +677,12 @@
     },
     {
       "id": 10,
-      "name": "Modern Sofa",
+      "name": "Kitchen Bar Stool",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "subCategoryId": 8,
+      "price": 19.99,
+      "basePrice": 57,
       "createdAt": "2025-09-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -547,12 +696,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#822080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0136b2be-0574-4ce2-a107-24808288a793/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -560,7 +709,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0136b2be-0574-4ce2-a107-24808288a793/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -590,12 +739,12 @@
     },
     {
       "id": 11,
-      "name": "Modern Sofa",
+      "name": "Luxe Modern Armchair ",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 2,
+      "subCategoryId": 15,
+      "price": 59.99,
+      "basePrice": 100,
       "createdAt": "2025-07-01T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -609,12 +758,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#800000",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -622,7 +771,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -652,12 +801,12 @@
     },
     {
       "id": 12,
-      "name": "Modern Sofa",
+      "name": "Modern Ceramic Lamp",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1100,
+      "mainCategoryId": 2,
+      "subCategoryId": 16,
+      "price": 12.99,
+      "basePrice": 21,
       "createdAt": "2025-07-19T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -671,12 +820,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#80800E",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0df049d8-eb18-4e41-8fe0-c237c432733e/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -684,7 +833,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0df049d8-eb18-4e41-8fe0-c237c432733e/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -714,12 +863,12 @@
     },
     {
       "id": 13,
-      "name": "Modern Sofa",
+      "name": "Utopia Plant Pots",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 2,
+      "subCategoryId": 14,
+      "price": 18.99,
+      "basePrice": 20,
       "createdAt": "2025-02-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -733,12 +882,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#FFFE80",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ae1b8d09-1192-4c16-80f6-b53ab4c92b0b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -746,7 +895,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ae1b8d09-1192-4c16-80f6-b53ab4c92b0b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -776,12 +925,12 @@
     },
     {
       "id": 14,
-      "name": "Modern Sofa",
+      "name": "Natural Wood Table",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 2,
+      "subCategoryId": 13,
+      "price": 109.99,
+      "basePrice": 130,
       "createdAt": "2025-01-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -795,12 +944,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#88F080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/5ba63a63-2166-49a4-814e-d01c3fbd925b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -808,7 +957,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/5ba63a63-2166-49a4-814e-d01c3fbd925b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -838,12 +987,12 @@
     },
     {
       "id": 15,
-      "name": "Modern Sofa",
+      "name": "Wooden Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "subCategoryId": 10,
+      "price": 24.99,
+      "basePrice": 30,
       "createdAt": "2024-07-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -857,12 +1006,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#EE8080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/8cf7ad67-f53b-40ac-98ca-82c5c21f439b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -870,7 +1019,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/8cf7ad67-f53b-40ac-98ca-82c5c21f439b/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -900,12 +1049,12 @@
     },
     {
       "id": 16,
-      "name": "Modern Sofa",
+      "name": "Kitchen Bar Stool",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "subCategoryId": 9,
+      "price": 79.99,
+      "basePrice": 101,
       "createdAt": "2025-07-01T012:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -919,12 +1068,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#8EFFE0",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0136b2be-0574-4ce2-a107-24808288a793/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -932,7 +1081,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/0136b2be-0574-4ce2-a107-24808288a793/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -962,12 +1111,12 @@
     },
     {
       "id": 17,
-      "name": "Modern Sofa",
+      "name": "Metro Luxe Duo Sofa",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 3,
+      "subCategoryId": 21,
+      "price": 199.99,
+      "basePrice": 170,
       "createdAt": "2025-03-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -981,12 +1130,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#8FEF80",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ff67e43d-d8dd-47c2-b8c6-0ef38b04ebb0/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -994,7 +1143,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/ff67e43d-d8dd-47c2-b8c6-0ef38b04ebb0/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1024,12 +1173,12 @@
     },
     {
       "id": 18,
-      "name": "Modern Sofa",
+      "name": "Luxe Modern Armchair ",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 3,
+      "subCategoryId": 22,
+      "price": 68.99,
+      "basePrice": 81,
       "createdAt": "2025-07-28T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1043,12 +1192,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#778080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1056,7 +1205,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a8016e5c-0a2f-4b85-a904-abd87f844ed2/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1086,12 +1235,12 @@
     },
     {
       "id": 19,
-      "name": "Modern Sofa",
+      "name": "Boucle Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 3,
+      "subCategoryId": 22,
+      "price": 77.99,
+      "basePrice": 88,
       "createdAt": "2025-06-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1105,12 +1254,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#338080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1118,7 +1267,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1126,7 +1275,7 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#1000FF",
           "size": "3-seater",
           "stock": 7,
           "images": [
@@ -1148,12 +1297,12 @@
     },
     {
       "id": 20,
-      "name": "Modern Sofa",
+      "name": "Round Terra Marble Side Table",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "price": 11.99,
+      "basePrice": 16,
       "createdAt": "2025-07-14T01:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1167,12 +1316,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#808000",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a4afae90-6569-40f2-93da-a1c6c01a4300/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1180,7 +1329,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a4afae90-6569-40f2-93da-a1c6c01a4300/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1188,7 +1337,7 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#FFF0FF",
           "size": "3-seater",
           "stock": 7,
           "images": [
@@ -1210,12 +1359,12 @@
     },
     {
       "id": 21,
-      "name": "Modern Sofa",
+      "name": "Luna Modern Round Ottoman",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 4,
+      "subCategoryId": 23,
+      "price": 24.99,
+      "basePrice": 44,
       "createdAt": "2024-11-04T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1229,12 +1378,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#F080FE",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7e04766-d081-45a2-9d42-a7aeaf0532fe/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1242,7 +1391,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7e04766-d081-45a2-9d42-a7aeaf0532fe/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1250,7 +1399,7 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#1E9EFF",
           "size": "3-seater",
           "stock": 7,
           "images": [
@@ -1272,12 +1421,12 @@
     },
     {
       "id": 22,
-      "name": "Modern Sofa",
+      "name": "Round Fluted Accent Center Table",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 4,
+      "subCategoryId": 24,
+      "price": 91.99,
+      "basePrice": 100,
       "createdAt": "2025-01-14T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1291,7 +1440,7 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#EF8080",
           "size": "3-seater",
           "stock": 10,
           "images": [
@@ -1312,12 +1461,12 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#EE90FF",
           "size": "3-seater",
           "stock": 7,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/d485d7c2-742c-4978-81f1-5090ee4bcc8c/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1325,7 +1474,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/d485d7c2-742c-4978-81f1-5090ee4bcc8c/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1334,12 +1483,12 @@
     },
     {
       "id": 23,
-      "name": "Modern Sofa",
+      "name": "Roundhill Fabric Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 4,
+      "subCategoryId": 25,
+      "price": 31.99,
+      "basePrice": 42 ,
       "createdAt": "2025-06-24T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1353,12 +1502,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#899080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/61d75add-6f2d-48c1-83db-be4b8f0e0f43/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1366,7 +1515,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/61d75add-6f2d-48c1-83db-be4b8f0e0f43/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1374,7 +1523,7 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#5020E9",
           "size": "3-seater",
           "stock": 7,
           "images": [
@@ -1396,12 +1545,12 @@
     },
     {
       "id": 24,
-      "name": "Modern Sofa",
+      "name": "Loveseat Compact 2-Seater Furniture ",
       "description": "A comfortable gray sofa with a contemporary design.",
-      "mainCategoryId": 1,
-      "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "mainCategoryId": 4,
+      "subCategoryId": 26,
+      "price": 89.99,
+      "basePrice": 97,
       "createdAt": "2025-07-18T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1415,12 +1564,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#808120",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a2b31ec6-30c2-4fe3-804f-3f0f8f9d2ac5/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1428,7 +1577,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/a2b31ec6-30c2-4fe3-804f-3f0f8f9d2ac5/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1436,7 +1585,7 @@
         {
           "id": 102,
           "color": "Blue",
-          "hex": "#1E90FF",
+          "hex": "#1E20FF",
           "size": "3-seater",
           "stock": 7,
           "images": [
@@ -1449,12 +1598,12 @@
     },
     {
       "id": 25,
-      "name": "Modern Sofa",
+      "name": "Aurla Fabric Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "price": 55.99,
+      "basePrice": 66,
       "createdAt": "2025-07-04T021:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1468,12 +1617,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#803980",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/b57cfda9-4d4e-40ca-b011-54b4959115cb/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1481,7 +1630,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/b57cfda9-4d4e-40ca-b011-54b4959115cb/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]
@@ -1511,12 +1660,12 @@
     },
     {
       "id": 26,
-      "name": "Modern Sofa",
+      "name": "Modern Fabrix Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 1,
       "subCategoryId": 1,
-      "price": 799.99,
-      "basePrice": 1000,
+      "price": 38.99,
+      "basePrice": 100,
       "createdAt": "2025-07-02T018:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1530,12 +1679,12 @@
         {
           "id": 101,
           "color": "Gray",
-          "hex": "#808080",
+          "hex": "#248080",
           "size": "3-seater",
           "stock": 10,
           "images": [
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Outdoor Patio Set"
             },
             {
@@ -1543,7 +1692,7 @@
               "alt": "Outdoor Patio Set"
             },
             {
-              "url": "https://ucarecdn.com/093e2ab7-3038-4752-9691-833462c4116b/-/format/auto/",
+              "url": "https://ucarecdn.com/f7472a58-c5e6-478f-be67-c58fa12393d1/-/format/auto/",
               "alt": "Outdoor Patio Set"
             }
           ]

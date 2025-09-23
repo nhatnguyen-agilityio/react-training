@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -235,104 +235,123 @@ describe('Sidebar', () => {
   });
 
   describe('Rendering', () => {
-    it('should render the drawer with correct structure', () => {
-      render(
-        <TestQueryClient>
-          <Sidebar
-            button={mockButton}
-            children={mockChildren}
-            title={mockTitle}
-            open={false}
-            onOpenChange={mockOnOpenChange}
-          />
-        </TestQueryClient>,
-      );
+    it('should render the drawer with correct structure', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Sidebar
+              button={mockButton}
+              children={mockChildren}
+              title={mockTitle}
+              open={false}
+              onOpenChange={mockOnOpenChange}
+            />
+          </TestQueryClient>,
+        );
+      });
 
-      // Check drawer structure
-      expect(screen.getByTestId('drawer')).toBeInTheDocument();
-      expect(screen.getByTestId('drawer')).toHaveAttribute(
-        'data-open',
-        'false',
-      );
+      await waitFor(() => {
+        // Check drawer structure
+        expect(screen.getByTestId('drawer')).toBeInTheDocument();
+        expect(screen.getByTestId('drawer')).toHaveAttribute(
+          'data-open',
+          'false',
+        );
 
-      // Check trigger button
-      expect(screen.getByTestId('drawer-trigger')).toBeInTheDocument();
-      expect(screen.getByTestId('drawer-trigger')).toHaveAttribute(
-        'data-as-child',
-        'true',
-      );
-      expect(screen.getByText('Button')).toBeInTheDocument();
+        // Check trigger button
+        expect(screen.getByTestId('drawer-trigger')).toBeInTheDocument();
+        expect(screen.getByTestId('drawer-trigger')).toHaveAttribute(
+          'data-as-child',
+          'true',
+        );
+        expect(screen.getByText('Button')).toBeInTheDocument();
+      });
     });
 
-    it('should render drawer content with header and children when open', () => {
-      render(
-        <TestQueryClient>
-          <Sidebar
-            button={mockButton}
-            children={mockChildren}
-            title={mockTitle}
-            open={true}
-            onOpenChange={mockOnOpenChange}
-          />
-        </TestQueryClient>,
-      );
+    it('should render drawer content with header and children when open', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Sidebar
+              button={mockButton}
+              children={mockChildren}
+              title={mockTitle}
+              open={true}
+              onOpenChange={mockOnOpenChange}
+            />
+          </TestQueryClient>,
+        );
+      });
 
-      // Check drawer is open
-      expect(screen.getByTestId('drawer')).toHaveAttribute('data-open', 'true');
+      await waitFor(() => {
+        // Check drawer is open
+        expect(screen.getByTestId('drawer')).toHaveAttribute(
+          'data-open',
+          'true',
+        );
 
-      // Check content structure
-      expect(screen.getByTestId('drawer-content')).toBeInTheDocument();
-      expect(screen.getByTestId('drawer-content')).toHaveClass(
-        'w-full',
-        'lg:w-1/2',
-      );
+        // Check content structure
+        expect(screen.getByTestId('drawer-content')).toBeInTheDocument();
+        expect(screen.getByTestId('drawer-content')).toHaveClass(
+          'w-full',
+          'lg:w-1/2',
+        );
 
-      // Check header
-      expect(screen.getByTestId('drawer-header')).toBeInTheDocument();
-      expect(screen.getByTestId('drawer-title')).toBeInTheDocument();
-      expect(screen.getByText(mockTitle)).toBeInTheDocument();
+        // Check header
+        expect(screen.getByTestId('drawer-header')).toBeInTheDocument();
+        expect(screen.getByTestId('drawer-title')).toBeInTheDocument();
+        expect(screen.getByText(mockTitle)).toBeInTheDocument();
 
-      // Check close button
-      expect(screen.getByTestId('drawer-close')).toBeInTheDocument();
-      expect(screen.getByTestId('close-button')).toBeInTheDocument();
-      expect(screen.getByTestId('cancel-icon')).toBeInTheDocument();
+        // Check close button
+        expect(screen.getByTestId('drawer-close')).toBeInTheDocument();
+        expect(screen.getByTestId('close-button')).toBeInTheDocument();
+        expect(screen.getByTestId('cancel-icon')).toBeInTheDocument();
 
-      // Check children
-      expect(screen.getByText('Children')).toBeInTheDocument();
+        // Check children
+        expect(screen.getByText('Children')).toBeInTheDocument();
+      });
     });
 
-    it('should render without trigger button when button prop is not provided', () => {
-      render(
-        <TestQueryClient>
-          <Sidebar
-            children={mockChildren}
-            title={mockTitle}
-            open={true}
-            onOpenChange={mockOnOpenChange}
-          />
-        </TestQueryClient>,
-      );
+    it('should render without trigger button when button prop is not provided', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Sidebar
+              children={mockChildren}
+              title={mockTitle}
+              open={true}
+              onOpenChange={mockOnOpenChange}
+            />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.queryByTestId('drawer-trigger')).not.toBeInTheDocument();
-      expect(screen.getByText(mockTitle)).toBeInTheDocument();
-      expect(screen.getByText('Children')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.queryByTestId('drawer-trigger')).not.toBeInTheDocument();
+        expect(screen.getByText(mockTitle)).toBeInTheDocument();
+        expect(screen.getByText('Children')).toBeInTheDocument();
+      });
     });
 
-    it('should render without title when title prop is not provided', () => {
-      render(
-        <TestQueryClient>
-          <Sidebar
-            button={mockButton}
-            children={mockChildren}
-            open={true}
-            onOpenChange={mockOnOpenChange}
-          />
-        </TestQueryClient>,
-      );
+    it('should render without title when title prop is not provided', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Sidebar
+              button={mockButton}
+              children={mockChildren}
+              open={true}
+              onOpenChange={mockOnOpenChange}
+            />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByTestId('drawer-title')).toBeInTheDocument();
-      expect(screen.getByText('Children')).toBeInTheDocument();
-      expect(screen.getByText('Button')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId('drawer-title')).toBeInTheDocument();
+        expect(screen.getByText('Children')).toBeInTheDocument();
+        expect(screen.getByText('Button')).toBeInTheDocument();
+      });
     });
 
     it('should apply correct CSS classes to drawer content', () => {

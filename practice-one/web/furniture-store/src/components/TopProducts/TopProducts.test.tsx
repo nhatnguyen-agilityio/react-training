@@ -1,11 +1,40 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import TopProducts from '.';
 import userEvent from '@testing-library/user-event';
 
+// Mock the lazy-loaded components
+jest.mock('../ui/skeleton', () => ({
+  Skeleton: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div
+      {...props}
+      className={`animate-pulse bg-gray-200 ${className}`}
+      data-testid="skeleton"
+    />
+  ),
+}));
+
+jest.mock('../ui/progress', () => ({
+  Progress: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div
+      {...props}
+      className={`bg-gray-200 ${className}`}
+      data-testid="progress"
+    />
+  ),
+}));
+
 jest.mock('../../apis/products', () => ({
-  GetProductsInfinite: jest.fn(),
+  GetProductsInfinite: jest.fn(() => ({
+    data: undefined,
+    isPending: false,
+    isError: false,
+    error: null,
+    fetchNextPage: jest.fn(),
+    hasNextPage: false,
+    isFetchingNextPage: false,
+  })),
 }));
 
 jest.mock('../FilterDropdown', () => ({
@@ -110,7 +139,7 @@ describe('TopProductsComponent', () => {
   });
 
   describe('Loading State', () => {
-    it('renders skeleton loading state', () => {
+    it('renders skeleton loading state', async () => {
       mockGetProductsInfinite.mockReturnValue({
         data: undefined,
         isPending: true,
@@ -121,13 +150,18 @@ describe('TopProductsComponent', () => {
         isFetchingNextPage: false,
       });
 
-      render(
-        <TestQueryClient>
-          <TopProducts />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <TopProducts />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Top Products')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Top Products')).toBeInTheDocument();
+      });
+
       const skeletons = document.querySelectorAll('[class*="animate-pulse"]');
       expect(skeletons.length).toBeGreaterThan(0);
     });
@@ -163,7 +197,7 @@ describe('TopProductsComponent', () => {
   });
 
   describe('Success State', () => {
-    it('renders products when data is loaded', () => {
+    it('renders products when data is loaded', async () => {
       mockGetProductsInfinite.mockReturnValue({
         data: { pages: [{ items: mockProducts, total: '100' }] },
         isPending: false,
@@ -174,13 +208,18 @@ describe('TopProductsComponent', () => {
         isFetchingNextPage: false,
       });
 
-      render(
-        <TestQueryClient>
-          <TopProducts />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <TopProducts />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Top Products')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Top Products')).toBeInTheDocument();
+      });
+
       expect(screen.getByText('Modern Chair')).toBeInTheDocument();
       expect(screen.getByText('Wooden Table')).toBeInTheDocument();
     });

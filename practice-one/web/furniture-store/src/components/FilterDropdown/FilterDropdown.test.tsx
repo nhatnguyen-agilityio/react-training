@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import FilterDropdown from '.';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
@@ -10,49 +10,64 @@ const TestQueryClient = ({ children }: { children: ReactNode }) => (
 
 describe('FilterDropdownComponent', () => {
   describe('Rendering', () => {
-    it('renders filter dropdown with most recent position', () => {
+    it('renders filter dropdown with most recent position', async () => {
       const setPosition = jest.fn();
-      render(
-        <TestQueryClient>
-          <FilterDropdown position="mostRecent" setPosition={setPosition} />
-        </TestQueryClient>,
-      );
-      expect(
-        screen.getByRole('button', { name: 'Most Recent' }),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: 'Most Recent' }),
-      ).not.toHaveAttribute('disabled');
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <FilterDropdown position="mostRecent" setPosition={setPosition} />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(
+          screen.getByRole('button', { name: 'Most Recent' }),
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('button', { name: 'Most Recent' }),
+        ).not.toHaveAttribute('disabled');
+      });
     });
 
-    it('renders filter dropdown with low to high position', () => {
+    it('renders filter dropdown with low to high position', async () => {
       const setPosition = jest.fn();
-      render(
-        <TestQueryClient>
-          <FilterDropdown position="lowToHigh" setPosition={setPosition} />
-        </TestQueryClient>,
-      );
-      expect(
-        screen.getByRole('button', { name: 'Price: Low to High' }),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: 'Price: Low to High' }),
-      ).not.toHaveAttribute('disabled');
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <FilterDropdown position="lowToHigh" setPosition={setPosition} />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(
+          screen.getByRole('button', { name: 'Price: Low to High' }),
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('button', { name: 'Price: Low to High' }),
+        ).not.toHaveAttribute('disabled');
+      });
     });
 
-    it('renders filter dropdown with high to low position', () => {
+    it('renders filter dropdown with high to low position', async () => {
       const setPosition = jest.fn();
-      render(
-        <TestQueryClient>
-          <FilterDropdown position="highToLow" setPosition={setPosition} />
-        </TestQueryClient>,
-      );
-      expect(
-        screen.getByRole('button', { name: 'Price: High to Low' }),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: 'Price: High to Low' }),
-      ).not.toHaveAttribute('disabled');
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <FilterDropdown position="highToLow" setPosition={setPosition} />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(
+          screen.getByRole('button', { name: 'Price: High to Low' }),
+        ).toBeInTheDocument();
+        expect(
+          screen.getByRole('button', { name: 'Price: High to Low' }),
+        ).not.toHaveAttribute('disabled');
+      });
     });
   });
 

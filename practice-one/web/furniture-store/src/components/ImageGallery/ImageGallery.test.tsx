@@ -1,8 +1,34 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import ImageGallery from '.';
+
+// Mock the lazy-loaded components
+jest.mock('../ui/card', () => ({
+  Card: ({
+    children,
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div {...props} className={className} data-testid="gallery-card">
+      {children}
+    </div>
+  ),
+}));
+
+jest.mock('../ui/progress', () => ({
+  Progress: ({ value, className }: { value: number; className: string }) => (
+    <div className={className} data-testid="progress-bar" data-value={value}>
+      Progress: {value}%
+    </div>
+  ),
+}));
+
+// Mock the toast function
+jest.mock('sonner', () => ({
+  toast: jest.fn(),
+}));
 
 jest.mock('../common/Image', () => ({
   __esModule: true,
@@ -70,28 +96,6 @@ jest.mock('../common/ShowMore', () => ({
   ),
 }));
 
-jest.mock('../ui/card', () => ({
-  Card: ({
-    children,
-    className,
-  }: {
-    children: ReactNode;
-    className: string;
-  }) => (
-    <div className={className} data-testid="gallery-card">
-      {children}
-    </div>
-  ),
-}));
-
-jest.mock('../ui/progress', () => ({
-  Progress: ({ value, className }: { value: number; className: string }) => (
-    <div className={className} data-testid="progress-bar" data-value={value}>
-      Progress: {value}%
-    </div>
-  ),
-}));
-
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );
@@ -102,16 +106,20 @@ describe('ImageGalleryComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders the main heading', () => {
-      render(
-        <TestQueryClient>
-          <ImageGallery />
-        </TestQueryClient>,
-      );
+    it('renders the main heading', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <ImageGallery />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(
-        screen.getByText('Design inspiration and modern home ideas'),
-      ).toBeInTheDocument();
+      await waitFor(() => {
+        expect(
+          screen.getByText('Design inspiration and modern home ideas'),
+        ).toBeInTheDocument();
+      });
     });
 
     it('renders all category buttons with correct labels', () => {

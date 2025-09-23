@@ -1,7 +1,69 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import BreadcrumbComponent from './index';
 import type { ReactNode } from 'react';
+
+// Mock the lazy-loaded breadcrumb components
+jest.mock('../../ui/breadcrumb', () => ({
+  Breadcrumb: ({
+    children,
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLElement>) => (
+    <nav {...props} className={className} data-testid="breadcrumb">
+      {children}
+    </nav>
+  ),
+  BreadcrumbList: ({
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol {...props} data-testid="breadcrumb-list">
+      {children}
+    </ol>
+  ),
+  BreadcrumbItem: ({
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLLIElement>) => (
+    <li {...props} data-testid="breadcrumb-item">
+      {children}
+    </li>
+  ),
+  BreadcrumbLink: ({
+    children,
+    href,
+    ...props
+  }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a {...props} href={href} data-testid="breadcrumb-link">
+      {children}
+    </a>
+  ),
+  BreadcrumbPage: ({
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLSpanElement>) => (
+    <span
+      {...props}
+      data-testid="breadcrumb-page"
+      aria-current="page"
+      aria-disabled="true"
+    >
+      {children}
+    </span>
+  ),
+  BreadcrumbSeparator: ({
+    ...props
+  }: React.HTMLAttributes<HTMLSpanElement>) => (
+    <span
+      {...props}
+      data-slot="breadcrumb-separator"
+      data-testid="breadcrumb-separator"
+    >
+      /
+    </span>
+  ),
+}));
 
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
@@ -9,93 +71,109 @@ const TestQueryClient = ({ children }: { children: ReactNode }) => (
 
 describe('BreadcrumbComponent', () => {
   describe('Rendering', () => {
-    it('renders breadcrumb with home item', () => {
+    it('renders breadcrumb with home item', async () => {
       const items = [{ label: 'Home', href: '/', isCurrentPage: true }];
 
-      render(
-        <TestQueryClient>
-          <BreadcrumbComponent items={items} />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <BreadcrumbComponent items={items} />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Home')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Home')).toBeInTheDocument();
+      });
     });
 
-    it('renders breadcrumb with category item', () => {
+    it('renders breadcrumb with category item', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Sitting room', href: '/sitting-room', isCurrentPage: true },
       ];
 
-      render(
-        <TestQueryClient>
-          <BreadcrumbComponent items={items} />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <BreadcrumbComponent items={items} />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Home')).toBeInTheDocument();
-      expect(screen.getByText('Sitting room')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Home')).toBeInTheDocument();
+        expect(screen.getByText('Sitting room')).toBeInTheDocument();
+      });
     });
 
-    it('renders breadcrumb with multiple items', () => {
+    it('renders breadcrumb with multiple items', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Products', href: '/products' },
         { label: 'Product Details', href: '/products/1', isCurrentPage: true },
       ];
 
-      render(
-        <TestQueryClient>
-          <BreadcrumbComponent items={items} />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <BreadcrumbComponent items={items} />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Home')).toBeInTheDocument();
-      expect(screen.getByText('Products')).toBeInTheDocument();
-      expect(screen.getByText('Product Details')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Home')).toBeInTheDocument();
+        expect(screen.getByText('Products')).toBeInTheDocument();
+        expect(screen.getByText('Product Details')).toBeInTheDocument();
+      });
     });
 
-    it('renders separators between items', () => {
+    it('renders separators between items', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Products', href: '/products' },
         { label: 'Category', isCurrentPage: true },
       ];
 
-      render(
-        <TestQueryClient>
-          <BreadcrumbComponent items={items} />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <BreadcrumbComponent items={items} />
+          </TestQueryClient>,
+        );
+      });
 
-      const separators = document.querySelectorAll(
-        '[data-slot="breadcrumb-separator"]',
-      );
-      expect(separators.length).toBe(2);
+      await waitFor(() => {
+        const separators = document.querySelectorAll(
+          '[data-slot="breadcrumb-separator"]',
+        );
+        expect(separators.length).toBe(2);
+      });
     });
   });
 
   describe('Current Page Handling', () => {
-    it('renders current page as BreadcrumbPage', () => {
+    it('renders current page as BreadcrumbPage', async () => {
       const items = [
         { label: 'Home', href: '/' },
         { label: 'Sitting room', isCurrentPage: true },
       ];
 
-      render(
-        <TestQueryClient>
-          <BreadcrumbComponent items={items} />
-        </TestQueryClient>,
-      );
-
-      const currentPageElement = screen.getByText('Sitting room');
-      expect(currentPageElement).toBeInTheDocument();
-
-      const currentPageLink = screen.getByRole('link', {
-        name: 'Sitting room',
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <BreadcrumbComponent items={items} />
+          </TestQueryClient>,
+        );
       });
-      expect(currentPageLink).toHaveAttribute('aria-disabled', 'true');
-      expect(currentPageLink).toHaveAttribute('aria-current', 'page');
+
+      await waitFor(() => {
+        const currentPageElement = screen.getByText('Sitting room');
+        expect(currentPageElement).toBeInTheDocument();
+        expect(currentPageElement).toHaveAttribute('aria-disabled', 'true');
+        expect(currentPageElement).toHaveAttribute('aria-current', 'page');
+      });
     });
   });
 

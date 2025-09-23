@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import CategoryItem from '.';
@@ -10,19 +10,24 @@ const TestQueryClient = ({ children }: { children: ReactNode }) => (
 
 describe('CategoryItemComponent', () => {
   describe('Rendering', () => {
-    it('renders CategoryItem component with correct text', () => {
-      render(
-        <TestQueryClient>
-          <CategoryItem
-            id={1}
-            name="Test"
-            imageUrl="https://via.placeholder.com/150"
-            imageAlt="Test"
-          />
-        </TestQueryClient>,
-      );
-      expect(screen.getByText('Test')).toBeInTheDocument();
-      expect(screen.getByText('Shop now')).toBeInTheDocument();
+    it('renders CategoryItem component with correct text', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <CategoryItem
+              id={1}
+              name="Test"
+              imageUrl="https://via.placeholder.com/150"
+              imageAlt="Test"
+            />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Test')).toBeInTheDocument();
+        expect(screen.getByText('Shop now')).toBeInTheDocument();
+      });
     });
     it('renders CategoryItem component with correct image', () => {
       render(

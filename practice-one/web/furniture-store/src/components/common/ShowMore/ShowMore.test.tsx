@@ -1,7 +1,34 @@
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import ShowMore from '.';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  act,
+  waitFor,
+} from '@testing-library/react';
+
+// Mock the Button component
+jest.mock('../Button', () => ({
+  __esModule: true,
+  default: ({
+    children,
+    className,
+    onClick,
+    disabled,
+    ...props
+  }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+    <button
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+      {...props}
+    >
+      {children}
+    </button>
+  ),
+}));
 
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
@@ -9,16 +36,22 @@ const TestQueryClient = ({ children }: { children: ReactNode }) => (
 
 describe('ShowMoreComponent', () => {
   describe('Rendering', () => {
-    it('renders show more button', () => {
+    it('renders show more button', async () => {
       const onClick = jest.fn();
-      render(
-        <TestQueryClient>
-          <ShowMore onClick={onClick} />
-        </TestQueryClient>,
-      );
-      expect(
-        screen.getByRole('button', { name: 'Show More' }),
-      ).toBeInTheDocument();
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <ShowMore onClick={onClick} />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(
+          screen.getByRole('button', { name: 'Show More' }),
+        ).toBeInTheDocument();
+      });
+
       expect(
         screen.getByRole('button', { name: 'Show More' }),
       ).not.toHaveAttribute('disabled');

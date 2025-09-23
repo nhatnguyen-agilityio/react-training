@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import Cart from './index';
@@ -127,7 +127,7 @@ describe('Cart Component', () => {
   });
 
   describe('Loading State', () => {
-    it('renders loading skeletons when data is pending', () => {
+    it('renders loading skeletons when data is pending', async () => {
       mockUseAuth.mockReturnValue({ user: mockUser });
       mockUseGetUserCart.mockReturnValue({
         data: undefined,
@@ -136,18 +136,22 @@ describe('Cart Component', () => {
         error: null,
       });
 
-      render(
-        <TestWrapper>
-          <Cart onNext={mockOnNext} onLogin={mockOnLogin} />
-        </TestWrapper>,
-      );
+      await act(async () => {
+        render(
+          <TestWrapper>
+            <Cart onNext={mockOnNext} onLogin={mockOnLogin} />
+          </TestWrapper>,
+        );
+      });
 
-      const skeletons = screen.getAllByTestId('skeleton');
-      expect(skeletons.length).toBeGreaterThan(0);
+      await waitFor(() => {
+        const skeletons = screen.getAllByTestId('skeleton');
+        expect(skeletons.length).toBeGreaterThan(0);
 
-      expect(skeletons[0]).toHaveClass('h-20 w-20 rounded-lg');
-      expect(skeletons[1]).toHaveClass('h-4 w-3/4');
-      expect(skeletons[2]).toHaveClass('h-4 w-1/2');
+        expect(skeletons[0]).toHaveClass('h-20 w-20 rounded-lg');
+        expect(skeletons[1]).toHaveClass('h-4 w-3/4');
+        expect(skeletons[2]).toHaveClass('h-4 w-1/2');
+      });
     });
 
     it('renders correct number of cart item skeletons', () => {
@@ -192,7 +196,7 @@ describe('Cart Component', () => {
   });
 
   describe('Error State', () => {
-    it('renders error message when API fails', () => {
+    it('renders error message when API fails', async () => {
       const errorMessage = 'Failed to fetch cart data';
       mockUseAuth.mockReturnValue({ user: mockUser });
       mockUseGetUserCart.mockReturnValue({
@@ -202,15 +206,19 @@ describe('Cart Component', () => {
         error: { message: errorMessage },
       });
 
-      render(
-        <TestWrapper>
-          <Cart onNext={mockOnNext} onLogin={mockOnLogin} />
-        </TestWrapper>,
-      );
+      await act(async () => {
+        render(
+          <TestWrapper>
+            <Cart onNext={mockOnNext} onLogin={mockOnLogin} />
+          </TestWrapper>,
+        );
+      });
 
-      expect(screen.getByText('Failed to load cart')).toBeInTheDocument();
-      expect(screen.getByText(errorMessage)).toBeInTheDocument();
-      expect(screen.getByTestId('triangle-alert-icon')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Failed to load cart')).toBeInTheDocument();
+        expect(screen.getByText(errorMessage)).toBeInTheDocument();
+        expect(screen.getByTestId('triangle-alert-icon')).toBeInTheDocument();
+      });
     });
 
     it('renders default error message when no specific error message', () => {

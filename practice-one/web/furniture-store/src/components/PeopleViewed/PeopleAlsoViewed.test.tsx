@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import PeopleAlsoViewed from '.';
@@ -70,74 +70,91 @@ describe('PeopleAlsoViewedComponent', () => {
     jest.clearAllMocks();
   });
   describe('Rendering', () => {
-    it('renders PeopleAlsoViewed component with correct title', () => {
+    it('renders PeopleAlsoViewed component with correct title', async () => {
       mockGetProducts.mockReturnValue({
         data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
-      render(
-        <TestQueryClient>
-          <PeopleAlsoViewed />
-        </TestQueryClient>,
-      );
-      expect(screen.getByText('People Also Viewed')).toBeInTheDocument();
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <PeopleAlsoViewed />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('People Also Viewed')).toBeInTheDocument();
+      });
     });
 
-    it('renders product items when data is available', () => {
+    it('renders product items when data is available', async () => {
       mockGetProducts.mockReturnValue({
         data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
-      render(
-        <TestQueryClient>
-          <PeopleAlsoViewed />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <PeopleAlsoViewed />
+          </TestQueryClient>,
+        );
+      });
 
-      const productItems = screen.getAllByTestId('product-item');
-      expect(productItems).toHaveLength(2);
-      expect(screen.getByText('Modern Chair')).toBeInTheDocument();
-      expect(screen.getByText('Wooden Table')).toBeInTheDocument();
-      expect(screen.getByText('299')).toBeInTheDocument();
-      expect(screen.getByText('599')).toBeInTheDocument();
+      await waitFor(() => {
+        const productItems = screen.getAllByTestId('product-item');
+        expect(productItems).toHaveLength(2);
+        expect(screen.getByText('Modern Chair')).toBeInTheDocument();
+        expect(screen.getByText('Wooden Table')).toBeInTheDocument();
+        expect(screen.getByText('299')).toBeInTheDocument();
+        expect(screen.getByText('599')).toBeInTheDocument();
+      });
     });
 
-    it('renders PeopleAlsoViewed component with category id', () => {
+    it('renders PeopleAlsoViewed component with category id', async () => {
       mockGetProducts.mockReturnValue({
         data: { items: mockProducts, total: '100' },
         isPending: false,
         isError: false,
       });
-      render(
-        <TestQueryClient>
-          <PeopleAlsoViewed categoryId={1} />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <PeopleAlsoViewed categoryId={1} />
+          </TestQueryClient>,
+        );
+      });
 
-      const productItems = screen.getAllByTestId('product-item');
-      expect(productItems).toHaveLength(2);
-      expect(screen.getByText('Modern Chair')).toBeInTheDocument();
-      expect(screen.getByText('Wooden Table')).toBeInTheDocument();
+      await waitFor(() => {
+        const productItems = screen.getAllByTestId('product-item');
+        expect(productItems).toHaveLength(2);
+        expect(screen.getByText('Modern Chair')).toBeInTheDocument();
+        expect(screen.getByText('Wooden Table')).toBeInTheDocument();
+      });
     });
   });
   describe('Loading State', () => {
-    it('renders loading skeletons when data is pending', () => {
+    it('renders loading skeletons when data is pending', async () => {
       mockGetProducts.mockReturnValue({
         data: undefined,
         isPending: true,
         isError: false,
       });
-      render(
-        <TestQueryClient>
-          <PeopleAlsoViewed />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <PeopleAlsoViewed />
+          </TestQueryClient>,
+        );
+      });
 
-      const skeletons = document.querySelectorAll('[class*="animate-pulse"]');
-      expect(skeletons.length).toBeGreaterThan(0);
-      expect(skeletons.length).toBe(24);
+      await waitFor(() => {
+        const skeletons = document.querySelectorAll('[class*="animate-pulse"]');
+        expect(skeletons.length).toBeGreaterThan(0);
+        expect(skeletons.length).toBe(24);
+      });
     });
   });
 

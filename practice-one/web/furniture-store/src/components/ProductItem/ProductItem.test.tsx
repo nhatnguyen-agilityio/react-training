@@ -55,6 +55,7 @@ describe('ProductItemComponent', () => {
               price={100}
               imageUrl="https://via.placeholder.com/150"
               imageAlt="Test"
+              variantColor="red"
             />
           </TestQueryClient>,
         );
@@ -74,6 +75,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -94,6 +96,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -125,6 +128,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -163,6 +167,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -185,6 +190,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -225,41 +231,6 @@ describe('ProductItemComponent', () => {
   });
 
   describe('Mutation Callbacks', () => {
-    // it('calls mutate with correct payload and onSuccess callback', async () => {
-    //   const user = userEvent.setup();
-    //   render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name="Test Product"
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   await user.click(screen.getByRole('button'));
-
-    //   expect(mockMutate).toHaveBeenCalledWith(
-    //     {
-    //       userId: 1,
-    //       items: [
-    //         {
-    //           productId: 1,
-    //           variantId: 1,
-    //           quantity: 1,
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       onSuccess: expect.any(Function),
-    //       onError: expect.any(Function),
-    //     }
-    //   );
-    // });
-
     it('calls toast with success message when onSuccess callback is triggered', async () => {
       const user = userEvent.setup();
       render(
@@ -271,6 +242,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -302,6 +274,7 @@ describe('ProductItemComponent', () => {
             price={100}
             imageUrl="https://via.placeholder.com/150"
             imageAlt="Test"
+            variantColor="red"
           />
         </TestQueryClient>,
       );
@@ -321,230 +294,5 @@ describe('ProductItemComponent', () => {
         },
       );
     });
-
-    // it('handles multiple onSuccess calls with different product names', async () => {
-    //   const user = userEvent.setup();
-    //   const { rerender } = render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name="First Product"
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call for first product
-    //   await user.click(screen.getByRole('button'));
-
-    //   // First product
-    //   const firstMutateCall = mockMutate.mock.calls[0];
-    //   const firstCallbacks = firstMutateCall[1];
-    //   firstCallbacks.onSuccess();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     'Product First Product has been added to your cart',
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-
-    //   // Clear mocks and render second product
-    //   jest.clearAllMocks();
-    //   mockMutate.mockClear();
-
-    //   rerender(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={2}
-    //         variantId={2}
-    //         name="Second Product"
-    //         price={200}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call for second product
-    //   await user.click(screen.getByRole('button'));
-
-    //   // Second product
-    //   const secondMutateCall = mockMutate.mock.calls[0];
-    //   const secondCallbacks = secondMutateCall[1];
-    //   secondCallbacks.onSuccess();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     'Product Second Product has been added to your cart',
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-    // });
-
-    // it('handles multiple onError calls', async () => {
-    //   const user = userEvent.setup();
-    //   const { rerender } = render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name="Test Product"
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call for first product
-    //   await user.click(screen.getByRole('button'));
-
-    //   // First error
-    //   const firstMutateCall = mockMutate.mock.calls[0];
-    //   const firstCallbacks = firstMutateCall[1];
-    //   firstCallbacks.onError();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     'Failed to add product to cart. Please try again.',
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-
-    //   // Clear mocks and render second product
-    //   jest.clearAllMocks();
-    //   mockMutate.mockClear();
-
-    //   rerender(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={2}
-    //         variantId={2}
-    //         name="Another Product"
-    //         price={200}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call for second product
-    //   await user.click(screen.getByRole('button'));
-
-    //   // Second error
-    //   const secondMutateCall = mockMutate.mock.calls[0];
-    //   const secondCallbacks = secondMutateCall[1];
-    //   secondCallbacks.onError();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     'Failed to add product to cart. Please try again.',
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-    // });
-
-    // it('verifies toast is called with correct className for both success and error', async () => {
-    //   const user = userEvent.setup();
-    //   render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name="Test Product"
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call
-    //   await user.click(screen.getByRole('button'));
-
-    //   const mutateCall = mockMutate.mock.calls[0];
-    //   const callbacks = mutateCall[1];
-
-    //   // Test success callback
-    //   callbacks.onSuccess();
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     expect.any(String),
-    //     { className: 'text-left' }
-    //   );
-
-    //   // Clear the mock to test error callback separately
-    //   mockToast.mockClear();
-
-    //   // Test error callback
-    //   callbacks.onError();
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     expect.any(String),
-    //     { className: 'text-left' }
-    //   );
-    // });
-
-    // it('handles onSuccess callback with product name containing special characters', async () => {
-    //   const user = userEvent.setup();
-    //   render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name="Product with Special Chars: !@#$%^&*()"
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   // Click button to trigger mutate call
-    //   await user.click(screen.getByRole('button'));
-
-    //   const mutateCall = mockMutate.mock.calls[0];
-    //   const callbacks = mutateCall[1];
-    //   callbacks.onSuccess();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     'Product Product with Special Chars: !@#$%^&*() has been added to your cart',
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-    // });
-
-    // it('handles onSuccess callback with very long product name', async () => {
-    //   const user = userEvent.setup();
-    //   const longProductName = 'A'.repeat(100);
-    //   render(
-    //     <TestQueryClient>
-    //       <ProductItem
-    //         id={1}
-    //         variantId={1}
-    //         name={longProductName}
-    //         price={100}
-    //         imageUrl="https://via.placeholder.com/150"
-    //         imageAlt="Test"
-    //       />
-    //     </TestQueryClient>,
-    //   );
-
-    //   await user.click(screen.getByRole('button'));
-
-    //   const mutateCall = mockMutate.mock.calls[0];
-    //   const callbacks = mutateCall[1];
-    //   callbacks.onSuccess();
-
-    //   expect(mockToast).toHaveBeenCalledWith(
-    //     `Product ${longProductName} has been added to your cart`,
-    //     {
-    //       className: 'text-left',
-    //     }
-    //   );
-    // });
   });
 });

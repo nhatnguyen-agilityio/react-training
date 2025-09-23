@@ -126,6 +126,7 @@ const TopProducts = ({
               price={product.price}
               imageUrl={firstImage.url}
               imageAlt={firstImage.alt}
+              variantColor={firstVariant.hex}
             />
           );
         })}

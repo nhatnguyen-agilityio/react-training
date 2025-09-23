@@ -166,8 +166,15 @@ const Login = ({
                   </FormItem>
                 )}
               />
-              <p className="text-app-tertiary font-semibold hover:underline hover:underline-offset-1 text-right mr-2">
-                <a href="">Forgot password?</a>
+              <p
+                className="text-app-tertiary font-semibold hover:underline hover:underline-offset-1 text-right mr-2"
+                onClick={() => {
+                  toast.error(
+                    'Forgot password is not available yet. Please contact support to reset your password.',
+                  );
+                }}
+              >
+                Forgot password?
               </p>
               <div className="flex justify-start mt-4">
                 <Button

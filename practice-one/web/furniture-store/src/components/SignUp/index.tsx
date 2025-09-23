@@ -48,7 +48,7 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
     },
   });
 
-  const { mutate, isLoading, error } = useSignUp();
+  const { mutate, isLoading } = useSignUp();
 
   const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
     const { username, password } = data;
@@ -62,6 +62,9 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
             {},
           );
           onNext();
+        },
+        onError: (error) => {
+          toast.error(error.message);
         },
       },
     );
@@ -146,11 +149,27 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
                     >
                       <p>
                         I agree to the{' '}
-                        <span className="underline underline-offset-1 hover:text-app-tertiary">
+                        <span
+                          className="underline underline-offset-1 hover:text-app-tertiary cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toast.error(
+                              'Terms and Conditions is not available yet.',
+                            );
+                          }}
+                        >
                           Terms and Conditions
                         </span>{' '}
                         of Furniture and acknowledge the{' '}
-                        <span className="underline underline-offset-1 hover:text-app-tertiary">
+                        <span
+                          className="underline underline-offset-1 hover:text-app-tertiary cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toast.error('Privacy Policy is not available yet.');
+                          }}
+                        >
                           Privacy Policy
                         </span>
                       </p>
@@ -177,9 +196,6 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
                 )}
               </Button>
             </div>
-            {error && (
-              <p className="mt-3 text-md text-center text-red-600">{error}</p>
-            )}
           </form>
         </Form>
         <p className="text-center mt-6 text-lg font-normal">

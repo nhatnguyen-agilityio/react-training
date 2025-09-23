@@ -531,7 +531,7 @@
       "variants": [
         {
           "id": 701,
-          "color": "Brown", 
+          "color": "Brown",
           "hex": "#8B4513",
           "stock": 12,
           "images": [
@@ -1488,7 +1488,7 @@
       "mainCategoryId": 4,
       "subCategoryId": 25,
       "price": 31.99,
-      "basePrice": 42 ,
+      "basePrice": 42,
       "createdAt": "2025-06-24T08:45:00.000Z",
       "rating": {
         "average": 4.5,
@@ -1545,7 +1545,7 @@
     },
     {
       "id": 24,
-      "name": "Loveseat Compact 2-Seater Furniture ",
+      "name": "Modern Fabrix Accent Chair",
       "description": "A comfortable gray sofa with a contemporary design.",
       "mainCategoryId": 4,
       "subCategoryId": 26,
@@ -1721,38 +1721,7 @@
       ]
     }
   ],
-  "carts": [
-    {
-      "userId": 10,
-      "item": {
-        "productId": 18,
-        "variantId": 101,
-        "quantity": 2
-      },
-      "createdAt": "2025-09-22T07:09:21.989Z",
-      "id": 1
-    },
-    {
-      "userId": 10,
-      "item": {
-        "productId": 7,
-        "variantId": 701,
-        "quantity": 3
-      },
-      "createdAt": "2025-09-22T07:09:42.682Z",
-      "id": 2
-    },
-    {
-      "userId": 10,
-      "item": {
-        "productId": 4,
-        "variantId": 401,
-        "quantity": 2
-      },
-      "createdAt": "2025-09-22T07:11:51.277Z",
-      "id": 3
-    }
-  ],
+  "carts": [],
   "orders": [
     {
       "id": 1,
@@ -2230,6 +2199,172 @@
       ],
       "orderDate": "2025-09-22T05:18:53.851Z",
       "id": 25
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 4,
+          "variantId": 401,
+          "quantity": 2
+        },
+        {
+          "productId": 7,
+          "variantId": 701,
+          "quantity": 3
+        },
+        {
+          "productId": 18,
+          "variantId": 101,
+          "quantity": 2
+        }
+      ],
+      "orderDate": "2025-09-23T09:17:15.752Z",
+      "id": 26
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 1,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-23T09:17:58.666Z",
+      "id": 27
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 9,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-23T09:18:33.097Z",
+      "id": 28
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 18,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-23T09:18:59.997Z",
+      "id": 29
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "123",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 20,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-23T09:20:03.597Z",
+      "id": 30
+    },
+    {
+      "name": "Alex",
+      "cardNumber": "378282246310005",
+      "cvv": "633",
+      "expirationDate": "02/2029",
+      "useShippingAddress": true,
+      "rememberMe": true,
+      "userId": 10,
+      "email": "nguyenvanducnhat@gmail.com",
+      "firstName": "Nhat",
+      "lastName": "Nguyen",
+      "phoneNumber": "213429621",
+      "address": "Da Nang",
+      "city": "Dn",
+      "country": "HX",
+      "createdAt": "2025-09-22T05:18:53.850Z",
+      "items": [
+        {
+          "productId": 10,
+          "variantId": 101,
+          "quantity": 1
+        }
+      ],
+      "orderDate": "2025-09-23T09:20:27.883Z",
+      "id": 31
     }
   ],
   "payments": [
@@ -2559,14 +2694,14 @@
     {
       "name": "Alex",
       "cardNumber": "378282246310005",
-      "cvv": "123",
+      "cvv": "633",
       "expirationDate": "02/2029",
       "useShippingAddress": true,
       "rememberMe": true,
       "userId": 10,
       "email": "nguyenvanducnhat@gmail.com",
       "firstName": "Nhat",
-      "lastName": "Nguyen",
+      "lastName": "Nguyens",
       "phoneNumber": "213429621",
       "address": "Da Nang",
       "city": "Dn",

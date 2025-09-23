@@ -281,7 +281,7 @@ describe('Products Component', () => {
       const skeletons = screen.getAllByTestId('skeleton');
       expect(skeletons.length).toBeGreaterThan(0);
       expect(skeletons[0]).toHaveClass('h-8 w-48 mb-4');
-      expect(skeletons[1]).toHaveClass('h-10 w-40');
+      expect(skeletons[1]).toHaveClass('h-8 w-100');
       expect(skeletons[2]).toHaveClass('h-14 w-full rounded-3xl');
     });
 
@@ -1010,7 +1010,7 @@ describe('Products Component', () => {
         </TestWrapper>,
       );
 
-      expect(screen.getAllByTestId('skeleton')).toHaveLength(12);
+      expect(screen.getAllByTestId('skeleton')).toHaveLength(55);
 
       unmount();
 

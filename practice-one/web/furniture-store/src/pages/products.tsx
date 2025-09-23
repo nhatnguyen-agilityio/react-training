@@ -64,9 +64,9 @@ const Products = () => {
   if (isPending) {
     return (
       <div className="mt-6 md:mt-12 container">
-        <div className="flex flex-col md:flex-row md:justify-between">
+        <div className="flex flex-col md:items-center">
           <Skeleton className="h-8 w-48 mb-4" />
-          <Skeleton className="h-10 w-40" />
+          <Skeleton className="h-8 w-100" />
         </div>
         <div className="mt-6 mb-4 w-full relative flex justify-between mx-auto lg:w-160">
           <Skeleton className="h-14 w-full rounded-3xl" />
@@ -76,6 +76,32 @@ const Products = () => {
             {Array.from({ length: 8 }).map((_, idx) => (
               <Skeleton key={idx} className="h-12 w-24 rounded-2xl" />
             ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, idx) => (
+            <div key={idx} className="mt-6">
+              <div className="bg-background-primary min-h-48 md:min-h-78 flex items-center relative">
+                <Skeleton className="w-3/5 h-40 md:h-56 mx-auto" />
+              </div>
+              <div className="flex justify-between items-center my-2">
+                <Skeleton className="h-5 w-2/3" />
+                <Skeleton className="h-7 w-16 rounded-2xl" />
+              </div>
+              <div className="flex">
+                <Skeleton className="w-7 h-7 mr-4 rounded-full" />
+                <Skeleton className="w-7 h-7 rounded-full" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 md:w-1/2 mx-auto">
+          <div>
+            <Skeleton className="h-4 w-48" />
+          </div>
+          <Skeleton className="mt-6 h-1 w-full" />
+          <div className="mt-6 flex justify-center">
+            <Skeleton className="h-10 w-40" />
           </div>
         </div>
         <div className="mt-6">

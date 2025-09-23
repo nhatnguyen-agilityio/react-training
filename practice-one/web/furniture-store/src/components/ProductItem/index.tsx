@@ -75,7 +75,7 @@ const ProductItem = ({
               disabled={isLoading}
               className="absolute ml-4 mb-1 bg-app-tertiary border-none rounded-3xl text-white font-semibold py-3 hover:text-white hover:bg-app-primary bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
-              Add to cart
+              {isLoading ? 'Adding...' : 'Add to cart'}
               <ArrowRight />
             </Button>
           )}

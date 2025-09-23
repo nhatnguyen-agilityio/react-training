@@ -207,25 +207,31 @@ describe('ProductItemComponent', () => {
   });
 
   describe('Loading State', () => {
-    it('renders ProductItem component with correct loading state', () => {
+    it('renders ProductItem component with correct loading state', async () => {
       mockUseAddCart.mockReturnValue({
         mutate: mockMutate,
         isLoading: true,
       });
-      render(
-        <TestQueryClient>
-          <ProductItem
-            id={1}
-            variantId={1}
-            name="Test"
-            price={100}
-            imageUrl="https://via.placeholder.com/150"
-            imageAlt="Test"
-          />
-        </TestQueryClient>,
-      );
-      expect(screen.getByRole('button')).toBeInTheDocument();
-      expect(screen.getByRole('button')).toHaveTextContent('Add to cart');
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <ProductItem
+              id={1}
+              variantId={1}
+              name="Test"
+              price={100}
+              imageUrl="https://via.placeholder.com/150"
+              imageAlt="Test"
+            />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(screen.getByRole('button')).toBeInTheDocument();
+      });
+
+      expect(screen.getByRole('button')).toHaveTextContent('Adding...');
       expect(screen.getByRole('button')).toHaveAttribute('disabled');
     });
   });

@@ -4,6 +4,8 @@ import { ArrowUp } from 'lucide-react';
 import InformationItem from './InfomationItem';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="mt-10 w-full h-200 lg:h-100 bg-tertiary-black">
       <div className="container">
@@ -80,7 +82,7 @@ const Footer = () => {
                 <ArrowUp className="size-6" />
               </Button>
               <p className="text-sm text-white font-light mt-14 opacity-50">
-                © 2025 — Copyright
+                © {currentYear} — Copyright
               </p>
             </div>
           </div>

@@ -1,10 +1,26 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Categories from '.';
 
+// Mock the lazy-loaded Skeleton component
+jest.mock('../ui/skeleton', () => ({
+  Skeleton: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div
+      {...props}
+      className={`animate-pulse bg-gray-200 ${className}`}
+      data-testid="skeleton"
+    />
+  ),
+}));
+
 jest.mock('../../apis/main-categories', () => ({
-  GetMainCategories: jest.fn(),
+  GetMainCategories: jest.fn(() => ({
+    data: undefined,
+    isPending: false,
+    isError: false,
+    error: null,
+  })),
 }));
 
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
@@ -21,7 +37,7 @@ describe('CategoriesComponent', () => {
   });
 
   describe('Loading State', () => {
-    it('renders skeleton loading state', () => {
+    it('renders skeleton loading state', async () => {
       mockGetMainCategories.mockReturnValue({
         data: undefined,
         isPending: true,
@@ -29,15 +45,20 @@ describe('CategoriesComponent', () => {
         error: null,
       });
 
-      render(
-        <TestQueryClient>
-          <Categories />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Categories />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Categories')).toBeInTheDocument();
+      });
 
       const container = document.querySelector('div[class*="mt-6"]');
       expect(container).toBeInTheDocument();
-      expect(screen.getByText('Categories')).toBeInTheDocument();
       const skeletons = document.querySelectorAll('[class*="animate-pulse"]');
       expect(skeletons.length).toBeGreaterThan(0);
     });
@@ -121,7 +142,7 @@ describe('CategoriesComponent', () => {
       },
     ];
 
-    it('renders categories when data is loaded', () => {
+    it('renders categories when data is loaded', async () => {
       mockGetMainCategories.mockReturnValue({
         data: mockCategories,
         isPending: false,
@@ -129,13 +150,18 @@ describe('CategoriesComponent', () => {
         error: null,
       });
 
-      render(
-        <TestQueryClient>
-          <Categories />
-        </TestQueryClient>,
-      );
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Categories />
+          </TestQueryClient>,
+        );
+      });
 
-      expect(screen.getByText('Categories')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Categories')).toBeInTheDocument();
+      });
+
       expect(screen.getByText('Living Room')).toBeInTheDocument();
       expect(screen.getByText('Bedroom')).toBeInTheDocument();
       expect(screen.getByText('Kitchen')).toBeInTheDocument();

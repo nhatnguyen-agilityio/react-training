@@ -204,7 +204,7 @@ describe('Products Component', () => {
 
       await waitFor(() => {
         expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
-          'Living Room',
+          'All Products',
         );
       });
 

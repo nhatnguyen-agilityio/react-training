@@ -4,6 +4,20 @@ import { BrowserRouter } from 'react-router-dom';
 import GetStarted from '.';
 import userEvent from '@testing-library/user-event';
 
+// Mock the Button component
+jest.mock('../common/Button', () => ({
+  __esModule: true,
+  default: ({
+    children,
+    className,
+    ...props
+  }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+    <button className={className} {...props}>
+      {children}
+    </button>
+  ),
+}));
+
 const TestQueryClient = ({ children }: { children: ReactNode }) => (
   <BrowserRouter>{children}</BrowserRouter>
 );

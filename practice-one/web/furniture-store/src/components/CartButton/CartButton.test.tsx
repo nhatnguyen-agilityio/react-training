@@ -4,6 +4,20 @@ import CartButton from '.';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+// Mock the Button component
+jest.mock('../common/Button', () => ({
+  __esModule: true,
+  default: ({
+    children,
+    className,
+    ...props
+  }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
+    <button className={className} {...props}>
+      {children}
+    </button>
+  ),
+}));
+
 jest.mock('../../hooks/useAuth', () => ({
   useAuth: jest.fn(),
 }));

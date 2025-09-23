@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -44,20 +44,25 @@ describe('ProductItemComponent', () => {
     });
   });
   describe('Rendering', () => {
-    it('renders ProductItem component with correct text', () => {
-      render(
-        <TestQueryClient>
-          <ProductItem
-            id={1}
-            variantId={1}
-            name="Test"
-            price={100}
-            imageUrl="https://via.placeholder.com/150"
-            imageAlt="Test"
-          />
-        </TestQueryClient>,
-      );
-      expect(screen.getByText('Test')).toBeInTheDocument();
+    it('renders ProductItem component with correct text', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <ProductItem
+              id={1}
+              variantId={1}
+              name="Test"
+              price={100}
+              imageUrl="https://via.placeholder.com/150"
+              imageAlt="Test"
+            />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Test')).toBeInTheDocument();
+      });
     });
     it('renders ProductItem component with correct image', () => {
       render(

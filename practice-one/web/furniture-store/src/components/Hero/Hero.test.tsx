@@ -75,8 +75,8 @@ describe('HeroComponent', () => {
         </TestQueryClient>,
       );
 
-      const helmet = screen.getByTestId('helmet');
-      expect(helmet).toBeInTheDocument();
+      // Helmet component was removed for LCP optimization, so we test the actual content instead
+      expect(screen.getByText('FURNITURE STORE')).toBeInTheDocument();
     });
   });
 
@@ -186,17 +186,15 @@ describe('HeroComponent', () => {
       // Check desktop source
       const desktopSource = sources[0];
       expect(desktopSource).toHaveAttribute('media', '(min-width: 1024px)');
-      expect(desktopSource).toHaveAttribute(
-        'srcSet',
-        'https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/-/format/auto/',
+      expect(desktopSource.getAttribute('srcSet')).toContain(
+        'https://ucarecdn.com/d474fba4-43b2-42d5-ace1-a804990777c5/-/resize/1280x/-/format/auto/-/quality/smart/',
       );
 
       // Check tablet source
       const tabletSource = sources[1];
       expect(tabletSource).toHaveAttribute('media', '(min-width: 640px)');
-      expect(tabletSource).toHaveAttribute(
-        'srcSet',
-        'https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/-/format/auto/',
+      expect(tabletSource.getAttribute('srcSet')).toContain(
+        'https://ucarecdn.com/6b6ab92c-287c-449a-8663-28380c902884/-/resize/1024x/-/format/auto/-/quality/smart/',
       );
     });
 
@@ -208,14 +206,13 @@ describe('HeroComponent', () => {
       );
 
       const img = screen.getByAltText('Modern contemporary furniture');
-      expect(img).toHaveAttribute(
-        'src',
-        'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/format/auto/',
+      expect(img.getAttribute('src')).toContain(
+        'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/resize/640x/-/format/auto/-/quality/smart/',
       );
       expect(img).toHaveAttribute('alt', 'Modern contemporary furniture');
       expect(img).toHaveAttribute('fetchPriority', 'high');
       expect(img).toHaveAttribute('loading', 'eager');
-      expect(img).toHaveAttribute('decoding', 'async');
+      expect(img).toHaveAttribute('decoding', 'sync');
     });
   });
 

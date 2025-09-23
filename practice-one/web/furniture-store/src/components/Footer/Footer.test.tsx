@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
@@ -54,17 +54,21 @@ describe('FooterComponent', () => {
   });
 
   describe('Rendering', () => {
-    it('renders the footer container', () => {
-      render(
-        <TestQueryClient>
-          <Footer />
-        </TestQueryClient>,
-      );
+    it('renders the footer container', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <Footer />
+          </TestQueryClient>,
+        );
+      });
 
-      const footer = document.querySelector(
-        'div[class*="mt-10 w-full h-200 lg:h-100 bg-tertiary-black"]',
-      );
-      expect(footer).toBeInTheDocument();
+      await waitFor(() => {
+        const footer = document.querySelector(
+          'div[class*="mt-10 w-full h-200 lg:h-100 bg-tertiary-black"]',
+        );
+        expect(footer).toBeInTheDocument();
+      });
     });
 
     it('renders the logo image', () => {

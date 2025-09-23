@@ -322,7 +322,11 @@ describe('TopProductsComponent', () => {
         </TestQueryClient>,
       );
 
-      expect(screen.getByText('Showing 0 of 100 results')).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          'No products found. Try adjusting your filters or search',
+        ),
+      ).toBeInTheDocument();
     });
   });
 

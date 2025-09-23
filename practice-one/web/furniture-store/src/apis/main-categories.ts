@@ -15,7 +15,7 @@ const fetchMainCategories = async (pageSize?: number) => {
   return res.json();
 };
 
-export const GetMainCategories = (enabled = true, pageSize?: number,) => {
+export const GetMainCategories = (enabled = true, pageSize?: number) => {
   return useQuery({
     queryKey: QUERY_KEY.MAIN_CATEGORIES(pageSize),
     queryFn: () => fetchMainCategories(pageSize),

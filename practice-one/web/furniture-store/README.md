@@ -30,7 +30,7 @@ This document provides information about React Practice based on the React basic
 
 ## TIMELINE
 
-- Estimate: 21 days (part-time, 4 hours per day, it can go faster if I don’t have project tasks)
+- Estimate: 16.5 days (some days I need to work on the project, so I don’t have much time for training on those days)
 
 ## TEAM SIZE
 
@@ -38,7 +38,7 @@ This document provides information about React Practice based on the React basic
 
 ## EDITOR
 
-- Visual Studio Code
+- Cursor
 
 ## DOCUMENTS
 
@@ -51,10 +51,15 @@ This document provides information about React Practice based on the React basic
 
 1. Clone repository: `git clone git@gitlab.asoft-python.com:nhat.nguyen/react-training.git`
 2. Check out branch: `git checkout dev`
-3. CD to the main folder: `cd practice-one/web/furniture-store`
-4. Install packages: `pnpm install`
-5. Run the project: `pnpm run dev`
-6. Run the storybook: `pnpm storybook`
-7. Run the tests: `pnpm test`
+3. CD to the api folder: `cd practice-one/api`
+4. Install the package: `pnpm install`
+5. Run the json server: `pnpm start`
+6. Open new terminal and CD to the main folder: `cd practice-one/web/furniture-store`
+7. Install packages: `pnpm install`
+8. Run the project: `pnpm run dev`
+9. Run the storybook: `pnpm storybook`
+10. Run the tests: `pnpm test:coverage`
 
 ## Deployment
+
+- [https://react-training-dlzq.vercel.app/](https://react-training-dlzq.vercel.app/)

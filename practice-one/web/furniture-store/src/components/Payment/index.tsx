@@ -151,6 +151,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
           },
         });
       }
+      localStorage.removeItem('checkout');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

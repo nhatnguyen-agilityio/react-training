@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import z from 'zod';
+import { object, string, boolean } from 'zod';
+import type { infer as zodInfer } from 'zod';
 import {
   Form,
   FormControl,
@@ -46,17 +47,15 @@ const cardNumberCheck = (cardNumber: string) => {
   return sum % 10 === 0;
 };
 
-const paymentFormSchema = z.object({
-  name: z
-    .string()
+const paymentFormSchema = object({
+  name: string()
     .min(2, { message: 'Cardholder name is required' })
     .max(100, { message: 'Name must be at most 100 characters' })
     .regex(/^[A-Za-z\s]+$/, {
       message: 'Name can only contain letters and spaces',
     }),
 
-  cardNumber: z
-    .string()
+  cardNumber: string()
     .min(13, { message: 'Card number must be at least 13 digits' })
     .max(19, { message: 'Card number must be at most 19 digits' })
     .regex(/^[0-9\s-]+$/, {
@@ -66,12 +65,9 @@ const paymentFormSchema = z.object({
       message: 'Invalid card number',
     }),
 
-  cvv: z
-    .string()
-    .regex(/^[0-9]{3,4}$/, { message: 'CVV must be 3 or 4 digits' }),
+  cvv: string().regex(/^[0-9]{3,4}$/, { message: 'CVV must be 3 or 4 digits' }),
 
-  expirationDate: z
-    .string()
+  expirationDate: string()
     .regex(/^(0[1-9]|1[0-2])\/([0-9]{2}|[0-9]{4})$/, {
       message: 'Expiration date must be MM/YY or MM/YYYY',
     })
@@ -95,14 +91,14 @@ const paymentFormSchema = z.object({
       },
       { message: 'Card has expired' },
     ),
-  useShippingAddress: z.boolean(),
-  rememberMe: z.boolean(),
+  useShippingAddress: boolean(),
+  rememberMe: boolean(),
 });
 
 const Payment = ({ onNext }: { onNext: () => void }) => {
   const { user, customerInfo, removeCustomerInfo, setCustomerInfo } = useAuth();
 
-  const form = useForm<z.infer<typeof paymentFormSchema>>({
+  const form = useForm<zodInfer<typeof paymentFormSchema>>({
     resolver: zodResolver(paymentFormSchema),
     defaultValues: {
       name: customerInfo?.name || '',
@@ -122,7 +118,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
   const { data: payment } = useGetPayment(Number(user?.id), !!user?.id);
 
-  const handleSubmit = (data: z.infer<typeof paymentFormSchema>) => {
+  const handleSubmit = (data: zodInfer<typeof paymentFormSchema>) => {
     if (data.rememberMe && user) {
       let paymentPayload = { ...customerInfo, ...data, userId: user.id };
 

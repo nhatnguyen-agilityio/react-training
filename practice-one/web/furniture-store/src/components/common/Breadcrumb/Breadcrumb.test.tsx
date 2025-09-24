@@ -242,7 +242,7 @@ describe('BreadcrumbComponent', () => {
       expect(screen.getByText('Single Item')).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Single Item' })).toHaveAttribute(
         'href',
-        '#',
+        '/',
       );
     });
 

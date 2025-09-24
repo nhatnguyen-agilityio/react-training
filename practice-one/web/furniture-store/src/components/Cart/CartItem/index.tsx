@@ -3,15 +3,10 @@ import type { CartInterface } from '../../../interfaces/cart';
 import Image from '../../common/Image';
 import { TriangleAlert } from 'lucide-react';
 import type { ProductVariant } from '../../../interfaces/products';
-import { useCallback, useState, memo, lazy } from 'react';
+import { useCallback, useState, memo } from 'react';
 import { useUpdateCart } from '../../../apis/update-cart';
-
-const Input = lazy(() =>
-  import('../../ui/input').then((module) => ({ default: module.Input })),
-);
-const Skeleton = lazy(() =>
-  import('../../ui/skeleton').then((module) => ({ default: module.Skeleton })),
-);
+import { Input } from '../../ui/input';
+import { Skeleton } from '../../ui/skeleton';
 
 const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
   const [quantityValue, setQuantityValue] = useState<number>(

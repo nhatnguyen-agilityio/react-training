@@ -4,6 +4,7 @@ import ProductItem from '../ProductItem';
 import type { ProductInterface } from '../../interfaces/products';
 import { GetProducts } from '../../apis/products';
 import { TriangleAlert } from 'lucide-react';
+import { Skeleton } from '../ui/skeleton';
 
 const Carousel = lazy(() =>
   import('../ui/carousel').then((module) => ({ default: module.Carousel })),
@@ -26,9 +27,6 @@ const CarouselPrevious = lazy(() =>
 );
 const Progress = lazy(() =>
   import('../ui/progress').then((module) => ({ default: module.Progress })),
-);
-const Skeleton = lazy(() =>
-  import('../ui/skeleton').then((module) => ({ default: module.Skeleton })),
 );
 
 const PeopleViewed = ({

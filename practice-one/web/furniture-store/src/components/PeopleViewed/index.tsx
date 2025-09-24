@@ -1,33 +1,18 @@
 import type { EmblaCarouselType } from 'embla-carousel';
-import { memo, useEffect, useState, lazy } from 'react';
+import { memo, useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import type { ProductInterface } from '../../interfaces/products';
 import { GetProducts } from '../../apis/products';
 import { TriangleAlert } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
-
-const Carousel = lazy(() =>
-  import('../ui/carousel').then((module) => ({ default: module.Carousel })),
-);
-const CarouselContent = lazy(() =>
-  import('../ui/carousel').then((module) => ({
-    default: module.CarouselContent,
-  })),
-);
-const CarouselItem = lazy(() =>
-  import('../ui/carousel').then((module) => ({ default: module.CarouselItem })),
-);
-const CarouselNext = lazy(() =>
-  import('../ui/carousel').then((module) => ({ default: module.CarouselNext })),
-);
-const CarouselPrevious = lazy(() =>
-  import('../ui/carousel').then((module) => ({
-    default: module.CarouselPrevious,
-  })),
-);
-const Progress = lazy(() =>
-  import('../ui/progress').then((module) => ({ default: module.Progress })),
-);
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '../ui/carousel';
+import { Progress } from '../ui/progress';
 
 const PeopleViewed = ({
   categoryId = 1,

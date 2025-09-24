@@ -66,7 +66,11 @@ const ProductItem = ({
           <Image
             src={imageUrl}
             alt={imageAlt}
+            width="200"
+            height="200"
             className="w-3/5 h-3/5 object-contain mx-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 200px, 250px"
           />
           {user && (
             <Button

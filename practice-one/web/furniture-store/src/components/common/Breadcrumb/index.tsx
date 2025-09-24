@@ -49,9 +49,7 @@ const BreadcrumbComponent = ({ items, className = '' }: BreadcrumbProps) => {
             {item.isCurrentPage ? (
               <BreadcrumbPage>{item.label}</BreadcrumbPage>
             ) : (
-              <Link to={item.href || '#'}>
-                {item.label}
-              </Link>
+              <Link to={item.href || '#'}>{item.label}</Link>
             )}
             {index < items.length - 1 && <BreadcrumbSeparator />}
           </BreadcrumbItem>

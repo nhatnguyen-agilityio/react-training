@@ -64,7 +64,9 @@ describe('HeroComponent', () => {
       const picture = document.querySelector('picture');
       expect(picture).toBeInTheDocument();
 
-      const img = screen.getByAltText('Modern contemporary furniture showcasing elegant living room furniture');
+      const img = screen.getByAltText(
+        'Modern contemporary furniture showcasing elegant living room furniture',
+      );
       expect(img).toBeInTheDocument();
     });
 
@@ -151,7 +153,9 @@ describe('HeroComponent', () => {
         </TestQueryClient>,
       );
 
-      const img = screen.getByAltText('Modern contemporary furniture showcasing elegant living room furniture');
+      const img = screen.getByAltText(
+        'Modern contemporary furniture showcasing elegant living room furniture',
+      );
       expect(img).toHaveClass('w-full');
       expect(img).toHaveClass('h-full');
       expect(img).toHaveClass('object-cover');
@@ -206,11 +210,16 @@ describe('HeroComponent', () => {
         </TestQueryClient>,
       );
 
-      const img = screen.getByAltText('Modern contemporary furniture showcasing elegant living room furniture');
+      const img = screen.getByAltText(
+        'Modern contemporary furniture showcasing elegant living room furniture',
+      );
       expect(img.getAttribute('src')).toContain(
         'https://ucarecdn.com/658288ac-40ec-43dd-893a-3c62c979259c/-/resize/640x/-/format/auto/-/quality/smart/',
       );
-      expect(img).toHaveAttribute('alt', 'Modern contemporary furniture showcasing elegant living room furniture');
+      expect(img).toHaveAttribute(
+        'alt',
+        'Modern contemporary furniture showcasing elegant living room furniture',
+      );
       expect(img).toHaveAttribute('fetchPriority', 'high');
       expect(img).toHaveAttribute('loading', 'eager');
       expect(img).toHaveAttribute('decoding', 'async');
@@ -246,7 +255,9 @@ describe('HeroComponent', () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.getByAltText('Modern contemporary furniture showcasing elegant living room furniture'),
+        screen.getByAltText(
+          'Modern contemporary furniture showcasing elegant living room furniture',
+        ),
       ).toBeInTheDocument();
     });
   });

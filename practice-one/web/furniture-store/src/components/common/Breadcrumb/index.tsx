@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { lazy } from 'react';
+import { Link } from 'react-router-dom';
 
 const Breadcrumb = lazy(() =>
   import('../../ui/breadcrumb').then((module) => ({
@@ -10,11 +11,6 @@ const Breadcrumb = lazy(() =>
 const BreadcrumbItem = lazy(() =>
   import('../../ui/breadcrumb').then((module) => ({
     default: module.BreadcrumbItem,
-  })),
-);
-const BreadcrumbLink = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.BreadcrumbLink,
   })),
 );
 const BreadcrumbList = lazy(() =>
@@ -53,9 +49,9 @@ const BreadcrumbComponent = ({ items, className = '' }: BreadcrumbProps) => {
             {item.isCurrentPage ? (
               <BreadcrumbPage>{item.label}</BreadcrumbPage>
             ) : (
-              <BreadcrumbLink href={item.href || '#'}>
+              <Link to={item.href || '#'}>
                 {item.label}
-              </BreadcrumbLink>
+              </Link>
             )}
             {index < items.length - 1 && <BreadcrumbSeparator />}
           </BreadcrumbItem>

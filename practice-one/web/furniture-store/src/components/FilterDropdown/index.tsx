@@ -23,7 +23,7 @@ const FilterDropdown = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="w-48 border-1 py-0 rounded-4xl text-base py-4"
+          className="w-50 border-1 rounded-4xl text-base py-4"
         >
           {position === 'mostRecent'
             ? 'Most Recent'

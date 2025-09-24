@@ -14,6 +14,7 @@ import PeopleViewed from '../components/PeopleViewed';
 import { useParams } from 'react-router-dom';
 import { useGetProductDetail } from '../apis/product-detail';
 import { useAddCart } from '../apis/add-cart';
+import { GetMainCategories } from '../apis/main-categories';
 import { toast } from 'sonner';
 import type { ProductVariant } from '../interfaces/products';
 import type { ImageInterface } from '../interfaces/image';
@@ -37,6 +38,34 @@ const ProductDetail = () => {
     isError,
     error,
   } = useGetProductDetail(id || '', !!id);
+
+  const { data: mainCategories } = GetMainCategories();
+
+  const getBreadcrumbItems = () => {
+    const items: { label: string; href?: string; isCurrentPage?: boolean }[] = [
+      { label: 'Homepage', href: '/' },
+    ];
+
+    if (productDetail && mainCategories) {
+      const category = mainCategories.find(
+        (cat: { id: number; name: string }) =>
+          cat.id === productDetail.mainCategoryId,
+      );
+      if (category) {
+        items.push({
+          label: category.name,
+          href: `/products?categoryId=${category.id}&categoryTitle=${encodeURIComponent(category.name)}`,
+        });
+      }
+
+      items.push({
+        label: productDetail.name,
+        isCurrentPage: true,
+      });
+    }
+
+    return items;
+  };
 
   useEffect(() => {
     if (productDetail?.variants?.[0]) {
@@ -86,7 +115,7 @@ const ProductDetail = () => {
           className="container"
           items={[
             { label: 'Homepage', href: '/' },
-            { label: 'Sitting Room', href: '/' },
+            { label: <Skeleton className="h-4 w-24" /> },
             { label: <Skeleton className="h-4 w-32" />, isCurrentPage: true },
           ]}
         />
@@ -162,8 +191,6 @@ const ProductDetail = () => {
           className="container"
           items={[
             { label: 'Homepage', href: '/' },
-            { label: 'Categories', href: '/' },
-            { label: 'Sitting Room', href: '/' },
             { label: 'Product Detail', isCurrentPage: true },
           ]}
         />
@@ -191,14 +218,7 @@ const ProductDetail = () => {
 
   return (
     <div className="mt-12">
-      <BreadcrumbComponent
-        className="container"
-        items={[
-          { label: 'Homepage', href: '/' },
-          { label: 'Sitting Room', href: '/' },
-          { label: 'Luxe Armchair - Left Arm Chute', isCurrentPage: true },
-        ]}
-      />
+      <BreadcrumbComponent className="container" items={getBreadcrumbItems()} />
 
       {/* Images slide for mobile */}
       <div className="container grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7 mt-4 md:mt-8 grid">

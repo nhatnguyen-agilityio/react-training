@@ -12,6 +12,10 @@ jest.mock('../apis/add-cart', () => ({
   useAddCart: jest.fn(),
 }));
 
+jest.mock('../apis/main-categories', () => ({
+  GetMainCategories: jest.fn(),
+}));
+
 jest.mock('../hooks/useAuth', () => ({
   useAuth: jest.fn(),
 }));
@@ -181,6 +185,9 @@ const mockUseGetProductDetail = jest.mocked(
 const mockUseAddCart = jest.mocked(
   jest.requireMock('../apis/add-cart').useAddCart,
 );
+const mockGetMainCategories = jest.mocked(
+  jest.requireMock('../apis/main-categories').GetMainCategories,
+);
 const mockUseAuth = jest.mocked(jest.requireMock('../hooks/useAuth').useAuth);
 const mockToast = jest.fn();
 
@@ -191,6 +198,11 @@ const TestWrapper = ({ children }: { children: ReactNode }) => (
 describe('ProductDetail Page', () => {
   const mockUser = { id: 1, username: 'testuser', email: 'test@example.com' };
   const mockMutate = jest.fn();
+  const mockMainCategories = [
+    { id: 1, name: 'Sitting Room' },
+    { id: 2, name: 'Bedroom' },
+    { id: 3, name: 'Kitchen' },
+  ];
   const mockProductDetail = {
     id: 123,
     name: 'Luxe Armchair - Left Arm Chute',
@@ -231,6 +243,10 @@ describe('ProductDetail Page', () => {
     mockUseAddCart.mockReturnValue({
       mutate: mockMutate,
       isLoading: false,
+    });
+
+    mockGetMainCategories.mockReturnValue({
+      data: mockMainCategories,
     });
 
     jest.mocked(jest.requireMock('sonner').toast).mockImplementation(mockToast);

@@ -8,12 +8,12 @@ import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { useState, lazy, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import Loading from '../components/Loading';
 import SiteMetadata from '../components/SiteMetadata';
+import UserButton from '../components/UserButton';
+import CartButton from '../components/CartButton';
+import MobileSidebar from '../components/MobileSidebar';
+import Loading from '../components/Loading';
 
-const MobileSidebar = lazy(() => import('../components/MobileSidebar'));
-const UserButton = lazy(() => import('../components/UserButton'));
-const CartButton = lazy(() => import('../components/CartButton'));
 const Login = lazy(() => import('../components/Login'));
 const Cart = lazy(() => import('../components/Cart'));
 const Checkout = lazy(() => import('../components/Checkout'));

@@ -1,10 +1,6 @@
-import { lazy } from 'react';
 import { GetMainCategories } from '../../apis/main-categories';
 import CategoryItem from './CategoryItem';
-
-const Skeleton = lazy(() =>
-  import('../ui/skeleton').then((module) => ({ default: module.Skeleton })),
-);
+import { Skeleton } from '../ui/skeleton';
 
 interface CategoryInterface {
   id: number;

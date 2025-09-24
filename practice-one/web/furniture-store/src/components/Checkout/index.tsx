@@ -1,4 +1,5 @@
-import z from 'zod';
+import { object, string } from 'zod';
+import type { infer as zodInfer } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -12,12 +13,11 @@ import { Input } from '../ui/input';
 import Button from '../common/Button';
 import { useAuth } from '../../hooks/useAuth';
 
-const checkoutFormSchema = z.object({
-  email: z
+const checkoutFormSchema = object({
+  email: string()
     .email({ message: 'Invalid email address' })
     .min(1, { message: 'Email is required' }),
-  firstName: z
-    .string()
+  firstName: string()
     .trim()
     .min(1, { message: 'First name is required' })
     .max(50, { message: 'First name must be at most 50 characters' })
@@ -25,8 +25,7 @@ const checkoutFormSchema = z.object({
       message:
         'First name can only contain letters, spaces, apostrophes, or hyphens',
     }),
-  lastName: z
-    .string()
+  lastName: string()
     .trim()
     .min(1, { message: 'Last name is required' })
     .max(50, { message: 'Last name must be at most 50 characters' })
@@ -34,31 +33,27 @@ const checkoutFormSchema = z.object({
       message:
         'Last name can only contain letters, spaces, apostrophes, or hyphens',
     }),
-  phoneNumber: z
-    .string()
+  phoneNumber: string()
     .trim()
     .min(1, { message: 'Phone number is required' })
     .regex(/^\+?[0-9]{8,15}$/, {
       message: 'Phone number must be 8–15 digits and may start with +',
     }),
-  address: z
-    .string()
+  address: string()
     .trim()
     .min(1, { message: 'Address is required' })
     .max(200, { message: 'Address must be at most 200 characters' })
     .regex(/^[a-zA-Z0-9À-ỹ\s,.'-/#]+$/, {
       message: 'Address contains invalid characters',
     }),
-  city: z
-    .string()
+  city: string()
     .trim()
     .min(1, { message: 'City is required' })
     .max(100, { message: 'City must be at most 100 characters' })
     .regex(/^[a-zA-ZÀ-ỹ\s.'-]+$/, {
       message: 'City can only contain letters, spaces, apostrophes, or hyphens',
     }),
-  country: z
-    .string()
+  country: string()
     .trim()
     .min(1, { message: 'Country is required' })
     .max(100, { message: 'Country must be at most 100 characters' })
@@ -71,7 +66,7 @@ const checkoutFormSchema = z.object({
 const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
   const { customerInfo } = useAuth();
 
-  const form = useForm<z.infer<typeof checkoutFormSchema>>({
+  const form = useForm<zodInfer<typeof checkoutFormSchema>>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
       email: customerInfo?.email || '',
@@ -84,7 +79,7 @@ const Checkout = ({ onNext }: { onNext: () => void; onLogin: () => void }) => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof checkoutFormSchema>) => {
+  const onSubmit = (data: zodInfer<typeof checkoutFormSchema>) => {
     localStorage.setItem('checkout', JSON.stringify(data));
     onNext();
   };

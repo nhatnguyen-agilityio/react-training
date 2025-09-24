@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import { object, string } from 'zod';
+import type { infer as zodInfer } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from '../common/Image';
@@ -56,9 +57,8 @@ const AlertDialogTitle = lazy(() =>
   })),
 );
 
-const loginFormSchema = z.object({
-  username: z
-    .string()
+const loginFormSchema = object({
+  username: string()
     .min(8, {
       message: 'Username must be at least 8 characters.',
     })
@@ -66,8 +66,7 @@ const loginFormSchema = z.object({
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d._@-]{2,20}$/,
       'Username must include letters and numbers',
     ),
-  password: z
-    .string()
+  password: string()
     .min(8, {
       message: 'Password must be at least 8 characters.',
     })
@@ -86,7 +85,7 @@ const Login = ({
 }) => {
   const [open, setOpen] = useState(false);
   const { setUser } = useAuth();
-  const form = useForm<z.infer<typeof loginFormSchema>>({
+  const form = useForm<zodInfer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       username: '',
@@ -96,7 +95,7 @@ const Login = ({
 
   const { mutate, isLoading, error } = useLogin();
 
-  const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
+  const handleSubmit = (data: zodInfer<typeof loginFormSchema>) => {
     mutate(data, {
       onSuccess: (data) => {
         setUser(data.user);

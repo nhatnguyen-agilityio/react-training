@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import { object, string, boolean } from 'zod';
+import type { infer as zodInfer } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -17,29 +18,27 @@ import { useSignUp } from '../../apis/signup';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
-const loginFormSchema = z.object({
-  username: z
-    .string()
+const loginFormSchema = object({
+  username: string()
     .min(8, { message: 'Username must be at least 8 characters.' })
     .max(20, { message: 'Username must be at most 20 characters.' })
     .regex(
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d._@-]{2,20}$/,
       'Username must include letters, numbers, and may contain . _ @ -',
     ),
-  password: z
-    .string()
+  password: string()
     .min(8, { message: 'Password must be at least 8 characters.' })
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._@#$%^&*!?])[A-Za-z\d._@#$%^&*!?]{8,}$/,
       'Password must include uppercase, lowercase, number, and special character',
     ),
-  acceptTerms: z.boolean().refine((val) => val === true, {
+  acceptTerms: boolean().refine((val) => val === true, {
     message: 'You must accept the terms and conditions.',
   }),
 });
 
 const SignUp = ({ onNext }: { onNext: () => void }) => {
-  const form = useForm<z.infer<typeof loginFormSchema>>({
+  const form = useForm<zodInfer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       username: '',
@@ -50,7 +49,7 @@ const SignUp = ({ onNext }: { onNext: () => void }) => {
 
   const { mutate, isLoading } = useSignUp();
 
-  const handleSubmit = (data: z.infer<typeof loginFormSchema>) => {
+  const handleSubmit = (data: zodInfer<typeof loginFormSchema>) => {
     const { username, password } = data;
 
     mutate(

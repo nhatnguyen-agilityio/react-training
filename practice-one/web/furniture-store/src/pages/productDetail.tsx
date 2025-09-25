@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const [selectedVariantId, setSelectedVariantId] = useState<number | null>(
     null,
   );
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   const { id } = useParams<{ id: string }>();
 
   const { user } = useAuth();
@@ -89,7 +89,7 @@ const ProductDetail = () => {
         item: {
           productId: Number(id),
           variantId: selectedVariantId,
-          quantity: quantity,
+          quantity: Number(quantity),
         },
       };
       mutate(cartPayload, {
@@ -98,14 +98,35 @@ const ProductDetail = () => {
             className: 'text-left',
           });
         },
-        onError: () => {
-          toast('Failed to add product to cart. Please try again.', {
-            className: 'text-left',
-          });
+        onError: (error: unknown) => {
+          if (
+            (error as { message?: string })?.message === 'Insufficient stock'
+          ) {
+            const availableStock = productDetail.variants[selected]?.stock || 0;
+            toast.error(
+              `Sorry, only ${availableStock} item(s) available in stock for ${productDetail?.name}. Please help check to your cart`,
+              {
+                className: 'text-left',
+              },
+            );
+          } else {
+            toast('Failed to add product to cart. Please try again.', {
+              className: 'text-left',
+            });
+          }
         },
       });
     },
-    [id, mutate, user, selectedVariantId, productDetail?.name, quantity],
+    [
+      id,
+      mutate,
+      user,
+      selectedVariantId,
+      productDetail?.name,
+      productDetail?.variants,
+      selected,
+      quantity,
+    ],
   );
 
   if (isPending) {
@@ -293,6 +314,9 @@ const ProductDetail = () => {
               <p className="py-1 px-3 bg-red-50 rounded-4xl text-red-700">
                 -40%
               </p>
+              <p className="ml-3 font-medium">
+                In stock: {productDetail.variants[selected]?.stock || 0}
+              </p>
             </div>
             <p className="mt-4 md:text-lg lg:text-xl font-light">
               {productDetail.description}
@@ -322,9 +346,31 @@ const ProductDetail = () => {
                   aria-label="Quantity"
                   type="number"
                   min={1}
-                  max={100}
+                  max={productDetail.variants[selected]?.stock || 100}
                   value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    // Allow empty input temporarily for better UX
+                    if (inputValue === '') {
+                      setQuantity('');
+                      return;
+                    }
+
+                    const numValue = Number(inputValue);
+                    if (isNaN(numValue)) return;
+
+                    const maxStock =
+                      productDetail.variants[selected]?.stock || 100;
+                    const newQuantity =
+                      numValue > maxStock ? maxStock : numValue;
+                    setQuantity(newQuantity);
+                  }}
+                  onBlur={() => {
+                    // Ensure valid quantity on blur
+                    if (quantity === '' || Number(quantity) <= 0) {
+                      setQuantity(1);
+                    }
+                  }}
                   className="bg-background-primary rounded-2xl h-full p-0 text-center lg:pl-3"
                 />
               </div>

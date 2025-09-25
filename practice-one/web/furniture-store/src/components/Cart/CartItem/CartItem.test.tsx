@@ -415,7 +415,7 @@ describe('CartItem Component', () => {
       });
     });
 
-    it('handles maximum quantity of 100', async () => {
+    it('handles maximum quantity based on variant stock', async () => {
       await act(async () => {
         render(
           <TestQueryClient>
@@ -426,7 +426,22 @@ describe('CartItem Component', () => {
 
       await waitFor(() => {
         const quantityInput = screen.getByDisplayValue('2');
-        expect(quantityInput).toHaveAttribute('max', '100');
+        expect(quantityInput).toHaveAttribute('max', '10');
+      });
+    });
+
+    it('handles different maximum quantity for different variants', async () => {
+      await act(async () => {
+        render(
+          <TestQueryClient>
+            <CartItem cartItem={mockSecondCartItem} />
+          </TestQueryClient>,
+        );
+      });
+
+      await waitFor(() => {
+        const quantityInput = screen.getByDisplayValue('1');
+        expect(quantityInput).toHaveAttribute('max', '5');
       });
     });
   });
@@ -480,7 +495,7 @@ describe('CartItem Component', () => {
         const quantityInput = screen.getByDisplayValue('2');
         expect(quantityInput).toHaveAttribute('type', 'number');
         expect(quantityInput).toHaveAttribute('min', '1');
-        expect(quantityInput).toHaveAttribute('max', '100');
+        expect(quantityInput).toHaveAttribute('max', '10');
       });
     });
   });

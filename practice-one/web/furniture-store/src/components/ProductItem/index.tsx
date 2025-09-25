@@ -15,6 +15,7 @@ const ProductItem = ({
   imageUrl,
   imageAlt,
   variantColor,
+  stock,
 }: {
   id: number;
   variantId: number;
@@ -23,6 +24,7 @@ const ProductItem = ({
   imageUrl: string;
   imageAlt: string;
   variantColor?: string;
+  stock?: number;
 }) => {
   const { user } = useAuth();
 
@@ -49,14 +51,26 @@ const ProductItem = ({
             className: 'text-left',
           });
         },
-        onError: () => {
-          toast('Failed to add product to cart. Please try again.', {
-            className: 'text-left',
-          });
+        onError: (error: unknown) => {
+          if (
+            (error as { message?: string })?.message === 'Insufficient stock'
+          ) {
+            const availableStock = stock || 0;
+            toast.error(
+              `Sorry, only ${availableStock} item(s) available in stock for ${name}. Please help check to your cart`,
+              {
+                className: 'text-left',
+              },
+            );
+          } else {
+            toast('Failed to add product to cart. Please try again.', {
+              className: 'text-left',
+            });
+          }
         },
       });
     },
-    [id, name, mutate, user?.id, variantId],
+    [id, name, mutate, user?.id, variantId, stock],
   );
 
   return (

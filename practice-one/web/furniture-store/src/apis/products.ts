@@ -13,7 +13,7 @@ const fetchProducts = async (
   searchParam?: string | null,
   subCategoryName?: string | null,
 ) => {
-  const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS}`);
+  const url = new URL(`${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}`);
   url.searchParams.set('_start', String(start));
   url.searchParams.set('_end', String(end));
   url.searchParams.set('_sort', String(sortBy));
@@ -38,8 +38,9 @@ const fetchProducts = async (
     throw new Error('Network response was not ok');
   }
   const items = await res.json();
+
   return {
-    items,
+    items: items || [],
     total: res.headers.get('X-Total-Count'),
   };
 };

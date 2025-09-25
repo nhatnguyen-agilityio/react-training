@@ -249,6 +249,94 @@ server.patch("/products/update-stock", (req, res) => {
     return res.status(statusCode).json(response);
 });
 
+// Custom API endpoint to get products with stock > 0
+server.get("/products/with-stock", (req, res) => {
+    const db = router.db;
+    const {
+        _start = "0",
+        _end = "20",
+        _sort = "createdAt",
+        _order = "desc",
+        mainCategoryId,
+        subCategoryId,
+        name_like,
+    } = req.query;
+
+    try {
+        // Get all products
+        let products = db.get("products").value();
+
+        // Filter products that have at least one variant with stock > 0
+        const productsWithStock = products.filter(product => {
+            if (!product.variants || !Array.isArray(product.variants)) {
+                return false;
+            }
+
+            // Check if any variant has stock > 0
+            const totalStock = product.variants.reduce((sum, variant) => {
+                return sum + (variant.stock || 0);
+            }, 0);
+
+            return totalStock > 0;
+        });
+
+        // Apply additional filters
+        let filteredProducts = productsWithStock;
+
+        if (mainCategoryId) {
+            filteredProducts = filteredProducts.filter(
+                p => p.mainCategoryId === parseInt(mainCategoryId)
+            );
+        }
+
+        if (subCategoryId && subCategoryId !== 'All') {
+            filteredProducts = filteredProducts.filter(
+                p => p.subCategoryId === parseInt(subCategoryId)
+            );
+        }
+
+        if (name_like) {
+            filteredProducts = filteredProducts.filter(
+                p => p.name && p.name.toLowerCase().includes(name_like.toLowerCase())
+            );
+        }
+
+        // Apply sorting
+        if (_sort && filteredProducts.length > 0) {
+            filteredProducts.sort((a, b) => {
+                let aVal = a[_sort];
+                let bVal = b[_sort];
+
+                // Handle different data types
+                if (typeof aVal === 'string') aVal = aVal.toLowerCase();
+                if (typeof bVal === 'string') bVal = bVal.toLowerCase();
+
+                if (_order === 'desc') {
+                    return bVal > aVal ? 1 : bVal < aVal ? -1 : 0;
+                } else {
+                    return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+                }
+            });
+        }
+
+        // Apply pagination
+        const start = parseInt(_start);
+        const end = parseInt(_end);
+        const paginatedProducts = filteredProducts.slice(start, end);
+
+        // Set headers like json-server does
+        res.set('X-Total-Count', filteredProducts.length.toString());
+        res.set('Access-Control-Expose-Headers', 'X-Total-Count');
+
+        return res.status(200).json(paginatedProducts);
+    } catch (error) {
+        return res.status(500).json({
+            error: "Failed to fetch products with stock",
+            message: error.message
+        });
+    }
+});
+
 server.use(router);
 
 server.listen(PORT, () => {

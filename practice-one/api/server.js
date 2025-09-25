@@ -101,6 +101,32 @@ server.post("/carts/add-to-cart", (req, res) => {
         .value();
 
     if (existingCart) {
+        // Find the product variant to check stock
+        const product = db
+            .get("products")
+            .find({ id: item.productId })
+            .value();
+
+        if (!product) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+
+        const variant = product.variants.find(v => v.id === item.variantId);
+
+        if (!variant) {
+            return res.status(404).json({ error: "Product variant not found" });
+        }
+
+        const newQuantity = existingCart.item.quantity + item.quantity;
+
+        if (newQuantity > variant.stock) {
+            return res.status(400).json({
+                error: "Insufficient stock",
+                availableStock: variant.stock,
+                requestedQuantity: newQuantity
+            });
+        }
+
         // Update quantity
         const updated = db
             .get("carts")
@@ -108,7 +134,7 @@ server.post("/carts/add-to-cart", (req, res) => {
             .assign({
                 item: {
                     ...existingCart.item,
-                    quantity: existingCart.item.quantity + item.quantity,
+                    quantity: newQuantity,
                 },
             })
             .write();

@@ -98,14 +98,35 @@ const ProductDetail = () => {
             className: 'text-left',
           });
         },
-        onError: () => {
-          toast('Failed to add product to cart. Please try again.', {
-            className: 'text-left',
-          });
+        onError: (error: unknown) => {
+          if (
+            (error as { message?: string })?.message === 'Insufficient stock'
+          ) {
+            const availableStock = productDetail.variants[selected]?.stock || 0;
+            toast.error(
+              `Sorry, only ${availableStock} item(s) available in stock for ${productDetail?.name}. Please help check to your cart`,
+              {
+                className: 'text-left',
+              },
+            );
+          } else {
+            toast('Failed to add product to cart. Please try again.', {
+              className: 'text-left',
+            });
+          }
         },
       });
     },
-    [id, mutate, user, selectedVariantId, productDetail?.name, quantity],
+    [
+      id,
+      mutate,
+      user,
+      selectedVariantId,
+      productDetail?.name,
+      productDetail?.variants,
+      selected,
+      quantity,
+    ],
   );
 
   if (isPending) {

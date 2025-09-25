@@ -139,6 +139,7 @@ const TopProducts = ({
               imageUrl={firstImage.url}
               imageAlt={firstImage.alt}
               variantColor={firstVariant.hex}
+              stock={firstVariant.stock}
             />
           );
         })}

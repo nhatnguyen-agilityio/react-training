@@ -293,6 +293,9 @@ const ProductDetail = () => {
               <p className="py-1 px-3 bg-red-50 rounded-4xl text-red-700">
                 -40%
               </p>
+              <p className="ml-3 font-medium">
+                In stock: {productDetail.variants[selected]?.stock || 0}
+              </p>
             </div>
             <p className="mt-4 md:text-lg lg:text-xl font-light">
               {productDetail.description}
@@ -322,9 +325,20 @@ const ProductDetail = () => {
                   aria-label="Quantity"
                   type="number"
                   min={1}
-                  max={100}
+                  max={productDetail.variants[selected]?.stock || 100}
                   value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  onChange={(e) => {
+                    const inputValue = Number(e.target.value);
+                    const maxStock =
+                      productDetail.variants[selected]?.stock || 100;
+                    setQuantity(
+                      inputValue < 1
+                        ? 1
+                        : inputValue > maxStock
+                          ? maxStock
+                          : inputValue,
+                    );
+                  }}
                   className="bg-background-primary rounded-2xl h-full p-0 text-center lg:pl-3"
                 />
               </div>

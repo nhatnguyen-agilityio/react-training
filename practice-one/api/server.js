@@ -153,6 +153,102 @@ server.post("/carts/add-to-cart", (req, res) => {
     }
 });
 
+// API to handle stock updates after order
+server.patch("/products/update-stock", (req, res) => {
+    const db = router.db; // lowdb instance
+    const { items } = req.body;
+
+    if (!items || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).json({ error: "Items array is required" });
+    }
+
+    const updateResults = [];
+    const errors = [];
+
+    // Process each item update
+    for (const updateItem of items) {
+        const { variantId, quantity } = updateItem;
+
+        if (!variantId || !quantity || quantity <= 0) {
+            errors.push({
+                variantId,
+                error: "Invalid variantId or quantity"
+            });
+            continue;
+        }
+
+        try {
+            // Find the product containing this variant
+            const products = db.get("products").value();
+            let productFound = false;
+            let variantFound = false;
+
+            for (const product of products) {
+                const variantIndex = product.variants.findIndex(v => v.id === variantId);
+
+                if (variantIndex !== -1) {
+                    const variant = product.variants[variantIndex];
+                    productFound = true;
+                    variantFound = true;
+
+                    // Check if enough stock available
+                    if (variant.stock < quantity) {
+                        errors.push({
+                            variantId,
+                            error: "Insufficient stock",
+                            available: variant.stock,
+                            requested: quantity
+                        });
+                        continue;
+                    }
+
+                    // Update stock
+                    const newStock = variant.stock - quantity;
+
+                    // Update the variant in database
+                    db.get("products")
+                        .find({ id: product.id })
+                        .get("variants")
+                        .find({ id: variantId })
+                        .assign({ stock: newStock })
+                        .write();
+
+                    updateResults.push({
+                        variantId,
+                        previousStock: variant.stock,
+                        newStock,
+                        quantityDeducted: quantity
+                    });
+
+                    break;
+                }
+            }
+
+            if (!productFound || !variantFound) {
+                errors.push({
+                    variantId,
+                    error: "Product variant not found"
+                });
+            }
+        } catch (error) {
+            errors.push({
+                variantId,
+                error: "Failed to update stock: " + error.message
+            });
+        }
+    }
+
+    // Return results
+    const response = {
+        success: updateResults.length > 0,
+        updated: updateResults,
+        errors: errors.length > 0 ? errors : undefined
+    };
+
+    const statusCode = errors.length > 0 && updateResults.length === 0 ? 400 : 200;
+    return res.status(statusCode).json(response);
+});
+
 server.use(router);
 
 server.listen(PORT, () => {

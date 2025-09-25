@@ -21,6 +21,7 @@ import { useAddOrder } from '../../apis/add-order';
 import { useDeleteCart } from '../../apis/delete-cart';
 import { useGetPayment } from '../../apis/get-payment';
 import { useUpdatePayment } from '../../apis/update-payment';
+import { useUpdateStock } from '../../apis/update-stock';
 
 const cardNumberCheck = (cardNumber: string) => {
   let sum = 0;
@@ -114,6 +115,7 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
   const { mutate: updatePayment } = useUpdatePayment();
   const { mutate: addOrder } = useAddOrder();
   const { mutate: deleteCart } = useDeleteCart();
+  const { mutate: updateStock } = useUpdateStock();
 
   const { data: userCart } = useGetUserCart(Number(user?.id), !!user?.id);
   const { data: payment } = useGetPayment(Number(user?.id), !!user?.id);
@@ -159,6 +161,17 @@ const Payment = ({ onNext }: { onNext: () => void }) => {
     };
     addOrder(orderPayload, {
       onSuccess: () => {
+        // Update stock inventory by reducing stock for each ordered item
+        const stockUpdates =
+          userCart?.flatMap((cart: CartInterface) => ({
+            variantId: cart.item.variantId,
+            quantity: cart.item.quantity,
+          })) || [];
+
+        if (stockUpdates.length > 0) {
+          updateStock({ items: stockUpdates });
+        }
+
         deleteCart({ userId: String(user?.id) });
         onNext();
       },

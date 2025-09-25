@@ -16,4 +16,7 @@ export const API_ROUTES = {
 
   // order
   ORDERS: 'orders/',
+
+  // stock update
+  UPDATE_STOCK: 'products/update-stock/',
 };

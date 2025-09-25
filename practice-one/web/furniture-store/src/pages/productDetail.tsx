@@ -361,7 +361,8 @@ const ProductDetail = () => {
 
                     const maxStock =
                       productDetail.variants[selected]?.stock || 100;
-                    const newQuantity = numValue > maxStock ? maxStock : numValue;
+                    const newQuantity =
+                      numValue > maxStock ? maxStock : numValue;
                     setQuantity(newQuantity);
                   }}
                   onBlur={() => {

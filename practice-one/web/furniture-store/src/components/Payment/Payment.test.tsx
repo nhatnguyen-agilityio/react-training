@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import userEvent from '@testing-library/user-event';
 import Payment from '.';
+
+// Mock env-variables
+jest.mock('../../constants/env-variables', () => ({
+  API_ENDPOINT: 'http://localhost:5001/',
+}));
 
 const mockUser = {
   id: 1,
@@ -62,14 +68,11 @@ jest.mock('../../apis/user-cart', () => ({
     data: [
       {
         id: 1,
-        items: [
-          {
-            id: 1,
-            productId: 1,
-            quantity: 2,
-            price: 100,
-          },
-        ],
+        item: {
+          productId: 1,
+          variantId: 101,
+          quantity: 2,
+        },
       },
     ],
   }),
@@ -186,9 +189,20 @@ Object.defineProperty(window, 'localStorage', {
   value: mockLocalStorage,
 });
 
-const TestWrapper = ({ children }: { children: ReactNode }) => (
-  <BrowserRouter>{children}</BrowserRouter>
-);
+const TestWrapper = ({ children }: { children: ReactNode }) => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+      mutations: { retry: false },
+    },
+  });
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>{children}</BrowserRouter>
+    </QueryClientProvider>
+  );
+};
 
 describe('Payment Component', () => {
   const mockOnNext = jest.fn();

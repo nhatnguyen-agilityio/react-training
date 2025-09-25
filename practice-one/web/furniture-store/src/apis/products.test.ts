@@ -6,6 +6,7 @@ import { GetProducts, GetProductsInfinite } from './products';
 jest.mock('../constants/api-routers', () => ({
   API_ROUTES: {
     PRODUCTS: '/products',
+    PRODUCTS_WITH_STOCK: '/products/with-stock',
   },
 }));
 
@@ -68,6 +69,15 @@ const mockProducts = [
     createdAt: '2024-01-01T00:00:00Z',
     mainCategoryId: 1,
     subCategoryId: 1,
+    variants: [
+      {
+        id: 101,
+        hex: '#FF5733',
+        size: 'Medium',
+        stock: 5,
+        images: [{ url: 'test.jpg', alt: 'Modern Chair' }],
+      },
+    ],
   },
   {
     id: 2,
@@ -76,6 +86,15 @@ const mockProducts = [
     createdAt: '2024-01-02T00:00:00Z',
     mainCategoryId: 2,
     subCategoryId: 2,
+    variants: [
+      {
+        id: 201,
+        hex: '#8B4513',
+        size: 'Large',
+        stock: 3,
+        images: [{ url: 'test.jpg', alt: 'Wooden Table' }],
+      },
+    ],
   },
   {
     id: 3,
@@ -84,6 +103,15 @@ const mockProducts = [
     createdAt: '2024-01-03T00:00:00Z',
     mainCategoryId: 1,
     subCategoryId: 3,
+    variants: [
+      {
+        id: 301,
+        hex: '#654321',
+        size: 'XL',
+        stock: 2,
+        images: [{ url: 'test.jpg', alt: 'Leather Sofa' }],
+      },
+    ],
   },
 ];
 
@@ -114,7 +142,7 @@ describe('GetProducts', () => {
         total: '100',
       });
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
     });
 
@@ -134,7 +162,7 @@ describe('GetProducts', () => {
         total: '100',
       });
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=10&_end=30&_sort=createdAt&_order=desc&mainCategoryId=1`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=10&_end=30&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
     });
 
@@ -163,7 +191,7 @@ describe('GetProducts', () => {
         total: '100',
       });
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=2`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=2`,
       );
     });
   });
@@ -181,7 +209,7 @@ describe('GetProducts', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
     });
 
@@ -197,7 +225,7 @@ describe('GetProducts', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=123`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=123`,
       );
     });
 
@@ -213,7 +241,7 @@ describe('GetProducts', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=100&_end=200&_sort=createdAt&_order=desc&mainCategoryId=1`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=100&_end=200&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
     });
   });
@@ -322,7 +350,7 @@ describe('GetProducts', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
     });
 
@@ -349,7 +377,7 @@ describe('GetProducts', () => {
 
       await waitFor(() => {
         expect(mockFetch).toHaveBeenCalledWith(
-          `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
+          `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
         );
       });
 
@@ -357,7 +385,7 @@ describe('GetProducts', () => {
 
       await waitFor(() => {
         expect(mockFetch).toHaveBeenCalledWith(
-          `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=10&_end=30&_sort=createdAt&_order=desc&mainCategoryId=2`,
+          `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=10&_end=30&_sort=createdAt&_order=desc&mainCategoryId=2`,
         );
       });
 
@@ -377,7 +405,10 @@ describe('GetProducts', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data).toEqual({ items: [], total: '100' });
+      expect(result.current.data).toEqual({
+        items: [],
+        total: '100',
+      });
     });
 
     it('should handle single product response', async () => {
@@ -427,7 +458,7 @@ describe('GetProductsInfinite', () => {
         { items: mockProducts, total: '100' },
       ]);
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
     });
 
@@ -449,7 +480,7 @@ describe('GetProductsInfinite', () => {
         { items: mockProducts, total: '100' },
       ]);
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=10&_sort=price&_order=asc&mainCategoryId=1`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=10&_sort=price&_order=asc&mainCategoryId=1`,
       );
     });
 
@@ -471,7 +502,7 @@ describe('GetProductsInfinite', () => {
         { items: mockProducts, total: '100' },
       ]);
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=chair`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=chair`,
       );
     });
 
@@ -493,7 +524,7 @@ describe('GetProductsInfinite', () => {
         { items: mockProducts, total: '100' },
       ]);
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1&subCategoryId=Chairs`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1&subCategoryId=Chairs`,
       );
     });
 
@@ -515,7 +546,7 @@ describe('GetProductsInfinite', () => {
         { items: mockProducts, total: '100' },
       ]);
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&mainCategoryId=1`,
       );
     });
   });
@@ -536,7 +567,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=price&_order=asc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=price&_order=asc`,
       );
     });
 
@@ -555,7 +586,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=price&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=price&_order=desc`,
       );
     });
 
@@ -574,7 +605,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc`,
       );
     });
   });
@@ -614,14 +645,27 @@ describe('GetProductsInfinite', () => {
       ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(mockFetch).toHaveBeenLastCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=2&_end=4&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=2&_end=4&_sort=createdAt&_order=desc`,
       );
     });
 
-    it('should not fetch next page when hasNextPage is false', async () => {
+    it('should not fetch next page when server total is reached', async () => {
       const lastPage = mockProducts.slice(0, 1); // Less than pageSize
 
-      mockFetch.mockResolvedValueOnce(createMockResponse(lastPage));
+      // Mock a response that indicates we've fetched all items from server
+      const mockResponseWithSmallTotal = (data: unknown) => ({
+        ok: true,
+        json: async () => data,
+        status: 200,
+        statusText: 'OK',
+        headers: new Headers({
+          'X-Total-Count': '1', // Total matches what we fetched
+        }),
+      });
+
+      mockFetch.mockResolvedValueOnce(
+        mockResponseWithSmallTotal(lastPage) as Response,
+      );
 
       const { result } = renderHook(() => GetProductsInfinite(2), {
         wrapper: createWrapper(),
@@ -632,7 +676,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(result.current.data?.pages).toEqual([
-        { items: lastPage, total: '100' },
+        { items: lastPage, total: '1' },
       ]);
       expect(result.current.hasNextPage).toBe(false);
     });
@@ -672,7 +716,7 @@ describe('GetProductsInfinite', () => {
       ]);
       expect(mockFetch).toHaveBeenCalledTimes(2);
       expect(mockFetch).toHaveBeenLastCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=1&_end=2&_sort=createdAt&_order=desc`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=1&_end=2&_sort=createdAt&_order=desc`,
       );
     });
   });
@@ -777,7 +821,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=price&_order=asc&mainCategoryId=1&name_like=search`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=price&_order=asc&mainCategoryId=1&name_like=search`,
       );
     });
 
@@ -840,7 +884,12 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([{ items: [], total: '100' }]);
+      expect(result.current.data?.pages).toEqual([
+        {
+          items: [],
+          total: '100',
+        },
+      ]);
       expect(result.current.hasNextPage).toBe(false);
     });
 
@@ -855,9 +904,7 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
-      expect(result.current.data?.pages).toEqual([
-        { items: null, total: '100' },
-      ]);
+      expect(result.current.data?.pages).toEqual([{ items: [], total: '100' }]);
     });
   });
 
@@ -879,6 +926,7 @@ describe('GetProductsInfinite', () => {
         expect(result.current.isSuccess).toBe(true);
       });
 
+      // Server only filters by stock, malformed data passes through
       expect(result.current.data?.pages).toEqual([
         { items: malformedData, total: '100' },
       ]);
@@ -899,7 +947,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=chair+%26+table`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=chair+%26+table`,
       );
     });
 
@@ -919,7 +967,7 @@ describe('GetProductsInfinite', () => {
       });
 
       expect(mockFetch).toHaveBeenCalledWith(
-        `${API_ENDPOINT}${API_ROUTES.PRODUCTS}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=${encodeURIComponent(longSearch)}`,
+        `${API_ENDPOINT}${API_ROUTES.PRODUCTS_WITH_STOCK}?_start=0&_end=20&_sort=createdAt&_order=desc&name_like=${encodeURIComponent(longSearch)}`,
       );
     });
   });

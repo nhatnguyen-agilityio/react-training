@@ -26,7 +26,7 @@ const ProductDetail = () => {
   const [selectedVariantId, setSelectedVariantId] = useState<number | null>(
     null,
   );
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   const { id } = useParams<{ id: string }>();
 
   const { user } = useAuth();
@@ -89,7 +89,7 @@ const ProductDetail = () => {
         item: {
           productId: Number(id),
           variantId: selectedVariantId,
-          quantity: quantity,
+          quantity: Number(quantity),
         },
       };
       mutate(cartPayload, {
@@ -349,16 +349,26 @@ const ProductDetail = () => {
                   max={productDetail.variants[selected]?.stock || 100}
                   value={quantity}
                   onChange={(e) => {
-                    const inputValue = Number(e.target.value);
+                    const inputValue = e.target.value;
+                    // Allow empty input temporarily for better UX
+                    if (inputValue === '') {
+                      setQuantity('');
+                      return;
+                    }
+
+                    const numValue = Number(inputValue);
+                    if (isNaN(numValue)) return;
+
                     const maxStock =
                       productDetail.variants[selected]?.stock || 100;
-                    setQuantity(
-                      inputValue < 1
-                        ? 1
-                        : inputValue > maxStock
-                          ? maxStock
-                          : inputValue,
-                    );
+                    const newQuantity = numValue > maxStock ? maxStock : numValue;
+                    setQuantity(newQuantity);
+                  }}
+                  onBlur={() => {
+                    // Ensure valid quantity on blur
+                    if (quantity === '' || Number(quantity) <= 0) {
+                      setQuantity(1);
+                    }
                   }}
                   className="bg-background-primary rounded-2xl h-full p-0 text-center lg:pl-3"
                 />

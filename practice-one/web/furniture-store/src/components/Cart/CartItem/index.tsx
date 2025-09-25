@@ -25,18 +25,48 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
 
   const handleChangeQuantity = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newQuantity = Number(e.target.value);
+      const inputValue = e.target.value;
+
+      // Allow empty input temporarily for better UX
+      if (inputValue === '') {
+        setQuantityValue(0);
+        return;
+      }
+
+      const numValue = Number(inputValue);
+      if (isNaN(numValue)) return;
+
+      const cartVariant = productDetail?.variants.find(
+        (variant: ProductVariant) => variant.id === variantId,
+      );
+      const maxStock = cartVariant?.stock || 100;
+      const newQuantity = numValue > maxStock ? maxStock : numValue;
+
       setQuantityValue(newQuantity);
 
+      // Only update cart if quantity is valid (not 0)
+      if (newQuantity > 0) {
+        const updatedCart = {
+          ...cartItem,
+          item: { ...cartItem.item, quantity: newQuantity },
+        };
+        mutate({ cartId: cartItem.id || 0, cartPayload: updatedCart }, {});
+      }
+    },
+    [cartItem, mutate, productDetail?.variants, variantId],
+  );
+
+  const handleBlur = useCallback(() => {
+    // Ensure valid quantity on blur
+    if (quantityValue <= 0) {
+      setQuantityValue(1);
       const updatedCart = {
         ...cartItem,
-        item: { ...cartItem.item, quantity: newQuantity },
+        item: { ...cartItem.item, quantity: 1 },
       };
-
       mutate({ cartId: cartItem.id || 0, cartPayload: updatedCart }, {});
-    },
-    [cartItem, mutate],
-  );
+    }
+  }, [quantityValue, cartItem, mutate]);
 
   if (isPending) {
     return (
@@ -119,9 +149,10 @@ const CartItem = ({ cartItem }: { cartItem: CartInterface }) => {
           <Input
             type="number"
             min={1}
-            max={100}
+            max={cartVariant?.stock || 100}
             value={quantityValue}
             onChange={handleChangeQuantity}
+            onBlur={handleBlur}
             className="bg-background-primary rounded-2xl p-0 text-center lg:pl-2"
           />
         </div>

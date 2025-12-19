@@ -3,14 +3,8 @@ import ShowMore from '../common/ShowMore';
 import CategoryButtons from '../CategoryButtons';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { lazy } from 'react';
-
-const Card = lazy(() =>
-  import('../ui/card').then((module) => ({ default: module.Card })),
-);
-const Progress = lazy(() =>
-  import('../ui/progress').then((module) => ({ default: module.Progress })),
-);
+import { Card } from '../ui/card';
+import { Progress } from '../ui/progress';
 
 const buttonList = [
   'All',

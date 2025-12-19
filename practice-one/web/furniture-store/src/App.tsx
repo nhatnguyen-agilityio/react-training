@@ -8,7 +8,7 @@ import { API_STALE_TIME } from './constants/api';
 import Loading from './components/Loading';
 import { AuthProvider } from './auth/AuthProvider';
 import ErrorBoundary from './components/ErrorBoundary';
-const Main = lazy(() => import('./pages/main'));
+import Main from './pages/main';
 const Home = lazy(() => import('./pages/home'));
 const Products = lazy(() => import('./pages/products'));
 const ProductDetail = lazy(() => import('./pages/productDetail'));

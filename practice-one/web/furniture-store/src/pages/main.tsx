@@ -6,20 +6,19 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import { useState, lazy, Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import SiteMetadata from '../components/SiteMetadata';
 import UserButton from '../components/UserButton';
 import CartButton from '../components/CartButton';
 import MobileSidebar from '../components/MobileSidebar';
 import Loading from '../components/Loading';
-
-const Login = lazy(() => import('../components/Login'));
-const Cart = lazy(() => import('../components/Cart'));
-const Checkout = lazy(() => import('../components/Checkout'));
-const Payment = lazy(() => import('../components/Payment'));
-const OrderSuccess = lazy(() => import('../components/OrderSuccess'));
-const SignUp = lazy(() => import('../components/SignUp'));
+import Login from '../components/Login';
+import Cart from '../components/Cart';
+import Checkout from '../components/Checkout';
+import Payment from '../components/Payment';
+import OrderSuccess from '../components/OrderSuccess';
+import SignUp from '../components/SignUp';
 
 const Main = () => {
   const [step, setStep] = useState<

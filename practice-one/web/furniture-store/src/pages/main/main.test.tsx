@@ -3,13 +3,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import Main from './main';
+import Main from './index';
 
-jest.mock('../hooks/useAuth', () => ({
+jest.mock('../../hooks/useAuth', () => ({
   useAuth: jest.fn(),
 }));
 
-jest.mock('../components/common/Image', () => {
+jest.mock('../../components/common/Image', () => {
   return function MockImage({
     src,
     alt,
@@ -25,19 +25,19 @@ jest.mock('../components/common/Image', () => {
   };
 });
 
-jest.mock('../components/Navbar', () => {
+jest.mock('../../components/Navbar', () => {
   return function MockNavbar() {
     return <nav data-testid="navbar">Navigation Menu</nav>;
   };
 });
 
-jest.mock('../components/Footer', () => {
+jest.mock('../../components/Footer', () => {
   return function MockFooter() {
     return <footer data-testid="footer">Footer Content</footer>;
   };
 });
 
-jest.mock('../components/Sidebar', () => ({
+jest.mock('../../components/Sidebar', () => ({
   __esModule: true,
   default: function MockSidebar({
     open,
@@ -65,7 +65,7 @@ jest.mock('../components/Sidebar', () => ({
   },
 }));
 
-jest.mock('../components/CartButton', () => {
+jest.mock('../../components/CartButton', () => {
   return {
     __esModule: true,
     default: function MockCartButton({
@@ -82,7 +82,7 @@ jest.mock('../components/CartButton', () => {
   };
 });
 
-jest.mock('../components/GetStarted', () => {
+jest.mock('../../components/GetStarted', () => {
   return {
     __esModule: true,
     default: function MockGetStarted({
@@ -99,7 +99,7 @@ jest.mock('../components/GetStarted', () => {
   };
 });
 
-jest.mock('../components/UserButton', () => {
+jest.mock('../../components/UserButton', () => {
   return {
     __esModule: true,
     default: function MockUserButton() {
@@ -108,7 +108,7 @@ jest.mock('../components/UserButton', () => {
   };
 });
 
-jest.mock('../components/Loading', () => {
+jest.mock('../../components/Loading', () => {
   return {
     __esModule: true,
     default: function MockLoading() {
@@ -117,7 +117,7 @@ jest.mock('../components/Loading', () => {
   };
 });
 
-jest.mock('../components/Cart', () => {
+jest.mock('../../components/Cart', () => {
   return function MockCart({
     onNext,
     onLogin,
@@ -138,7 +138,7 @@ jest.mock('../components/Cart', () => {
   };
 });
 
-jest.mock('../components/Checkout', () => {
+jest.mock('../../components/Checkout', () => {
   return function MockCheckout({
     onNext,
     onLogin,
@@ -159,7 +159,7 @@ jest.mock('../components/Checkout', () => {
   };
 });
 
-jest.mock('../components/Payment', () => {
+jest.mock('../../components/Payment', () => {
   return function MockPayment({ onNext }: { onNext?: () => void }) {
     return (
       <div data-testid="payment-component">
@@ -171,7 +171,7 @@ jest.mock('../components/Payment', () => {
   };
 });
 
-jest.mock('../components/OrderSuccess', () => {
+jest.mock('../../components/OrderSuccess', () => {
   return function MockOrderSuccess({ onBack }: { onBack?: () => void }) {
     return (
       <div data-testid="order-success-component">
@@ -183,7 +183,7 @@ jest.mock('../components/OrderSuccess', () => {
   };
 });
 
-jest.mock('../components/Login', () => {
+jest.mock('../../components/Login', () => {
   return function MockLogin({
     onNext,
     onBack,
@@ -204,7 +204,7 @@ jest.mock('../components/Login', () => {
   };
 });
 
-jest.mock('../components/SignUp', () => {
+jest.mock('../../components/SignUp', () => {
   return function MockSignUp({ onNext }: { onNext?: () => void }) {
     return (
       <div data-testid="signup-component">
@@ -216,7 +216,7 @@ jest.mock('../components/SignUp', () => {
   };
 });
 
-jest.mock('../components/ui/sonner', () => ({
+jest.mock('../../components/ui/sonner', () => ({
   Toaster: function MockToaster() {
     return <div data-testid="toaster">Toast Container</div>;
   },
@@ -236,7 +236,7 @@ jest.mock('react-router-dom', () => ({
   Outlet: () => <div data-testid="outlet">Page Content</div>,
 }));
 
-const mockUseAuth = jest.mocked(jest.requireMock('../hooks/useAuth').useAuth);
+const mockUseAuth = jest.mocked(jest.requireMock('../../hooks/useAuth').useAuth);
 
 const TestWrapper = ({ children }: { children: ReactNode }) => (
   <HelmetProvider>

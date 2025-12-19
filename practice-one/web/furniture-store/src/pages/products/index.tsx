@@ -1,14 +1,14 @@
-import CategoryButtons from '../components/CategoryButtons';
-import TopProducts from '../components/TopProducts';
-import PeopleViewed from '../components/PeopleViewed';
-import SearchProduct from '../components/SearchProduct';
-import BreadcrumbComponent from '../components/common/Breadcrumb';
+import CategoryButtons from '../../components/CategoryButtons';
+import TopProducts from '../../components/TopProducts';
+import PeopleViewed from '../../components/PeopleViewed';
+import SearchProduct from '../../components/SearchProduct';
+import BreadcrumbComponent from '../../components/common/Breadcrumb';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { GetMainCategories } from '../apis/main-categories';
-import { GetSubCategories } from '../apis/sub-categories';
-import type { CategoryInterface } from '../interfaces/category';
-import { Skeleton } from '../components/ui/skeleton';
+import { GetMainCategories } from '../../apis/main-categories';
+import { GetSubCategories } from '../../apis/sub-categories';
+import type { CategoryInterface } from '../../interfaces/category';
+import { Skeleton } from '../../components/ui/skeleton';
 
 const Products = () => {
   const [searchProductsInput, setSearchProductsInput] = useState('');

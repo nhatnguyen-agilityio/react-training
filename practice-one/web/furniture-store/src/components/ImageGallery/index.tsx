@@ -5,18 +5,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { Card } from '../ui/card';
 import { Progress } from '../ui/progress';
-
-const buttonList = [
-  'All',
-  'Bedroom',
-  'Living Room',
-  'Kitchen',
-  'Workspace',
-  'Outdoor',
-  'Bathroom',
-  'Home office',
-  'Dinning room',
-];
+import { CATEGORY_LIST } from '../../constants/category';
 
 const images = [
   {
@@ -75,7 +64,7 @@ const ImageGallery = () => {
         Design inspiration and modern home ideas
       </h2>
       <CategoryButtons
-        buttonList={buttonList || []}
+        buttonList={CATEGORY_LIST}
         selectedCategory={selectedItem}
         onCategorySelect={setSelectedItem}
       />

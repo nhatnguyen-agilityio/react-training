@@ -10,6 +10,7 @@ import {
   DropdownMenuRadioItem,
 } from '../ui/dropdown-menu';
 import { ChevronDown } from 'lucide-react';
+import { SortPosition, SORT_LABELS } from '../../constants/sort';
 
 const FilterDropdown = ({
   position,
@@ -25,11 +26,7 @@ const FilterDropdown = ({
           variant="ghost"
           className="w-50 border-1 rounded-4xl text-base py-4"
         >
-          {position === 'mostRecent'
-            ? 'Most Recent'
-            : position === 'lowToHigh'
-              ? 'Price: Low to High'
-              : 'Price: High to Low'}
+          {SORT_LABELS[position as SortPosition] || SORT_LABELS[SortPosition.MOST_RECENT]}
           <ChevronDown className="ml-2 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -37,14 +34,14 @@ const FilterDropdown = ({
         <DropdownMenuLabel>Sort By</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="mostRecent">
-            Most Recent
+          <DropdownMenuRadioItem value={SortPosition.MOST_RECENT}>
+            {SORT_LABELS[SortPosition.MOST_RECENT]}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="lowToHigh">
-            Price: Low to High
+          <DropdownMenuRadioItem value={SortPosition.LOW_TO_HIGH}>
+            {SORT_LABELS[SortPosition.LOW_TO_HIGH]}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="highToLow">
-            Price: High to Low
+          <DropdownMenuRadioItem value={SortPosition.HIGH_TO_LOW}>
+            {SORT_LABELS[SortPosition.HIGH_TO_LOW]}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

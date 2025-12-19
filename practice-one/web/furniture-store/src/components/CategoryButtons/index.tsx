@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import Button from '../common/Button';
 import { lazy } from 'react';
+import { CarouselNext, CarouselPrevious } from '../ui/carousel';
 
 const Carousel = lazy(() =>
   import('../ui/carousel').then((module) => ({ default: module.Carousel })),
@@ -25,11 +26,17 @@ const CategoryButtons = ({
 }) => {
   return (
     <div className="mt-4">
-      <Carousel className="w-full">
-        <CarouselContent className="-ml-1">
+      <Carousel opts={{
+          align: "start",
+          slidesToScroll: "auto",
+          containScroll: "trimSnaps",
+        }}
+        className="w-full px-10 md:px-11"
+      >
+        <CarouselContent className='ml-0'>
           {buttonList.map((item, index) => (
-            <CarouselItem key={index} className="pl-1 basis-auto">
-              <div className="p-1">
+            <CarouselItem key={index} className="pl-0 pr-2 basis-auto shrink-0">
+              <div>
                 <Button
                   onClick={() => {
                     onCategorySelect(item);
@@ -47,6 +54,9 @@ const CategoryButtons = ({
             </CarouselItem>
           ))}
         </CarouselContent>
+
+        <CarouselPrevious className="left-0 top-1/2 -translate-y-1/2 bg-white shadow-md" />
+        <CarouselNext className="right-0 top-1/2 -translate-y-1/2 bg-white shadow-md" />
       </Carousel>
     </div>
   );

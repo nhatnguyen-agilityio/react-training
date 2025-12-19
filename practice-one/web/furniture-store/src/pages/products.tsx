@@ -122,6 +122,13 @@ const Products = () => {
     );
   }
 
+  const getSubCategoryName = () => {
+    if (!categoryId || selectedCategory === 'All') {
+      return 'All';
+    }
+    return String(categoryNameToId[selectedCategory]);
+  };
+
   return (
     <>
       <div className="container flex flex-col mt-15">
@@ -156,13 +163,7 @@ const Products = () => {
       <TopProducts
         categoryId={mainCategoryId}
         searchProducts={searchProducts}
-        subCategoryName={
-          categoryId
-            ? selectedCategory === 'All'
-              ? 'All'
-              : String(categoryNameToId[selectedCategory])
-            : 'All'
-        }
+        subCategoryName={getSubCategoryName()}
       />
       <PeopleViewed
         categoryId={mainCategoryId ? Number(mainCategoryId) : undefined}

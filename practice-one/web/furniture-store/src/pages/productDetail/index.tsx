@@ -5,7 +5,7 @@ import ProductImageGallery from '../../components/ProductImageGallery';
 import ProductInfo from '../../components/ProductInfo';
 import ProductDetailSkeleton from '../../components/ProductDetailSkeleton';
 import ProductDetailError from '../../components/ProductDetailError';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useGetProductDetail } from '../../apis/product-detail';
 import { useAddCart } from '../../apis/add-cart';
 import { GetMainCategories } from '../../apis/main-categories';
@@ -15,8 +15,10 @@ import NotFound from '../../components/NotFound';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   const { user } = useAuth();
   const { mutate, isLoading } = useAddCart();
+  const variantIdParam = searchParams.get('variantId');
 
   const {
     data: productDetail,
@@ -111,13 +113,26 @@ const ProductDetail = () => {
     return <ProductDetailError />;
   }
 
+  // Find the selected variant based on URL parameter
+  const getSelectedVariantImages = () => {
+    if (variantIdParam) {
+      const variant = productDetail.variants.find(
+        (v: { id: number }) => v.id === Number(variantIdParam)
+      );
+      if (variant) {
+        return variant.images || [];
+      }
+    }
+    return productDetail.variants[0]?.images || [];
+  };
+
   return (
     <div className="mt-12">
       <BreadcrumbComponent className="container" items={getBreadcrumbItems()} />
 
       <div className="container mt-4 md:mt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7">
-          <ProductImageGallery images={productDetail.variants[0]?.images || []} />
+          <ProductImageGallery images={getSelectedVariantImages()} />
           <ProductInfo
             productId={id || ''}
             name={productDetail.name}

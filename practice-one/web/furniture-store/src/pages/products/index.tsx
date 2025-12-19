@@ -4,26 +4,17 @@ import PeopleViewed from '../../components/PeopleViewed';
 import SearchProduct from '../../components/SearchProduct';
 import BreadcrumbComponent from '../../components/common/Breadcrumb';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { GetMainCategories } from '../../apis/main-categories';
 import { GetSubCategories } from '../../apis/sub-categories';
 import type { CategoryInterface } from '../../interfaces/category';
 import { Skeleton } from '../../components/ui/skeleton';
 
 const Products = () => {
-  const [searchProductsInput, setSearchProductsInput] = useState('');
-  const [searchProducts, setSearchProducts] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [mainCategoryId, setMainCategoryId] = useState<string | null>(null);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const categoryTitle = searchParams.get('categoryTitle');
   const categoryId = searchParams.get('categoryId');
-
-  useEffect(() => {
-    if (categoryId) {
-      setMainCategoryId(categoryId);
-    }
-  }, [categoryId]);
+  const searchQuery = searchParams.get('search') || '';
+  const selectedCategoryParam = searchParams.get('category') || 'All';
 
   const mainCategoriesQuery = GetMainCategories(!categoryId);
   const subCategoriesQuery = GetSubCategories(categoryId, !!categoryId);
@@ -50,15 +41,24 @@ const Products = () => {
       {},
     ) || {};
 
+  const mainCategoryId =
+    categoryId ||
+    (selectedCategoryParam === 'All' ? null : String(categoryNameToId[selectedCategoryParam]));
+
   const handleSelectCategory = (category: string) => {
-    if (categoryId) {
-      setSelectedCategory(category === 'All' ? 'All' : category);
+    const newParams = new URLSearchParams(searchParams);
+
+    if (category === 'All') {
+      newParams.delete('category');
     } else {
-      setSelectedCategory(category);
-      setMainCategoryId(
-        category === 'All' ? null : String(categoryNameToId[category]),
-      );
+      newParams.set('category', category);
     }
+
+    // Reset pagination and search when changing category
+    newParams.delete('topProductsPage');
+    newParams.delete('search');
+
+    setSearchParams(newParams);
   };
 
   if (isPending) {
@@ -123,17 +123,17 @@ const Products = () => {
   }
 
   const getSubCategoryName = () => {
-    if (!categoryId || selectedCategory === 'All') {
+    if (!categoryId || selectedCategoryParam === 'All') {
       return 'All';
     }
-    return String(categoryNameToId[selectedCategory]);
+    return String(categoryNameToId[selectedCategoryParam]);
   };
 
   return (
     <>
       <div className="container flex flex-col mt-15">
         <h2 className="text-2xl font-semibold mb-6 md:text-5xl md:font-bold">
-          {`${selectedCategory} Products`}
+          {`${selectedCategoryParam} Products`}
         </h2>
         <p className="text-sm font-light mb-6 md:px-1 md:text-lg">
           Transform your sitting room with our elegant and functional seating
@@ -149,20 +149,16 @@ const Products = () => {
             ]}
           />
         </div>
-        <SearchProduct
-          searchProductsInput={searchProductsInput}
-          setSearchProductsInput={setSearchProductsInput}
-          setSearchProducts={setSearchProducts}
-        />
+        <SearchProduct />
         <CategoryButtons
           buttonList={categories || []}
-          selectedCategory={selectedCategory}
+          selectedCategory={selectedCategoryParam}
           onCategorySelect={handleSelectCategory}
         />
       </div>
       <TopProducts
         categoryId={mainCategoryId}
-        searchProducts={searchProducts}
+        searchProducts={searchQuery}
         subCategoryName={getSubCategoryName()}
       />
       <PeopleViewed

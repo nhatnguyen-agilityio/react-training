@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { GetProductsInfinite } from '../../apis/products';
 import type { ProductInterface } from '../../interfaces/products';
 import ShowMore from '../common/ShowMore';
@@ -17,7 +18,22 @@ const TopProducts = ({
   searchProducts?: string | null;
   subCategoryName?: string;
 }) => {
-  const [position, setPosition] = useState('mostRecent');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const position = searchParams.get('sort') || 'mostRecent';
+  const pageParam = searchParams.get('topProductsPage');
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+
+  const setPosition = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value === 'mostRecent') {
+      newParams.delete('sort');
+    } else {
+      newParams.set('sort', value);
+    }
+    // Reset page when changing sort
+    newParams.delete('topProductsPage');
+    setSearchParams(newParams);
+  };
 
   const pageSize = 20;
   const {
@@ -35,6 +51,17 @@ const TopProducts = ({
     searchProducts,
     subCategoryName,
   );
+
+  // Fetch pages up to the stored page number on mount/when filters change
+  useEffect(() => {
+    if (data && currentPage > 1) {
+      const currentLoadedPages = data.pages.length;
+      // Fetch additional pages if needed to reach the stored page number
+      if (currentLoadedPages < currentPage && hasNextPage) {
+        fetchNextPage();
+      }
+    }
+  }, [data, currentPage, hasNextPage, fetchNextPage]);
 
   const items: ProductInterface[] = useMemo(() => {
     return data?.pages?.flatMap((page) => page.items) ?? [];
@@ -160,7 +187,13 @@ const TopProducts = ({
           </div>
         )}
         <ShowMore
-          onClick={() => fetchNextPage()}
+          onClick={() => {
+            fetchNextPage();
+            const newParams = new URLSearchParams(searchParams);
+            const nextPage = (data?.pages.length || 0) + 1;
+            newParams.set('topProductsPage', String(nextPage));
+            setSearchParams(newParams);
+          }}
           disabled={!hasNextPage || isFetchingNextPage}
         />
       </div>

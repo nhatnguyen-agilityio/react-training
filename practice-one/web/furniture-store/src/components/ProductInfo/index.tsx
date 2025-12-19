@@ -1,8 +1,9 @@
-import { useState, useCallback, type MouseEvent } from 'react';
+import { useState, useCallback, type MouseEvent, useEffect } from 'react';
 import { Check, Box, Sprout } from 'lucide-react';
 import Image from '../common/Image';
 import Button from '../common/Button';
 import { Input } from '../ui/input';
+import { useSearchParams } from 'react-router-dom';
 import type { ProductVariant } from '../../interfaces/products';
 
 interface ProductInfoProps {
@@ -30,11 +31,34 @@ const ProductInfo = ({
   isLoading = false,
   onAddToCart,
 }: ProductInfoProps) => {
-  const [selected, setSelected] = useState<number>(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const variantIdParam = searchParams.get('variantId');
+
+  // Find the initial selected index based on URL parameter
+  const getInitialSelectedIndex = () => {
+    if (variantIdParam) {
+      const index = variants.findIndex(v => v.id === Number(variantIdParam));
+      return index !== -1 ? index : 0;
+    }
+    return 0;
+  };
+
+  const [selected, setSelected] = useState<number>(getInitialSelectedIndex());
   const [selectedVariantId, setSelectedVariantId] = useState<number>(
-    variants[0]?.id || 0,
+    variants[selected]?.id || variants[0]?.id || 0,
   );
   const [quantity, setQuantity] = useState<number | string>(1);
+
+  // Sync with URL when variantIdParam changes
+  useEffect(() => {
+    if (variantIdParam) {
+      const index = variants.findIndex(v => v.id === Number(variantIdParam));
+      if (index !== -1) {
+        setSelected(index);
+        setSelectedVariantId(variants[index].id);
+      }
+    }
+  }, [variantIdParam, variants]);
 
   const handleAddToCartClick = useCallback(
     (e: MouseEvent) => {
@@ -102,6 +126,11 @@ const ProductInfo = ({
               onClick={() => {
                 setSelected(index);
                 setSelectedVariantId(item.id);
+
+                // Update URL with selected variant
+                const newParams = new URLSearchParams(searchParams);
+                newParams.set('variantId', String(item.id));
+                setSearchParams(newParams);
               }}
               className="h-12 w-12 mr-3 rounded-2xl flex items-center justify-center cursor-pointer"
               style={{ backgroundColor: item.hex }}

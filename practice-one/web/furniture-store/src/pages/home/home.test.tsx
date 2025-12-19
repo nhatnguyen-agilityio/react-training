@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Home from './home';
+import Home from './index';
 
-jest.mock('../components/Hero', () => {
+jest.mock('../../components/Hero', () => {
   return function MockHero() {
     return (
       <section data-testid="hero-component">
@@ -14,7 +14,7 @@ jest.mock('../components/Hero', () => {
   };
 });
 
-jest.mock('../components/Categories', () => {
+jest.mock('../../components/Categories', () => {
   return function MockCategories() {
     return (
       <section data-testid="categories-component">
@@ -29,7 +29,7 @@ jest.mock('../components/Categories', () => {
   };
 });
 
-jest.mock('../components/TopProducts', () => {
+jest.mock('../../components/TopProducts', () => {
   return function MockTopProducts() {
     return (
       <section data-testid="top-products-component">
@@ -44,7 +44,7 @@ jest.mock('../components/TopProducts', () => {
   };
 });
 
-jest.mock('../components/ImageGallery', () => {
+jest.mock('../../components/ImageGallery', () => {
   return function MockImageGallery() {
     return (
       <section data-testid="image-gallery-component">
@@ -59,7 +59,7 @@ jest.mock('../components/ImageGallery', () => {
   };
 });
 
-jest.mock('../components/Faq', () => {
+jest.mock('../../components/Faq', () => {
   return function MockFaq() {
     return (
       <section data-testid="faq-component">

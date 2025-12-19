@@ -1,24 +1,24 @@
 import { AlignJustify } from 'lucide-react';
-import { Toaster } from '../components/ui/sonner';
-import Image from '../components/common/Image';
-import GetStarted from '../components/GetStarted';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { Toaster } from '../../components/ui/sonner';
+import Image from '../../components/common/Image';
+import GetStarted from '../../components/GetStarted';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import { Link, Outlet } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../../components/Sidebar';
 import { useState, Suspense } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import SiteMetadata from '../components/SiteMetadata';
-import UserButton from '../components/UserButton';
-import CartButton from '../components/CartButton';
-import MobileSidebar from '../components/MobileSidebar';
-import Loading from '../components/Loading';
-import Login from '../components/Login';
-import Cart from '../components/Cart';
-import Checkout from '../components/Checkout';
-import Payment from '../components/Payment';
-import OrderSuccess from '../components/OrderSuccess';
-import SignUp from '../components/SignUp';
+import { useAuth } from '../../hooks/useAuth';
+import SiteMetadata from '../../components/SiteMetadata';
+import UserButton from '../../components/UserButton';
+import CartButton from '../../components/CartButton';
+import MobileSidebar from '../../components/MobileSidebar';
+import Loading from '../../components/Loading';
+import Login from '../../components/Login';
+import Cart from '../../components/Cart';
+import Checkout from '../../components/Checkout';
+import Payment from '../../components/Payment';
+import OrderSuccess from '../../components/OrderSuccess';
+import SignUp from '../../components/SignUp';
 
 const Main = () => {
   const [step, setStep] = useState<

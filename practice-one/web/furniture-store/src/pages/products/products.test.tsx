@@ -2,17 +2,17 @@ import type { ReactNode } from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import Products from './products';
+import Products from './index';
 
-jest.mock('../apis/main-categories', () => ({
+jest.mock('../../apis/main-categories', () => ({
   GetMainCategories: jest.fn(),
 }));
 
-jest.mock('../apis/sub-categories', () => ({
+jest.mock('../../apis/sub-categories', () => ({
   GetSubCategories: jest.fn(),
 }));
 
-jest.mock('../components/CategoryButtons', () => {
+jest.mock('../../components/CategoryButtons', () => {
   return function MockCategoryButtons({
     buttonList,
     selectedCategory,
@@ -40,7 +40,7 @@ jest.mock('../components/CategoryButtons', () => {
   };
 });
 
-jest.mock('../components/TopProducts', () => {
+jest.mock('../../components/TopProducts', () => {
   return function MockTopProducts({
     categoryId,
     searchProducts,
@@ -61,7 +61,7 @@ jest.mock('../components/TopProducts', () => {
   };
 });
 
-jest.mock('../components/PeopleViewed', () => {
+jest.mock('../../components/PeopleViewed', () => {
   return function MockPeopleViewed({ categoryId }: { categoryId?: number }) {
     return (
       <div data-testid="people-viewed">
@@ -72,7 +72,7 @@ jest.mock('../components/PeopleViewed', () => {
   };
 });
 
-jest.mock('../components/SearchProduct', () => {
+jest.mock('../../components/SearchProduct', () => {
   return function MockSearchProduct({
     searchProductsInput,
     setSearchProductsInput,
@@ -101,7 +101,7 @@ jest.mock('../components/SearchProduct', () => {
   };
 });
 
-jest.mock('../components/common/Breadcrumb', () => {
+jest.mock('../../components/common/Breadcrumb', () => {
   return function MockBreadcrumbComponent({
     items,
   }: {
@@ -125,18 +125,18 @@ jest.mock('../components/common/Breadcrumb', () => {
   };
 });
 
-jest.mock('../components/ui/skeleton', () => ({
+jest.mock('../../components/ui/skeleton', () => ({
   Skeleton: function MockSkeleton({ className }: { className: string }) {
     return <div data-testid="skeleton" className={className} />;
   },
 }));
 
 const mockGetMainCategories = jest.mocked(
-  jest.requireMock('../apis/main-categories').GetMainCategories,
+  jest.requireMock('../../apis/main-categories').GetMainCategories,
 );
 
 const mockGetSubCategories = jest.mocked(
-  jest.requireMock('../apis/sub-categories').GetSubCategories,
+  jest.requireMock('../../apis/sub-categories').GetSubCategories,
 );
 
 const TestWrapper = ({

@@ -2,25 +2,25 @@ import { useState, type ChangeEvent, type ReactNode } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import ProductDetail from './productDetail';
+import ProductDetail from './index';
 
-jest.mock('../apis/product-detail', () => ({
+jest.mock('../../apis/product-detail', () => ({
   useGetProductDetail: jest.fn(),
 }));
 
-jest.mock('../apis/add-cart', () => ({
+jest.mock('../../apis/add-cart', () => ({
   useAddCart: jest.fn(),
 }));
 
-jest.mock('../apis/main-categories', () => ({
+jest.mock('../../apis/main-categories', () => ({
   GetMainCategories: jest.fn(),
 }));
 
-jest.mock('../hooks/useAuth', () => ({
+jest.mock('../../hooks/useAuth', () => ({
   useAuth: jest.fn(),
 }));
 
-jest.mock('../components/common/Image', () => {
+jest.mock('../../components/common/Image', () => {
   return function MockImage({
     src,
     alt,
@@ -36,7 +36,7 @@ jest.mock('../components/common/Image', () => {
   };
 });
 
-jest.mock('../components/common/Breadcrumb', () => {
+jest.mock('../../components/common/Breadcrumb', () => {
   return function MockBreadcrumb({
     className,
     items,
@@ -60,7 +60,7 @@ jest.mock('../components/common/Breadcrumb', () => {
   };
 });
 
-jest.mock('../components/ui/carousel', () => ({
+jest.mock('../../components/ui/carousel', () => ({
   Carousel: ({
     children,
     className,
@@ -80,7 +80,7 @@ jest.mock('../components/ui/carousel', () => ({
   ),
 }));
 
-jest.mock('../components/ui/button', () => ({
+jest.mock('../../components/ui/button', () => ({
   Button: ({
     children,
     onClick,
@@ -108,7 +108,7 @@ jest.mock('../components/ui/button', () => ({
   ),
 }));
 
-jest.mock('../components/ui/input', () => ({
+jest.mock('../../components/ui/input', () => ({
   Input: ({
     type,
     min,
@@ -147,13 +147,13 @@ jest.mock('../components/ui/input', () => ({
   },
 }));
 
-jest.mock('../components/ui/skeleton', () => ({
+jest.mock('../../components/ui/skeleton', () => ({
   Skeleton: ({ className }: { className?: string }) => (
     <div className={className} data-testid="skeleton" />
   ),
 }));
 
-jest.mock('../components/PeopleViewed', () => {
+jest.mock('../../components/PeopleViewed', () => {
   return function MockPeopleViewed({ categoryId }: { categoryId?: number }) {
     return (
       <div data-testid="people-viewed">
@@ -180,15 +180,15 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const mockUseGetProductDetail = jest.mocked(
-  jest.requireMock('../apis/product-detail').useGetProductDetail,
+  jest.requireMock('../../apis/product-detail').useGetProductDetail,
 );
 const mockUseAddCart = jest.mocked(
-  jest.requireMock('../apis/add-cart').useAddCart,
+  jest.requireMock('../../apis/add-cart').useAddCart,
 );
 const mockGetMainCategories = jest.mocked(
-  jest.requireMock('../apis/main-categories').GetMainCategories,
+  jest.requireMock('../../apis/main-categories').GetMainCategories,
 );
-const mockUseAuth = jest.mocked(jest.requireMock('../hooks/useAuth').useAuth);
+const mockUseAuth = jest.mocked(jest.requireMock('../../hooks/useAuth').useAuth);
 const mockToast = jest.fn();
 
 const TestWrapper = ({ children }: { children: ReactNode }) => (

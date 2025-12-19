@@ -1,17 +1,17 @@
 import { useCallback } from 'react';
-import BreadcrumbComponent from '../components/common/Breadcrumb';
-import PeopleViewed from '../components/PeopleViewed';
-import ProductImageGallery from '../components/ProductImageGallery';
-import ProductInfo from '../components/ProductInfo';
-import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
-import ProductDetailError from '../components/ProductDetailError';
+import BreadcrumbComponent from '../../components/common/Breadcrumb';
+import PeopleViewed from '../../components/PeopleViewed';
+import ProductImageGallery from '../../components/ProductImageGallery';
+import ProductInfo from '../../components/ProductInfo';
+import ProductDetailSkeleton from '../../components/ProductDetailSkeleton';
+import ProductDetailError from '../../components/ProductDetailError';
 import { useParams } from 'react-router-dom';
-import { useGetProductDetail } from '../apis/product-detail';
-import { useAddCart } from '../apis/add-cart';
-import { GetMainCategories } from '../apis/main-categories';
+import { useGetProductDetail } from '../../apis/product-detail';
+import { useAddCart } from '../../apis/add-cart';
+import { GetMainCategories } from '../../apis/main-categories';
 import { toast } from 'sonner';
-import { useAuth } from '../hooks/useAuth';
-import NotFound from '../components/NotFound';
+import { useAuth } from '../../hooks/useAuth';
+import NotFound from '../../components/NotFound';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -81,7 +81,7 @@ const ProductDetail = () => {
           if (
             (error as { message?: string })?.message === 'Insufficient stock'
           ) {
-            const variant = productDetail?.variants.find(v => v.id === variantId);
+            const variant = productDetail?.variants.find((v: { id: number; }) => v.id === variantId);
             const availableStock = variant?.stock || 0;
             toast.error(
               `Sorry, only ${availableStock} item(s) available in stock for ${productDetail?.name}. Please help check to your cart`,

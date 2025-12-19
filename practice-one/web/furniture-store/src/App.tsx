@@ -25,27 +25,46 @@ function App() {
   });
 
   return (
-    <ErrorBoundary>
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <BrowserRouter>
-              <Suspense fallback={<Loading />}>
-                <ScrollToTop />
-                <Routes>
-                  <Route path="/" element={<Main />}>
-                    <Route index element={<Home />} />
-                    <Route path="products" element={<Products />} />
-                    <Route path="products/:id" element={<ProductDetail />} />
-                  </Route>
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </BrowserRouter>
-          </AuthProvider>
-        </QueryClientProvider>
-      </HelmetProvider>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <BrowserRouter>
+            <Suspense fallback={<Loading />}>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Main />}>
+                  <Route
+                    index
+                    element={
+                      <ErrorBoundary>
+                        <Home />
+                      </ErrorBoundary>
+                    }
+                  />
+                  <Route
+                    path="products"
+                    element={
+                      <ErrorBoundary>
+                        <Products />
+                      </ErrorBoundary>
+                    }
+                  />
+                  <Route
+                    path="products/:id"
+                    element={
+                      <ErrorBoundary>
+                        <ProductDetail />
+                      </ErrorBoundary>
+                    }
+                  />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 

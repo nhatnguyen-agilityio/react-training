@@ -1,19 +1,6 @@
 import { memo } from 'react';
 import Button from '../common/Button';
-import { lazy } from 'react';
-import { CarouselNext, CarouselPrevious } from '../ui/carousel';
-
-const Carousel = lazy(() =>
-  import('../ui/carousel').then((module) => ({ default: module.Carousel })),
-);
-const CarouselContent = lazy(() =>
-  import('../ui/carousel').then((module) => ({
-    default: module.CarouselContent,
-  })),
-);
-const CarouselItem = lazy(() =>
-  import('../ui/carousel').then((module) => ({ default: module.CarouselItem })),
-);
+import { CarouselNext, CarouselPrevious, CarouselItem, CarouselContent, Carousel } from '../ui/carousel';
 
 const CategoryButtons = ({
   buttonList,

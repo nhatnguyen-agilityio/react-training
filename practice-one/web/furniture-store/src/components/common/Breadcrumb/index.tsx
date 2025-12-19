@@ -1,33 +1,8 @@
 import type { ReactNode } from 'react';
 
-import { lazy } from 'react';
 import { Link } from 'react-router-dom';
 
-const Breadcrumb = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.Breadcrumb,
-  })),
-);
-const BreadcrumbItem = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.BreadcrumbItem,
-  })),
-);
-const BreadcrumbList = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.BreadcrumbList,
-  })),
-);
-const BreadcrumbPage = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.BreadcrumbPage,
-  })),
-);
-const BreadcrumbSeparator = lazy(() =>
-  import('../../ui/breadcrumb').then((module) => ({
-    default: module.BreadcrumbSeparator,
-  })),
-);
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '../../ui/breadcrumb';
 
 interface BreadcrumbItem {
   label: string | ReactNode;

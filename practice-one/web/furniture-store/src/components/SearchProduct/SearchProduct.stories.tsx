@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import SearchProduct from '.';
-import { useState } from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta: Meta<typeof SearchProduct> = {
   title: 'Components/SearchProduct',
@@ -9,54 +9,30 @@ const meta: Meta<typeof SearchProduct> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    searchProductsInput: {
-      control: 'text',
-      description: 'The input value of the search product',
-    },
-    setSearchProductsInput: {
-      action: 'setSearchProductsInput',
-      description: 'The function to call when the input value changes',
-    },
-    setSearchProducts: {
-      action: 'setSearchProducts',
-      description: 'The function to call when the search product is set',
-    },
-  },
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <div className="w-full max-w-2xl">
+          <Story />
+        </div>
+      </MemoryRouter>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    searchProductsInput: '',
-    setSearchProductsInput: () => {},
-    setSearchProducts: () => {},
-  },
-};
+export const Default: Story = {};
 
-export const Interactive: Story = {
-  render: () => {
-    const [searchProductsInput, setSearchProductsInput] = useState('');
-    const [searchProducts, setSearchProducts] = useState('');
-
-    return (
-      <div className="space-y-4">
-        <SearchProduct
-          searchProductsInput={searchProductsInput}
-          setSearchProductsInput={setSearchProductsInput}
-          setSearchProducts={(value) => {
-            console.log('Search triggered:', value);
-            setSearchProducts(value);
-          }}
-        />
-        {searchProducts && (
-          <div className="text-center text-sm text-gray-600">
-            Current search: <strong>{searchProducts}</strong>
-          </div>
-        )}
-      </div>
-    );
-  },
+export const WithInitialSearch: Story = {
+  decorators: [
+    (Story) => (
+      <MemoryRouter initialEntries={['/?search=furniture']}>
+        <div className="w-full max-w-2xl">
+          <Story />
+        </div>
+      </MemoryRouter>
+    ),
+  ],
 };

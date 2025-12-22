@@ -134,7 +134,6 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 lg:gap-7">
           <ProductImageGallery images={getSelectedVariantImages()} />
           <ProductInfo
-            productId={id || ''}
             name={productDetail.name}
             rating={productDetail.rating}
             price={productDetail.price}

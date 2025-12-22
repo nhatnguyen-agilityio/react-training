@@ -7,7 +7,6 @@ import { useSearchParams } from 'react-router-dom';
 import type { ProductVariant } from '../../interfaces/products';
 
 interface ProductInfoProps {
-  productId: string;
   name: string;
   rating: { average: number };
   price: number;
@@ -20,7 +19,6 @@ interface ProductInfoProps {
 }
 
 const ProductInfo = ({
-  productId,
   name,
   rating,
   price,

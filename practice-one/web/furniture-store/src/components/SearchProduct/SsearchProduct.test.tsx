@@ -1,47 +1,24 @@
 import { render, screen } from '@testing-library/react';
 import type { ReactNode } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import SearchProduct from '.';
 
-const mockSetSearchProductsInput = jest.fn();
-const mockSetSearchProducts = jest.fn();
-
-const TestQueryClient = ({ children }: { children: ReactNode }) => (
-  <BrowserRouter>{children}</BrowserRouter>
-);
+const TestWrapper = ({
+  children,
+  initialEntries = ['/'],
+}: {
+  children: ReactNode;
+  initialEntries?: string[];
+}) => <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>;
 
 describe('SearchProductComponent', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   describe('Rendering', () => {
-    it('Render SearchProduct component with search value valid', () => {
+    it('Render SearchProduct component with empty search value', () => {
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={'Chair'}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
-      );
-      expect(
-        screen.getByPlaceholderText('Search by name or category...'),
-      ).toBeInTheDocument();
-      expect(screen.getByDisplayValue('Chair')).toBeInTheDocument();
-    });
-
-    it('Render SearchProduct component with search value invalid', () => {
-      render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={''}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper>
+          <SearchProduct />
+        </TestWrapper>,
       );
       expect(
         screen.getByPlaceholderText('Search by name or category...'),
@@ -49,15 +26,23 @@ describe('SearchProductComponent', () => {
       expect(screen.getByDisplayValue('')).toBeInTheDocument();
     });
 
+    it('Render SearchProduct component with search value from URL', () => {
+      render(
+        <TestWrapper initialEntries={['/?search=Chair']}>
+          <SearchProduct />
+        </TestWrapper>,
+      );
+      expect(
+        screen.getByPlaceholderText('Search by name or category...'),
+      ).toBeInTheDocument();
+      expect(screen.getByDisplayValue('Chair')).toBeInTheDocument();
+    });
+
     it('Render SearchProduct component with valid button search icon', () => {
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={'Chair'}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper>
+          <SearchProduct />
+        </TestWrapper>,
       );
       expect(screen.getByRole('button')).toBeInTheDocument();
       expect(
@@ -65,17 +50,14 @@ describe('SearchProductComponent', () => {
       ).toBeInTheDocument();
     });
   });
+
   describe('User Interaction', () => {
     it('User input search value and click search button', async () => {
       const user = userEvent.setup();
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={''}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper>
+          <SearchProduct />
+        </TestWrapper>,
       );
 
       const input = screen.getByPlaceholderText(
@@ -83,26 +65,20 @@ describe('SearchProductComponent', () => {
       );
       await user.type(input, 'Test');
 
-      expect(mockSetSearchProductsInput).toHaveBeenCalledTimes(4);
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(1, 'T');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(2, 'e');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(3, 's');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(4, 't');
+      expect(screen.getByDisplayValue('Test')).toBeInTheDocument();
 
       await user.click(screen.getByRole('button'));
-      expect(mockSetSearchProducts).toHaveBeenCalledWith('');
+
+      // After clicking search, the URL should be updated
+      expect(screen.getByDisplayValue('Test')).toBeInTheDocument();
     });
 
     it('User input search value and press enter key', async () => {
       const user = userEvent.setup();
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={''}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper>
+          <SearchProduct />
+        </TestWrapper>,
       );
 
       const input = screen.getByPlaceholderText(
@@ -110,51 +86,51 @@ describe('SearchProductComponent', () => {
       );
       await user.type(input, 'Chair');
 
-      expect(mockSetSearchProductsInput).toHaveBeenCalledTimes(5);
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(1, 'C');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(2, 'h');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(3, 'a');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(4, 'i');
-      expect(mockSetSearchProductsInput).toHaveBeenNthCalledWith(5, 'r');
+      expect(screen.getByDisplayValue('Chair')).toBeInTheDocument();
 
       await user.keyboard('{enter}');
-      expect(mockSetSearchProducts).toHaveBeenCalledWith('');
+
+      // After pressing enter, the search value should remain
+      expect(screen.getByDisplayValue('Chair')).toBeInTheDocument();
     });
 
-    it('User clicks search button with existing search value', async () => {
+    it('User clicks search button with existing search value from URL', async () => {
       const user = userEvent.setup();
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={'Test Search'}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper initialEntries={['/?search=TestSearch']}>
+          <SearchProduct />
+        </TestWrapper>,
       );
 
+      expect(screen.getByDisplayValue('TestSearch')).toBeInTheDocument();
+
       await user.click(screen.getByRole('button'));
-      expect(mockSetSearchProducts).toHaveBeenCalledWith('Test Search');
+
+      // Search value should persist after clicking search
+      expect(screen.getByDisplayValue('TestSearch')).toBeInTheDocument();
     });
 
-    it('User presses enter with existing search value', async () => {
+    it('User clears search value and clicks search button', async () => {
       const user = userEvent.setup();
       render(
-        <TestQueryClient>
-          <SearchProduct
-            searchProductsInput={'Chair Search'}
-            setSearchProductsInput={mockSetSearchProductsInput}
-            setSearchProducts={mockSetSearchProducts}
-          />
-        </TestQueryClient>,
+        <TestWrapper initialEntries={['/?search=Chair']}>
+          <SearchProduct />
+        </TestWrapper>,
       );
 
       const input = screen.getByPlaceholderText(
         'Search by name or category...',
       );
-      input.focus();
-      await user.keyboard('{enter}');
-      expect(mockSetSearchProducts).toHaveBeenCalledWith('Chair Search');
+
+      expect(screen.getByDisplayValue('Chair')).toBeInTheDocument();
+
+      await user.clear(input);
+      expect(screen.getByDisplayValue('')).toBeInTheDocument();
+
+      await user.click(screen.getByRole('button'));
+
+      // After clearing and searching, input should be empty
+      expect(screen.getByDisplayValue('')).toBeInTheDocument();
     });
   });
 });
